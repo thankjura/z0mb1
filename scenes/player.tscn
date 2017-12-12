@@ -1252,7 +1252,7 @@ tracks/17/keys = {
 "values": [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=9]
 
 resource_name = "aim"
 length = 180.0
@@ -1582,7 +1582,7 @@ tracks/11/keys = {
 z = 10
 input_pickable = false
 collision_layer = 4
-collision_mask = 1
+collision_mask = 17
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform", "Z" ]
@@ -1795,7 +1795,7 @@ root_node = NodePath("..")
 autoplay = "idle"
 speed_scale = 1.0
 active = true
-current_animation = "jump_up"
+current_animation = ""
 anims/idle = SubResource( 2 )
 anims/idle_aim = SubResource( 3 )
 anims/jump_up = SubResource( 8 )
@@ -1816,7 +1816,7 @@ autoplay = "idle"
 speed_scale = 1.0
 active = true
 current_animation = ""
-anims/aim = SubResource( 6 )
+anims/aim = SubResource( 9 )
 anims/get_pistol = SubResource( 7 )
 playback/active = true
 playback/speed = 1.0

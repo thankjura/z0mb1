@@ -17,7 +17,7 @@ extents = Vector2( 203.941, 66.4202 )
 [node name="canon" type="RigidBody2D"]
 
 input_pickable = false
-collision_layer = 1
+collision_layer = 16
 collision_mask = 1
 mode = 0
 mass = 100.0

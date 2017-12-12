@@ -16,7 +16,7 @@ extents = Vector2( 37.3879, 25.3451 )
 [node name="r8_entity" type="RigidBody2D"]
 
 input_pickable = false
-collision_layer = 1
+collision_layer = 16
 collision_mask = 1
 mode = 0
 mass = 10.0

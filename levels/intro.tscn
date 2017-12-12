@@ -1,0 +1,96 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://textures/levels/intro/1.png" type="Texture" id=1]
+[ext_resource path="res://textures/shared/fantasy_tree.png" type="Texture" id=2]
+[ext_resource path="res://textures/shared/fantasy_tree_norm.png" type="Texture" id=3]
+[ext_resource path="res://scenes/gui.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/entities/r8_entity.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/enemy/yellow_eyes.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 3844.78, 230.19 )
+
+[node name="world" type="Node" groups=[
+"guns",
+]]
+
+[node name="bg" type="Sprite" parent="."]
+
+position = Vector2( 0, -400 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="sprite" type="Sprite" parent="bg"]
+
+position = Vector2( 1702.12, 776.727 )
+z = -4
+texture = ExtResource( 2 )
+normal_map = ExtResource( 3 )
+_sections_unfolded = [ "Z" ]
+
+[node name="sprite2" type="Sprite" parent="bg"]
+
+position = Vector2( 5452.22, 769.704 )
+z = -4
+texture = ExtResource( 2 )
+normal_map = ExtResource( 3 )
+_sections_unfolded = [ "Z" ]
+
+[node name="sprite3" type="Sprite" parent="bg"]
+
+position = Vector2( 4195.17, 762.682 )
+z = -4
+texture = ExtResource( 2 )
+normal_map = ExtResource( 3 )
+_sections_unfolded = [ "Z" ]
+
+[node name="static" type="StaticBody2D" parent="bg"]
+
+position = Vector2( 44.1442, 1144.63 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="collision" type="CollisionShape2D" parent="bg/static"]
+
+position = Vector2( 3802.69, 192.965 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Material" ]
+
+[node name="gui" parent="." instance=ExtResource( 4 )]
+
+[node name="player" parent="." instance=ExtResource( 5 )]
+
+position = Vector2( 2641.58, 549.985 )
+_sections_unfolded = [ "Collision", "Transform", "Z", "collision" ]
+
+[node name="r8" parent="." instance=ExtResource( 6 )]
+
+position = Vector2( 3463.9, 633.49 )
+_sections_unfolded = [ "Collision", "Z" ]
+
+[node name="yellow_eyes" parent="." instance=ExtResource( 7 )]
+
+position = Vector2( 4690.33, 546.447 )
+
+[node name="yellow_eyes2" parent="." instance=ExtResource( 7 )]
+
+position = Vector2( 5275.97, 611.518 )
+
+[node name="yellow_eyes3" parent="." instance=ExtResource( 7 )]
+
+position = Vector2( 4419.77, 590.969 )
+
+[node name="yellow_eyes4" parent="." instance=ExtResource( 7 )]
+
+position = Vector2( 5012.89, 555.904 )
+
+

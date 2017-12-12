@@ -1,0 +1,1 @@
+extends "res://scripts/entities/base.gd"

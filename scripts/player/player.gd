@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+const constants = preload("res://scripts/constants.gd")
+
 var dead
 var health = 100
 var gui
@@ -7,6 +9,9 @@ var gun
 var movement
 
 func _ready():
+    set_collision_layer(constants.PLAYER_LAYER)
+    set_collision_mask(constants.PLAYER_MASK)
+
     movement = load("res://scripts/player/movement.gd").new(self, $anim_aim, $anim)
     gui = get_tree().get_root().get_node("world/gui")
     global = get_node("/root/global")

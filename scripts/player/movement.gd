@@ -9,7 +9,7 @@ const WALK_AIR_MAX_SPEED = 250
 const FLOOR_NORMAL = Vector2(0, -1)
 const SLOPE_FRICTION = 20
 
-const DEFAULT_VECTOR = Vector2(1, 0)
+const DEFAULT_VECTOR = Vector2(0, -1)
 
 var input
 var player
@@ -34,9 +34,8 @@ func _init(var player, var aim, var anim):
 
 func _ground_state(delta, m = Vector2()):
     var movement = 0
-    var angle = DEFAULT_VECTOR.angle_to(m)
     if m:
-        _look(angle)
+        _look(DEFAULT_VECTOR.angle_to(m))
     else:
         look_default()
 
@@ -49,10 +48,9 @@ func _ground_state(delta, m = Vector2()):
 
 func _air_state(delta, m = Vector2()):
     var movement = 0
-    var angle = DEFAULT_VECTOR.angle_to(m)
 
     if m:
-        _look(angle)
+        _look(DEFAULT_VECTOR.angle_to(m))
     else:
         look_default()
 
@@ -65,23 +63,16 @@ func _air_state(delta, m = Vector2()):
 
 func _look(rad):
     var deg = rad2deg(rad)
-    if deg < 0:
-        deg = 360 + deg
     if player.gun:
         aim.set_active(true)
         aim.set_current_animation("aim")
-        if deg >= 270:
-            aim.seek(450 - deg, true)
-        elif deg <=90:
-            aim.seek(abs(deg - 90), true)
-        else:
-            aim.seek(abs(deg - 90), true)
+        aim.seek(abs(deg), true)
     else:
-        aim.set_active(true)
+        aim.set_active(false)
 
-    if deg > 270 or deg < 90:
+    if deg > 0 and deg < 180:
         player.get_node("body").set_scale(body_scale)
-    elif deg < 270 and deg > 90:
+    elif deg > -180 and deg < 0:
         player.get_node("body").set_scale(Vector2(-body_scale.x, body_scale.y))
 
 func look_default():

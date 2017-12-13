@@ -1,8 +1,8 @@
 extends RigidBody2D
 
+const constants = preload("res://scripts/constants.gd")
+
 const LIFE_TIME = 10
-const COLLISION_LAYER = 8
-const COLLISION_MASK = 1
 const DAMAGE = 30
 
 var health = 100
@@ -10,8 +10,8 @@ var active = true
 var timer = 0
 
 func _ready():
-    set_collision_layer(COLLISION_LAYER)
-    set_collision_mask(COLLISION_MASK)
+    set_collision_layer(constants.BULLET_LAYER)
+    set_collision_mask(constants.BULLET_MASK)
     set_contact_monitor(true)
     set_max_contacts_reported(3)
 

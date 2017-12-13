@@ -23,6 +23,10 @@ var direction = 0
 
 var current_anim = ""
 var new_anim = ""
+var blend_time = 0.2
+var anim_speed = 1.0
+var current_anim_speed = 1.0
+
 var body_scale
 
 func _init(var player, var aim, var anim):
@@ -46,6 +50,20 @@ func _ground_state(delta, m = Vector2()):
     movement *= WALK_MAX_SPEED
     velocity.x = lerp(velocity.x, movement, WALK_ACCELERATION)
 
+    if m.x:
+        if player.gun:
+            new_anim = "walk_aim"
+        else:
+            new_anim = "walk"
+        anim_speed = abs(velocity.x*delta)
+
+    else:
+        if player.gun:
+            new_anim = "idle_aim"
+        else:
+            new_anim = "idle"
+        anim_speed = 1
+
 func _air_state(delta, m = Vector2()):
     var movement = 0
 
@@ -53,13 +71,26 @@ func _air_state(delta, m = Vector2()):
         _look(DEFAULT_VECTOR.angle_to(m))
     else:
         look_default()
-
+    print(velocity)
     if m.x < 0:
         movement = -1
     elif m.x > 0:
         movement = 1
     movement *= WALK_AIR_MAX_SPEED
     velocity.x = lerp(velocity.x, movement, WALK_ACCELERATION)
+
+    if velocity.y > 0:
+        if player.gun:
+            new_anim = "jump_down_aim"
+        else:
+            new_anim = "jump_down"
+        anim_speed = 1
+    else:
+        if player.gun:
+            new_anim = "jump_up_aim"
+        else:
+            new_anim = "jump_up"
+        anim_speed = 1
 
 func _look(rad):
     var deg = rad2deg(rad)
@@ -105,20 +136,10 @@ func move(delta):
     if not player.gun:
         aim.stop()
 
-    if move_vector.x:
-        if player.gun:
-            new_anim = "walk_aim"
-        else:
-            new_anim = "walk"
-
-        anim.set_speed_scale(abs(velocity.x*delta))
-
-    else:
-        if player.gun:
-            new_anim = "idle_aim"
-        else:
-            new_anim = "idle"
+    if current_anim_speed != anim_speed:
+        current_anim_speed = anim_speed
+        anim.set_speed_scale(anim_speed)
 
     if current_anim != new_anim:
         current_anim = new_anim
-        anim.play(current_anim)
+        anim.play(current_anim, blend_time)

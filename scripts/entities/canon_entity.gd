@@ -1,3 +1,3 @@
 extends "res://scripts/entities/base.gd"
 
-const GUN = preload("res://scenes/guns/canon.tscn")
+const GUN = "res://scenes/guns/canon.tscn"

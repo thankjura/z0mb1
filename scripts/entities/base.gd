@@ -1,9 +1,9 @@
 extends RigidBody2D
 
 const constants = preload("res://scripts/constants.gd")
+const GUN = null
 
 const TIMEOUT = 1
-const GUN = preload("res://scenes/guns/r8.tscn")
 
 var wait_time = 0
 
@@ -16,15 +16,13 @@ func _ready():
     set_z(constants.GUN_ENTITY_Z)
 
 func _collision(body):
-    if wait_time > 0:
-        return
     if body.has_method("set_gun"):
-        if body.set_gun(GUN):
+        if body.set_gun(load(GUN)):
             queue_free()
 
 func _physics_process(delta):
     if wait_time > 0:
         wait_time -= delta
-
-    for b in $area.get_overlapping_bodies():
-        _collision(b)
+    else:
+        for b in $area.get_overlapping_bodies():
+            _collision(b)

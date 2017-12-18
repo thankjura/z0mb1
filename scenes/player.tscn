@@ -2904,7 +2904,7 @@ tracks/19/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=10]
 
 resource_name = "aim_minigun"
 length = 180.0
@@ -2917,10 +2917,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 90, 92, 180 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 90, 115, 139, 159, 180 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 22.6905, 24.7251 ), Vector2( 22.6905, 24.7251 ), Vector2( 22.6905, 24.7251 ), Vector2( 22.6905, 24.7251 ) ]
+"values": [ Vector2( 22.6905, 24.7251 ), Vector2( 22.6905, 24.7251 ), Vector2( 22.6905, 24.7251 ), Vector2( 22.6905, 24.7251 ), Vector2( 22.6905, 24.7251 ), Vector2( 22.6905, 24.7251 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("body/arm_l/hand_l/end:rotation_degrees")
@@ -2929,10 +2929,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 90, 92, 180 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 90, 115, 139, 159, 180 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.0, 0.0, 0.0 ]
+"values": [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("body/arm_l/hand_l:position")
@@ -2941,10 +2941,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 90, 92, 110, 118, 130, 136, 139, 140, 180 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 90, 115, 139, 159, 180 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 13.2337, 44.9991 ), Vector2( 11.8164, 39.1796 ), Vector2( 11.7869, 39.1481 ), Vector2( 11.5216, 38.8647 ), Vector2( 11.4037, 38.7388 ), Vector2( 11.2268, 38.5498 ), Vector2( 11.1383, 38.4554 ), Vector2( 11.0941, 38.4081 ), Vector2( 11.0794, 38.3924 ), Vector2( 10.4897, 37.7625 ) ]
+"values": [ Vector2( 13.2337, 44.9991 ), Vector2( 11.8164, 39.1798 ), Vector2( 11.4479, 38.7862 ), Vector2( 11.0941, 38.4083 ), Vector2( 10.7993, 38.0934 ), Vector2( 10.4897, 37.7625 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("body/arm_l/hand_l:rotation_degrees")
@@ -2953,10 +2953,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 90, 92, 110, 118, 130, 136, 139, 140, 180 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 90, 115, 139, 159, 180 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 38.5291, 20.6296, 11.428, -5.03053, -28.6203, -22.9906, -21.5699, 0.605775, 21.0996, 5.92634 ]
+"values": [ 38.5291, -44.1412, -54.8952, -50.4247, -28.7306, 5.92634 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("body/arm_l:position")
@@ -2965,10 +2965,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 90, 92, 110, 118, 130, 136, 139, 140, 153, 180 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 90, 115, 139, 159, 180 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -0.367603, -64.077 ), Vector2( 48.4882, -27.1573 ), Vector2( 48.7926, -26.3304 ), Vector2( 40.5735, -29.8468 ), Vector2( 36.9206, -31.4096 ), Vector2( 31.4412, -33.7539 ), Vector2( 28.7015, -34.926 ), Vector2( 27.3317, -35.5121 ), Vector2( 27.6847, -34.7146 ), Vector2( 30.5228, -31.3553 ), Vector2( 41.8078, -2.81599 ) ]
+"values": [ Vector2( -0.367603, -64.077 ), Vector2( 42.7803, -34.7678 ), Vector2( 42.5102, -25.8923 ), Vector2( 42.2508, -17.3718 ), Vector2( 42.0347, -10.2714 ), Vector2( 41.8078, -2.81599 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("body/arm_l:rotation_degrees")
@@ -2977,10 +2977,10 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 90, 92, 110, 118, 130, 136, 139, 140, 153, 180 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 90, 115, 139, 159, 180 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -162.413, -41.6699, -31.6754, -9.70136, 1.97349, 3.43039, 2.29667, -9.53472, -18.6412, -9.28191, 19.5665 ]
+"values": [ -162.413, -29.2891, -24.7794, -8.05753, 0.450195, 19.5665 ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("body/arm_r/hand_r:position")
@@ -2992,7 +2992,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 90, 180 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -23.5482, 44.3008 ), Vector2( -22.3777, 36.3639 ), Vector2( -22.3778, 36.3639 ) ]
+"values": [ Vector2( -23.5482, 44.3008 ), Vector2( -22.3778, 36.3639 ), Vector2( -22.3778, 36.3639 ) ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("body/arm_r/hand_r:rotation_degrees")
@@ -3004,7 +3004,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0, 90, 180 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ -17.2338, -13.423, 6.70571 ]
+"values": [ -17.2338, -9.94379, 6.70571 ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("body/arm_r:position")
@@ -3028,7 +3028,7 @@ tracks/9/keys = {
 "times": PoolRealArray( 0, 90, 180 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ -43.8484, 29.1692, 204.371 ]
+"values": [ -43.8484, 62.0147, 204.371 ]
 }
 tracks/10/type = "value"
 tracks/10/path = NodePath("body/arm_r/hand_r/end:rotation_degrees")
@@ -3364,7 +3364,7 @@ tracks/37/keys = {
 "times": PoolRealArray( 0, 90, 180 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ -29.4944, -15.4504, -121.143 ]
+"values": [ -29.4944, -51.7933, -121.143 ]
 }
 tracks/38/type = "value"
 tracks/38/path = NodePath("body:position")
@@ -3412,12 +3412,11 @@ tracks/41/keys = {
 "times": PoolRealArray( 0, 90, 180 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ -81.4459, -70.2603, -200.49 ]
+"values": [ -81.4459, -122.739, -200.49 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 
-resource_name = "aim_old"
 length = 180.0
 loop = false
 step = 1.0
@@ -3902,7 +3901,7 @@ tracks/39/keys = {
 "values": [ 0.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 
 length = 180.0
 loop = false
@@ -4412,7 +4411,7 @@ tracks/41/keys = {
 "values": [ -3.57135 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 
 length = 0.5
 loop = false
@@ -4562,7 +4561,7 @@ tracks/11/keys = {
 "values": [ 0.0, 0.0 ]
 }
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" index="0"]
 
 z = 10
 input_pickable = false
@@ -4577,7 +4576,7 @@ __meta__ = {
 
 [node name="collision" type="CollisionShape2D" parent="." index="0"]
 
-position = Vector2( -1.09284, -7.85831 )
+position = Vector2( 8.14235, -10.7789 )
 scale = Vector2( 0.950754, 0.927717 )
 z = -3
 shape = SubResource( 1 )
@@ -4592,7 +4591,8 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="arm_r" type="Sprite" parent="body" index="0"]
 
-position = Vector2( -16.2517, -47.1801 )
+position = Vector2( -9.283, -69.5532 )
+rotation = 2.87678
 z = 1
 texture = ExtResource( 3 )
 offset = Vector2( -10.3216, 17.8095 )
@@ -4604,7 +4604,9 @@ __meta__ = {
 
 [node name="hand_r" type="Sprite" parent="body/arm_r" index="0"]
 
-position = Vector2( -22.3776, 36.3636 )
+position = Vector2( -22.3778, 36.3639 )
+rotation = 0.0363177
+scale = Vector2( 1, 1 )
 z = 1
 texture = ExtResource( 4 )
 offset = Vector2( -8.3069, 16.1865 )
@@ -4623,20 +4625,21 @@ __meta__ = {
 
 [node name="gun_position" type="Position2D" parent="body/arm_r/hand_r" index="1"]
 
-position = Vector2( -9.77555, 32.1496 )
-rotation = -0.321407
+position = Vector2( -13.8326, 29.1617 )
+rotation = -1.77813
 _sections_unfolded = [ "Transform" ]
 
 [node name="wrist_r" type="Sprite" parent="body/arm_r/hand_r" index="2"]
 
-position = Vector2( -7.01709, 31.9144 )
-rotation = 0.06109
+position = Vector2( -15.4498, 32.9685 )
+rotation = -3.12226
 texture = ExtResource( 5 )
 offset = Vector2( 2.29046, 13.6436 )
 
 [node name="arm_l" type="Sprite" parent="body" index="1"]
 
-position = Vector2( 41.0908, -43.6836 )
+position = Vector2( 42.0779, -11.6915 )
+rotation = -0.0218402
 z = -1
 texture = ExtResource( 6 )
 offset = Vector2( 2.61539, 18.1592 )
@@ -4648,7 +4651,8 @@ __meta__ = {
 
 [node name="hand_l" type="Sprite" parent="body/arm_l" index="0"]
 
-position = Vector2( 10.4895, 37.7622 )
+position = Vector2( 10.8582, 38.1564 )
+rotation = -0.57717
 scale = Vector2( 0.999999, 0.999999 )
 texture = ExtResource( 7 )
 offset = Vector2( 16.951, 16.4109 )
@@ -4667,6 +4671,7 @@ __meta__ = {
 [node name="head" type="Sprite" parent="body" index="2"]
 
 position = Vector2( 14.5177, -49.4824 )
+rotation = 0.533195
 texture = ExtResource( 8 )
 offset = Vector2( -11.3555, -63.3044 )
 __meta__ = {
@@ -4808,10 +4813,10 @@ _sections_unfolded = [ "Playback Options", "playback" ]
 playback_process_mode = 0
 playback_default_blend_time = 0.0
 root_node = NodePath("..")
-anims/aim_minigun = SubResource( 13 )
-anims/aim_old = SubResource( 10 )
-anims/aim_pistol = SubResource( 11 )
-anims/get_pistol = SubResource( 12 )
+anims/aim_minigun = SubResource( 10 )
+anims/aim_old = SubResource( 11 )
+anims/aim_pistol = SubResource( 12 )
+anims/get_pistol = SubResource( 13 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]

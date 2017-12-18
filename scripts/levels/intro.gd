@@ -15,9 +15,8 @@ func _ready():
         p.set_meta("free", true)
 
 func _process(delta):
-    pass
-    #if get_tree().get_nodes_in_group("enemy").size() < MAX_ENEMY:
-    #    _add_enemy(delta)
+    if get_tree().get_nodes_in_group("enemy").size() < MAX_ENEMY:
+        _add_enemy(delta)
 
 func _add_enemy(delta):
     var params = {"free": true}

@@ -85,9 +85,9 @@ func _get_die_animation():
     return DIE_ANIMATIONS[randi() % DIE_ANIMATIONS.size()]
 
 func _die():
-    set_contact_monitor(false)
     set_collision_layer(0)
     set_collision_mask(constants.GROUND_LAYER)
+
     if is_in_group("enemy"):
         remove_from_group("enemy")
     if die_explode_body:

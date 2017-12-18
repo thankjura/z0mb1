@@ -14,23 +14,28 @@ var direction = 1
 var body_scale
 var health = 100
 var attacking = false
-var alive = true
-
+var alive = false
 var die_explode_body = false
+var source_position
 
 func _ready():
     set_collision_layer(constants.ENEMY_LAYER)
     set_collision_mask(constants.ENEMY_MASK)
-    $attack_area.set_collision_layer(constants.ENEMY_ATTACK_LAYER)
-    $attack_area.set_collision_mask(constants.ENEMY_ATTACK_MASK)
+    get_node("body/attack_area").set_collision_layer(constants.ENEMY_ATTACK_LAYER)
+    get_node("body/attack_area").set_collision_mask(constants.ENEMY_ATTACK_MASK)
     player = get_parent().get_node("player")
     body_scale = $body.scale
-    set_contact_monitor(true)
-    set_max_contacts_reported(3)
 
     if $anim:
         $anim.set_speed_scale(WALK_ANIMATION_SPEED)
         $anim.connect("animation_finished", self, "_end_animation")
+
+func _activate():
+    alive = true
+    #set_light_mask(1)
+    get_node("body/attack_area").set_monitoring(true)
+    if source_position:
+        source_position.set_meta("free", true)
 
 func _attack():
     if not attacking and player:
@@ -41,9 +46,10 @@ func _attack():
 func _end_animation(anim_name):
     if anim_name == "attack" and attacking == true:
         attacking = false
-        print("stop attack")
-        if $attack_area.overlaps_body(player):
+        if get_node("body/attack_area").overlaps_body(player):
             player.hit(ATTACK_DAMAGE)
+    if anim_name == "climb_up":
+        _activate()
 
 func _get_direction():
     if player.global_position.x > global_position.x:
@@ -69,7 +75,7 @@ func _integrate_forces(s):
             $body.set_scale(body_scale)
 
         if direction:
-            if $anim.current_animation != "walk" or not $anim.is_playing():
+            if not $anim.is_playing() or $anim.get_current_animation() != "walk":
                 $anim.play("walk", 1, WALK_ANIMATION_SPEED)
 
         v.x = direction * WALK_SPEED
@@ -79,21 +85,27 @@ func _get_die_animation():
     return DIE_ANIMATIONS[randi() % DIE_ANIMATIONS.size()]
 
 func _die():
+    set_contact_monitor(false)
+    set_collision_layer(0)
+    set_collision_mask(constants.GROUND_LAYER)
+    if is_in_group("enemy"):
+        remove_from_group("enemy")
     if die_explode_body:
         queue_free()
     else:
         alive = false
-        $attack_area.queue_free()
+        get_node("body/attack_area").queue_free()
         if $anim:
-            $anim.stop()
-            $anim.play(_get_die_animation())
-            yield($anim, "animation_finished")
-        $anim.queue_free()
+            $anim.play(_get_die_animation(), 0.2)
 
 func hit(body):
     health -= body.DAMAGE
     body.damage(STRENGTH)
-    set_collision_layer(0)
-    set_collision_mask(1)
+    if $blood:
+        $blood.start(body)
     if health <= 0:
         _die()
+
+func init_from_hole(pos):
+    source_position = pos
+    $anim.play("climb_up")

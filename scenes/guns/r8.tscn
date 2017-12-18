@@ -59,22 +59,22 @@ _sections_unfolded = [ "Angle", "Angular Velocity", "Color", "Damping", "Emissio
 
 script = ExtResource( 1 )
 
-[node name="sprite" type="Sprite" parent="."]
+[node name="sprite" type="Sprite" parent="." index="0"]
 
 position = Vector2( 0.0131836, -0.234001 )
 z = -1
 texture = ExtResource( 2 )
 offset = Vector2( -0.0131836, 0.234001 )
 
-[node name="from" type="Position2D" parent="."]
+[node name="from" type="Position2D" parent="." index="1"]
 
 position = Vector2( -60, -22 )
 
-[node name="to" type="Position2D" parent="."]
+[node name="to" type="Position2D" parent="." index="2"]
 
 position = Vector2( 60, -22 )
 
-[node name="particles" type="Particles2D" parent="."]
+[node name="particles" type="Particles2D" parent="." index="3"]
 
 position = Vector2( 62.8675, -20.9558 )
 emitting = false

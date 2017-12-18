@@ -3,7 +3,7 @@ extends RigidBody2D
 const constants = preload("res://scripts/constants.gd")
 
 const TIMEOUT = 1
-const gun = preload("res://scenes/guns/r8.tscn")
+const GUN = preload("res://scenes/guns/r8.tscn")
 
 var wait_time = 0
 
@@ -19,7 +19,7 @@ func _collision(body):
     if wait_time > 0:
         return
     if body.has_method("set_gun"):
-        if body.set_gun(gun):
+        if body.set_gun(GUN):
             queue_free()
 
 func _physics_process(delta):

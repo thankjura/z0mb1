@@ -71,7 +71,6 @@ func _air_state(delta, m = Vector2()):
         _look(DEFAULT_VECTOR.angle_to(m))
     else:
         look_default()
-    print(velocity)
     if m.x < 0:
         movement = -1
     elif m.x > 0:
@@ -96,7 +95,7 @@ func _look(rad):
     var deg = rad2deg(rad)
     if player.gun:
         aim.set_active(true)
-        aim.set_current_animation("aim")
+        aim.set_current_animation("aim_pistol")
         aim.seek(abs(deg), true)
     else:
         aim.set_active(false)
@@ -109,6 +108,7 @@ func _look(rad):
 func look_default():
     if player.gun:
         aim.set_active(true)
+        aim.set_current_animation("aim_pistol")
         aim.seek(90, true)
     else:
         aim.set_active(false)

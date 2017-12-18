@@ -83,12 +83,12 @@ angular_damp = -1.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision" ]
 
-[node name="sprite" type="Sprite" parent="."]
+[node name="sprite" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Animation" ]
 
-[node name="light" type="Light2D" parent="."]
+[node name="light" type="Light2D" parent="." index="1"]
 
 enabled = true
 editor_only = false
@@ -112,7 +112,7 @@ shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
 
-[node name="particles" type="Particles2D" parent="."]
+[node name="particles" type="Particles2D" parent="." index="2"]
 
 position = Vector2( 10.6542, 0.581131 )
 emitting = true
@@ -135,7 +135,7 @@ h_frames = 1
 v_frames = 1
 _sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time" ]
 
-[node name="collision" type="CollisionShape2D" parent="."]
+[node name="collision" type="CollisionShape2D" parent="." index="3"]
 
 position = Vector2( 10.2197, 0.583977 )
 shape = SubResource( 4 )

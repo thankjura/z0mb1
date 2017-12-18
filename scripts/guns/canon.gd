@@ -1,14 +1,14 @@
 extends "res://scripts/guns/base.gd"
 
-const fireball = preload("res://scenes/guns/bullets/canon_fireball.tscn")
-const gun_entity = preload("res://scenes/entities/canon_entity.tscn")
+const BULLET = preload("res://scenes/guns/bullets/canon_fireball.tscn")
+const ENTITY = preload("res://scenes/entities/canon_entity.tscn")
 const SPEED = 20
 const TIMEOUT = 0.8
 const OFFSET = Vector2(-30, 30)
 const GUN_CLASS = "canon"
 
 func _drop():
-    var entity = gun_entity.instance()
+    var entity = ENTITY.instance()
     entity.set_global_position(global_position)
     if $from.global_position.x <= $to.global_position.x:
         entity.set_angular_velocity(1)

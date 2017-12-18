@@ -37,17 +37,17 @@ angular_damp = -1.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision" ]
 
-[node name="sprite" type="Sprite" parent="."]
+[node name="sprite" type="Sprite" parent="." index="0"]
 
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 normal_map = ExtResource( 3 )
 
-[node name="collision" type="CollisionShape2D" parent="."]
+[node name="collision" type="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 1 )
 
-[node name="area" type="Area2D" parent="."]
+[node name="area" type="Area2D" parent="." index="2"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -57,7 +57,7 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="collision" type="CollisionShape2D" parent="area"]
+[node name="collision" type="CollisionShape2D" parent="area" index="0"]
 
 shape = SubResource( 2 )
 

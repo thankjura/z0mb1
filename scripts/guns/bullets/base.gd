@@ -4,8 +4,10 @@ const constants = preload("res://scripts/constants.gd")
 
 const LIFE_TIME = 10
 const DAMAGE = 30
+const HEALTH = 100
+const GRAVITY = 0
 
-var health = 100
+var health = HEALTH
 var active = true
 var timer = 0
 
@@ -14,6 +16,7 @@ func _ready():
     set_collision_mask(constants.BULLET_MASK)
     set_contact_monitor(true)
     set_max_contacts_reported(3)
+    set_gravity_scale(GRAVITY)
 
     connect("body_entered", self, "_collision")
     if $particles:

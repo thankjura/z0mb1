@@ -19,7 +19,7 @@ func _ready():
     set_gravity_scale(GRAVITY)
 
     connect("body_entered", self, "_collision")
-    if $particles:
+    if has_node("particles"):
         var s = get_viewport_rect().size
         $particles.set_visibility_rect(Rect2(-s, s*2))
 
@@ -47,7 +47,7 @@ func _deactivate():
     if $light:
         $light.queue_free()
 
-    if $particles:
+    if has_node("particles"):
         $particles.set_emitting(false)
         $sprite.set_visible(false)
     else:

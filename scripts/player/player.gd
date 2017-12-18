@@ -24,7 +24,11 @@ func set_gun(gun_class):
     gun.set_name("gun")
     if gun.get_gun_class() == "pistol":
         $anim_aim.play("get_pistol")
+        movement.aim_animation_name = "aim_pistol"
+    if gun.get_gun_class() == "minigun":
+        movement.aim_animation_name = "aim_minigun"
     get_node("body/arm_r/hand_r/gun_position").add_child(gun)
+    gun.set_camera($camera)
     return true
 
 func hit(damage):

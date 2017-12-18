@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 15.9738, 4.01458 )
+extents = Vector2( 9.58545, 2.34877 )
 
 [node name="minigun_bullet" type="RigidBody2D"]
 
@@ -36,7 +36,7 @@ enabled = true
 editor_only = false
 texture = ExtResource( 2 )
 offset = Vector2( 0, 0 )
-texture_scale = 2.0
+texture_scale = 1.0
 color = Color( 1, 1, 1, 1 )
 energy = 5.0
 mode = 0
@@ -62,6 +62,8 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="sprite" type="Sprite" parent="." index="2"]
 
+scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
 

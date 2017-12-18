@@ -29,6 +29,8 @@ var current_anim_speed = 1.0
 
 var body_scale
 
+var aim_animation_name = "aim_pistol"
+
 func _init(var player, var aim, var anim):
     self.player = player
     self.body_scale = player.get_node("body").scale
@@ -95,7 +97,7 @@ func _look(rad):
     var deg = rad2deg(rad)
     if player.gun:
         aim.set_active(true)
-        aim.set_current_animation("aim_pistol")
+        aim.set_current_animation(aim_animation_name)
         aim.seek(abs(deg), true)
     else:
         aim.set_active(false)
@@ -108,7 +110,7 @@ func _look(rad):
 func look_default():
     if player.gun:
         aim.set_active(true)
-        aim.set_current_animation("aim_pistol")
+        aim.set_current_animation(aim_animation_name)
         aim.seek(90, true)
     else:
         aim.set_active(false)

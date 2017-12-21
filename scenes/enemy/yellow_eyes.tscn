@@ -2073,7 +2073,7 @@ tracks/34/keys = {
 "values": [ 0.0 ]
 }
 
-[node name="yellow_eyes" type="RigidBody2D" index="0"]
+[node name="yellow_eyes" type="RigidBody2D"]
 
 input_pickable = false
 collision_layer = 2
@@ -2107,7 +2107,8 @@ _sections_unfolded = [ "Transform", "Z" ]
 [node name="body" type="Sprite" parent="." index="1"]
 
 light_mask = 17
-position = Vector2( 0, -66 )
+position = Vector2( 7.228, -67.1429 )
+rotation = 0.191422
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform", "Visibility" ]
@@ -2115,7 +2116,8 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 [node name="head" type="Sprite" parent="body" index="0"]
 
 light_mask = 17
-position = Vector2( -17.1816, -38.2575 )
+position = Vector2( -25.3319, -40.8629 )
+rotation = 0.440813
 z = 1
 texture = ExtResource( 3 )
 offset = Vector2( 0.483141, -48.604 )
@@ -2142,6 +2144,7 @@ _sections_unfolded = [ "Visibility" ]
 
 light_mask = 17
 position = Vector2( -31.7704, -17.0667 )
+rotation = 0.468656
 z = -1
 texture = ExtResource( 6 )
 offset = Vector2( -53.6067, 6.79987 )
@@ -2159,8 +2162,10 @@ __meta__ = {
 
 [node name="arm_l" type="Sprite" parent="body" index="2"]
 
+editor/display_folded = true
 light_mask = 17
 position = Vector2( -18.1265, -19.2674 )
+rotation = 0.820093
 z = 1
 texture = ExtResource( 7 )
 offset = Vector2( -46.7169, 34.9379 )
@@ -2178,8 +2183,10 @@ __meta__ = {
 
 [node name="leg_r" type="Sprite" parent="body" index="3"]
 
+editor/display_folded = true
 light_mask = 17
 position = Vector2( 1.23917, 32.2276 )
+rotation = -0.318
 z = -1
 texture = ExtResource( 8 )
 offset = Vector2( -13.6675, 11.0013 )
@@ -2193,6 +2200,7 @@ __meta__ = {
 
 light_mask = 17
 position = Vector2( -32.7713, 36.1104 )
+rotation = 0.145635
 z = -1
 texture = ExtResource( 9 )
 offset = Vector2( -18.9316, 22.1158 )
@@ -2204,7 +2212,8 @@ __meta__ = {
 [node name="foot_r" type="Sprite" parent="body/leg_r/shin_r" index="0"]
 
 light_mask = 17
-position = Vector2( -24.6906, 36.6051 )
+position = Vector2( -24.6907, 36.6052 )
+rotation = -0.0212194
 z = -2
 texture = ExtResource( 10 )
 offset = Vector2( 2.20023, 5.89345 )
@@ -2222,8 +2231,10 @@ __meta__ = {
 
 [node name="leg_l" type="Sprite" parent="body" index="4"]
 
+editor/display_folded = true
 light_mask = 17
-position = Vector2( 9.16148, 24.3053 )
+position = Vector2( 10.8623, 24.0835 )
+rotation = 0.0997441
 z = -1
 texture = ExtResource( 11 )
 offset = Vector2( 13.0284, 26.3649 )
@@ -2237,6 +2248,7 @@ __meta__ = {
 
 light_mask = 17
 position = Vector2( 20.1309, 49.5328 )
+rotation = -0.312842
 texture = ExtResource( 12 )
 offset = Vector2( 26.6868, 17.2628 )
 _sections_unfolded = [ "Material", "Visibility", "Z" ]
@@ -2247,7 +2259,8 @@ __meta__ = {
 [node name="foot_l" type="Sprite" parent="body/leg_l/shin_l" index="0"]
 
 light_mask = 17
-position = Vector2( 45.7657, 36.3372 )
+position = Vector2( 45.7658, 36.3373 )
+rotation = 0.0191099
 scale = Vector2( 0.999999, 0.999999 )
 z = -1
 texture = ExtResource( 13 )

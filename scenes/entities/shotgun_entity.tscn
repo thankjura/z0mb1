@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/entities/shotgun_entity.gd" type="Script" id=1]
+[ext_resource path="res://textures/guns/shotgun/shotgun.png" type="Texture" id=2]
+[ext_resource path="res://textures/guns/shotgun/forestock.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 90.5167, 17.8398 )
+
+[node name="shortgun" type="RigidBody2D" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 0.2
+friction = 1.0
+bounce = 0.0
+gravity_scale = 8.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = ExtResource( 1 )
+
+[node name="collision" type="CollisionPolygon2D" parent="." index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -89.7787, -4.49196, -89.1348, 18.2596, -41.2707, 6.66919, 58.965, -5.13587, 89.4435, -11.7896, 90.5167, -15.6531, -20.8801, -16.5117 )
+
+[node name="area" type="Area2D" parent="." index="1"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="collision" type="CollisionShape2D" parent="area" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="sprite" type="Sprite" parent="." index="2"]
+
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="sprite" type="Sprite" parent="sprite" index="0"]
+
+position = Vector2( 80, -16 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform", "Z" ]
+
+

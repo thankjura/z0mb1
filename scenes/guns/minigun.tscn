@@ -8,19 +8,19 @@
 [ext_resource path="res://textures/guns/muzzle_flashes/flash1.png" type="Texture" id=6]
 [ext_resource path="res://sounds/guns/minigun.wav" type="AudioStream" id=7]
 
-[sub_resource type="Curve" id=2]
+[sub_resource type="Curve" id=1]
 
 min_value = -360.0
 max_value = 360.0
 bake_resolution = 100
 _data = [ Vector2( 0.0608408, -23.9363 ), 0.0, 1376.84, 0, 0, Vector2( 0.337148, -125.314 ), 0.0, 0.0, 0, 0, Vector2( 0.519295, 74.6251 ), 0.0, 0.0, 0, 0, Vector2( 0.665939, -257.668 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=3]
+[sub_resource type="CurveTexture" id=2]
 
 width = 2048
-curve = SubResource( 2 )
+curve = SubResource( 1 )
 
-[sub_resource type="ParticlesMaterial" id=1]
+[sub_resource type="ParticlesMaterial" id=3]
 
 render_priority = 0
 trail_divisor = 1
@@ -47,7 +47,7 @@ damping = 50.0
 damping_random = 1.0
 angle = 120.0
 angle_random = 1.0
-angle_curve = SubResource( 3 )
+angle_curve = SubResource( 2 )
 scale = 0.5
 scale_random = 0.0
 color = Color( 1, 1, 1, 1 )
@@ -163,7 +163,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="barrel_idle" type="Sprite" parent="body" index="0"]
 
-visible = false
 position = Vector2( 198, 14 )
 z = -1
 texture = ExtResource( 3 )
@@ -171,6 +170,7 @@ _sections_unfolded = [ "Transform", "Visibility", "Z" ]
 
 [node name="barrel_run" type="Sprite" parent="body" index="1"]
 
+visible = false
 position = Vector2( 198, 14.9675 )
 z = -1
 texture = ExtResource( 4 )
@@ -194,7 +194,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = false
 draw_order = 0
-process_material = SubResource( 1 )
+process_material = SubResource( 3 )
 texture = ExtResource( 5 )
 normal_map = null
 h_frames = 1

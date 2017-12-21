@@ -35,8 +35,6 @@ func fire(delta):
     _muzzle_flash(delta)
     _play_sound(delta)
     var f = BULLET.instance()
-    f.set_scale(Vector2(0.1, 0.1))
-
     var spawn_point = $to.global_position
     var bullet_velocity = (spawn_point - $from.global_position).normalized()
     f.rotate(Vector2(1, 0).angle_to(bullet_velocity))
@@ -55,7 +53,6 @@ func _fire_stop(delta):
 func _muzzle_flash(delta):
     if has_node("anim") and $anim.has_animation("fire"):
         $anim.play("fire", -1, 2)
-
 
 func _shutter_camera(delta):
     if not camera or not VIEWPORT_SHUTTER:

@@ -23,7 +23,6 @@ func _reset_view():
     $flash.set_visible(false)
 
 func _fire_start(delta):
-    ._fire_start(delta)
     $case_particles.set_emitting(true)
     $anim.play("fire", -1, 3)
 

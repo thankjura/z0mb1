@@ -29,7 +29,7 @@ func _ready():
 func _process(delta):
     timer -= delta
     if timer <= 0:
-        if active and $particles:
+        if active and has_node("particles"):
             _deactivate()
             timer = $particles.lifetime/$particles.speed_scale
         else:
@@ -44,7 +44,7 @@ func _collision(body):
 func _deactivate():
     active = false
     disconnect("body_entered", self, "_collision")
-    if $light:
+    if has_node("light"):
         $light.queue_free()
 
     if has_node("particles"):

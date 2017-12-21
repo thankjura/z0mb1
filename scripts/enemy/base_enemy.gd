@@ -32,7 +32,7 @@ func _ready():
 
 func _activate():
     alive = true
-    #set_light_mask(1)
+    set_light_mask(1)
     get_node("body/attack_area").set_monitoring(true)
     if source_position:
         source_position.set_meta("free", true)
@@ -94,7 +94,8 @@ func _die():
         queue_free()
     else:
         alive = false
-        get_node("body/attack_area").queue_free()
+        if has_node("body/attack_area"):
+            get_node("body/attack_area").queue_free()
         if $anim:
             $anim.play(_get_die_animation(), 0.2)
 

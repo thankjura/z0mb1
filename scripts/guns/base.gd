@@ -5,7 +5,7 @@ const ENTITY = null
 const SPEED = 500
 const TIMEOUT = 0.2
 const OFFSET = Vector2(40, -10)
-const GUN_CLASS = "pistol"
+const AIM_NAME = "aim_pistol"
 const VIEWPORT_SHUTTER = 0
 const DROP_VELOCITY = Vector2(400,-400)
 const DROP_ANGULAR = 10
@@ -16,9 +16,6 @@ var camera
 
 func _ready():
     set_position(OFFSET)
-
-func get_gun_class():
-    return GUN_CLASS
 
 func set_camera(camera):
     self.camera = camera

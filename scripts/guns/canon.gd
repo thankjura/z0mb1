@@ -5,6 +5,6 @@ const ENTITY = preload("res://scenes/entities/canon_entity.tscn")
 const SPEED = 2000
 const TIMEOUT = 0.8
 const OFFSET = Vector2(-30, 30)
-const GUN_CLASS = "canon"
+const AIM_NAME = "aim_canon"
 const DROP_VELOCITY = Vector2(400,-400)
 const DROP_ANGULAR = 1

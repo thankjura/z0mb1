@@ -8,12 +8,31 @@ const WALK_MAX_SPEED = 300
 const WALK_AIR_MAX_SPEED = 250
 const FLOOR_NORMAL = Vector2(0, -1)
 const SLOPE_FRICTION = 20
-
 const DEFAULT_VECTOR = Vector2(0, -1)
+
+const GROUND_BLEND_NODE = "ground_blend"
+const GROUND_SCALE_NODE = "ground_scale"
+const STATE_NODE = "ground_air_transition"
+const AIM_BLEND_NODE = "aim_blend"
+const AIM_SWITCH_NODE = "aim_transition"
+const SHOTGUN_RELOAD_NODE = "shotgun_reload"
+
+const AIM_SHOTGUN_NAME = "aim_shotgun"
+
+enum STATE {
+    ground,
+    jump_up,
+    jump_down
+}
+
+enum AIM {
+    aim_pistol,
+    aim_minigun,
+    aim_shotgun
+}
 
 var input
 var player
-var aim
 var anim
 
 var jump_count = 0
@@ -21,21 +40,16 @@ var velocity = Vector2()
 
 var direction = 0
 
-var current_anim = ""
-var new_anim = ""
-var blend_time = 0.2
-var anim_speed = 1.0
-var current_anim_speed = 1.0
-
 var body_scale
 
 var aim_animation_name = "aim_pistol"
+var reload_timeout = 0
 
-func _init(var player, var aim, var anim):
+func _init(var player, var anim):
     self.player = player
     self.body_scale = player.get_node("body").scale
-    self.aim = aim
     self.anim = anim
+    self.anim.set_active(true)
     self.input = load("res://scripts/input.gd").new()
 
 func _ground_state(delta, m = Vector2()):
@@ -51,24 +65,12 @@ func _ground_state(delta, m = Vector2()):
         movement = 1
     movement *= WALK_MAX_SPEED
     velocity.x = lerp(velocity.x, movement, WALK_ACCELERATION)
-
-    if m.x:
-        if player.gun:
-            new_anim = "walk_aim"
-        else:
-            new_anim = "walk"
-        anim_speed = abs(velocity.x*delta)
-
-    else:
-        if player.gun:
-            new_anim = "idle_aim"
-        else:
-            new_anim = "idle"
-        anim_speed = 1
+    anim.blend2_node_set_amount(GROUND_BLEND_NODE, abs(velocity.x) / WALK_MAX_SPEED)    
+    anim.timescale_node_set_scale(GROUND_SCALE_NODE, abs(velocity.x)*delta)
+    anim.transition_node_set_current(STATE_NODE, STATE.ground)
 
 func _air_state(delta, m = Vector2()):
     var movement = 0
-
     if m:
         _look(DEFAULT_VECTOR.angle_to(m))
     else:
@@ -81,26 +83,14 @@ func _air_state(delta, m = Vector2()):
     velocity.x = lerp(velocity.x, movement, WALK_ACCELERATION)
 
     if velocity.y > 0:
-        if player.gun:
-            new_anim = "jump_down_aim"
-        else:
-            new_anim = "jump_down"
-        anim_speed = 1
-    else:
-        if player.gun:
-            new_anim = "jump_up_aim"
-        else:
-            new_anim = "jump_up"
-        anim_speed = 1
+        anim.transition_node_set_current(STATE_NODE, STATE.jump_down)
+    elif velocity.y < 0:
+        anim.transition_node_set_current(STATE_NODE, STATE.jump_up)
 
 func _look(rad):
     var deg = rad2deg(rad)
     if player.gun:
-        aim.set_active(true)
-        aim.set_current_animation(aim_animation_name)
-        aim.seek(abs(deg), true)
-    else:
-        aim.set_active(false)
+        anim.timeseek_node_seek("gun_angle", abs(deg))
 
     if deg > 0 and deg < 180:
         player.get_node("body").set_scale(body_scale)
@@ -109,18 +99,31 @@ func _look(rad):
 
 func look_default():
     if player.gun:
-        aim.set_active(true)
-        aim.set_current_animation(aim_animation_name)
-        aim.seek(90, true)
-    else:
-        aim.set_active(false)
+        anim.timeseek_node_seek("gun_angle", 90)
 
 func jump():
     if jump_count < MAX_JUMP_COUNT:
         jump_count += 1
         velocity.y = -JUMP_FORCE
 
-func move(delta):
+func set_gun():
+    anim.transition_node_set_current(AIM_SWITCH_NODE, AIM[player.gun.AIM_NAME])
+
+func gun_reload():
+    if player.gun and player.gun.AIM_NAME == AIM_SHOTGUN_NAME:
+        anim.oneshot_node_start(SHOTGUN_RELOAD_NODE)        
+        reload_timeout = 0.3
+        
+func _stop_gun_reload():
+    if player.gun and player.gun.AIM_NAME == AIM_SHOTGUN_NAME:
+        anim.oneshot_node_stop(SHOTGUN_RELOAD_NODE)
+
+func process(delta):
+    if reload_timeout > 0:
+        reload_timeout -= delta
+        if reload_timeout <= 0:
+            _stop_gun_reload()
+    
     velocity += GRAVITY * delta
     if velocity.y > MAX_FALL_SPEED:
         velocity.y = MAX_FALL_SPEED
@@ -136,12 +139,6 @@ func move(delta):
     velocity = player.move_and_slide(velocity, FLOOR_NORMAL, SLOPE_FRICTION)
 
     if not player.gun:
-        aim.stop()
-
-    if current_anim_speed != anim_speed:
-        current_anim_speed = anim_speed
-        anim.set_speed_scale(anim_speed)
-
-    if current_anim != new_anim:
-        current_anim = new_anim
-        anim.play(current_anim, blend_time)
+        anim.blend2_node_set_amount(AIM_BLEND_NODE, 0)
+    else:
+        anim.blend2_node_set_amount(AIM_BLEND_NODE, 1)

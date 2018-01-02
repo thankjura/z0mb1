@@ -5,7 +5,7 @@ const ENTITY = preload("res://scenes/entities/shotgun_entity.tscn")
 const SPEED = 2000
 const TIMEOUT = 1
 const OFFSET = Vector2(70, 28)
-const GUN_CLASS = "shotgun"
+const AIM_NAME = "aim_shotgun"
 const DROP_VELOCITY = Vector2(400,-400)
 const DROP_ANGULAR = 1
 const PELLETS_PER_SHOOT = 10
@@ -17,6 +17,7 @@ func _ready():
 
 func _end_animation(anim_name):
     if anim_name == "fire":
+        get_parent().get_owner().gun_reload()
         $anim.play("reload", -1, 3)
 
 func _create_pellet(spawn_point, bullet_velocity):

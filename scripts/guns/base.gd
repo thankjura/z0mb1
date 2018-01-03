@@ -10,6 +10,7 @@ const VIEWPORT_SHUTTER = 0
 const DROP_VELOCITY = Vector2(400,-400)
 const DROP_ANGULAR = 10
 const RECOIL = Vector2(0, 0)
+const SPREADING = 0.0
 
 var wait_ready = 0
 var fired = false
@@ -20,6 +21,16 @@ func _ready():
 
 func set_camera(camera):
     self.camera = camera
+
+func _get_bullet_velocity(from_position, to_position):
+    var out = (to_position - from_position).normalized()
+    if SPREADING:
+        out = out.rotated(SPREADING - randf()*SPREADING*2)
+        
+    return out
+
+func _get_bullet_position(gun_angle):
+    return $to.global_position
 
 func fire(delta):
     if wait_ready > 0:
@@ -34,11 +45,12 @@ func fire(delta):
     _play_sound(delta)
     var f = BULLET.instance()
     var spawn_point = $to.global_position
-    var bullet_velocity = (spawn_point - $from.global_position).normalized()
+    var bullet_velocity = _get_bullet_velocity($from.global_position, spawn_point)
+    var gun_angle = Vector2(1, 0).angle_to(bullet_velocity)
     _recoil(RECOIL.rotated(bullet_velocity.angle()))
-    f.rotate(Vector2(1, 0).angle_to(bullet_velocity))
+    f.rotate(gun_angle)
     f.set_axis_velocity(bullet_velocity*SPEED)
-    f.set_global_position(spawn_point)
+    f.set_global_position(_get_bullet_position(gun_angle))
     var world = get_tree().get_root().get_node("world")
     world.add_child(f)
 

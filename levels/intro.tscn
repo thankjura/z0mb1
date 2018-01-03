@@ -94,7 +94,7 @@ shape = SubResource( 1 )
 
 light_mask = 1024
 position = Vector2( 888.911, 593.422 )
-_sections_unfolded = [ "Collision", "Material", "Transform", "Visibility", "Z", "collision" ]
+_sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibility", "Z", "collision" ]
 
 [node name="r8" parent="." index="4" instance=ExtResource( 6 )]
 

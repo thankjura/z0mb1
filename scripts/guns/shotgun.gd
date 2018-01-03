@@ -20,6 +20,7 @@ func _end_animation(anim_name):
     if anim_name == "fire":
         get_parent().get_owner().gun_reload()
         $anim.play("reload", -1, 3)
+        $audio_reload.play()
 
 func _create_pellet(spawn_point, bullet_velocity):
     var p = BULLET.instance()

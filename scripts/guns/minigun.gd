@@ -6,10 +6,11 @@ const SPEED = 5000
 const TIMEOUT = 0.1
 const OFFSET = Vector2(90, 40)
 const AIM_NAME = "aim_minigun"
-const VIEWPORT_SHUTTER = 10
+const VIEWPORT_SHUTTER = 0
 const DROP_VELOCITY = Vector2(400,-400)
 const DROP_ANGULAR = 1
 const RECOIL = Vector2(-300, 0)
+const SPREADING = 0.05
 
 func _ready():
     ._ready()
@@ -32,3 +33,8 @@ func _fire_stop(delta):
     $case_particles.set_emitting(false)
     $anim.stop()
     _reset_view()
+
+func _get_bullet_position(gun_angle):
+    var pos = $to.global_position
+    pos += Vector2(0, 13 - randi()%27).rotated(gun_angle)
+    return pos

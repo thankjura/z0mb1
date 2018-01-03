@@ -155,6 +155,9 @@ tracks/6/keys = {
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_horizontal_guides_": [ -4.646, 33.2074 ]
+}
 
 [node name="body" type="Sprite" parent="." index="0"]
 

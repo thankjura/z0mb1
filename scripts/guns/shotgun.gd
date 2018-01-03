@@ -9,6 +9,7 @@ const AIM_NAME = "aim_shotgun"
 const DROP_VELOCITY = Vector2(400,-400)
 const DROP_ANGULAR = 1
 const PELLETS_PER_SHOOT = 10
+const RECOIL = Vector2(-1000, 0)
 
 func _ready():
     ._ready()
@@ -39,7 +40,7 @@ func fire(delta):
     $anim.play("fire", -1, 3)
     var spawn_point = $to.global_position
     var bullet_velocity = (spawn_point - $from.global_position).normalized()
-
+    _recoil(RECOIL.rotated(bullet_velocity.angle()))
     for i in range(0, PELLETS_PER_SHOOT):
         _create_pellet(spawn_point, bullet_velocity)
 

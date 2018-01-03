@@ -9,6 +9,7 @@ const AIM_NAME = "aim_minigun"
 const VIEWPORT_SHUTTER = 10
 const DROP_VELOCITY = Vector2(400,-400)
 const DROP_ANGULAR = 1
+const RECOIL = Vector2(-300, 0)
 
 func _ready():
     ._ready()

@@ -9,6 +9,7 @@ const AIM_NAME = "aim_pistol"
 const VIEWPORT_SHUTTER = 0
 const DROP_VELOCITY = Vector2(400,-400)
 const DROP_ANGULAR = 10
+const RECOIL = Vector2(0, 0)
 
 var wait_ready = 0
 var fired = false
@@ -34,6 +35,7 @@ func fire(delta):
     var f = BULLET.instance()
     var spawn_point = $to.global_position
     var bullet_velocity = (spawn_point - $from.global_position).normalized()
+    _recoil(RECOIL.rotated(bullet_velocity.angle()))
     f.rotate(Vector2(1, 0).angle_to(bullet_velocity))
     f.set_axis_velocity(bullet_velocity*SPEED)
     f.set_global_position(spawn_point)
@@ -50,6 +52,9 @@ func _fire_stop(delta):
 func _muzzle_flash(delta):
     if has_node("anim") and $anim.has_animation("fire"):
         $anim.play("fire", -1, 2)
+        
+func _recoil(recoil_vector):
+    get_parent().get_owner().gun_recoil(recoil_vector)
 
 func _shutter_camera(delta):
     if not camera or not VIEWPORT_SHUTTER:

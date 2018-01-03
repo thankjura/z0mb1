@@ -30,6 +30,9 @@ func set_gun(gun_class):
 func gun_reload():
     movement.gun_reload()
 
+func gun_recoil(recoil_vector):
+    movement.gun_recoil(recoil_vector)
+
 func hit(damage):
     movement.input.vibrate(0.1)
     health -= damage

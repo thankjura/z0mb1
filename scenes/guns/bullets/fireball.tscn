@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/guns/bullets/fireball.gd" type="Script" id=1]
 [ext_resource path="res://textures/guns/fireball.png" type="Texture" id=2]
 [ext_resource path="res://textures/guns/spot.png" type="Texture" id=3]
-[ext_resource path="res://textures/guns/smoke.png" type="Texture" id=4]
+[ext_resource path="res://textures/guns/smoke4.png" type="Texture" id=4]
 
 [sub_resource type="Gradient" id=1]
 
@@ -33,7 +33,7 @@ angular_velocity = 0.0
 angular_velocity_random = 0.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-linear_accel = 0.0
+linear_accel = 10.0
 linear_accel_random = 0.0
 radial_accel = 0.0
 radial_accel_random = 0.0
@@ -117,10 +117,10 @@ shadow_item_cull_mask = 1
 position = Vector2( 10.6542, 0.581131 )
 emitting = true
 amount = 100
-lifetime = 10.0
+lifetime = 5.0
 one_shot = false
 preprocess = 0.0
-speed_scale = 10.0
+speed_scale = 20.0
 explosiveness = 0.0
 randomness = 0.0
 fixed_fps = 0
@@ -131,8 +131,8 @@ draw_order = 0
 process_material = SubResource( 3 )
 texture = ExtResource( 4 )
 normal_map = null
-h_frames = 1
-v_frames = 1
+h_frames = 2
+v_frames = 2
 _sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time" ]
 
 [node name="collision" type="CollisionShape2D" parent="." index="3"]

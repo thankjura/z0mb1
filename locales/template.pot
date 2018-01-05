@@ -1,0 +1,11 @@
+msgid "NEW GAME"
+msgstr ""
+
+msgid "CONTINUE"
+msgstr ""
+
+msgid "PREFERENCES"
+msgstr ""
+
+msgid "QUIT"
+msgstr ""

@@ -11,6 +11,9 @@ const DROP_VELOCITY = Vector2(400,-400)
 const DROP_ANGULAR = 1
 const RECOIL = Vector2(-300, 0)
 const SPREADING = 0.05
+const OVERHEAD_TIMEOUT = 3
+
+var overheat_time = 0
 
 func _ready():
     ._ready()
@@ -38,3 +41,17 @@ func _get_bullet_position(gun_angle):
     var pos = $to.global_position
     pos += Vector2(0, 13 - randi()%27).rotated(gun_angle)
     return pos
+
+func _process(delta):
+    if fired:
+        if overheat_time < OVERHEAD_TIMEOUT:
+            overheat_time += delta
+            if overheat_time > OVERHEAD_TIMEOUT:
+                overheat_time = OVERHEAD_TIMEOUT
+    else:
+        if overheat_time > 0:
+            overheat_time -= delta
+            if overheat_time < 0:
+                overheat_time = 0
+    var c = overheat_time / OVERHEAD_TIMEOUT
+    get_node("body/overheat").set_modulate(Color(c,c,c))

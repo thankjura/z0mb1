@@ -26,7 +26,7 @@ func _get_bullet_velocity(from_position, to_position):
     var out = (to_position - from_position).normalized()
     if SPREADING:
         out = out.rotated(SPREADING - randf()*SPREADING*2)
-        
+
     return out
 
 func _get_bullet_position(gun_angle):
@@ -64,7 +64,7 @@ func _fire_stop(delta):
 func _muzzle_flash(delta):
     if has_node("anim") and $anim.has_animation("fire"):
         $anim.play("fire", -1, 2)
-        
+
 func _recoil(recoil_vector):
     get_parent().get_owner().gun_recoil(recoil_vector)
 

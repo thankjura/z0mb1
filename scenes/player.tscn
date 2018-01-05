@@ -994,6 +994,54 @@ tracks/39/keys = {
 "update": 0,
 "values": [ -3.57135 ]
 }
+tracks/40/type = "value"
+tracks/40/path = NodePath("body/arm_l/hand_l/sprite:texture")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 8 ) ]
+}
+tracks/41/type = "value"
+tracks/41/path = NodePath("body/arm_r/hand_r/wrist_r:texture")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/42/type = "value"
+tracks/42/path = NodePath("body/arm_l/hand_l/sprite:position")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 25.8513, 26.6047 ) ]
+}
+tracks/43/type = "value"
+tracks/43/path = NodePath("body/arm_l/hand_l/sprite:rotation_degrees")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -5.08996 ]
+}
 
 [sub_resource type="Animation" id=4]
 
@@ -4129,7 +4177,7 @@ tracks/40/keys = {
 "values": [ ExtResource( 5 ) ]
 }
 
-[node name="player" type="KinematicBody2D" index="0"]
+[node name="player" type="KinematicBody2D"]
 
 z = 10
 input_pickable = false
@@ -4160,6 +4208,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="arm_r" type="Sprite" parent="body" index="0"]
 
 position = Vector2( -16.2517, -47.1801 )
+rotation = -3.19788
 z = 5
 texture = ExtResource( 3 )
 offset = Vector2( -10.3216, 17.8095 )
@@ -4171,7 +4220,8 @@ __meta__ = {
 
 [node name="hand_r" type="Sprite" parent="body/arm_r" index="0"]
 
-position = Vector2( -22.3776, 36.3636 )
+position = Vector2( -22.3776, 36.3637 )
+rotation = 0.130918
 z = 1
 texture = ExtResource( 4 )
 offset = Vector2( -8.3069, 16.1865 )
@@ -4190,20 +4240,21 @@ __meta__ = {
 
 [node name="gun_position" type="Position2D" parent="body/arm_r/hand_r" index="1"]
 
-position = Vector2( -9.28873, 36.5306 )
-rotation = -1.23517
+position = Vector2( -8.24307, 37.5788 )
+rotation = 1.50098
 _sections_unfolded = [ "Transform" ]
 
 [node name="wrist_r" type="Sprite" parent="body/arm_r/hand_r" index="2"]
 
-position = Vector2( -7.01709, 31.9144 )
-rotation = 0.06109
+position = Vector2( -7.6362, 33.5498 )
+rotation = -0.0623318
 texture = ExtResource( 5 )
 offset = Vector2( 2.29046, 13.6436 )
 
 [node name="arm_l" type="Sprite" parent="body" index="1"]
 
 position = Vector2( 41.0908, -43.6836 )
+rotation = -3.03054
 z = -1
 texture = ExtResource( 6 )
 offset = Vector2( 2.61539, 18.1592 )
@@ -4215,7 +4266,8 @@ __meta__ = {
 
 [node name="hand_l" type="Sprite" parent="body/arm_l" index="0"]
 
-position = Vector2( 10.4895, 37.7622 )
+position = Vector2( 10.4897, 37.7626 )
+rotation = 0.282686
 scale = Vector2( 0.999999, 0.999999 )
 texture = ExtResource( 7 )
 offset = Vector2( 16.951, 16.4109 )
@@ -4240,7 +4292,8 @@ _sections_unfolded = [ "Z" ]
 
 [node name="head" type="Sprite" parent="body" index="2"]
 
-position = Vector2( 14.5177, -49.4824 )
+position = Vector2( -1.65204, -69.6946 )
+rotation = -1.01373
 texture = ExtResource( 9 )
 offset = Vector2( -11.3555, -63.3044 )
 _sections_unfolded = [ "Transform" ]
@@ -4250,7 +4303,7 @@ __meta__ = {
 
 [node name="open_eyes" type="Sprite" parent="body/head" index="0"]
 
-position = Vector2( 8.17575, -47.8864 )
+position = Vector2( 7.90564, -47.4337 )
 texture = ExtResource( 10 )
 _sections_unfolded = [ "Transform" ]
 
@@ -4388,12 +4441,16 @@ base_path = NodePath("..")
 active = false
 data = {
 "active": false,
-"connections": [ "aim_blend", "out", 0, "aim_shotgun", "shotgun_reload", 0, "aim_shotgun_reload", "shotgun_reload", 1, "ground_air_transition", "aim_blend", 0, "gun_angle", "aim_blend", 1, "ground_scale", "ground_air_transition", 0, "jump_up_anim", "ground_air_transition", 1, "jump_down_anim", "ground_air_transition", 2, "anim_idle", "ground_blend", 0, "anim_walk", "ground_blend", 1, "ground_blend", "ground_scale", 0, "aim_transition", "gun_angle", 0, "aim_pistol", "aim_transition", 0, "aim_minigun", "aim_transition", 1, "shotgun_reload", "aim_transition", 2 ],
+"connections": [ "aim_blend", "out", 0, "aim_transition", "gun_angle", 0, "ground_scale", "ground_air_transition", 0, "jump_up_anim", "ground_air_transition", 1, "jump_down_anim", "ground_air_transition", 2, "anim_idle", "ground_blend", 0, "anim_walk", "ground_blend", 1, "ground_air_transition", "aim_blend", 0, "gun_angle", "aim_blend", 1, "aim_shotgun", "shotgun_reload", 0, "aim_shotgun_reload", "shotgun_reload", 1, "ground_blend", "ground_scale", 0, "aim_pistol", "aim_transition", 0, "aim_minigun", "aim_transition", 1, "shotgun_reload", "aim_transition", 2 ],
 "master": NodePath("../anim"),
 "nodes": [ {
 "id": "out",
 "position": Vector2( 1262, 75 ),
 "type": "output"
+}, {
+"id": "gun_angle",
+"position": Vector2( 874, 313 ),
+"type": "timeseek"
 }, {
 "filter": [  ],
 "from": "aim_pistol",
@@ -4419,24 +4476,6 @@ data = {
 "position": Vector2( 65, 753 ),
 "type": "animation"
 }, {
-"blend": 0.0,
-"filter": [  ],
-"id": "shotgun_reload",
-"position": Vector2( 296, 672 ),
-"type": "blend2"
-}, {
-"filter": [  ],
-"from": "jump_up",
-"id": "jump_up_anim",
-"position": Vector2( 585, 160 ),
-"type": "animation"
-}, {
-"blend": 1.0,
-"filter": [ NodePath("collision:position"), NodePath("body/leg_l/shin_l/foot_l/end:position"), NodePath("body/leg_l/shin_l:position"), NodePath("collision:rotation_degrees"), NodePath("body/leg_l/shin_l/foot_l/end:rotation_degrees"), NodePath("body/leg_l/shin_l:rotation_degrees"), NodePath("body:position"), NodePath("body/leg_r:position"), NodePath("body/leg_r/shin_r/foot_r/end:position"), NodePath("body/leg_l/shin_l/foot_l:position"), NodePath("body:rotation_degrees"), NodePath("body/leg_r:rotation_degrees"), NodePath("body/leg_r/shin_r/foot_r/end:rotation_degrees"), NodePath("body/leg_l/shin_l/foot_l:rotation_degrees"), NodePath("body/leg_r/shin_r:position"), NodePath("body/leg_r/shin_r/foot_r:position"), NodePath("body/leg_l:position"), NodePath("body/leg_r/shin_r:rotation_degrees"), NodePath("body/leg_r/shin_r/foot_r:rotation_degrees"), NodePath("body/leg_l:rotation_degrees") ],
-"id": "aim_blend",
-"position": Vector2( 1125, 51 ),
-"type": "blend2"
-}, {
 "filter": [  ],
 "from": "jump_down",
 "id": "jump_down_anim",
@@ -4461,14 +4500,28 @@ data = {
 "position": Vector2( 417, 37 ),
 "type": "blend2"
 }, {
+"filter": [  ],
+"from": "jump_up",
+"id": "jump_up_anim",
+"position": Vector2( 585, 160 ),
+"type": "animation"
+}, {
+"blend": 1.0,
+"filter": [ NodePath("body/leg_l/shin_l:position"), NodePath("body/leg_l/shin_l/foot_l/end:position"), NodePath("collision:position"), NodePath("body/leg_l/shin_l:rotation_degrees"), NodePath("body/leg_l/shin_l/foot_l/end:rotation_degrees"), NodePath("collision:rotation_degrees"), NodePath("body/leg_l/shin_l/foot_l:position"), NodePath("body/leg_r/shin_r/foot_r/end:position"), NodePath("body/leg_r:position"), NodePath("body:position"), NodePath("body/leg_l/shin_l/foot_l:rotation_degrees"), NodePath("body/leg_r/shin_r/foot_r/end:rotation_degrees"), NodePath("body/leg_r:rotation_degrees"), NodePath("body:rotation_degrees"), NodePath("body/leg_l:position"), NodePath("body/leg_r/shin_r/foot_r:position"), NodePath("body/leg_r/shin_r:position"), NodePath("body/leg_l:rotation_degrees"), NodePath("body/leg_r/shin_r/foot_r:rotation_degrees"), NodePath("body/leg_r/shin_r:rotation_degrees") ],
+"id": "aim_blend",
+"position": Vector2( 1125, 51 ),
+"type": "blend2"
+}, {
+"blend": 0.0,
+"filter": [  ],
+"id": "shotgun_reload",
+"position": Vector2( 296, 672 ),
+"type": "blend2"
+}, {
 "id": "ground_scale",
 "position": Vector2( 595, 38 ),
 "scale": 1.0,
 "type": "timescale"
-}, {
-"id": "gun_angle",
-"position": Vector2( 874, 313 ),
-"type": "timeseek"
 }, {
 "id": "aim_transition",
 "position": Vector2( 583, 431 ),

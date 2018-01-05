@@ -92,8 +92,8 @@ func _air_state(delta, m = Vector2()):
     elif m.x > 0:
         movement = 1
     movement *= WALK_AIR_MAX_SPEED
-    velocity.x = lerp(velocity.x + recoil.x, movement, WALK_AIR_ACCELERATION)    
-        
+    velocity.x = lerp(velocity.x + recoil.x, movement, WALK_AIR_ACCELERATION)
+
     if velocity.y and air_state:
         if velocity.y > 0:
             anim.transition_node_set_current(STATE_NODE, STATE.jump_down)
@@ -128,14 +128,14 @@ func gun_reload():
     if player.gun and player.gun.AIM_NAME == AIM_SHOTGUN_NAME:
         _start_gun_reload()
 
-func gun_recoil(recoil_vector):                
+func gun_recoil(recoil_vector):
     recoil += recoil_vector
 
 func _start_gun_reload():
     if player.gun and player.gun.AIM_NAME == AIM_SHOTGUN_NAME:
         reload_in_timeout = SHOTGUN_RELOAD_IN
         reload_in_time = SHOTGUN_RELOAD_IN
-        
+
 func _stop_gun_reload():
     if player.gun and player.gun.AIM_NAME == AIM_SHOTGUN_NAME:
         reload_out_timeout = SHOTGUN_RELOAD_OUT
@@ -148,37 +148,37 @@ func process(delta):
         if reload_in_timeout <= 0:
             anim.blend2_node_set_amount(SHOTGUN_RELOAD_NODE, 1)
             _stop_gun_reload()
-            
+
     if reload_out_timeout > 0:
         anim.blend2_node_set_amount(SHOTGUN_RELOAD_NODE, reload_out_timeout/reload_out_time)
         reload_out_timeout -= delta
         if reload_out_timeout <= 0:
             anim.blend2_node_set_amount(SHOTGUN_RELOAD_NODE, 0)
-    
+
     velocity += GRAVITY * delta
-    
-    var move_vector = input.get_move_vector()    
-    
+
+    var move_vector = input.get_move_vector()
+
     if player.is_on_floor():
         jump_count = 0
         _ground_state(delta, move_vector)
         if abs(velocity.x) > WALK_MAX_SPEED:
-            velocity.x = sign(velocity.x) * WALK_MAX_SPEED            
+            velocity.x = sign(velocity.x) * WALK_MAX_SPEED
     else:
         _air_state(delta, move_vector)
         if abs(velocity.x) > WALK_AIR_MAX_SPEED:
             velocity.x = sign(velocity.x) * WALK_AIR_MAX_SPEED
-    
+
     if -velocity.y > MAX_JUMP_SPEED:
         velocity.y = -MAX_JUMP_SPEED
-        
+
     if velocity.y > MAX_FALL_SPEED:
         velocity.y = MAX_FALL_SPEED
-    
+
     velocity.y += player.move_and_slide(recoil, FLOOR_NORMAL, SLOPE_FRICTION).y
-    velocity = player.move_and_slide(velocity, FLOOR_NORMAL, SLOPE_FRICTION)     
+    velocity = player.move_and_slide(velocity, FLOOR_NORMAL, SLOPE_FRICTION)
     recoil = Vector2()
-    
+
     if not player.gun:
         anim.blend2_node_set_amount(AIM_BLEND_NODE, 0)
     else:

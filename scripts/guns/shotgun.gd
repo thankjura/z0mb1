@@ -12,7 +12,6 @@ const PELLETS_PER_SHOOT = 10
 const RECOIL = Vector2(-1000, 0)
 
 func _ready():
-    ._ready()
     _reset_view()
     $anim.connect("animation_finished", self, "_end_animation")
 

@@ -59,7 +59,6 @@ func _input(event):
         _drop_gun()
 
 func _physics_process(delta):
-    movement.process(delta)
-
     if Input.is_action_pressed("ui_fire"):
         _fire(delta)
+    movement.process(delta)

@@ -16,7 +16,6 @@ const OVERHEAD_TIMEOUT = 3
 var overheat_time = 0
 
 func _ready():
-    ._ready()
     _reset_view()
 
 func _muzzle_flash(delta):

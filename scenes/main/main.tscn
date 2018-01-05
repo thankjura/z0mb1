@@ -408,7 +408,7 @@ WindowDialog/icons/close_highlight = null
 WindowDialog/styles/panel = null
 _sections_unfolded = [ "Label", "Label/colors", "Label/constants", "LineEdit" ]
 
-[node name="main" type="Node2D" index="0"]
+[node name="main" type="Node2D"]
 
 script = ExtResource( 1 )
 
@@ -427,7 +427,7 @@ size_flags_vertical = 1
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 0
-_sections_unfolded = [ "Margin", "Rect" ]
+_sections_unfolded = [ "Margin", "Material", "Rect", "Visibility" ]
 
 [node name="menu_bg" type="Sprite" parent="." index="1"]
 
@@ -535,6 +535,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Visibility" ]
 
 [node name="menu_tap" type="AudioStreamPlayer" parent="." index="2"]
 

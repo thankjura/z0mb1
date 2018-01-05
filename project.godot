@@ -20,6 +20,7 @@ config/icon="res://icon.png"
 
 global="*res://scripts/global.gd"
 save="*res://scripts/save.gd"
+scene_switch="*res://scenes/main/scene_switch.tscn"
 
 [display]
 

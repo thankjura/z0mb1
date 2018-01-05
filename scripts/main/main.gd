@@ -29,9 +29,8 @@ func _select_item(item_name):
     $menu_tap.play()
 
 func _enter_item():
-    $menu_enter.play()
     if selected_item == NEW_GAME:
-        global.log("ddddd")
+        scene_switch.fade_to("res://levels/intro.tscn")
 
 func _input(event):
     if event.is_action_pressed("ui_up"):

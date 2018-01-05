@@ -22,7 +22,9 @@ func _ready():
         var f = File.new()
         var path = _get_slot_path(i)
         f.open_encrypted_with_pass(path, f.READ, path)
-        slots[i] = parse_json(f.get_as_text())
+        if f.is_open():
+            slots[i] = parse_json(f.get_as_text())
+            f.close()
 
 func _get_slot_path(slot_num):
     return "user://saves/slot%02d.save" % slot_num

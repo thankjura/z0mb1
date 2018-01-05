@@ -1,8 +1,7 @@
-extends Node
+extends "res://scripts/levels/base.gd"
 
 const ENEMY_COUNT = 30
 const ENEMY_EMMIT_ACCELERATION = 1
-const utils = preload("res://scripts/utils/utils.gd")
 
 const yellow_eyes = preload("res://scenes/enemy/yellow_eyes.tscn")
 const ENEMIES = [yellow_eyes]

@@ -13,7 +13,7 @@ func _ready():
     set_collision_mask(constants.GUN_ENTITY_MASK)
     $area.set_collision_layer(constants.GUN_ENTITY_AREA_LAYER)
     $area.set_collision_mask(constants.GUN_ENTITY_AREA_MASK)
-    set_z(constants.GUN_ENTITY_Z)
+    set_z_index(constants.GUN_ENTITY_Z)
 
 func _collision(body):
     if body.has_method("set_gun"):

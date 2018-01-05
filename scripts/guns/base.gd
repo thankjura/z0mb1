@@ -39,7 +39,7 @@ func fire(delta):
 
     if not fired:
         fired = true
-        _fire_start(delta)
+        _fire_start()
     _shutter_camera(delta)
     _muzzle_flash(delta)
     _play_sound(delta)
@@ -54,10 +54,11 @@ func fire(delta):
     var world = get_tree().get_root().get_node("world")
     world.add_child(f)
 
-func _fire_start(delta):
+func _fire_start():
     pass
 
-func _fire_stop(delta):
+func _fire_stop():
+    print("base")
     if camera:
         camera.set_offset(Vector2(0,0))
 
@@ -96,4 +97,4 @@ func _physics_process(delta):
         wait_ready -= delta
     elif fired:
         fired = false
-        _fire_stop(delta)
+        _fire_stop()

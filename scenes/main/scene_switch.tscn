@@ -41,7 +41,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[node name="scene_switch" type="CanvasLayer" index="0"]
+[node name="scene_switch" type="CanvasLayer"]
 
 layer = 2
 offset = Vector2( 0, 0 )

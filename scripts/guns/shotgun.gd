@@ -9,7 +9,8 @@ const AIM_NAME = "aim_shotgun"
 const DROP_VELOCITY = Vector2(400,-400)
 const DROP_ANGULAR = 1
 const PELLETS_PER_SHOOT = 10
-const RECOIL = Vector2(-1000, 0)
+const RECOIL = Vector2(-300, 0)
+const VIEWPORT_SHUTTER = 3
 
 func _ready():
     _reset_view()
@@ -20,6 +21,7 @@ func _end_animation(anim_name):
         get_parent().get_owner().gun_reload()
         $anim.play("reload", -1, 3)
         $audio_reload.play()
+        _fire_stop()
 
 func _create_pellet(spawn_point, bullet_velocity):
     var p = BULLET.instance()
@@ -35,12 +37,13 @@ func fire(delta):
     if wait_ready > 0:
         return
     wait_ready = TIMEOUT
-
+    
     $audio_fire.play()
     $anim.play("fire", -1, 3)
     var spawn_point = $to.global_position
     var bullet_velocity = (spawn_point - $from.global_position).normalized()
     _recoil(RECOIL.rotated(bullet_velocity.angle()))
+    _shutter_camera(delta)
     for i in range(0, PELLETS_PER_SHOOT):
         _create_pellet(spawn_point, bullet_velocity)
 

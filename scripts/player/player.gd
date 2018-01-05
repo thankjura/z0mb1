@@ -51,6 +51,9 @@ func _fire(delta):
         return
     gun.fire(delta)
 
+func _footstep_sound():
+    $audio_footstep.play()
+
 func _input(event):
     if event.is_action_pressed("ui_jump"):
         movement.jump()

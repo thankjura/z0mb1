@@ -6,7 +6,7 @@ const SPEED = 5000
 const TIMEOUT = 0.1
 const OFFSET = Vector2(90, 40)
 const AIM_NAME = "aim_minigun"
-const VIEWPORT_SHUTTER = 0
+const VIEWPORT_SHUTTER = 10
 const DROP_VELOCITY = Vector2(400,-400)
 const DROP_ANGULAR = 1
 const RECOIL = Vector2(-300, 0)
@@ -26,12 +26,12 @@ func _reset_view():
     get_node("body/barrel_run").set_visible(false)
     $flash.set_visible(false)
 
-func _fire_start(delta):
+func _fire_start():
     $case_particles.set_emitting(true)
     $anim.play("fire", -1, 3)
 
-func _fire_stop(delta):
-    ._fire_stop(delta)
+func _fire_stop():
+    ._fire_stop()
     $case_particles.set_emitting(false)
     $anim.stop()
     _reset_view()

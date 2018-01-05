@@ -18,6 +18,7 @@ const STATE_NODE = "ground_air_transition"
 const AIM_BLEND_NODE = "aim_blend"
 const AIM_SWITCH_NODE = "aim_transition"
 const SHOTGUN_RELOAD_NODE = "shotgun_reload"
+const ANIMATION_WALK_NODE = "anim_walk"
 
 const SHOTGUN_RELOAD_IN = 0.1
 const SHOTGUN_RELOAD_OUT = 0.1
@@ -61,7 +62,7 @@ func _init(var player, var anim):
     self.body_scale = player.get_node("body").scale
     self.anim = anim
     self.anim.set_active(true)
-    self.input = load("res://scripts/input.gd").new()
+    self.input = load("res://scripts/input.gd").new() 
 
 func _ground_state(delta, m = Vector2()):
     air_state = false
@@ -77,7 +78,7 @@ func _ground_state(delta, m = Vector2()):
         movement = 1
     movement *= WALK_MAX_SPEED
     velocity.x = lerp(velocity.x, movement, WALK_ACCELERATION)
-    anim.blend2_node_set_amount(GROUND_BLEND_NODE, abs(velocity.x) / WALK_MAX_SPEED)
+    anim.blend2_node_set_amount(GROUND_BLEND_NODE, abs(velocity.x / WALK_MAX_SPEED))
     anim.timescale_node_set_scale(GROUND_SCALE_NODE, abs(velocity.x)*delta)
     anim.transition_node_set_current(STATE_NODE, STATE.ground)
 

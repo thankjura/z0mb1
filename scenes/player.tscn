@@ -2942,7 +2942,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[node name="player" type="KinematicBody2D" index="0"]
+[node name="player" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 4
@@ -2964,7 +2964,7 @@ _sections_unfolded = [ "Transform", "Z" ]
 [node name="body" type="Sprite" parent="." index="1"]
 
 editor/display_folded = true
-position = Vector2( 0.236108, 2.42519 )
+position = Vector2( 0.214645, -0.214642 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
@@ -2972,7 +2972,6 @@ _sections_unfolded = [ "Transform" ]
 [node name="arm_r" type="Sprite" parent="body" index="0"]
 
 position = Vector2( -16.2517, -47.1801 )
-rotation = 0.00145879
 z_index = 1
 texture = ExtResource( 3 )
 offset = Vector2( -10.3216, 17.8095 )
@@ -2985,7 +2984,6 @@ __meta__ = {
 [node name="hand_r" type="Sprite" parent="body/arm_r" index="0"]
 
 position = Vector2( -22.3776, 36.3636 )
-rotation = 0.120967
 texture = ExtResource( 4 )
 offset = Vector2( -8.3069, 16.1865 )
 _sections_unfolded = [ "Transform", "Z" ]
@@ -3018,7 +3016,6 @@ offset = Vector2( 2.29046, 13.6436 )
 [node name="arm_l" type="Sprite" parent="body" index="1"]
 
 position = Vector2( 41.0908, -43.6836 )
-rotation = -0.234057
 z_index = -1
 texture = ExtResource( 6 )
 offset = Vector2( 2.61539, 18.1592 )
@@ -3030,8 +3027,7 @@ __meta__ = {
 
 [node name="hand_l" type="Sprite" parent="body/arm_l" index="0"]
 
-position = Vector2( 10.4896, 37.7624 )
-rotation = 0.4091
+position = Vector2( 10.4895, 37.7622 )
 scale = Vector2( 0.999999, 0.999999 )
 texture = ExtResource( 7 )
 offset = Vector2( 16.951, 16.4109 )
@@ -3080,7 +3076,6 @@ _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 [node name="leg_r" type="Sprite" parent="body" index="3"]
 
 position = Vector2( -7.34488, 48.6931 )
-rotation = -1.11799
 texture = ExtResource( 12 )
 offset = Vector2( -3.99001, 21.2792 )
 _sections_unfolded = [ "Z Index" ]
@@ -3091,8 +3086,7 @@ __meta__ = {
 
 [node name="shin_r" type="Sprite" parent="body/leg_r" index="0"]
 
-position = Vector2( -6.55021, 42.1493 )
-rotation = 1.00774
+position = Vector2( -6.55022, 42.1492 )
 texture = ExtResource( 13 )
 offset = Vector2( 7.81841, 21.6244 )
 __meta__ = {
@@ -3101,8 +3095,7 @@ __meta__ = {
 
 [node name="foot_r" type="Position2D" parent="body/leg_r/shin_r" index="0"]
 
-position = Vector2( -5.31801, 34.625 )
-rotation = 0.067228
+position = Vector2( -5.31799, 34.6248 )
 scale = Vector2( 1.11134, 1 )
 __meta__ = {
 "_edit_bone_": true
@@ -3117,8 +3110,7 @@ __meta__ = {
 
 [node name="leg_l" type="Sprite" parent="body" index="4"]
 
-position = Vector2( 19.8341, 47.6212 )
-rotation = 0.902203
+position = Vector2( 19.2747, 47.0618 )
 z_index = -5
 texture = ExtResource( 14 )
 offset = Vector2( 3.41458, 22.988 )
@@ -3130,8 +3122,7 @@ __meta__ = {
 
 [node name="shin_l" type="Sprite" parent="body/leg_l" index="0"]
 
-position = Vector2( 7.55771, 42.8899 )
-rotation = -0.286103
+position = Vector2( 5.98062, 43.0036 )
 texture = ExtResource( 13 )
 offset = Vector2( 6.10965, 22.4788 )
 __meta__ = {
@@ -3140,15 +3131,14 @@ __meta__ = {
 
 [node name="foot_l" type="Position2D" parent="body/leg_l/shin_l" index="0"]
 
-position = Vector2( -7.02673, 35.4791 )
-rotation = 1.20097
+position = Vector2( -7.02675, 35.4792 )
 __meta__ = {
 "_edit_bone_": true
 }
 
 [node name="end" type="Position2D" parent="body/leg_l/shin_l/foot_l" index="0"]
 
-position = Vector2( 5.13684, -23.4122 )
+position = Vector2( 29.0541, 1.39062 )
 __meta__ = {
 "_edit_bone_": true
 }

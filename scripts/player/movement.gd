@@ -62,7 +62,7 @@ func _init(var player, var anim):
     self.body_scale = player.get_node("body").scale
     self.anim = anim
     self.anim.set_active(true)
-    self.input = load("res://scripts/input.gd").new() 
+    self.input = load("res://scripts/input.gd").new()
 
 func _ground_state(delta, m = Vector2()):
     air_state = false

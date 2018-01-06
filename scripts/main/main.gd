@@ -14,11 +14,11 @@ var global
 
 func _ready():
     global = get_node("/root/global")
-    
+
     if not "continue" in MENU_ITEMS:
         get_node("menu_bg/menu_items/continue").set("custom_colors/font_color", Color(0.7, 0.7, 0.7))
         get_node("menu_bg/menu_items/continue").set("custom_colors/font_color_shadow", Color(0.5, 0.5, 0.5))
-    
+
 func _select_item(item_name):
     for i in MENU_ITEMS:
         if i == item_name:
@@ -38,7 +38,7 @@ func _input(event):
 
     if event.is_action_released("ui_down"):
         _ui_down()
-        
+
     if event.is_action_released("ui_accept"):
         _enter_item()
 
@@ -54,7 +54,7 @@ func _ui_up():
             if idx < 0:
                 idx = MENU_ITEMS.size() - 1
         _select_item(MENU_ITEMS[idx])
-        
+
 func _ui_down():
     if not selected_item:
         _select_item(MENU_ITEMS[0])

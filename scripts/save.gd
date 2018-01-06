@@ -36,13 +36,12 @@ func save_game():
     var f = File.new()
     var path = _get_slot_path(slot)
     f.open_encrypted_with_pass(path, f.WRITE, path)
-    
+
     var data = slot_template.duplicate()
     data.health = 100
     data.lives = 3
     data.score = 9999
-    
+
     f.store_string(to_json(data))
     f.close()
-    
-    
+

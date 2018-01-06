@@ -13,7 +13,7 @@ func _ready():
     for p in positions:
         p.set_meta("free", true)
 
-func _process(delta):
+func _process1(delta):
     if get_tree().get_nodes_in_group("enemy").size() < MAX_ENEMY:
         _add_enemy(delta)
 

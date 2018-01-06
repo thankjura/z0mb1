@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/levels/intro.gd" type="Script" id=1]
 [ext_resource path="res://textures/levels/intro/1_road.png" type="Texture" id=2]
@@ -9,15 +9,20 @@
 [ext_resource path="res://scenes/entities/minigun_entity.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/entities/shotgun_entity.tscn" type="PackedScene" id=8]
 [ext_resource path="res://textures/white.png" type="Texture" id=9]
+[ext_resource path="res://scenes/enemy/jetpacker.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 14.8284, 10 )
 
-[node name="world" type="Node"]
+[node name="world" type="Node" index="0"]
 
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ],
+"_edit_vertical_guides_": [  ]
+}
 
 [node name="parallax_background" type="ParallaxBackground" parent="." index="0"]
 
@@ -109,7 +114,7 @@ position = Vector2( 1395.04, 627.088 )
 
 [node name="zombie_source" type="Node2D" parent="." index="7"]
 
-editor/display_folded = true
+visible = false
 
 [node name="position1" type="Position2D" parent="zombie_source" index="0"]
 
@@ -206,5 +211,117 @@ shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
 _sections_unfolded = [ "Range", "Shadow", "Transform", "Visibility" ]
+
+[node name="jetpacker" parent="." index="8" instance=ExtResource( 10 )]
+
+position = Vector2( 1844.9, 236.293 )
+
+[node name="jetpacker2" parent="." index="9" instance=ExtResource( 10 )]
+
+position = Vector2( 1608.61, 215.844 )
+
+[node name="jetpacker3" parent="." index="10" instance=ExtResource( 10 )]
+
+position = Vector2( 1708.58, 370.344 )
+
+[node name="jetpacker4" parent="." index="11" instance=ExtResource( 10 )]
+
+position = Vector2( 1744.93, 134.051 )
+
+[node name="jetpacker5" parent="." index="12" instance=ExtResource( 10 )]
+
+position = Vector2( 1883.53, 390.792 )
+
+[node name="jetpacker6" parent="." index="13" instance=ExtResource( 10 )]
+
+position = Vector2( 2031.21, 195.396 )
+
+[node name="jetpacker7" parent="." index="14" instance=ExtResource( 10 )]
+
+position = Vector2( 1915.34, 111.33 )
+
+[node name="jetpacker8" parent="." index="15" instance=ExtResource( 10 )]
+
+position = Vector2( 2251.6, 79.5216 )
+
+[node name="jetpacker9" parent="." index="16" instance=ExtResource( 10 )]
+
+position = Vector2( 2378.83, 254.469 )
+
+[node name="jetpacker10" parent="." index="17" instance=ExtResource( 10 )]
+
+position = Vector2( 2596.95, 118.146 )
+
+[node name="jetpacker11" parent="." index="18" instance=ExtResource( 10 )]
+
+position = Vector2( 2656.02, 256.741 )
+
+[node name="jetpacker12" parent="." index="19" instance=ExtResource( 10 )]
+
+position = Vector2( 2192.53, 381.704 )
+
+[node name="jetpacker13" parent="." index="20" instance=ExtResource( 10 )]
+
+position = Vector2( 2360.66, 395.336 )
+
+[node name="jetpacker14" parent="." index="21" instance=ExtResource( 10 )]
+
+position = Vector2( 2628.76, 395.336 )
+
+[node name="jetpacker15" parent="." index="22" instance=ExtResource( 10 )]
+
+position = Vector2( 2960.48, 336.263 )
+
+[node name="jetpacker16" parent="." index="23" instance=ExtResource( 10 )]
+
+position = Vector2( 3019.55, 202.212 )
+
+[node name="jetpacker17" parent="." index="24" instance=ExtResource( 10 )]
+
+position = Vector2( 2846.88, 145.411 )
+
+[node name="jetpacker18" parent="." index="25" instance=ExtResource( 10 )]
+
+position = Vector2( 3269.48, 115.874 )
+
+[node name="jetpacker19" parent="." index="26" instance=ExtResource( 10 )]
+
+position = Vector2( 3224.03, 245.381 )
+
+[node name="jetpacker20" parent="." index="27" instance=ExtResource( 10 )]
+
+position = Vector2( 3219.49, 370.344 )
+
+[node name="jetpacker21" parent="." index="28" instance=ExtResource( 10 )]
+
+position = Vector2( 3353.54, 390.792 )
+
+[node name="jetpacker22" parent="." index="29" instance=ExtResource( 10 )]
+
+position = Vector2( 3373.99, 561.196 )
+
+[node name="jetpacker23" parent="." index="30" instance=ExtResource( 10 )]
+
+position = Vector2( 3221.76, 572.556 )
+
+[node name="jetpacker24" parent="." index="31" instance=ExtResource( 10 )]
+
+position = Vector2( 2883.23, 620.269 )
+
+[node name="jetpacker25" parent="." index="32" instance=ExtResource( 10 )]
+
+position = Vector2( 2717.37, 590.732 )
+
+[node name="jetpacker26" parent="." index="33" instance=ExtResource( 10 )]
+
+position = Vector2( 2578.77, 597.548 )
+
+[node name="jetpacker27" parent="." index="34" instance=ExtResource( 10 )]
+
+position = Vector2( 2433.36, 602.093 )
+
+[node name="jetpacker28" parent="." index="35" instance=ExtResource( 10 )]
+
+position = Vector2( 2283.41, 602.093 )
 
 

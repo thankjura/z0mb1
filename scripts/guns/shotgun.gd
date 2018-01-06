@@ -29,7 +29,7 @@ func _create_pellet(spawn_point, bullet_velocity):
     v.normalized()
     p.rotate(Vector2(1, 0).angle_to(v))
     p.set_axis_velocity(v*SPEED*(1.2 - (randf()*0.4)))
-    p.set_global_position(spawn_point) # + Vector2(randi()%21-10,randi()%21-10))
+    p.set_global_position(spawn_point)
     var world = get_tree().get_root().get_node("world")
     world.add_child(p)
 
@@ -37,7 +37,7 @@ func fire(delta):
     if wait_ready > 0:
         return
     wait_ready = TIMEOUT
-    
+
     $audio_fire.play()
     $anim.play("fire", -1, 3)
     var spawn_point = $to.global_position

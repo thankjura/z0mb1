@@ -58,7 +58,6 @@ func _fire_start():
     pass
 
 func _fire_stop():
-    print("base")
     if camera:
         camera.set_offset(Vector2(0,0))
 

@@ -7,7 +7,7 @@ func _ready():
 
 func fade_to(path):
     scene_path = path
-    get_node("anim").play("fade_in")    
+    get_node("anim").play("fade_in")
     $audio.play()
 
 func fade_out():

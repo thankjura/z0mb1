@@ -1,0 +1,429 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/enemy/jetpacker.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 28.4617, 30.1782 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30.6386, 32.3024 )
+
+[sub_resource type="Animation" id=6]
+
+resource_name = "die1"
+length = 0.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("body:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("body1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("body2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("body3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("body4:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("body1:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -32, -32 ), Vector2( -135.582, -146.958 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("body2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -32 ), Vector2( 110.767, -143.365 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("body3:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -32, 0 ), Vector2( -136.779, 95.1995 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("body4:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 126.334, 86.2184 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("body1:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("body2:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("body4:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("body3:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/13/type = "method"
+tracks/13/path = NodePath(".")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_die_anim_finish"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "idle"
+length = 2.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("body:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -15, 45 ), Vector2( 15, 45 ), Vector2( -15, -45 ), Vector2( 15, -45 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("body:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "spy"
+length = 1.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("body:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -3.24288, 5.99012, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("body:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="jetpacker" type="RigidBody2D"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 2
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = true
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="attack_area" type="Area2D" parent="." index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="collision" type="CollisionShape2D" parent="attack_area" index="0"]
+
+z_index = -5
+shape = SubResource( 4 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="body" type="Sprite" parent="." index="1"]
+
+position = Vector2( -5.71499, 13.7056 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 32, 32 )
+_sections_unfolded = [ "Region", "Transform", "Visibility" ]
+
+[node name="body1" type="Sprite" parent="." index="2"]
+
+visible = false
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+_sections_unfolded = [ "Offset", "Region", "Transform", "Visibility" ]
+
+[node name="body2" type="Sprite" parent="." index="3"]
+
+visible = false
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 32, 0, 32, 32 )
+_sections_unfolded = [ "Offset", "Region", "Transform", "Visibility" ]
+
+[node name="body3" type="Sprite" parent="." index="4"]
+
+visible = false
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 32, 32, 32 )
+_sections_unfolded = [ "Offset", "Region", "Transform", "Visibility" ]
+
+[node name="body4" type="Sprite" parent="." index="5"]
+
+visible = false
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 32, 32, 32, 32 )
+_sections_unfolded = [ "Offset", "Region", "Transform", "Visibility" ]
+
+[node name="collision" type="CollisionShape2D" parent="." index="6"]
+
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ray_cast" type="RayCast2D" parent="." index="7"]
+
+enabled = false
+exclude_parent = true
+cast_to = Vector2( 0, 50 )
+collision_mask = 1
+_sections_unfolded = [ "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="anim_player" type="AnimationPlayer" parent="." index="8"]
+
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+anims/die1 = SubResource( 6 )
+anims/idle = SubResource( 3 )
+anims/spy = SubResource( 5 )
+playback/active = false
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+_sections_unfolded = [ "Playback Options", "playback" ]
+
+[node name="anim" type="AnimationTreePlayer" parent="." index="9"]
+
+playback_process_mode = 1
+master_player = NodePath("../anim_player")
+base_path = NodePath("..")
+active = false
+data = {
+"active": false,
+"connections": [ "anim_idle", "blend", 0, "anim_spy", "blend", 1, "anim", "scale", 0, "current_anim", "out", 0, "blend", "current_anim", 0, "scale", "current_anim", 1 ],
+"master": NodePath("../anim_player"),
+"nodes": [ {
+"blend": 0.0,
+"filter": [  ],
+"id": "blend",
+"position": Vector2( 555, 45 ),
+"type": "blend2"
+}, {
+"id": "scale",
+"position": Vector2( 704, 156 ),
+"scale": 3.0,
+"type": "timescale"
+}, {
+"filter": [  ],
+"from": "die1",
+"id": "anim",
+"position": Vector2( 545, 201 ),
+"type": "animation"
+}, {
+"id": "out",
+"position": Vector2( 1073, 51 ),
+"type": "output"
+}, {
+"filter": [  ],
+"from": "idle",
+"id": "anim_idle",
+"position": Vector2( 331, 29 ),
+"type": "animation"
+}, {
+"id": "current_anim",
+"position": Vector2( 908, 53 ),
+"transitions": [ {
+"auto_advance": false
+}, {
+"auto_advance": false
+} ],
+"type": "transition",
+"xfade": 0.0
+}, {
+"filter": [  ],
+"from": "spy",
+"id": "anim_spy",
+"position": Vector2( 329, 150 ),
+"type": "animation"
+} ]
+}
+
+

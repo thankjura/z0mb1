@@ -59,7 +59,7 @@ var air_state = false
 
 func _init(var player, var anim):
     self.player = player
-    self.body_scale = player.get_node("body").scale
+    self.body_scale = player.get_node("base").scale
     self.anim = anim
     self.anim.set_active(true)
     self.input = load("res://scripts/input.gd").new()
@@ -109,9 +109,9 @@ func _look(rad):
         anim.timeseek_node_seek("gun_angle", abs(deg))
 
     if deg > 0 and deg < 180:
-        player.get_node("body").set_scale(body_scale)
+        player.get_node("base").set_scale(body_scale)
     elif deg > -180 and deg < 0:
-        player.get_node("body").set_scale(Vector2(-body_scale.x, body_scale.y))
+        player.get_node("base").set_scale(Vector2(-body_scale.x, body_scale.y))
 
 func look_default():
     if player.gun:

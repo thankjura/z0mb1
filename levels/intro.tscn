@@ -4,19 +4,19 @@
 [ext_resource path="res://textures/levels/intro/1_road.png" type="Texture" id=2]
 [ext_resource path="res://textures/levels/shared/moon2.png" type="Texture" id=3]
 [ext_resource path="res://scenes/gui.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/entities/r8_entity.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/entities/minigun_entity.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/entities/shotgun_entity.tscn" type="PackedScene" id=8]
-[ext_resource path="res://textures/white.png" type="Texture" id=9]
-[ext_resource path="res://scenes/enemy/jetpacker.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/entities/r8_entity.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/entities/minigun_entity.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/entities/shotgun_entity.tscn" type="PackedScene" id=7]
+[ext_resource path="res://textures/white.png" type="Texture" id=8]
+[ext_resource path="res://scenes/enemy/jetpacker.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/player/henry.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 14.8284, 10 )
 
-[node name="world" type="Node" index="0"]
+[node name="world" type="Node"]
 
 script = ExtResource( 1 )
 __meta__ = {
@@ -93,26 +93,20 @@ position = Vector2( 3871.03, 756.101 )
 scale = Vector2( 266.597, 4.44643 )
 shape = SubResource( 1 )
 
-[node name="player" parent="." index="3" instance=ExtResource( 5 )]
-
-light_mask = 1024
-position = Vector2( 888.911, 593.422 )
-_sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibility", "Z", "collision" ]
-
-[node name="r8" parent="." index="4" instance=ExtResource( 6 )]
+[node name="r8" parent="." index="3" instance=ExtResource( 5 )]
 
 position = Vector2( 1901.11, 640.619 )
 _sections_unfolded = [ "Collision", "Transform", "Z" ]
 
-[node name="minigun_entity" parent="." index="5" instance=ExtResource( 7 )]
+[node name="minigun_entity" parent="." index="4" instance=ExtResource( 6 )]
 
 position = Vector2( 519.85, 608.83 )
 
-[node name="shortgun" parent="." index="6" instance=ExtResource( 8 )]
+[node name="shortgun" parent="." index="5" instance=ExtResource( 7 )]
 
 position = Vector2( 1395.04, 627.088 )
 
-[node name="zombie_source" type="Node2D" parent="." index="7"]
+[node name="zombie_source" type="Node2D" parent="." index="6"]
 
 visible = false
 
@@ -127,7 +121,7 @@ position = Vector2( 0.329501, 160.553 )
 scale = Vector2( 5.22248, 4.99621 )
 enabled = true
 editor_only = false
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 offset = Vector2( 0, 0 )
 texture_scale = 1.0
 color = Color( 1, 1, 1, 1 )
@@ -159,7 +153,7 @@ position = Vector2( -1.70903, 158.461 )
 scale = Vector2( 4.85283, 4.88901 )
 enabled = true
 editor_only = false
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 offset = Vector2( 0, 0 )
 texture_scale = 1.0
 color = Color( 1, 1, 1, 1 )
@@ -191,7 +185,7 @@ position = Vector2( 1.54002, 149.173 )
 scale = Vector2( 4.70886, 4.67566 )
 enabled = true
 editor_only = false
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 offset = Vector2( 0, 0 )
 texture_scale = 1.0
 color = Color( 1, 1, 1, 1 )
@@ -212,8 +206,14 @@ shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
 _sections_unfolded = [ "Range", "Shadow", "Transform", "Visibility" ]
 
-[node name="jetpacker" parent="." index="8" instance=ExtResource( 10 )]
+[node name="jetpacker" parent="." index="7" instance=ExtResource( 9 )]
 
 position = Vector2( 1844.9, 236.293 )
+
+[node name="player" parent="." index="8" instance=ExtResource( 10 )]
+
+position = Vector2( 947.443, 604.364 )
+scale = Vector2( 0.5, 0.5 )
+_sections_unfolded = [ "Transform" ]
 
 

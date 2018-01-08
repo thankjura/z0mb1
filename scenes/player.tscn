@@ -2942,7 +2942,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 4
@@ -2963,7 +2963,6 @@ _sections_unfolded = [ "Transform", "Z" ]
 
 [node name="body" type="Sprite" parent="." index="1"]
 
-editor/display_folded = true
 position = Vector2( 0.214645, -0.214642 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
@@ -3195,7 +3194,7 @@ base_path = NodePath("..")
 active = false
 data = {
 "active": false,
-"connections": [ "aim_blend", "out", 0, "aim_transition", "gun_angle", 0, "ground_air_transition", "aim_blend", 0, "gun_angle", "aim_blend", 1, "anim_idle", "ground_blend", 0, "anim_walk", "ground_blend", 1, "ground_scale", "ground_air_transition", 0, "jump_up_anim", "ground_air_transition", 1, "jump_down_anim", "ground_air_transition", 2, "aim_shotgun", "shotgun_reload", 0, "aim_shotgun_reload", "shotgun_reload", 1, "ground_blend", "ground_scale", 0, "aim_pistol", "aim_transition", 0, "aim_minigun", "aim_transition", 1, "shotgun_reload", "aim_transition", 2 ],
+"connections": [ "aim_blend", "out", 0, "aim_transition", "gun_angle", 0, "ground_scale", "ground_air_transition", 0, "jump_up_anim", "ground_air_transition", 1, "jump_down_anim", "ground_air_transition", 2, "ground_air_transition", "aim_blend", 0, "gun_angle", "aim_blend", 1, "ground_blend", "ground_scale", 0, "aim_pistol", "aim_transition", 0, "aim_minigun", "aim_transition", 1, "shotgun_reload", "aim_transition", 2, "aim_shotgun", "shotgun_reload", 0, "aim_shotgun_reload", "shotgun_reload", 1, "anim_idle", "ground_blend", 0, "anim_walk", "ground_blend", 1 ],
 "master": NodePath("../anim"),
 "nodes": [ {
 "id": "out",
@@ -3230,18 +3229,6 @@ data = {
 "position": Vector2( 137, 452 ),
 "type": "animation"
 }, {
-"blend": 1.0,
-"filter": [ NodePath("body/leg_l/shin_l:position"), NodePath("body/leg_l/shin_l/foot_l/end:position"), NodePath("collision:position"), NodePath("body/leg_l/shin_l:rotation_degrees"), NodePath("body/leg_l/shin_l/foot_l/end:rotation_degrees"), NodePath("collision:rotation_degrees"), NodePath("body/leg_l/shin_l/foot_l:position"), NodePath("body/leg_r/shin_r/foot_r/end:position"), NodePath("body/leg_r:position"), NodePath("body:position"), NodePath("."), NodePath("body/leg_l/shin_l/foot_l:rotation_degrees"), NodePath("body/leg_r/shin_r/foot_r/end:rotation_degrees"), NodePath("body/leg_r:rotation_degrees"), NodePath("body:rotation_degrees"), NodePath("body/leg_l:position"), NodePath("body/leg_r/shin_r/foot_r:position"), NodePath("body/leg_r/shin_r:position"), NodePath("body/leg_l:rotation_degrees"), NodePath("body/leg_r/shin_r/foot_r:rotation_degrees"), NodePath("body/leg_r/shin_r:rotation_degrees") ],
-"id": "aim_blend",
-"position": Vector2( 1052, 6 ),
-"type": "blend2"
-}, {
-"blend": 0.0,
-"filter": [  ],
-"id": "ground_blend",
-"position": Vector2( 296, 6 ),
-"type": "blend2"
-}, {
 "id": "ground_air_transition",
 "position": Vector2( 779, 6 ),
 "transitions": [ {
@@ -3255,9 +3242,9 @@ data = {
 "xfade": 0.1
 }, {
 "filter": [  ],
-"from": "jump_up",
-"id": "jump_up_anim",
-"position": Vector2( 575, 123 ),
+"from": "idle",
+"id": "anim_idle",
+"position": Vector2( 148, 9 ),
 "type": "animation"
 }, {
 "filter": [  ],
@@ -3266,16 +3253,22 @@ data = {
 "position": Vector2( 555, 238 ),
 "type": "animation"
 }, {
-"blend": 0.0,
-"filter": [  ],
-"id": "shotgun_reload",
-"position": Vector2( 387, 430 ),
+"blend": 1.0,
+"filter": [ NodePath("body/leg_l/shin_l:position"), NodePath("body/leg_l/shin_l/foot_l/end:position"), NodePath("collision:position"), NodePath("body/leg_l/shin_l:rotation_degrees"), NodePath("body/leg_l/shin_l/foot_l/end:rotation_degrees"), NodePath("collision:rotation_degrees"), NodePath("body/leg_l/shin_l/foot_l:position"), NodePath("body/leg_r/shin_r/foot_r/end:position"), NodePath("body/leg_r:position"), NodePath("body:position"), NodePath("."), NodePath("body/leg_l/shin_l/foot_l:rotation_degrees"), NodePath("body/leg_r/shin_r/foot_r/end:rotation_degrees"), NodePath("body/leg_r:rotation_degrees"), NodePath("body:rotation_degrees"), NodePath("body/leg_l:position"), NodePath("body/leg_r/shin_r/foot_r:position"), NodePath("body/leg_r/shin_r:position"), NodePath("body/leg_l:rotation_degrees"), NodePath("body/leg_r/shin_r/foot_r:rotation_degrees"), NodePath("body/leg_r/shin_r:rotation_degrees") ],
+"id": "aim_blend",
+"position": Vector2( 1052, 6 ),
 "type": "blend2"
 }, {
 "id": "ground_scale",
 "position": Vector2( 581, 6 ),
 "scale": 1.0,
 "type": "timescale"
+}, {
+"filter": [  ],
+"from": "walk",
+"id": "anim_walk",
+"position": Vector2( 140, 137 ),
+"type": "animation"
 }, {
 "id": "aim_transition",
 "position": Vector2( 577, 353 ),
@@ -3290,16 +3283,22 @@ data = {
 "xfade": 0.0
 }, {
 "filter": [  ],
-"from": "idle",
-"id": "anim_idle",
-"position": Vector2( 148, 9 ),
+"from": "jump_up",
+"id": "jump_up_anim",
+"position": Vector2( 575, 123 ),
 "type": "animation"
 }, {
+"blend": 0.0,
 "filter": [  ],
-"from": "walk",
-"id": "anim_walk",
-"position": Vector2( 140, 137 ),
-"type": "animation"
+"id": "shotgun_reload",
+"position": Vector2( 387, 430 ),
+"type": "blend2"
+}, {
+"blend": 0.0,
+"filter": [  ],
+"id": "ground_blend",
+"position": Vector2( 296, 6 ),
+"type": "blend2"
 } ]
 }
 _sections_unfolded = [ "Playback" ]

@@ -71,7 +71,12 @@ func _recoil(recoil_vector):
 func _shutter_camera(delta):
     if not camera or not VIEWPORT_SHUTTER:
         return
-    camera.set_offset(Vector2(randf(), randf()) * VIEWPORT_SHUTTER)
+    var offcet = camera.get_offset()
+    if offcet.y >= 0:
+        offcet.y = -VIEWPORT_SHUTTER
+    else:
+        offcet.y = VIEWPORT_SHUTTER
+    camera.set_offset(offcet)
 
 func _play_sound(delta):
     if has_node("audio"):

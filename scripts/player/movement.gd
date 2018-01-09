@@ -48,7 +48,6 @@ var direction = 0
 
 var body_scale
 
-var aim_animation_name = "aim_pistol"
 var reload_in_timeout = 0
 var reload_in_time = 1
 var reload_out_timeout = 0
@@ -124,6 +123,22 @@ func jump():
 
 func set_gun():
     anim.transition_node_set_current(AIM_SWITCH_NODE, AIM[player.gun.AIM_NAME])
+    player.get_node("base/body/sholder_r/forearm_r/hand_r").set_visible(false)
+    if player.gun.AIM_NAME == "aim_pistol":
+        player.get_node("base/body/sholder_r/forearm_r/hand_r_pistol").set_visible(true)
+    if player.gun.AIM_NAME == "aim_minigun":
+        player.get_node("base/body/sholder_l/forearm_l/hand_l").set_visible(false)
+        player.get_node("base/body/sholder_r/forearm_r/hand_r_minigun").set_visible(true)
+        player.get_node("base/body/sholder_l/forearm_l/hand_l_minigun").set_visible(true)
+
+func drop_gun():
+    player.get_node("base/body/sholder_r/forearm_r/hand_r").set_visible(true)
+    player.get_node("base/body/sholder_l/forearm_l/hand_l").set_visible(true)
+    #  For pistol
+    player.get_node("base/body/sholder_r/forearm_r/hand_r_pistol").set_visible(false)
+    #  For minigun
+    player.get_node("base/body/sholder_r/forearm_r/hand_r_minigun").set_visible(false)
+    player.get_node("base/body/sholder_l/forearm_l/hand_l_minigun").set_visible(false)
 
 func gun_reload():
     if player.gun and player.gun.AIM_NAME == AIM_SHOTGUN_NAME:

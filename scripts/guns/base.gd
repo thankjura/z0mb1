@@ -22,15 +22,15 @@ func _ready():
 func set_camera(camera):
     self.camera = camera
 
-func _get_bullet_velocity(from_position, to_position):
-    var out = (to_position - from_position).normalized()
+func _get_bullet_velocity():
+    var out = ($bullet_spawn.global_position - global_position).normalized()
     if SPREADING:
         out = out.rotated(SPREADING - randf()*SPREADING*2)
 
     return out
 
 func _get_bullet_position(gun_angle):
-    return $to.global_position
+    return $bullet_spawn.global_position
 
 func fire(delta):
     if wait_ready > 0:
@@ -41,11 +41,10 @@ func fire(delta):
         fired = true
         _fire_start()
     _shutter_camera(delta)
-    _muzzle_flash(delta)
-    _play_sound(delta)
+    _muzzle_flash()
+    _play_sound()
     var f = BULLET.instance()
-    var spawn_point = $to.global_position
-    var bullet_velocity = _get_bullet_velocity($from.global_position, spawn_point)
+    var bullet_velocity = _get_bullet_velocity()
     var gun_angle = Vector2(1, 0).angle_to(bullet_velocity)
     _recoil(RECOIL.rotated(bullet_velocity.angle()))
     f.rotate(gun_angle)
@@ -61,9 +60,8 @@ func _fire_stop():
     if camera:
         camera.set_offset(Vector2(0,0))
 
-func _muzzle_flash(delta):
-    if has_node("anim") and $anim.has_animation("fire"):
-        $anim.play("fire", -1, 2)
+func _muzzle_flash():
+    pass
 
 func _recoil(recoil_vector):
     get_parent().get_owner().gun_recoil(recoil_vector)
@@ -78,15 +76,15 @@ func _shutter_camera(delta):
         offcet.y = VIEWPORT_SHUTTER
     camera.set_offset(offcet)
 
-func _play_sound(delta):
-    if has_node("audio"):
-        $audio.play()
+func _play_sound():
+    if has_node("audio_fire"):
+        $audio_fire.play()
 
 func drop():
     if ENTITY:
         var entity = ENTITY.instance()
         entity.set_global_position(global_position)
-        if $from.global_position.x <= $to.global_position.x:
+        if global_position.x <= $bullet_spawn.global_position.x:
             entity.set_angular_velocity(DROP_ANGULAR)
             entity.set_linear_velocity(Vector2(-DROP_VELOCITY.x,DROP_VELOCITY.y))
         else:

@@ -1,0 +1,245 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/guns/pistol.gd" type="Script" id=1]
+[ext_resource path="res://textures/guns/pistol/base.png" type="Texture" id=2]
+[ext_resource path="res://textures/guns/pistol/base_back.png" type="Texture" id=3]
+[ext_resource path="res://textures/guns/pistol/silencer.png" type="Texture" id=4]
+[ext_resource path="res://textures/guns/pistol/light.png" type="Texture" id=5]
+[ext_resource path="res://textures/lights/spot.png" type="Texture" id=6]
+[ext_resource path="res://sounds/guns/pistol.wav" type="AudioStream" id=7]
+[ext_resource path="res://textures/guns/pistol/flash.png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "fire1"
+length = 0.2
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("flash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("flash/light:texture_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 2.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("flash/light:enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("flash:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.3, 1.2 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "fire2"
+length = 0.2
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("flash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("flash/light:texture_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 2.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("flash/light:enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("flash:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1 ) ]
+}
+
+[node name="pistol" type="Node2D"]
+
+script = ExtResource( 1 )
+
+[node name="base" type="Sprite" parent="." index="0"]
+
+position = Vector2( 0, 29 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="base_back" type="Sprite" parent="." index="1"]
+
+visible = false
+position = Vector2( 0, 29 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="silencer" type="Sprite" parent="." index="2"]
+
+visible = false
+position = Vector2( 115.701, 0 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="lighter" type="Sprite" parent="." index="3"]
+
+visible = false
+position = Vector2( 35.6004, 24.5 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="light" type="Light2D" parent="lighter" index="0"]
+
+position = Vector2( 526.203, 1.95071 )
+enabled = true
+editor_only = false
+texture = ExtResource( 6 )
+offset = Vector2( 0, 0 )
+texture_scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 1024
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
+
+[node name="audio_fire" type="AudioStreamPlayer2D" parent="." index="4"]
+
+stream = ExtResource( 7 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="bullet_spawn" type="Position2D" parent="." index="5"]
+
+position = Vector2( 63, 0 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="bullet_spawn_s" type="Position2D" parent="." index="6"]
+
+position = Vector2( 159, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="flash" type="Sprite" parent="." index="7"]
+
+visible = false
+position = Vector2( 69.7492, 0 )
+scale = Vector2( 1.3, 1.2 )
+texture = ExtResource( 8 )
+offset = Vector2( 51.2342, 0.84346 )
+_sections_unfolded = [ "Offset", "Transform", "Visibility" ]
+
+[node name="light" type="Light2D" parent="flash" index="0"]
+
+position = Vector2( 51.2342, 0.84346 )
+enabled = false
+editor_only = false
+texture = ExtResource( 8 )
+offset = Vector2( 0, 0 )
+texture_scale = 2.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 0
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 1024
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
+
+[node name="animation_player" type="AnimationPlayer" parent="." index="8"]
+
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+anims/fire1 = SubResource( 1 )
+anims/fire2 = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+_sections_unfolded = [ "Playback Options", "playback" ]
+
+

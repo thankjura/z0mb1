@@ -20,12 +20,19 @@ func _ready():
 func set_gun(gun_class):
     if gun:
         return false
-    gun = gun_class.instance()
+    gun = load(gun_class).instance()
     gun.set_name("gun")
-    movement.set_gun()
+
     get_node("base/body/sholder_r/forearm_r/gun_position").add_child(gun)
     gun.set_camera($camera)
+    movement.set_gun()
     return true
+
+func drop_gun():
+    if gun:
+        gun.drop()
+        gun = null
+    movement.drop_gun()
 
 func gun_reload():
     movement.gun_reload()
@@ -41,11 +48,6 @@ func hit(damage):
 func _update_health():
     gui.set_health(health)
 
-func _drop_gun():
-    if gun:
-        gun.drop()
-        gun = null
-
 func _fire(delta):
     if not gun:
         return
@@ -59,7 +61,7 @@ func _input(event):
         movement.jump()
 
     if event.is_action_released("ui_drop"):
-        _drop_gun()
+        drop_gun()
 
 func _physics_process(delta):
     if Input.is_action_pressed("ui_fire"):

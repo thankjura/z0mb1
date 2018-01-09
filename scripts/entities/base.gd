@@ -17,7 +17,7 @@ func _ready():
 
 func _collision(body):
     if body.has_method("set_gun"):
-        if body.set_gun(load(GUN)):
+        if body.set_gun(GUN):
             queue_free()
 
 func _physics_process(delta):

@@ -4,7 +4,7 @@ const BULLET = preload("res://scenes/guns/bullets/minigun_bullet.tscn")
 const ENTITY = preload("res://scenes/entities/minigun_entity.tscn")
 const SPEED = 5000
 const TIMEOUT = 0.1
-const OFFSET = Vector2(90, 40)
+const OFFSET = Vector2(125, 55)
 const AIM_NAME = "aim_minigun"
 const VIEWPORT_SHUTTER = 3
 const DROP_VELOCITY = Vector2(400,-400)
@@ -18,9 +18,6 @@ var overheat_time = 0
 func _ready():
     _reset_view()
 
-func _muzzle_flash(delta):
-    return
-
 func _reset_view():
     get_node("body/barrel_idle").set_visible(true)
     get_node("body/barrel_run").set_visible(false)
@@ -28,16 +25,16 @@ func _reset_view():
 
 func _fire_start():
     $case_particles.set_emitting(true)
-    $anim.play("fire", -1, 3)
+    $animation_player.play("fire", -1, 3)
 
 func _fire_stop():
     ._fire_stop()
     $case_particles.set_emitting(false)
-    $anim.stop()
+    $animation_player.stop()
     _reset_view()
 
 func _get_bullet_position(gun_angle):
-    var pos = $to.global_position
+    var pos = $bullet_spawn.global_position
     pos += Vector2(0, 13 - randi()%27).rotated(gun_angle)
     return pos
 

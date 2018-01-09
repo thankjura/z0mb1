@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 104.634, 31.9722 )
+extents = Vector2( 124.752, 37.0809 )
 
 [node name="minigun_entity" type="RigidBody2D"]
 
@@ -31,15 +31,9 @@ angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
 
-[node name="collision" type="CollisionPolygon2D" parent="." index="0"]
+[node name="area" type="Area2D" parent="." index="0"]
 
-position = Vector2( 71.8429, -12.6573 )
-build_mode = 0
-polygon = PoolVector2Array( -109.971, -19.0184, -119.96, -5.22444, -123.052, 13.0883, -100.458, 44.2437, -49.5629, 44.2437, 84.0963, 29.9741, 83.6206, 10.9478, -23.6397, -18.305 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="area" type="Area2D" parent="." index="1"]
-
+z_index = -1
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -47,24 +41,33 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Z Index" ]
 
 [node name="collision" type="CollisionShape2D" parent="area" index="0"]
 
-position = Vector2( 51.5684, 0.292938 )
+position = Vector2( 61.896, 1.08737 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="sprite" type="Sprite" parent="." index="2"]
+[node name="collision" type="CollisionPolygon2D" parent="." index="1"]
+
+position = Vector2( 71.8429, -12.6573 )
+z_index = -1
+build_mode = 0
+polygon = PoolVector2Array( -120.745, -23.3363, -130.278, -6.65318, -133.853, 13.2076, -106.842, 50.546, -44.0818, 50.546, 114.805, 29.8907, 115.202, 7.24939, -13.099, -23.3363 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="base" type="Sprite" parent="." index="2"]
 
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="sprite" type="Sprite" parent="sprite" index="0"]
+[node name="barrel" type="Sprite" parent="base" index="0"]
 
-position = Vector2( 198, 14 )
-z = -1
+position = Vector2( 236.927, 14 )
+z_index = -1
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Offset", "Transform", "Z" ]
+_sections_unfolded = [ "Offset", "Transform", "Z", "Z Index" ]
 
 

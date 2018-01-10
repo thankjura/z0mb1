@@ -6,9 +6,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 35.951, 25.9647 )
+extents = Vector2( 23.0727, 16.5206 )
 
-[node name="pistol_entity" type="RigidBody2D" index="0"]
+[node name="pistol_entity" type="RigidBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -49,14 +49,14 @@ _sections_unfolded = [ "Z Index" ]
 
 [node name="sprite" type="Sprite" parent="." index="1"]
 
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="collision" type="CollisionPolygon2D" parent="." index="2"]
 
 build_mode = 0
-polygon = PoolVector2Array( -36.3824, 19.7534, -18.782, 23.8316, 30.3704, -5.35936, 36.1657, -12.2278, 36.3803, -17.3792, 28.6533, -22.5305, -12.9867, -25.7501, -29.2993, -23.1744, -35.0946, -16.7352 )
+polygon = PoolVector2Array( -21.7869, 12.4557, -10.411, 15.246, 17.9213, -3.42761, 21.7849, -8.14967, 21.7849, -11.5839, 18.3506, -13.9449, -7.83537, -15.2328, -18.1381, -13.7303, -21.3576, -4.50081 )
 _sections_unfolded = [ "Transform" ]
 
 

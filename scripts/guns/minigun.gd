@@ -2,7 +2,7 @@ extends "res://scripts/guns/base.gd"
 
 const BULLET = preload("res://scenes/guns/bullets/minigun_bullet.tscn")
 const ENTITY = preload("res://scenes/entities/minigun_entity.tscn")
-const SPEED = 5000
+const SPEED = 1000
 const TIMEOUT = 0.1
 const OFFSET = Vector2(125, 55)
 const AIM_NAME = "aim_minigun"
@@ -32,11 +32,6 @@ func _fire_stop():
     $shell_particles.set_emitting(false)
     $animation_player.stop()
     _reset_view()
-
-func _get_bullet_position(gun_angle):
-    var pos = $bullet_spawn.global_position
-    pos += Vector2(0, 13 - randi()%27).rotated(gun_angle)
-    return pos
 
 func _process(delta):
     if fired:

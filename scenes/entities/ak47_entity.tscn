@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 106.782, 32.6185 )
+extents = Vector2( 64.2834, 19.3109 )
 
 [node name="ak47_entity" type="RigidBody2D"]
 
@@ -47,14 +47,14 @@ shape = SubResource( 1 )
 
 [node name="sprite" type="Sprite" parent="." index="1"]
 
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="collision" type="CollisionPolygon2D" parent="." index="2"]
 
 build_mode = 0
-polygon = PoolVector2Array( -105.711, 2.79697, 12.3407, 30.7001, 35.7364, -10.7253, 105.065, -13.5156, 106.353, -20.3841, 103.777, -30.6868, 22.4288, -30.2575, -44.5387, -26.394, -105.711, -20.3841 )
+polygon = PoolVector2Array( -62.5684, 1.93837, 7.8333, 18.8949, 26.7216, -6.86184, 62.9292, -8.79969, 63.7877, -11.912, 61.7077, -19.0963, 3.58141, -18.4048, -26.509, -16.9499, -63.2123, -12.2278 )
 _sections_unfolded = [ "Transform" ]
 
 

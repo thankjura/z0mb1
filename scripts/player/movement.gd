@@ -14,6 +14,7 @@ const DEFAULT_VECTOR = Vector2(0, -1)
 
 const GROUND_BLEND_NODE = "ground_blend"
 const GROUND_SCALE_NODE = "ground_scale"
+const WALK_DIRECTION_NODE = "walk_direction"
 const STATE_NODE = "ground_air_transition"
 const AIM_BLEND_NODE = "aim_blend"
 const AIM_SWITCH_NODE = "aim_transition"
@@ -24,6 +25,8 @@ const SHOTGUN_RELOAD_IN = 0.1
 const SHOTGUN_RELOAD_OUT = 0.1
 
 const AIM_SHOTGUN_NAME = "aim_shotgun"
+
+var MOVEMENT_MODE = 1
 
 enum STATE {
     ground,
@@ -45,8 +48,6 @@ var anim
 var jump_count = 0
 var velocity = Vector2()
 
-var direction = 0
-
 var body_scale
 
 var reload_in_timeout = 0
@@ -64,30 +65,25 @@ func _init(var player, var anim):
     self.anim.set_active(true)
     self.input = load("res://scripts/input.gd").new()
 
-func _ground_state(delta, m = Vector2()):
+func _ground_state(delta, m = Vector2(), direction = 1):
     air_state = false
     var movement = 0
-    if m:
-        _look(DEFAULT_VECTOR.angle_to(m))
-    else:
-        look_default()
-
     if m.x < 0:
         movement = -1
     elif m.x > 0:
         movement = 1
     movement *= WALK_MAX_SPEED
     velocity.x = lerp(velocity.x, movement, WALK_ACCELERATION)
+    if sign(velocity.x) * direction > 0:
+        anim.blend2_node_set_amount(WALK_DIRECTION_NODE, 0)
+    else:
+        anim.blend2_node_set_amount(WALK_DIRECTION_NODE, 1)
     anim.blend2_node_set_amount(GROUND_BLEND_NODE, abs(velocity.x / WALK_MAX_SPEED))
     anim.timescale_node_set_scale(GROUND_SCALE_NODE, abs(velocity.x)*delta)
     anim.transition_node_set_current(STATE_NODE, STATE.ground)
 
 func _air_state(delta, m = Vector2()):
     var movement = 0
-    if m:
-        _look(DEFAULT_VECTOR.angle_to(m))
-    else:
-        look_default()
     if m.x < 0:
         movement = -1
     elif m.x > 0:
@@ -155,7 +151,7 @@ func gun_reload():
         _start_gun_reload()
 
 func gun_recoil(recoil_vector):
-    recoil += recoil_vector
+    recoil.x += recoil_vector.x
 
 func _start_gun_reload():
     if player.gun and player.gun.AIM_NAME == AIM_SHOTGUN_NAME:
@@ -184,10 +180,18 @@ func process(delta):
     velocity += GRAVITY * delta
 
     var move_vector = input.get_move_vector()
+    var direction = move_vector
+    if MOVEMENT_MODE == 1:
+        direction = input.get_direction(player)
 
     if player.is_on_floor():
         jump_count = 0
-        _ground_state(delta, move_vector)
+        var d = 0
+        if direction.x > 0:
+            d = 1
+        elif direction.x < 0:
+            d = -1
+        _ground_state(delta, move_vector, d)
         if abs(velocity.x) > WALK_MAX_SPEED:
             velocity.x = sign(velocity.x) * WALK_MAX_SPEED
     else:
@@ -195,13 +199,18 @@ func process(delta):
         if abs(velocity.x) > WALK_AIR_MAX_SPEED:
             velocity.x = sign(velocity.x) * WALK_AIR_MAX_SPEED
 
+    if direction:
+        _look(DEFAULT_VECTOR.angle_to(direction))
+    else:
+        look_default()
+
     if -velocity.y > MAX_JUMP_SPEED:
         velocity.y = -MAX_JUMP_SPEED
 
     if velocity.y > MAX_FALL_SPEED:
         velocity.y = MAX_FALL_SPEED
 
-    velocity.y += player.move_and_slide(recoil, FLOOR_NORMAL, SLOPE_FRICTION).y
+    player.move_and_slide(recoil, FLOOR_NORMAL, SLOPE_FRICTION)
     velocity = player.move_and_slide(velocity, FLOOR_NORMAL, SLOPE_FRICTION)
     recoil = Vector2()
 

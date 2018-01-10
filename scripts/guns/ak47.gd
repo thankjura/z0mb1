@@ -2,7 +2,7 @@ extends "res://scripts/guns/base.gd"
 
 const BULLET = preload("res://scenes/guns/bullets/ak47_bullet.tscn")
 const ENTITY = preload("res://scenes/entities/ak47_entity.tscn")
-const SPEED = 3000
+const SPEED = 1000
 const TIMEOUT = 0.1
 const OFFSET = Vector2(87, -48)
 const AIM_NAME = "aim_ak47"

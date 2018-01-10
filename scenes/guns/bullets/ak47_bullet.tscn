@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/guns/bullets/ak47_bullet.gd" type="Script" id=1]
 [ext_resource path="res://textures/guns/minigun/minigun_bullet.png" type="Texture" id=2]
+[ext_resource path="res://textures/guns/ak47/decal.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 9.58545, 2.34877 )
 
-[node name="ak47_bullet" type="RigidBody2D" index="0"]
+[node name="ak47_bullet" type="RigidBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -64,6 +65,14 @@ shadow_item_cull_mask = 1
 
 position = Vector2( 0, -0.0238037 )
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="decal" type="Sprite" parent="." index="3"]
+
+visible = false
+position = Vector2( 14.7905, 0.250687 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
 

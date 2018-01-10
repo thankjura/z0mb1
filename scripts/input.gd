@@ -20,6 +20,9 @@ func get_move_vector():
 
     return out.normalized()
 
+func get_direction(player):
+    return player.get_local_mouse_position().normalized()
+
 func vibrate(time, weak=1, strong=1, duration=0.3):
     if Input.is_joy_known(GAMEPAD_ID):
         Input.start_joy_vibration(GAMEPAD_ID, weak, strong, duration)

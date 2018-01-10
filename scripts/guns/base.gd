@@ -15,14 +15,16 @@ const SPREADING = 0.0
 var wait_ready = 0
 var fired = false
 var camera
+var camera_offset
 
 func _ready():
     set_position(OFFSET)
 
 func set_camera(camera):
     self.camera = camera
+    self.camera_offset = camera.offset
 
-func _get_bullet_velocity():
+func _get_bullet_vector():
     var out = ($bullet_spawn.global_position - global_position).normalized()
     if SPREADING:
         out = out.rotated(SPREADING - randf()*SPREADING*2)
@@ -32,7 +34,7 @@ func _get_bullet_velocity():
 func _get_bullet_position(gun_angle):
     return $bullet_spawn.global_position
 
-func fire(delta):
+func fire(delta, velocity):
     if wait_ready > 0:
         return
     wait_ready = TIMEOUT
@@ -44,11 +46,11 @@ func fire(delta):
     _muzzle_flash()
     _play_sound()
     var f = BULLET.instance()
-    var bullet_velocity = _get_bullet_velocity()
+    var bullet_velocity = _get_bullet_vector()
     var gun_angle = Vector2(1, 0).angle_to(bullet_velocity)
     _recoil(RECOIL.rotated(bullet_velocity.angle()))
     f.rotate(gun_angle)
-    f.set_axis_velocity(bullet_velocity*SPEED)
+    f.set_axis_velocity(bullet_velocity*SPEED+velocity)
     f.set_global_position(_get_bullet_position(gun_angle))
     var world = get_tree().get_root().get_node("world")
     world.add_child(f)
@@ -58,7 +60,7 @@ func _fire_start():
 
 func _fire_stop():
     if camera:
-        camera.set_offset(Vector2(0,0))
+        camera.set_offset(camera_offset)
 
 func _muzzle_flash():
     pass
@@ -69,12 +71,12 @@ func _recoil(recoil_vector):
 func _shutter_camera(delta):
     if not camera or not VIEWPORT_SHUTTER:
         return
-    var offcet = camera.get_offset()
-    if offcet.y >= 0:
-        offcet.y = -VIEWPORT_SHUTTER
+    var offset = camera.get_offset()
+    if offset.y - camera_offset.y >= 0:
+        offset.y -= VIEWPORT_SHUTTER
     else:
-        offcet.y = VIEWPORT_SHUTTER
-    camera.set_offset(offcet)
+        offset.y += VIEWPORT_SHUTTER
+    camera.set_offset(offset)
 
 func _play_sound():
     if has_node("audio_fire"):

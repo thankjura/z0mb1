@@ -50,7 +50,7 @@ func _update_health():
 func _fire(delta):
     if not gun:
         return
-    gun.fire(delta)
+    gun.fire(delta, movement.velocity)
 
 func _footstep_sound():
     $audio_footstep.play()
@@ -62,7 +62,14 @@ func _input(event):
     if event.is_action_released("ui_drop"):
         drop_gun()
 
+    if event is InputEventMouseButton:
+        if event.button_index == BUTTON_RIGHT and event.pressed:
+            movement.jump()
+
 func _physics_process(delta):
     if Input.is_action_pressed("ui_fire"):
+        _fire(delta)
+
+    if Input.is_mouse_button_pressed(BUTTON_LEFT):
         _fire(delta)
     movement.process(delta)

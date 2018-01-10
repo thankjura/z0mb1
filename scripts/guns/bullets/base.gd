@@ -2,13 +2,14 @@ extends RigidBody2D
 
 const constants = preload("res://scripts/constants.gd")
 
-const LIFE_TIME = 10
+const LIFE_TIME = 4
 const DAMAGE = 30
 const HEALTH = 100
 const GRAVITY = 0
 
 var health = HEALTH
 var active = true
+var decal = false
 var timer = 0
 
 func _ready():
@@ -39,17 +40,23 @@ func _collision(body):
     if body.has_method("hit"):
         body.hit(self)
     else:
+        decal = body.is_in_group("decals")
         _deactivate()
 
 func _deactivate():
     active = false
+    $sprite.set_visible(false)
+    set_applied_force(Vector2())
+    set_mode(MODE_STATIC)
     disconnect("body_entered", self, "_collision")
     if has_node("light"):
         $light.queue_free()
 
     if has_node("particles"):
         $particles.set_emitting(false)
-        $sprite.set_visible(false)
+
+    if has_node("decal"):
+        $decal.set_visible(true)
     else:
         queue_free()
 

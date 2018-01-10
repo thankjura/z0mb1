@@ -166,7 +166,7 @@ tracks/6/keys = {
 "values": [ Vector2( 240, 17 ), Vector2( 240, 19 ), Vector2( 240, 16 ), Vector2( 240, 19 ), Vector2( 240, 17 ), Vector2( 240, 18 ) ]
 }
 
-[node name="minigun" type="Node2D"]
+[node name="minigun" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform" ]
@@ -214,12 +214,13 @@ size_flags_vertical = 1
 texture = SubResource( 3 )
 expand = true
 stretch_mode = 0
-_sections_unfolded = [ "Hint", "Rect", "Visibility" ]
+_sections_unfolded = [ "Hint", "Material", "Rect", "Visibility" ]
 
-[node name="case_particles" type="Particles2D" parent="." index="1"]
+[node name="shell_particles" type="Particles2D" parent="." index="1"]
 
 position = Vector2( 74.6622, 33.0625 )
 rotation = 1.5708
+z_index = -1
 emitting = false
 amount = 3
 lifetime = 2.0
@@ -238,7 +239,7 @@ texture = ExtResource( 5 )
 normal_map = null
 h_frames = 1
 v_frames = 1
-_sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Transform", "Visibility", "Z" ]
+_sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Transform", "Visibility", "Z", "Z Index" ]
 
 [node name="flash" type="Sprite" parent="." index="2"]
 
@@ -301,5 +302,6 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
+_sections_unfolded = [ "Playback Options", "playback" ]
 
 

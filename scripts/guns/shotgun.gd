@@ -4,7 +4,7 @@ const BULLET = preload("res://scenes/guns/bullets/shotgun_pellet.tscn")
 const ENTITY = preload("res://scenes/entities/shotgun_entity.tscn")
 const SPEED = 2000
 const TIMEOUT = 1
-const OFFSET = Vector2(70, 28)
+const OFFSET = Vector2(104, -22)
 const AIM_NAME = "aim_shotgun"
 const DROP_VELOCITY = Vector2(400,-400)
 const DROP_ANGULAR = 1
@@ -39,13 +39,16 @@ func fire(delta):
     wait_ready = TIMEOUT
 
     $audio_fire.play()
-    $anim.play("fire", -1, 3)
-    var spawn_point = $to.global_position
-    var bullet_velocity = (spawn_point - $from.global_position).normalized()
+    $anim.play("fire", -1, 5)
+    var spawn_point = $bullet_spawn.global_position
+    var bullet_velocity = (spawn_point - global_position).normalized()
     _recoil(RECOIL.rotated(bullet_velocity.angle()))
     _shutter_camera(delta)
     for i in range(0, PELLETS_PER_SHOOT):
         _create_pellet(spawn_point, bullet_velocity)
+
+func _eject_shell():
+    $shell_particles.restart()
 
 func _reset_view():
     $anim.set_current_animation("reload")

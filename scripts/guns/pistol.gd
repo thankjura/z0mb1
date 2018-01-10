@@ -11,3 +11,6 @@ const AIM_NAME = "aim_pistol"
 
 func _muzzle_flash():
     $animation_player.play("fire%d" % (randi()%2+1), -1, 2)
+
+func _eject_shell():
+    $shell_particles.restart()

@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 90.5167, 17.8398 )
+extents = Vector2( 138.953, 29.4378 )
 
 [node name="shortgun" type="RigidBody2D" index="0"]
 
@@ -34,7 +34,7 @@ script = ExtResource( 1 )
 [node name="collision" type="CollisionPolygon2D" parent="." index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -89.7787, -4.49196, -89.1348, 18.2596, -41.2707, 6.66919, 58.965, -5.13587, 89.4435, -11.7896, 90.5167, -15.6531, -20.8801, -16.5117 )
+polygon = PoolVector2Array( -136.146, -8.55954, -134.429, 25.5678, -64.2428, 9.89928, 83.857, -5.76925, 136.872, -18.8621, 134.297, -27.4476, -29.2569, -25.9452 )
 
 [node name="area" type="Area2D" parent="." index="1"]
 
@@ -58,7 +58,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="sprite" type="Sprite" parent="sprite" index="0"]
 
-position = Vector2( 80, -16 )
+position = Vector2( 116, -26 )
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform", "Z" ]
 

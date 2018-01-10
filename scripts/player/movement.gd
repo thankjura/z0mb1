@@ -34,7 +34,8 @@ enum STATE {
 enum AIM {
     aim_pistol,
     aim_minigun,
-    aim_shotgun
+    aim_shotgun,
+    aim_ak47
 }
 
 var input
@@ -122,23 +123,32 @@ func jump():
         velocity.y = -JUMP_FORCE
 
 func set_gun():
-    anim.transition_node_set_current(AIM_SWITCH_NODE, AIM[player.gun.AIM_NAME])
     player.get_node("base/body/sholder_r/forearm_r/hand_r").set_visible(false)
+    player.get_node("base/body/sholder_l/forearm_l/hand_l").set_visible(false)
     if player.gun.AIM_NAME == "aim_pistol":
         player.get_node("base/body/sholder_r/forearm_r/hand_r_pistol").set_visible(true)
-    if player.gun.AIM_NAME == "aim_minigun":
-        player.get_node("base/body/sholder_l/forearm_l/hand_l").set_visible(false)
+        player.get_node("base/body/sholder_l/forearm_l/hand_l_pistol").set_visible(true)
+    elif player.gun.AIM_NAME == "aim_minigun":
         player.get_node("base/body/sholder_r/forearm_r/hand_r_minigun").set_visible(true)
         player.get_node("base/body/sholder_l/forearm_l/hand_l_minigun").set_visible(true)
+    elif player.gun.AIM_NAME == "aim_shotgun" or player.gun.AIM_NAME == "aim_ak47":
+        player.get_node("base/body/sholder_r/forearm_r/hand_r_pistol").set_visible(true)
+        player.get_node("base/body/sholder_l/forearm_l/hand_l_shotgun").set_visible(true)
+    anim.transition_node_set_current(AIM_SWITCH_NODE, 0)
+    anim.transition_node_set_current(AIM_SWITCH_NODE, 1)
+    anim.transition_node_set_current(AIM_SWITCH_NODE, AIM[player.gun.AIM_NAME])
 
 func drop_gun():
     player.get_node("base/body/sholder_r/forearm_r/hand_r").set_visible(true)
     player.get_node("base/body/sholder_l/forearm_l/hand_l").set_visible(true)
     #  For pistol
     player.get_node("base/body/sholder_r/forearm_r/hand_r_pistol").set_visible(false)
+    player.get_node("base/body/sholder_l/forearm_l/hand_l_pistol").set_visible(false)
     #  For minigun
     player.get_node("base/body/sholder_r/forearm_r/hand_r_minigun").set_visible(false)
     player.get_node("base/body/sholder_l/forearm_l/hand_l_minigun").set_visible(false)
+    #  For shotgun / ak47
+    player.get_node("base/body/sholder_l/forearm_l/hand_l_shotgun").set_visible(false)
 
 func gun_reload():
     if player.gun and player.gun.AIM_NAME == AIM_SHOTGUN_NAME:

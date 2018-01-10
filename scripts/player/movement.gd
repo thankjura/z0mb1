@@ -33,9 +33,9 @@ enum STATE {
 
 enum AIM {
     aim_pistol,
-    aim_minigun,
+    aim_ak47,
     aim_shotgun,
-    aim_ak47
+    aim_minigun
 }
 
 var input

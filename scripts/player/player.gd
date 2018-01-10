@@ -21,7 +21,6 @@ func set_gun(gun_class):
     if gun:
         return false
     gun = load(gun_class).instance()
-    gun.set_name("gun")
 
     get_node("base/body/sholder_r/forearm_r/gun_position").add_child(gun)
     gun.set_camera($camera)

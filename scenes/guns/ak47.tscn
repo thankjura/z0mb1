@@ -354,5 +354,6 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
+_sections_unfolded = [ "Playback Options", "playback" ]
 
 

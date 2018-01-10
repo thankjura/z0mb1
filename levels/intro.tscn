@@ -6,11 +6,11 @@
 [ext_resource path="res://scenes/gui.tscn" type="PackedScene" id=4]
 [ext_resource path="res://textures/white.png" type="Texture" id=5]
 [ext_resource path="res://scenes/enemy/jetpacker.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/entities/pistol_entity.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/player/henry.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/entities/minigun_entity.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/entities/shotgun_entity.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/entities/ak47_entity.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/player/henry.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/entities/minigun_entity.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/entities/shotgun_entity.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/entities/ak47_entity.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/entities/pistol_entity.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -200,27 +200,26 @@ _sections_unfolded = [ "Range", "Shadow", "Transform", "Visibility" ]
 
 position = Vector2( 3139.97, 272.646 )
 
-[node name="pistol_entity" parent="." index="5" instance=ExtResource( 7 )]
+[node name="player" parent="." index="5" instance=ExtResource( 7 )]
 
-position = Vector2( 1865.35, 633.901 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="player" parent="." index="6" instance=ExtResource( 8 )]
-
-position = Vector2( 913.362, 602.092 )
+position = Vector2( 468.041, 593.004 )
 scale = Vector2( 0.5, 0.5 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="minigun_entity" parent="." index="7" instance=ExtResource( 9 )]
+[node name="minigun_entity" parent="." index="6" instance=ExtResource( 8 )]
 
-position = Vector2( 490.762, 649.805 )
+position = Vector2( 790.672, 640.717 )
 
-[node name="shortgun" parent="." index="8" instance=ExtResource( 10 )]
+[node name="shortgun" parent="." index="7" instance=ExtResource( 9 )]
 
-position = Vector2( 1181.46, 656.621 )
+position = Vector2( 1883.53, 652.077 )
 
-[node name="ak47_entity" parent="." index="9" instance=ExtResource( 11 )]
+[node name="ak47_entity" parent="." index="8" instance=ExtResource( 10 )]
 
 position = Vector2( 1542.72, 638.445 )
+
+[node name="pistol_entity" parent="." index="9" instance=ExtResource( 11 )]
+
+position = Vector2( 245.381, 624.813 )
 
 

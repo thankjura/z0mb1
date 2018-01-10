@@ -163,10 +163,10 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 240, 17 ), Vector2( 240, 19 ), Vector2( 240, 16 ), Vector2( 240, 19 ), Vector2( 240, 17 ), Vector2( 240, 18 ) ]
+"values": [ Vector2( 236, 17 ), Vector2( 236, 19 ), Vector2( 236, 16 ), Vector2( 236, 19 ), Vector2( 236, 17 ), Vector2( 236, 18 ) ]
 }
 
-[node name="minigun" type="Node2D" index="0"]
+[node name="minigun" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform" ]
@@ -177,20 +177,21 @@ __meta__ = {
 [node name="body" type="Sprite" parent="." index="0"]
 
 position = Vector2( 0, -17 )
+z_index = 1
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Material", "Transform" ]
+_sections_unfolded = [ "Material", "Transform", "Z Index" ]
 
 [node name="barrel_idle" type="Sprite" parent="body" index="0"]
 
 visible = false
-position = Vector2( 240, 18 )
+position = Vector2( 236, 18 )
 z_index = -1
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z", "Z Index" ]
 
 [node name="barrel_run" type="Sprite" parent="body" index="1"]
 
-position = Vector2( 240, 18 )
+position = Vector2( 236, 19 )
 z_index = -1
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z", "Z Index" ]
@@ -244,8 +245,7 @@ _sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "T
 [node name="flash" type="Sprite" parent="." index="2"]
 
 visible = false
-position = Vector2( 374, -12 )
-scale = Vector2( 0.956865, -0.594313 )
+position = Vector2( 374, 4 )
 texture = ExtResource( 6 )
 offset = Vector2( 52.9424, 0.120224 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "Z" ]
@@ -256,7 +256,7 @@ __meta__ = {
 [node name="light" type="Light2D" parent="flash" index="0"]
 
 position = Vector2( 52.9424, 0.120224 )
-enabled = false
+enabled = true
 editor_only = false
 texture = ExtResource( 6 )
 offset = Vector2( 0, 0 )

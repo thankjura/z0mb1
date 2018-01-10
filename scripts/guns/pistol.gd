@@ -3,7 +3,7 @@ extends "res://scripts/guns/base.gd"
 const BULLET = preload("res://scenes/guns/bullets/fireball.tscn")
 const ENTITY = preload("res://scenes/entities/pistol_entity.tscn")
 const SPEED = 2000
-const TIMEOUT = 0.2
+const TIMEOUT = 0.4
 const OFFSET = Vector2(45, -39)
 const DROP_VELOCITY = Vector2(300,-300)
 const DROP_ANGULAR = 20

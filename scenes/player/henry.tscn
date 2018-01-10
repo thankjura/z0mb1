@@ -3277,6 +3277,7 @@ script = ExtResource( 1 )
 
 [node name="base" type="Sprite" parent="." index="0"]
 
+position = Vector2( 0, 16 )
 z_index = -20
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -3284,7 +3285,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 [node name="belt" type="Sprite" parent="base" index="0"]
 
 position = Vector2( 10.7289, -24.3838 )
-rotation = 0.250705
+rotation = -0.0276747
 texture = ExtResource( 3 )
 offset = Vector2( -9.3825, 0.577845 )
 _sections_unfolded = [ "Transform" ]
@@ -3292,7 +3293,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="body" type="Sprite" parent="base" index="1"]
 
 position = Vector2( -2, -38 )
-rotation = 0.745966
+rotation = -0.0678949
 z_index = -1
 texture = ExtResource( 4 )
 offset = Vector2( 2.80622, -55.0469 )
@@ -3307,15 +3308,15 @@ _sections_unfolded = [ "Region", "Transform", "Z Index" ]
 [node name="head" type="Sprite" parent="base/body" index="1"]
 
 position = Vector2( -7.08409, -192.435 )
-rotation = 0.659434
+rotation = -0.0574801
 texture = ExtResource( 6 )
 offset = Vector2( 5.70396, -44.7243 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="sholder_r" type="Sprite" parent="base/body" index="2"]
 
-position = Vector2( -59.6789, -139.004 )
-rotation = -0.679401
+position = Vector2( -61.6983, -126.354 )
+rotation = 0.974326
 z_index = 4
 texture = ExtResource( 7 )
 offset = Vector2( -5.31363, 41.6566 )
@@ -3327,8 +3328,8 @@ __meta__ = {
 
 [node name="forearm_r" type="Sprite" parent="base/body/sholder_r" index="0"]
 
-position = Vector2( -2.02529, 83.9701 )
-rotation = -0.0845912
+position = Vector2( -1.95088, 79.4916 )
+rotation = -1.04542
 z_index = -1
 texture = ExtResource( 8 )
 offset = Vector2( -2.21339, 33.4099 )
@@ -3340,13 +3341,14 @@ __meta__ = {
 [node name="gun_position" type="Position2D" parent="base/body/sholder_r/forearm_r" index="0"]
 
 position = Vector2( 5.74614, 110.311 )
-rotation = 1.5708
+rotation = -0.00595519
 z_index = -1
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="hand_r" type="Sprite" parent="base/body/sholder_r/forearm_r" index="1"]
 
-position = Vector2( 2.75543, 87.4769 )
+position = Vector2( -2.65962, 76.1037 )
+rotation = 0.0616106
 texture = ExtResource( 9 )
 offset = Vector2( 7.35287, 23.6888 )
 _sections_unfolded = [ "Visibility" ]
@@ -3380,8 +3382,8 @@ __meta__ = {
 
 [node name="sholder_l" type="Sprite" parent="base/body" index="3"]
 
-position = Vector2( 34.7586, -113.368 )
-rotation = 0.261989
+position = Vector2( 50, -127 )
+rotation = 0.245762
 z_index = -1
 texture = ExtResource( 12 )
 offset = Vector2( -4.87677, 35.1127 )
@@ -3393,8 +3395,8 @@ __meta__ = {
 
 [node name="forearm_l" type="Sprite" parent="base/body/sholder_l" index="0"]
 
-position = Vector2( -8.68121, 68.1332 )
-rotation = -1.0098
+position = Vector2( -3.90144, 69.738 )
+rotation = -1.26555
 scale = Vector2( 0.999999, 0.999999 )
 z_index = -1
 texture = ExtResource( 13 )
@@ -3406,8 +3408,8 @@ __meta__ = {
 
 [node name="hand_l" type="Sprite" parent="base/body/sholder_l/forearm_l" index="0"]
 
-position = Vector2( 11.9562, 64.3438 )
-rotation = -0.322792
+position = Vector2( 7.52425, 60.7109 )
+rotation = -0.23241
 texture = ExtResource( 14 )
 offset = Vector2( 1.7816, 22.0569 )
 _sections_unfolded = [ "Visibility", "Z Index" ]
@@ -3430,7 +3432,7 @@ __meta__ = {
 [node name="hand_l_minigun" type="Sprite" parent="base/body/sholder_l/forearm_l" index="2"]
 
 visible = false
-position = Vector2( 4.40468, 74.6619 )
+position = Vector2( 9.04833, 68.0949 )
 rotation = -0.100835
 texture = ExtResource( 16 )
 offset = Vector2( 1.7816, 22.0569 )
@@ -3461,8 +3463,8 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="hip_r" type="Sprite" parent="base" index="2"]
 
-position = Vector2( -21.9143, 7.10666 )
-rotation = -0.00942691
+position = Vector2( -21.9143, 9.27666 )
+rotation = -0.911757
 texture = ExtResource( 19 )
 offset = Vector2( -0.587548, 32.3558 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -3473,8 +3475,8 @@ __meta__ = {
 
 [node name="shin_r" type="Sprite" parent="base/hip_r" index="0"]
 
-position = Vector2( -10.7184, 68.4986 )
-rotation = 0.0838329
+position = Vector2( -10.7184, 68.4985 )
+rotation = 0.361599
 texture = ExtResource( 20 )
 offset = Vector2( -7.85038, 29.2288 )
 _sections_unfolded = [ "Transform" ]
@@ -3484,8 +3486,8 @@ __meta__ = {
 
 [node name="foot_r" type="Sprite" parent="base/hip_r/shin_r" index="0"]
 
-position = Vector2( -7.46902, 63.5548 )
-rotation = -0.104473
+position = Vector2( -7.469, 63.5547 )
+rotation = -0.0493233
 texture = ExtResource( 21 )
 offset = Vector2( 9.16586, 11.3021 )
 _sections_unfolded = [ "Transform" ]
@@ -3495,8 +3497,8 @@ __meta__ = {
 
 [node name="foot_r_toe" type="Sprite" parent="base/hip_r/shin_r/foot_r" index="0"]
 
-position = Vector2( 27.7717, 29.9662 )
-rotation = 0.00406978
+position = Vector2( 33.4444, 32.7145 )
+rotation = -0.521257
 texture = ExtResource( 22 )
 offset = Vector2( 10.5218, -5.84574 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -3507,7 +3509,7 @@ __meta__ = {
 [node name="hip_l" type="Sprite" parent="base" index="3"]
 
 position = Vector2( 26.1218, 1.49841 )
-rotation = 0.0723669
+rotation = 0.322594
 z_index = -2
 texture = ExtResource( 23 )
 offset = Vector2( 4.42052, 38.234 )
@@ -3519,8 +3521,8 @@ __meta__ = {
 
 [node name="shin_l" type="Sprite" parent="base/hip_l" index="0"]
 
-position = Vector2( 12.3492, 75.7984 )
-rotation = 0.0439018
+position = Vector2( 12.3492, 75.7983 )
+rotation = 0.811252
 scale = Vector2( 0.999999, 0.999999 )
 texture = ExtResource( 24 )
 offset = Vector2( 0.747225, 26.7965 )
@@ -3530,8 +3532,8 @@ __meta__ = {
 
 [node name="foot_l" type="Sprite" parent="base/hip_l/shin_l" index="0"]
 
-position = Vector2( 3.51446, 61.0185 )
-rotation = -0.132318
+position = Vector2( 3.68058, 60.4027 )
+rotation = 0.187521
 texture = ExtResource( 25 )
 offset = Vector2( 9.74501, 12.5678 )
 __meta__ = {
@@ -3540,7 +3542,8 @@ __meta__ = {
 
 [node name="foot_l_toe" type="Sprite" parent="base/hip_l/shin_l/foot_l" index="0"]
 
-position = Vector2( 28.5516, 28.5174 )
+position = Vector2( 30.3968, 29.3871 )
+rotation = -0.783352
 texture = ExtResource( 26 )
 offset = Vector2( 9.46927, -1.04876 )
 __meta__ = {
@@ -3663,7 +3666,7 @@ data = {
 "type": "timescale"
 }, {
 "blend": 1.0,
-"filter": [ NodePath("base/hip_l/shin_l/foot_l:position"), NodePath("base/hip_r:position"), NodePath("base:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position"), NodePath("base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position"), NodePath("base/hip_r:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/hip_l:position"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:position"), NodePath("base/hip_r/shin_r:position"), NodePath("."), NodePath("base/hip_l:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/hip_r/shin_r:rotation_degrees"), NodePath("base/body:position"), NodePath("base/body/chest:scale"), NodePath("base/belt:position"), NodePath("base/belt:rotation_degrees"), NodePath("base/hip_l/shin_l:position"), NodePath("base/hip_l/shin_l:rotation_degrees"), NodePath("base:position") ],
+"filter": [ NodePath("base:rotation_degrees"), NodePath("base/hip_r:position"), NodePath("base/hip_l/shin_l/foot_l:position"), NodePath("base/hip_r:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position"), NodePath("base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position"), NodePath("base/hip_r/shin_r:position"), NodePath("base/hip_r/shin_r/foot_r:position"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/hip_l:position"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/hip_r/shin_r:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/hip_l:rotation_degrees"), NodePath("."), NodePath("base/body:position"), NodePath("base/belt:position"), NodePath("base/body/chest:scale"), NodePath("base/hip_l/shin_l:position"), NodePath("base/belt:rotation_degrees"), NodePath("base:position"), NodePath("base/hip_l/shin_l:rotation_degrees") ],
 "id": "aim_blend",
 "position": Vector2( 1026, 49 ),
 "type": "blend2"
@@ -3719,7 +3722,7 @@ data = {
 "type": "blend2"
 }, {
 "blend": 1.0,
-"filter": [ NodePath("base/body/sholder_l:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l:position"), NodePath("base/hip_r:position"), NodePath("base/body/sholder_r/forearm_r:position"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position"), NodePath("base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/hip_r:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position"), NodePath("base/body/sholder_l/forearm_l/hand_l:position"), NodePath("base/body/sholder_r/forearm_r:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/hip_l:position"), NodePath("base/hip_r/shin_r:position"), NodePath("base/hip_r/shin_r/foot_r:position"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("."), NodePath("base/body/sholder_l/forearm_l/hand_l:rotation_degrees"), NodePath("base/hip_l:rotation_degrees"), NodePath("base/hip_r/shin_r:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/body/sholder_r/forearm_r/hand_r:position"), NodePath("base/body:position"), NodePath("base/belt:position"), NodePath("base/body/sholder_l/forearm_l:position"), NodePath("base/body/sholder_r/forearm_r/hand_r:rotation_degrees"), NodePath("base/body/sholder_r:position"), NodePath("base/body:rotation_degrees"), NodePath("base/belt:rotation_degrees"), NodePath("base/body/head:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l/hand_l:z_index"), NodePath("base/body/sholder_l/forearm_l:rotation_degrees"), NodePath("base/body/sholder_r:rotation_degrees"), NodePath("base/hip_l/shin_l:position"), NodePath("base/body/sholder_l:position"), NodePath("base/hip_l/shin_l:rotation_degrees"), NodePath("base:position") ],
+"filter": [ NodePath("base/hip_r:position"), NodePath("base/hip_l/shin_l/foot_l:position"), NodePath("base/body/sholder_l:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position"), NodePath("base/hip_r:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position"), NodePath("base/body/sholder_r/forearm_r:position"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:position"), NodePath("base/hip_r/shin_r:position"), NodePath("base/hip_l:position"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/body/sholder_r/forearm_r:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l/hand_l:position"), NodePath("base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/hip_r/shin_r:rotation_degrees"), NodePath("base/hip_l:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l/hand_l:rotation_degrees"), NodePath("."), NodePath("base/body:position"), NodePath("base/body/sholder_r/forearm_r/hand_r:position"), NodePath("base/body:rotation_degrees"), NodePath("base/body/sholder_r:position"), NodePath("base/body/sholder_r/forearm_r/hand_r:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l:position"), NodePath("base/belt:position"), NodePath("base/hip_l/shin_l:position"), NodePath("base/body/sholder_r:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l/hand_l:z_index"), NodePath("base/body/head:rotation_degrees"), NodePath("base/belt:rotation_degrees"), NodePath("base:position"), NodePath("base/hip_l/shin_l:rotation_degrees"), NodePath("base/body/sholder_l:position") ],
 "id": "blend2",
 "position": Vector2( 620, 49 ),
 "type": "blend2"

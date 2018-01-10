@@ -187,7 +187,7 @@ tracks/4/keys = {
 } ]
 }
 
-[node name="pistol" type="Node2D"]
+[node name="pistol" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 

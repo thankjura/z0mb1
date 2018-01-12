@@ -332,4 +332,9 @@ blend_times = [  ]
 autoplay = ""
 _sections_unfolded = [ "Playback Options", "playback" ]
 
+[node name="pos" type="Position2D" parent="." index="10"]
+
+position = Vector2( -400, 0 )
+_sections_unfolded = [ "Transform" ]
+
 

@@ -13,6 +13,8 @@ const RECOIL = Vector2(-200, 0)
 const SPREADING = 0.05
 const OVERHEAD_TIMEOUT = 3
 
+const ANIM_DEAD_ZONE_BOTTOM = 10
+
 var overheat_time = 0
 
 func _fire_start():

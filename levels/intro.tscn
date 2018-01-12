@@ -21,13 +21,10 @@
 custom_solver_bias = 0.0
 extents = Vector2( 14.8284, 10 )
 
-[node name="world" type="Node"]
+[node name="world" type="Node2D"]
 
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_horizontal_guides_": [  ],
-"_edit_vertical_guides_": [  ]
-}
+_sections_unfolded = [ "Pause", "Z Index" ]
 
 [node name="bg" type="StaticBody2D" parent="." index="0"]
 
@@ -74,6 +71,7 @@ polygon = PoolVector2Array( 3940.85, 190.43, 3934.03, 87.0514, 4038.54, 84.2114,
 
 [node name="parallax_background" type="ParallaxBackground" parent="." index="1"]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -99,9 +97,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = -102.0
 margin_right = 7803.0
-margin_bottom = 1248.0
+margin_bottom = 1231.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 1
 size_flags_horizontal = 1
@@ -195,11 +192,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -3.0
-margin_top = -610.0
-margin_right = 7798.0
-margin_bottom = 565.0
-rect_scale = Vector2( 1, 1.7 )
+margin_top = -430.0
+margin_right = 7801.0
+margin_bottom = 745.0
+rect_scale = Vector2( 1, 1.5 )
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 1
 size_flags_horizontal = 1
@@ -354,5 +350,14 @@ position = Vector2( 964.483, 922.451 )
 [node name="pistol_entity" parent="." index="9" instance=ExtResource( 15 )]
 
 position = Vector2( 456.681, 929.267 )
+
+[node name="top_left_limit" type="Position2D" parent="." index="10"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="bottom_right_limit" type="Position2D" parent="." index="11"]
+
+position = Vector2( 7782.89, 1176.35 )
+_sections_unfolded = [ "Transform" ]
 
 

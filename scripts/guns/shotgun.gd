@@ -12,6 +12,8 @@ const PELLETS_PER_SHOOT = 10
 const RECOIL = Vector2(-300, 0)
 const VIEWPORT_SHUTTER = 3
 
+const ANIM_DEAD_ZONE_BOTTOM = 15
+
 func _ready():
     _reset_view()
     $anim.connect("animation_finished", self, "_end_animation")

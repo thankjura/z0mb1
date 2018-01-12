@@ -1,3 +1,5 @@
+extends Node
+
 const MAX_JUMP_COUNT = 2
 const MAX_FALL_SPEED = 800
 const MAX_JUMP_SPEED = 800
@@ -153,6 +155,9 @@ func gun_reload():
 func gun_recoil(recoil_vector):
     recoil.x += recoil_vector.x
 
+func is_back():
+    return player.get_node("base").scale != body_scale
+
 func _start_gun_reload():
     if player.gun and player.gun.AIM_NAME == AIM_SHOTGUN_NAME:
         reload_in_timeout = SHOTGUN_RELOAD_IN
@@ -182,7 +187,17 @@ func process(delta):
     var move_vector = input.get_move_vector()
     var direction = move_vector
     if MOVEMENT_MODE == 1:
-        direction = input.get_direction(player)
+        if player.gun:
+            direction = (player.get_global_mouse_position() - player.gun.get_node("pos").global_position).normalized()
+            var dist = abs((player.global_position.x - player.get_global_mouse_position().x))
+            if player.get_global_mouse_position().y > player.gun.get_node("pos").global_position.x:
+                if dist < player.gun.ANIM_DEAD_ZONE_BOTTOM:
+                    direction.x = 0
+            else:
+                if dist < player.gun.ANIM_DEAD_ZONE_TOP:
+                    direction.x = 0
+        else:
+            direction = input.get_direction(player)
 
     if player.is_on_floor():
         jump_count = 0

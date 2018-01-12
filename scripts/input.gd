@@ -20,8 +20,8 @@ func get_move_vector():
 
     return out.normalized()
 
-func get_direction(player):
-    return player.get_local_mouse_position().normalized()
+func get_direction(node):
+    return (node.get_global_mouse_position() - node.global_position)
 
 func vibrate(time, weak=1, strong=1, duration=0.3):
     if Input.is_joy_known(GAMEPAD_ID):

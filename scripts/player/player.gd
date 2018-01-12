@@ -72,4 +72,12 @@ func _physics_process(delta):
 
     if Input.is_mouse_button_pressed(BUTTON_LEFT):
         _fire(delta)
+
     movement.process(delta)
+
+    if movement.is_back():
+        $camera.drag_margin_left = 0.3
+        $camera.drag_margin_right = 0.1
+    else:
+        $camera.drag_margin_left = 0.1
+        $camera.drag_margin_right = 0.3

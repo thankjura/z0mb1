@@ -4,8 +4,14 @@ msgstr ""
 msgid "CONTINUE"
 msgstr ""
 
-msgid "PREFERENCES"
+msgid "SETTINGS"
 msgstr ""
 
 msgid "QUIT"
+msgstr ""
+
+msgid "RESUME GAME"
+msgstr ""
+
+msgid "SAVE AND EXIT"
 msgstr ""

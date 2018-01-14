@@ -8,6 +8,6 @@ func _ready():
 func _on_quit_pressed():
     get_tree().quit()
 
-
 func _on_cancel_pressed():
+    global.resume()
     queue_free()

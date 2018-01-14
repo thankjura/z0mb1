@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/main/quit_confirm.gd" type="Script" id=1]
 [ext_resource path="res://resources/materials/blur_shader.tres" type="Material" id=2]
 [ext_resource path="res://resources/themes/game_menu.tres" type="Theme" id=3]
-[ext_resource path="res://resources/themes/game_menu_cursor.tres" type="StyleBox" id=4]
+[ext_resource path="res://resources/themes/game_menu_panel.tres" type="StyleBox" id=4]
+[ext_resource path="res://resources/themes/game_menu_cursor.tres" type="StyleBox" id=5]
 
 [node name="quit_confirm" type="CanvasLayer"]
 
 pause_mode = 2
-layer = 1
+layer = 10
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
@@ -39,17 +40,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -666.0
-margin_top = -191.0
-margin_right = 666.0
-margin_bottom = 173.0
+margin_left = -685.0
+margin_top = -144.0
+margin_right = 685.0
+margin_bottom = 144.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 theme = ExtResource( 3 )
-_sections_unfolded = [ "Anchor", "Margin", "Rect", "Size Flags", "Theme" ]
+custom_styles/panel = ExtResource( 4 )
+_sections_unfolded = [ "Theme", "custom_styles" ]
 
 [node name="cursor" type="Panel" parent="panel" index="0"]
 
@@ -57,34 +59,30 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 783.0
-margin_top = 125.0
-margin_right = 1124.0
-margin_bottom = 242.0
+margin_left = 868.0
+margin_top = 83.0
+margin_right = 1209.0
+margin_bottom = 200.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/panel = ExtResource( 4 )
-_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Rect", "Visibility", "custom_styles" ]
+custom_styles/panel = ExtResource( 5 )
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Rect", "Visibility", "custom_styles" ]
 
 [node name="items" type="Container" parent="panel" index="1"]
 
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -666.0
-margin_top = -182.0
-margin_right = 666.0
-margin_bottom = 182.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-_sections_unfolded = [ "Anchor", "Grow Direction", "Hint", "Margin", "Rect", "custom_constants" ]
+_sections_unfolded = [ "Anchor", "Grow Direction", "Hint", "Margin", "Rect", "Theme", "custom_constants" ]
 
 [node name="quit" type="Button" parent="panel/items" index="0"]
 
@@ -92,8 +90,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 629.0
-margin_bottom = 364.0
+margin_left = 2.0
+margin_top = 1.0
+margin_right = 670.0
+margin_bottom = 285.0
 rect_pivot_offset = Vector2( 0, 0 )
 focus_mode = 2
 mouse_filter = 0
@@ -114,9 +114,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 649.0
-margin_right = 1332.0
-margin_bottom = 364.0
+margin_left = 698.0
+margin_right = 1368.0
+margin_bottom = 287.0
 rect_pivot_offset = Vector2( 0, 0 )
 focus_mode = 2
 mouse_filter = 0
@@ -130,5 +130,9 @@ group = null
 text = "CANCEL"
 flat = true
 align = 1
+
+[connection signal="pressed" from="panel/items/quit" to="." method="_on_quit_pressed"]
+
+[connection signal="pressed" from="panel/items/cancel" to="." method="_on_cancel_pressed"]
 
 

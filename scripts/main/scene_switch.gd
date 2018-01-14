@@ -14,6 +14,6 @@ func _end():
 
 func _change_scene():
     if scene_path:
-        print("change to scene %s", scene_path)
+        get_tree().get_current_scene().queue_free()
         get_tree().change_scene(scene_path)
         scene_path = ""

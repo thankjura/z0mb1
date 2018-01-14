@@ -456,12 +456,13 @@ margin_left = 1440.0
 margin_right = 1480.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 theme = SubResource( 2 )
-_sections_unfolded = [ "Mouse", "Theme" ]
+_sections_unfolded = [ "Focus", "Mouse", "Theme" ]
 
 [node name="continue" type="Button" parent="menu_items" index="0"]
 

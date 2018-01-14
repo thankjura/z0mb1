@@ -20,6 +20,7 @@ func resume():
 
 func main_menu():
     get_tree().set_pause(false)
+    current_menu = null
     scene_switch.simple(MAIN_SCENE)
 
 func new_game():

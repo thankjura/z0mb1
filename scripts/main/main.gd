@@ -17,6 +17,7 @@ func _focus_item(i):
     $menu_tap.play()
 
 func _mouse_item(i):
+    print("mouse")
     i.grab_focus()
 
 func _on_continue_pressed():

@@ -1,11 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_resource type="Theme" load_steps=5 format=2]
 
-[ext_resource path="res://scripts/main/main.gd" type="Script" id=1]
-[ext_resource path="res://textures/main/main.jpg" type="Texture" id=2]
-[ext_resource path="res://textures/main/menu.png" type="Texture" id=3]
-[ext_resource path="res://fonts/main_menu.otf" type="DynamicFontData" id=4]
-[ext_resource path="res://sounds/menu/toggle.wav" type="AudioStream" id=5]
-[ext_resource path="res://sounds/menu/enter.wav" type="AudioStream" id=6]
+[ext_resource path="res://fonts/main_menu.otf" type="DynamicFontData" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -14,26 +9,55 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="StyleBoxFlat" id=1]
 
-size = 54
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.078125, 0.0408936, 0.0408936, 0.856353 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Corner Radius" ]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 100
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="Theme" id=2]
+[resource]
 
-default_font = SubResource( 1 )
-Button/colors/font_color = Color( 0.175781, 0.140762, 0.140762, 1 )
-Button/colors/font_color_disabled = Color( 0.613281, 0.613281, 0.613281, 1 )
-Button/colors/font_color_hover = Color( 0.175781, 0, 0, 1 )
-Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+default_font = SubResource( 2 )
+Button/colors/font_color = Color( 0.839216, 0.839216, 0.839216, 1 )
+Button/colors/font_color_disabled = Color( 0.839216, 0.839216, 0.839216, 1 )
+Button/colors/font_color_hover = Color( 0.839216, 0.839216, 0.839216, 1 )
+Button/colors/font_color_pressed = Color( 0.839844, 0.839844, 0.839844, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = null
 Button/styles/disabled = null
-Button/styles/focus = null
-Button/styles/hover = SubResource( 3 )
+Button/styles/focus = SubResource( 3 )
+Button/styles/hover = null
 Button/styles/normal = null
 Button/styles/pressed = null
 ButtonGroup/styles/panel = null
@@ -125,7 +149,7 @@ GraphNode/styles/position = null
 GraphNode/styles/selectedframe = null
 GridContainer/constants/hseparation = 4
 GridContainer/constants/vseparation = 4
-HBoxContainer/constants/separation = 4
+HBoxContainer/constants/separation = 400
 HScrollBar/icons/decrement = null
 HScrollBar/icons/decrement_highlight = null
 HScrollBar/icons/increment = null
@@ -166,7 +190,7 @@ ItemList/styles/cursor = null
 ItemList/styles/cursor_unfocused = null
 ItemList/styles/selected = null
 ItemList/styles/selected_focus = null
-Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/colors/font_color = Color( 1, 1, 1, 1 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 1 )
 Label/constants/line_spacing = 3
 Label/constants/shadow_as_outline = 0
@@ -217,7 +241,7 @@ OptionButton/styles/focus = null
 OptionButton/styles/hover = null
 OptionButton/styles/normal = null
 OptionButton/styles/pressed = null
-Panel/styles/panel = null
+Panel/styles/panel = SubResource( 1 )
 Panel/styles/panelf = null
 Panel/styles/panelnc = null
 PanelContainer/styles/panel = null
@@ -379,7 +403,7 @@ Tree/styles/selected_focus = null
 Tree/styles/title_button_hover = null
 Tree/styles/title_button_normal = null
 Tree/styles/title_button_pressed = null
-VBoxContainer/constants/separation = 4
+VBoxContainer/constants/separation = 100
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null
@@ -413,175 +437,5 @@ WindowDialog/fonts/title_font = null
 WindowDialog/icons/close = null
 WindowDialog/icons/close_highlight = null
 WindowDialog/styles/panel = null
-_sections_unfolded = [ "Button", "Button/styles" ]
-
-[node name="main" type="Node2D" index="0"]
-
-z_index = 1
-script = ExtResource( 1 )
-_sections_unfolded = [ "Pause", "Transform", "Z Index" ]
-
-[node name="background" type="TextureRect" parent="." index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1920.0
-margin_bottom = 1080.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 0
-_sections_unfolded = [ "Margin", "Material", "Rect", "Visibility" ]
-
-[node name="menu_bg" type="Sprite" parent="." index="1"]
-
-position = Vector2( 1440, 0 )
-texture = ExtResource( 3 )
-centered = false
-_sections_unfolded = [ "Offset", "Transform" ]
-
-[node name="menu_items" type="Control" parent="." index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 1440.0
-margin_right = 1480.0
-margin_bottom = 40.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-theme = SubResource( 2 )
-_sections_unfolded = [ "Mouse", "Theme" ]
-
-[node name="continue" type="Button" parent="menu_items" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 34.0
-margin_top = 243.0
-margin_right = 409.0
-margin_bottom = 310.0
-rect_pivot_offset = Vector2( 0, 0 )
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "CONTINUE"
-flat = true
-align = 1
-
-[node name="new_game" type="Button" parent="menu_items" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 15.0
-margin_top = 409.0
-margin_right = 393.0
-margin_bottom = 479.0
-rect_pivot_offset = Vector2( 0, 0 )
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "NEW GAME"
-flat = true
-align = 1
-
-[node name="settings" type="Button" parent="menu_items" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 24.0
-margin_top = 577.0
-margin_right = 404.0
-margin_bottom = 646.0
-rect_pivot_offset = Vector2( 0, 0 )
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "SETTINGS"
-flat = true
-align = 1
-
-[node name="quit" type="Button" parent="menu_items" index="3"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 47.0
-margin_top = 744.0
-margin_right = 427.0
-margin_bottom = 813.0
-rect_pivot_offset = Vector2( 0, 0 )
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "QUIT"
-flat = true
-align = 1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
-
-[node name="menu_tap" type="AudioStreamPlayer" parent="." index="3"]
-
-stream = ExtResource( 5 )
-volume_db = -20.0
-autoplay = false
-mix_target = 0
-bus = "Master"
-
-[node name="menu_enter" type="AudioStreamPlayer" parent="." index="4"]
-
-stream = ExtResource( 6 )
-volume_db = -20.0
-autoplay = false
-mix_target = 0
-bus = "Master"
-
-[connection signal="pressed" from="menu_items/continue" to="." method="_on_continue_pressed"]
-
-[connection signal="pressed" from="menu_items/new_game" to="." method="_on_new_game_pressed"]
-
-[connection signal="pressed" from="menu_items/settings" to="." method="_on_settings_pressed"]
-
-[connection signal="pressed" from="menu_items/quit" to="." method="_on_quit_pressed"]
-
+_sections_unfolded = [ "Button", "Button/constants", "Button/styles", "HBoxContainer", "HBoxContainer/constants", "Label", "Label/colors", "Panel", "Panel/styles", "VBoxContainer", "VBoxContainer/constants" ]
 

@@ -11,6 +11,7 @@ const DROP_VELOCITY = Vector2(400,-400)
 const DROP_ANGULAR = 10
 const RECOIL = Vector2(0, 0)
 const SPREADING = 0.0
+const HEAVINES = 0
 
 const ANIM_DEAD_ZONE_TOP = 0
 const ANIM_DEAD_ZONE_BOTTOM = 0

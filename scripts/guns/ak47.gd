@@ -12,6 +12,7 @@ const DROP_ANGULAR = 1
 const RECOIL = Vector2(-200, 0)
 const SPREADING = 0.05
 const OVERHEAD_TIMEOUT = 3
+const HEAVINES = 0.3
 
 const ANIM_DEAD_ZONE_BOTTOM = 10
 

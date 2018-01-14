@@ -11,6 +11,7 @@ const DROP_ANGULAR = 1
 const PELLETS_PER_SHOOT = 10
 const RECOIL = Vector2(-300, 0)
 const VIEWPORT_SHUTTER = 3
+const HEAVINES = 0.3
 
 const ANIM_DEAD_ZONE_BOTTOM = 15
 

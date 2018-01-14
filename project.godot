@@ -11,16 +11,16 @@ config_version=3
 [application]
 
 config/name="z0mb1"
-run/main_scene="res://levels/intro.tscn"
+run/main_scene="res://scenes/main/main.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="z0mb1"
 config/icon="res://icon.png"
 
 [autoload]
 
-global="*res://scripts/global.gd"
-save="*res://scripts/save.gd"
 scene_switch="*res://scenes/main/scene_switch.tscn"
+save="*res://scripts/save.gd"
+global="*res://scripts/global.gd"
 
 [display]
 
@@ -82,14 +82,13 @@ name_casing=2
 
 2d/physics_engine="GodotPhysics"
 3d/physics_engine="Bullet"
-2d/thread_model=2
+2d/thread_model=0
 
 [rendering]
 
 quality/intended_usage/framebuffer_mode=4
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
-threads/thread_model=0
 quality/filters/use_nearest_mipmap_filter=true
 quality/subsurface_scattering/quality=2
 environment/default_clear_color=Color( 0.09375, 0.0904541, 0.0904541, 1 )

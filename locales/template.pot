@@ -15,3 +15,6 @@ msgstr ""
 
 msgid "SAVE AND EXIT"
 msgstr ""
+
+msgid "CANCEL"
+msgstr ""

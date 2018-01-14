@@ -3,20 +3,22 @@ extends Node
 const MAX_JUMP_COUNT = 2
 const MAX_FALL_SPEED = 800
 const MAX_JUMP_SPEED = 800
-const GRAVITY = Vector2(0, 2000)
+const INIT_GRAVITY = Vector2(0, 2000)
+const INIT_MAX_SPEED = 400
 
 const JUMP_FORCE = 800
-const WALK_ACCELERATION = 0.6
-const WALK_AIR_ACCELERATION = 0.01
-const WALK_MAX_SPEED = 300
-const WALK_AIR_MAX_SPEED = 300
+const ACCELERATION = 0.6
+const AIR_ACCELERATION = 0.1
+const RUN_SPEED = 300
 const FLOOR_NORMAL = Vector2(0, -1)
 const SLOPE_FRICTION = 20
 const DEFAULT_VECTOR = Vector2(0, -1)
 
 const GROUND_BLEND_NODE = "ground_blend"
+const WALK_BLEND_NODE = "walk_blend"
 const GROUND_SCALE_NODE = "ground_scale"
 const WALK_DIRECTION_NODE = "walk_direction"
+const RUN_DIRECTION_NODE = "run_direction"
 const STATE_NODE = "ground_air_transition"
 const AIM_BLEND_NODE = "aim_blend"
 const AIM_SWITCH_NODE = "aim_transition"
@@ -29,6 +31,8 @@ const SHOTGUN_RELOAD_OUT = 0.1
 const AIM_SHOTGUN_NAME = "aim_shotgun"
 
 var MOVEMENT_MODE = 1
+var MAX_SPEED = 600
+var GRAVITY = INIT_GRAVITY
 
 enum STATE {
     ground,
@@ -67,6 +71,14 @@ func _init(var player, var anim):
     self.anim.set_active(true)
     self.input = load("res://scripts/input.gd").new()
 
+func _recalc_mass():
+    if player.gun:
+        MAX_SPEED = INIT_MAX_SPEED - INIT_MAX_SPEED * player.gun.HEAVINES
+        GRAVITY = INIT_GRAVITY + INIT_GRAVITY * player.gun.HEAVINES
+    else:
+        MAX_SPEED = INIT_MAX_SPEED
+        GRAVITY = INIT_GRAVITY
+
 func _ground_state(delta, m = Vector2(), direction = 1):
     air_state = false
     var movement = 0
@@ -74,14 +86,20 @@ func _ground_state(delta, m = Vector2(), direction = 1):
         movement = -1
     elif m.x > 0:
         movement = 1
-    movement *= WALK_MAX_SPEED
-    velocity.x = lerp(velocity.x, movement, WALK_ACCELERATION)
+    movement *= MAX_SPEED
+    velocity.x = lerp(velocity.x, movement, ACCELERATION)
     if sign(velocity.x) * direction > 0:
         anim.blend2_node_set_amount(WALK_DIRECTION_NODE, 0)
+        anim.blend2_node_set_amount(RUN_DIRECTION_NODE, 0)
     else:
         anim.blend2_node_set_amount(WALK_DIRECTION_NODE, 1)
-    anim.blend2_node_set_amount(GROUND_BLEND_NODE, abs(velocity.x / WALK_MAX_SPEED))
-    anim.timescale_node_set_scale(GROUND_SCALE_NODE, abs(velocity.x)*delta)
+        anim.blend2_node_set_amount(RUN_DIRECTION_NODE, 1)
+    if abs(velocity.x) >= RUN_SPEED:
+        anim.blend2_node_set_amount(WALK_BLEND_NODE, 1)
+    else:
+        anim.blend2_node_set_amount(WALK_BLEND_NODE, 0)
+    anim.blend2_node_set_amount(GROUND_BLEND_NODE, abs(velocity.x / MAX_SPEED))
+    anim.timescale_node_set_scale(GROUND_SCALE_NODE, abs(velocity.x)*delta*1.2)
     anim.transition_node_set_current(STATE_NODE, STATE.ground)
 
 func _air_state(delta, m = Vector2()):
@@ -90,8 +108,8 @@ func _air_state(delta, m = Vector2()):
         movement = -1
     elif m.x > 0:
         movement = 1
-    movement *= WALK_AIR_MAX_SPEED
-    velocity.x = lerp(velocity.x + recoil.x, movement, WALK_AIR_ACCELERATION)
+    movement *= MAX_SPEED
+    velocity.x = lerp(velocity.x + recoil.x, movement, AIR_ACCELERATION)
 
     if velocity.y and air_state:
         if velocity.y > 0:
@@ -121,6 +139,7 @@ func jump():
         velocity.y = -JUMP_FORCE
 
 func set_gun():
+    _recalc_mass()
     player.get_node("base/body/sholder_r/forearm_r/hand_r").set_visible(false)
     player.get_node("base/body/sholder_l/forearm_l/hand_l").set_visible(false)
     if player.gun.AIM_NAME == "aim_pistol":
@@ -137,6 +156,7 @@ func set_gun():
     anim.transition_node_set_current(AIM_SWITCH_NODE, AIM[player.gun.AIM_NAME])
 
 func drop_gun():
+    _recalc_mass()
     player.get_node("base/body/sholder_r/forearm_r/hand_r").set_visible(true)
     player.get_node("base/body/sholder_l/forearm_l/hand_l").set_visible(true)
     #  For pistol
@@ -207,12 +227,12 @@ func process(delta):
         elif direction.x < 0:
             d = -1
         _ground_state(delta, move_vector, d)
-        if abs(velocity.x) > WALK_MAX_SPEED:
-            velocity.x = sign(velocity.x) * WALK_MAX_SPEED
+        if abs(velocity.x) > MAX_SPEED:
+            velocity.x = sign(velocity.x) * MAX_SPEED
     else:
         _air_state(delta, move_vector)
-        if abs(velocity.x) > WALK_AIR_MAX_SPEED:
-            velocity.x = sign(velocity.x) * WALK_AIR_MAX_SPEED
+        if abs(velocity.x) > MAX_SPEED:
+            velocity.x = sign(velocity.x) * MAX_SPEED
 
     if direction:
         _look(DEFAULT_VECTOR.angle_to(direction))

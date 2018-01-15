@@ -7,7 +7,6 @@ const ROTATE_TIME = 0.2
 
 var ROTATION_SPEED = MAX_ROTATE / ROTATE_TIME
 
-var gun
 var rotation_time = 0
 var direction = 1
 var v
@@ -22,10 +21,6 @@ func _animation_finish():
 func _sound_finish():
     queue_free()
 
-func run(gun):
-    self.gun = gun
-    self.set_angular_velocity(ROTATION_SPEED*direction)
-
 func _deactivate():
     active = false
     $sprite.set_visible(false)
@@ -37,8 +32,6 @@ func _deactivate():
     $boom.set_visible(true)
     $boom.play("default")
     $audio_boom.play()
-    if gun:
-        gun._shutter_camera()
     timer = 4
 
 func _process(delta):

@@ -22,7 +22,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 14.8284, 10 )
 
-[node name="world" type="Node2D"]
+[node name="world" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Z Index" ]
@@ -52,25 +52,25 @@ _sections_unfolded = [ "Z Index" ]
 
 position = Vector2( 951.987, 795.216 )
 build_mode = 0
-polygon = PoolVector2Array( 92.1396, 87.7062, 194.382, 83.1621, 226.19, 112.699, 206.17, 183.045, 100.66, 185.972 )
+polygon = PoolVector2Array( 88.513, 90.284, 128.013, 84.284, 184.013, 87.784, 211.013, 108.284, 195.013, 136.284, 189.513, 165.284, 93.513, 175.284 )
 
 [node name="collision_polygon_2d2" type="CollisionPolygon2D" parent="bg" index="2"]
 
-position = Vector2( 951.987, 795.216 )
+position = Vector2( 2872.49, 794.216 )
 build_mode = 0
-polygon = PoolVector2Array( 2019.4, 181.428, 2012.02, 87.1381, 2116.53, 84.2981, 2150.05, 111.563, 2117.1, 191.084 )
+polygon = PoolVector2Array( 88.513, 90.284, 128.013, 84.284, 184.013, 87.784, 210.013, 108.284, 193.013, 139.284, 187.513, 165.784, 93.513, 175.284 )
 
 [node name="collision_polygon_2d3" type="CollisionPolygon2D" parent="bg" index="3"]
 
-position = Vector2( 951.987, 795.216 )
+position = Vector2( 4793.49, 793.716 )
 build_mode = 0
-polygon = PoolVector2Array( 3940.85, 190.43, 3934.03, 87.0514, 4038.54, 84.2114, 4068.08, 111.476, 4034, 195.542 )
+polygon = PoolVector2Array( 88.513, 90.284, 128.013, 84.284, 184.013, 87.784, 208.013, 108.284, 193.513, 137.284, 190.013, 167.784, 93.513, 175.284 )
 
 [node name="collision_polygon_2d4" type="CollisionPolygon2D" parent="bg" index="4"]
 
-position = Vector2( 2871.87, 788.4 )
+position = Vector2( 6713.49, 794.216 )
 build_mode = 0
-polygon = PoolVector2Array( 3940.85, 190.43, 3934.03, 87.0514, 4038.54, 84.2114, 4068.08, 111.476, 4034, 195.542 )
+polygon = PoolVector2Array( 88.513, 90.284, 128.013, 84.284, 184.013, 87.784, 207.513, 109.784, 191.513, 139.784, 189.013, 168.784, 93.513, 175.284 )
 
 [node name="parallax_background" type="ParallaxBackground" parent="." index="1"]
 

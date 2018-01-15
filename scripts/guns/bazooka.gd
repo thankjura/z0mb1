@@ -12,10 +12,11 @@ const SPEED = 500
 const ACCELERATION = 2000
 const VIEWPORT_SHUTTER = 5
 const RELOAD_TIMEOUT = 0.3
+const HEAVINES = 0.4
 
 var wait_for_reload = 0
 
-const ANIM_DEAD_ZONE_BOTTOM = 60
+const ANIM_DEAD_ZONE_BOTTOM = 36
 
 func _reload():
     get_parent().get_owner().gun_reload()
@@ -39,7 +40,6 @@ func fire(delta, velocity):
     f.set_global_position(_get_bullet_position(gun_angle))
     var world = get_tree().get_root().get_node("world")
     world.add_child(f)
-    f.run(self)
     wait_for_reload = RELOAD_TIMEOUT
 
 func _process(delta):

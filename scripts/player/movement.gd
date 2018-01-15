@@ -171,12 +171,14 @@ func drop_gun():
     #  For shotgun / ak47 / bazooka
     player.get_node("base/body/sholder_l/forearm_l/hand_l_shotgun").set_visible(false)
 
+    # Reset animations
+    anim.oneshot_node_stop(BAZOOKA_RELOAD_NODE)
+
 func gun_reload():
     if player.gun and player.gun.AIM_NAME == AIM_SHOTGUN_NAME:
         _start_gun_reload()
     if player.gun and player.gun.AIM_NAME == "aim_bazooka":
         anim.oneshot_node_start(BAZOOKA_RELOAD_NODE)
-
 
 func gun_recoil(recoil_vector):
     recoil.x += recoil_vector.x
@@ -216,7 +218,7 @@ func process(delta):
         if player.gun:
             direction = (player.get_global_mouse_position() - player.gun.get_node("pos").global_position).normalized()
             var dist = abs((player.global_position.x - player.get_global_mouse_position().x))
-            if player.get_global_mouse_position().y > player.gun.get_node("pos").global_position.x:
+            if player.get_global_mouse_position().y > player.gun.get_node("pos").global_position.y:
                 if dist < player.gun.ANIM_DEAD_ZONE_BOTTOM:
                     direction.x = 0
             else:

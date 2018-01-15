@@ -46,7 +46,7 @@ func fire(delta, velocity):
     var spawn_point = $bullet_spawn.global_position
     var bullet_velocity = (spawn_point - global_position).normalized()
     _recoil(RECOIL.rotated(bullet_velocity.angle()))
-    _shutter_camera(delta)
+    _shutter_camera()
     for i in range(0, PELLETS_PER_SHOOT):
         _create_pellet(spawn_point, bullet_velocity, velocity)
 

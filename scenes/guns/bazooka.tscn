@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/guns/bazooka.gd" type="Script" id=1]
+[ext_resource path="res://textures/guns/bazooka/base.png" type="Texture" id=2]
+[ext_resource path="res://sounds/guns/bazooka_shot.wav" type="AudioStream" id=3]
+
+[node name="bazooka" type="Node2D"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="base" type="Sprite" parent="." index="0"]
+
+position = Vector2( 0, 26 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bullet_spawn" type="Position2D" parent="." index="1"]
+
+position = Vector2( 140, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="pos" type="Position2D" parent="." index="2"]
+
+position = Vector2( -400, 0 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="audio_fire" type="AudioStreamPlayer2D" parent="." index="3"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+

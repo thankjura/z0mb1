@@ -12,7 +12,7 @@ const DROP_ANGULAR = 20
 const RECOIL = Vector2(0, 0)
 const SPREADING = 0.01
 
-const ANIM_DEAD_ZONE_BOTTOM = 35
+const ANIM_DEAD_ZONE_BOTTOM = 40
 
 func _muzzle_flash():
     $animation_player.play("fire%d" % (randi()%2+1), -1, 2)

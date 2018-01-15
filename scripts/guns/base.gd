@@ -46,7 +46,7 @@ func fire(delta, velocity):
     if not fired:
         fired = true
         _fire_start()
-    _shutter_camera(delta)
+    _shutter_camera()
     _muzzle_flash()
     _play_sound()
     var f = BULLET.instance()
@@ -72,7 +72,7 @@ func _muzzle_flash():
 func _recoil(recoil_vector):
     get_parent().get_owner().gun_recoil(recoil_vector)
 
-func _shutter_camera(delta):
+func _shutter_camera():
     if not camera or not VIEWPORT_SHUTTER:
         return
     var offset = camera.get_offset()

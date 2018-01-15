@@ -55,7 +55,7 @@ func _deactivate():
     if has_node("particles"):
         $particles.set_emitting(false)
 
-    if has_node("decal"):
+    if decal and has_node("decal"):
         $decal.set_visible(true)
     else:
         queue_free()

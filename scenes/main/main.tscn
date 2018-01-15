@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/main/main.gd" type="Script" id=1]
 [ext_resource path="res://textures/main/main.jpg" type="Texture" id=2]
@@ -7,14 +7,22 @@
 [ext_resource path="res://sounds/menu/toggle.wav" type="AudioStream" id=5]
 [ext_resource path="res://sounds/menu/enter.wav" type="AudioStream" id=6]
 
-[sub_resource type="StyleBoxEmpty" id=3]
+[sub_resource type="StyleBoxEmpty" id=4]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="StyleBoxEmpty" id=1]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+_sections_unfolded = [ "Content Margin", "Resource" ]
+
+[sub_resource type="DynamicFont" id=2]
 
 size = 54
 use_mipmaps = false
@@ -22,18 +30,18 @@ use_filter = false
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="Theme" id=2]
+[sub_resource type="Theme" id=3]
 
-default_font = SubResource( 1 )
+default_font = SubResource( 2 )
 Button/colors/font_color = Color( 0.175781, 0.140762, 0.140762, 1 )
 Button/colors/font_color_disabled = Color( 0.613281, 0.613281, 0.613281, 1 )
-Button/colors/font_color_hover = Color( 0.175781, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0.378906, 0.0473633, 0.0473633, 1 )
 Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = null
 Button/styles/disabled = null
-Button/styles/focus = null
-Button/styles/hover = SubResource( 3 )
+Button/styles/focus = SubResource( 4 )
+Button/styles/hover = SubResource( 1 )
 Button/styles/normal = null
 Button/styles/pressed = null
 ButtonGroup/styles/panel = null
@@ -413,9 +421,9 @@ WindowDialog/fonts/title_font = null
 WindowDialog/icons/close = null
 WindowDialog/icons/close_highlight = null
 WindowDialog/styles/panel = null
-_sections_unfolded = [ "Button", "Button/styles" ]
+_sections_unfolded = [ "Button", "Button/colors", "Button/fonts", "Button/styles", "ButtonGroup", "ButtonGroup/styles" ]
 
-[node name="main" type="Node2D" index="0"]
+[node name="main" type="Node2D"]
 
 z_index = 1
 script = ExtResource( 1 )
@@ -461,7 +469,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = SubResource( 2 )
+theme = SubResource( 3 )
 _sections_unfolded = [ "Focus", "Mouse", "Theme" ]
 
 [node name="continue" type="Button" parent="menu_items" index="0"]

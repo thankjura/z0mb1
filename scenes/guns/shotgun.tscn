@@ -146,7 +146,7 @@ tracks/2/keys = {
 } ]
 }
 
-[node name="shotgun" type="Node2D"]
+[node name="shotgun" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -173,8 +173,8 @@ _sections_unfolded = [ "Transform" ]
 [node name="flash" type="Sprite" parent="." index="1"]
 
 visible = false
-position = Vector2( 290, -3 )
-scale = Vector2( 0.56492, 0.529562 )
+position = Vector2( 310, -3 )
+scale = Vector2( 0.647689, 1.01238 )
 z_index = -1
 texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "Visibility", "Z", "Z Index" ]
@@ -187,7 +187,7 @@ texture = ExtResource( 5 )
 offset = Vector2( 0, 0 )
 texture_scale = 1.5
 color = Color( 1, 1, 1, 1 )
-energy = 0.1
+energy = 0.01
 mode = 0
 range_height = 0.0
 range_z_min = -1024

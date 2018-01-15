@@ -24,6 +24,7 @@ const AIM_BLEND_NODE = "aim_blend"
 const AIM_SWITCH_NODE = "aim_transition"
 const SHOTGUN_RELOAD_NODE = "shotgun_reload"
 const ANIMATION_WALK_NODE = "anim_walk"
+const BAZOOKA_RELOAD_NODE = "bazooka_reload"
 
 const SHOTGUN_RELOAD_IN = 0.1
 const SHOTGUN_RELOAD_OUT = 0.1
@@ -44,7 +45,8 @@ enum AIM {
     aim_pistol,
     aim_ak47,
     aim_shotgun,
-    aim_minigun
+    aim_minigun,
+    aim_bazooka,
 }
 
 var input
@@ -148,9 +150,10 @@ func set_gun():
     elif player.gun.AIM_NAME == "aim_minigun":
         player.get_node("base/body/sholder_r/forearm_r/hand_r_minigun").set_visible(true)
         player.get_node("base/body/sholder_l/forearm_l/hand_l_minigun").set_visible(true)
-    elif player.gun.AIM_NAME == "aim_shotgun" or player.gun.AIM_NAME == "aim_ak47":
+    elif player.gun.AIM_NAME in ["aim_shotgun", "aim_ak47", "aim_bazooka"]:
         player.get_node("base/body/sholder_r/forearm_r/hand_r_pistol").set_visible(true)
         player.get_node("base/body/sholder_l/forearm_l/hand_l_shotgun").set_visible(true)
+
     anim.transition_node_set_current(AIM_SWITCH_NODE, 0)
     anim.transition_node_set_current(AIM_SWITCH_NODE, 1)
     anim.transition_node_set_current(AIM_SWITCH_NODE, AIM[player.gun.AIM_NAME])
@@ -165,12 +168,15 @@ func drop_gun():
     #  For minigun
     player.get_node("base/body/sholder_r/forearm_r/hand_r_minigun").set_visible(false)
     player.get_node("base/body/sholder_l/forearm_l/hand_l_minigun").set_visible(false)
-    #  For shotgun / ak47
+    #  For shotgun / ak47 / bazooka
     player.get_node("base/body/sholder_l/forearm_l/hand_l_shotgun").set_visible(false)
 
 func gun_reload():
     if player.gun and player.gun.AIM_NAME == AIM_SHOTGUN_NAME:
         _start_gun_reload()
+    if player.gun and player.gun.AIM_NAME == "aim_bazooka":
+        anim.oneshot_node_start(BAZOOKA_RELOAD_NODE)
+
 
 func gun_recoil(recoil_vector):
     recoil.x += recoil_vector.x

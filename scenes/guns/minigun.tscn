@@ -1,12 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/guns/minigun.gd" type="Script" id=1]
 [ext_resource path="res://textures/guns/minigun/body.png" type="Texture" id=2]
 [ext_resource path="res://textures/guns/minigun/barrel1.png" type="Texture" id=3]
 [ext_resource path="res://textures/guns/minigun/barrel2.png" type="Texture" id=4]
-[ext_resource path="res://textures/guns/minigun/case.png" type="Texture" id=5]
-[ext_resource path="res://textures/guns/muzzle_flashes/flash1.png" type="Texture" id=6]
-[ext_resource path="res://sounds/guns/minigun.wav" type="AudioStream" id=7]
+[ext_resource path="res://textures/guns/muzzle_flashes/flash1.png" type="Texture" id=5]
+[ext_resource path="res://sounds/guns/minigun.wav" type="AudioStream" id=6]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -25,60 +24,7 @@ flags = 4
 gradient = SubResource( 2 )
 width = 2048
 
-[sub_resource type="Curve" id=4]
-
-min_value = -360.0
-max_value = 360.0
-bake_resolution = 100
-_data = [ Vector2( 0.0608408, -23.9363 ), 0.0, 1376.84, 0, 0, Vector2( 0.337148, -125.314 ), 0.0, 0.0, 0, 0, Vector2( 0.519295, 74.6251 ), 0.0, 0.0, 0, 0, Vector2( 0.665939, -257.668 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=5]
-
-flags = 4
-width = 2048
-curve = SubResource( 4 )
-
-[sub_resource type="ParticlesMaterial" id=6]
-
-render_priority = 0
-trail_divisor = 1
-emission_shape = 0
-flag_align_y = false
-flag_rotate_y = false
-flag_disable_z = true
-spread = 10.0
-flatness = 1.0
-gravity = Vector3( 0, 200, 0 )
-initial_velocity = 200.0
-initial_velocity_random = 0.5
-angular_velocity = 0.0
-angular_velocity_random = 0.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-linear_accel = 100.0
-linear_accel_random = 0.0
-radial_accel = 0.0
-radial_accel_random = 0.0
-tangential_accel = 0.0
-tangential_accel_random = 0.0
-damping = 50.0
-damping_random = 1.0
-angle = 120.0
-angle_random = 1.0
-angle_curve = SubResource( 5 )
-scale = 0.3
-scale_random = 0.0
-color = Color( 1, 1, 1, 1 )
-hue_variation = 0.0
-hue_variation_random = 0.0
-anim_speed = 0.0
-anim_speed_random = 0.0
-anim_offset = 0.0
-anim_offset_random = 0.0
-anim_loop = false
-_sections_unfolded = [ "Angle", "Angular Velocity", "Color", "Damping", "Emission Shape", "Flags", "Gravity", "Initial Velocity", "Scale", "Spread", "Trail" ]
-
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 
 length = 0.5
 loop = true
@@ -168,7 +114,7 @@ tracks/6/keys = {
 "values": [ Vector2( 236, 17 ), Vector2( 236, 19 ), Vector2( 236, 16 ), Vector2( 236, 19 ), Vector2( 236, 17 ), Vector2( 236, 18 ) ]
 }
 
-[node name="minigun" type="Node2D"]
+[node name="minigun" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform" ]
@@ -176,7 +122,12 @@ __meta__ = {
 "_edit_horizontal_guides_": [ -4.646, 33.2074 ]
 }
 
-[node name="body" type="Sprite" parent="." index="0"]
+[node name="shell_gate" type="Position2D" parent="." index="0"]
+
+position = Vector2( 77.5081, 17.5658 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="body" type="Sprite" parent="." index="1"]
 
 position = Vector2( 0, -17 )
 z_index = 1
@@ -193,7 +144,7 @@ _sections_unfolded = [ "Material", "Transform", "Visibility", "Z", "Z Index" ]
 
 [node name="barrel_run" type="Sprite" parent="body" index="1"]
 
-position = Vector2( 236, 19 )
+position = Vector2( 236, 18 )
 z_index = -1
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z", "Z Index" ]
@@ -220,36 +171,12 @@ expand = true
 stretch_mode = 0
 _sections_unfolded = [ "Hint", "Material", "Rect", "Visibility" ]
 
-[node name="shell_particles" type="Particles2D" parent="." index="1"]
-
-position = Vector2( 74.6622, 33.0625 )
-rotation = 1.5708
-z_index = -1
-emitting = false
-amount = 3
-lifetime = 2.0
-one_shot = false
-preprocess = 0.0
-speed_scale = 6.0
-explosiveness = 0.0
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = false
-draw_order = 0
-process_material = SubResource( 6 )
-texture = ExtResource( 5 )
-normal_map = null
-h_frames = 1
-v_frames = 1
-_sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Transform", "Visibility", "Z", "Z Index" ]
-
 [node name="flash" type="Sprite" parent="." index="2"]
 
 visible = false
-position = Vector2( 374, 4 )
-texture = ExtResource( 6 )
+position = Vector2( 374, -12 )
+scale = Vector2( 0.956865, -0.594313 )
+texture = ExtResource( 5 )
 offset = Vector2( 52.9424, 0.120224 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "Z" ]
 __meta__ = {
@@ -259,9 +186,9 @@ __meta__ = {
 [node name="light" type="Light2D" parent="flash" index="0"]
 
 position = Vector2( 52.9424, 0.120224 )
-enabled = true
+enabled = false
 editor_only = false
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 offset = Vector2( 0, 0 )
 texture_scale = 2.0
 color = Color( 1, 1, 1, 1 )
@@ -289,7 +216,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="audio_fire" type="AudioStreamPlayer" parent="." index="4"]
 
-stream = ExtResource( 7 )
+stream = ExtResource( 6 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
@@ -302,7 +229,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/fire = SubResource( 7 )
+anims/fire = SubResource( 4 )
 blend_times = [  ]
 autoplay = ""
 _sections_unfolded = [ "Playback Options", "playback" ]

@@ -2,6 +2,7 @@ extends "res://scripts/guns/base.gd"
 
 const BULLET = preload("res://scenes/guns/bullets/shotgun_pellet.tscn")
 const ENTITY = preload("res://scenes/entities/shotgun_entity.tscn")
+const SHELL = preload("res://scenes/guns/shells/shotgun_shell.tscn")
 const SPEED = 2000
 const TIMEOUT = 1
 const OFFSET = Vector2(104, -22)
@@ -12,6 +13,7 @@ const PELLETS_PER_SHOOT = 10
 const RECOIL = Vector2(-300, 0)
 const VIEWPORT_SHUTTER = 3
 const HEAVINES = 0.3
+const EJECT_SHELL_VECTOR = Vector2(0, -300)
 
 const ANIM_DEAD_ZONE_BOTTOM = 15
 
@@ -33,7 +35,6 @@ func _create_pellet(spawn_point, bullet_velocity, velocity):
     p.rotate(Vector2(1, 0).angle_to(v))
     p.set_axis_velocity(v*SPEED*(1.2 - (randf()*0.4)) + velocity)
     p.set_global_position(spawn_point)
-    var world = get_tree().get_root().get_node("world")
     world.add_child(p)
 
 func fire(delta, velocity):
@@ -49,9 +50,6 @@ func fire(delta, velocity):
     _shutter_camera()
     for i in range(0, PELLETS_PER_SHOOT):
         _create_pellet(spawn_point, bullet_velocity, velocity)
-
-func _eject_shell():
-    $shell_particles.restart()
 
 func _reset_view():
     $anim.set_current_animation("reload")

@@ -2,6 +2,7 @@ extends Node2D
 
 const BULLET = null
 const ENTITY = null
+const SHELL = null
 const SPEED = 500
 const TIMEOUT = 0.2
 const OFFSET = Vector2(40, -10)
@@ -12,6 +13,7 @@ const DROP_ANGULAR = 10
 const RECOIL = Vector2(0, 0)
 const SPREADING = 0.0
 const HEAVINES = 0
+const EJECT_SHELL_VECTOR = Vector2(0, -200)
 
 const ANIM_DEAD_ZONE_TOP = 0
 const ANIM_DEAD_ZONE_BOTTOM = 0
@@ -21,12 +23,13 @@ var fired = false
 var camera
 var camera_offset
 
+var world
+var player
+
 func _ready():
     set_position(OFFSET)
-
-func set_camera(camera):
-    self.camera = camera
-    self.camera_offset = camera.offset
+    world = get_tree().get_root().get_node("world")
+    player = get_parent().get_owner()
 
 func _get_bullet_vector():
     var out = ($bullet_spawn.global_position - global_position).normalized()
@@ -37,6 +40,20 @@ func _get_bullet_vector():
 
 func _get_bullet_position(gun_angle):
     return $bullet_spawn.global_position
+
+func _eject_shell():
+    if SHELL:
+        var v = EJECT_SHELL_VECTOR * rand_range(0.8, 1.2)
+        var s = SHELL.instance()
+        s.set_global_position($shell_gate.global_position)
+        var global_rot = $shell_gate.global_rotation
+        if abs($shell_gate.global_rotation) > PI/2:
+            v.x = -v.x
+            global_rot = PI - global_rot
+        s.set_global_rotation(global_rot)
+        world.add_child(s)
+        var impulse = v.rotated(global_rot)
+        s.apply_impulse(Vector2(0,0), impulse + player.movement.velocity)
 
 func fire(delta, velocity):
     if wait_ready > 0:
@@ -70,17 +87,10 @@ func _muzzle_flash():
     pass
 
 func _recoil(recoil_vector):
-    get_parent().get_owner().gun_recoil(recoil_vector)
+    player.gun_recoil(recoil_vector)
 
 func _shutter_camera():
-    if not camera or not VIEWPORT_SHUTTER:
-        return
-    var offset = camera.get_offset()
-    if offset.y - camera_offset.y >= 0:
-        offset.y -= VIEWPORT_SHUTTER
-    else:
-        offset.y += VIEWPORT_SHUTTER
-    camera.set_offset(offset)
+    player.shuffle_camera(VIEWPORT_SHUTTER)
 
 func _play_sound():
     if has_node("audio_fire"):

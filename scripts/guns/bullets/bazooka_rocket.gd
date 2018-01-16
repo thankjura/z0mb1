@@ -14,6 +14,7 @@ var v
 func _ready():
     $boom.connect("animation_finished", self, "_animation_finish")
     $audio_boom.connect("finished", self, "_sound_finish")
+    $audio_fire.play()
 
 func _animation_finish():
     $boom.set_visible(false)
@@ -23,6 +24,7 @@ func _sound_finish():
 
 func _deactivate():
     active = false
+    $audio_fire.stop()
     $sprite.set_visible(false)
     set_applied_force(Vector2())
     set_mode(MODE_STATIC)
@@ -33,6 +35,7 @@ func _deactivate():
     $boom.play("default")
     $audio_boom.play()
     timer = 4
+    get_node("/root/world/player").shuffle_camera(20, 1)
 
 func _process(delta):
     timer -= delta

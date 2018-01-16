@@ -8,6 +8,11 @@ var gui
 var gun
 var movement
 
+var shuffle = 0
+var shuffle_time = 0
+var shuffle_timeout = 0
+var camera_offset = Vector2()
+
 func _ready():
     set_collision_layer(constants.PLAYER_LAYER)
     set_collision_mask(constants.PLAYER_MASK)
@@ -16,6 +21,7 @@ func _ready():
     gui = get_tree().get_root().get_node("world/gui")
     _update_health()
     movement.look_default()
+    camera_offset = $camera.get_offset()
 
 func set_gun(gun_class):
     if gun:
@@ -23,7 +29,6 @@ func set_gun(gun_class):
     gun = load(gun_class).instance()
 
     get_node("base/body/sholder_r/forearm_r/gun_position").add_child(gun)
-    gun.set_camera($camera)
     movement.set_gun()
     return true
 
@@ -65,6 +70,23 @@ func _input(event):
     if event is InputEventMouseButton:
         if event.button_index == BUTTON_RIGHT and event.pressed:
             movement.jump()
+
+func shuffle_camera(force, fade_out_time=0.1):
+    shuffle = force*[-1,1][randi()%2]
+    $camera.set_offset(Vector2(camera_offset.x, camera_offset.y + shuffle))
+    shuffle_timeout = fade_out_time
+
+func _process(delta):
+    if shuffle_timeout > 0:
+        shuffle_timeout -= delta
+        if shuffle_timeout <= 0:
+            $camera.set_offset(camera_offset)
+        else:
+            shuffle_time += delta
+            if shuffle_time > 0.1:
+                shuffle *= -0.8
+                $camera.set_offset(Vector2(camera_offset.x, camera_offset.y + shuffle))
+                shuffle_time = 0
 
 func _physics_process(delta):
     if Input.is_action_pressed("ui_fire"):

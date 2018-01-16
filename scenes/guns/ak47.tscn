@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/guns/ak47.gd" type="Script" id=1]
 [ext_resource path="res://textures/guns/ak47/base.png" type="Texture" id=2]
 [ext_resource path="res://textures/guns/ak47/flash.png" type="Texture" id=3]
-[ext_resource path="res://textures/guns/ak47/shell.png" type="Texture" id=4]
-[ext_resource path="res://sounds/guns/ak47_shot.wav" type="AudioStream" id=5]
+[ext_resource path="res://sounds/guns/ak47_shot.wav" type="AudioStream" id=4]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -23,46 +22,7 @@ flags = 4
 gradient = SubResource( 2 )
 width = 2048
 
-[sub_resource type="ParticlesMaterial" id=4]
-
-render_priority = 0
-trail_divisor = 1
-emission_shape = 0
-flag_align_y = true
-flag_rotate_y = false
-flag_disable_z = true
-spread = 10.0
-flatness = 0.0
-gravity = Vector3( 0, 200, 0 )
-initial_velocity = 150.0
-initial_velocity_random = 0.0
-angular_velocity = 0.0
-angular_velocity_random = 0.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-linear_accel = 0.0
-linear_accel_random = 0.0
-radial_accel = 0.0
-radial_accel_random = 0.0
-tangential_accel = 0.0
-tangential_accel_random = 0.0
-damping = 0.0
-damping_random = 0.0
-angle = 0.0
-angle_random = 0.0
-scale = 0.1
-scale_random = 0.0
-color = Color( 1, 1, 1, 1 )
-hue_variation = 0.0
-hue_variation_random = 0.0
-anim_speed = 0.0
-anim_speed_random = 0.0
-anim_offset = 0.0
-anim_offset_random = 0.0
-anim_loop = false
-_sections_unfolded = [ "Emission Shape", "Flags", "Gravity", "Initial Velocity", "Scale", "Spread", "Trail" ]
-
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 
 length = 0.2
 loop = false
@@ -104,7 +64,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.44222, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 
 length = 0.2
 loop = false
@@ -146,7 +106,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1, -1 ), Vector2( 1.44222, -1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 
 length = 0.2
 loop = false
@@ -188,7 +148,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1.3, -1 ), Vector2( 1.6, -1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 
 length = 0.2
 loop = false
@@ -234,7 +194,11 @@ tracks/2/keys = {
 
 script = ExtResource( 1 )
 
-[node name="body" type="Sprite" parent="." index="0"]
+[node name="shell_gate" type="Position2D" parent="." index="0"]
+
+position = Vector2( -3.97607, -11.9282 )
+
+[node name="body" type="Sprite" parent="." index="1"]
 
 position = Vector2( 0, 35 )
 texture = ExtResource( 2 )
@@ -262,7 +226,7 @@ expand = true
 stretch_mode = 0
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="flash" type="Sprite" parent="." index="1"]
+[node name="flash" type="Sprite" parent="." index="2"]
 
 visible = false
 position = Vector2( 211.339, -0.568024 )
@@ -301,38 +265,14 @@ shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
 _sections_unfolded = [ "Visibility" ]
 
-[node name="bullet_spawn" type="Position2D" parent="." index="2"]
+[node name="bullet_spawn" type="Position2D" parent="." index="3"]
 
 position = Vector2( 200, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="shell_particles" type="Particles2D" parent="." index="3"]
-
-position = Vector2( -3.40805, -11.9282 )
-rotation = 1.5708
-emitting = false
-amount = 5
-lifetime = 2.0
-one_shot = false
-preprocess = 0.0
-speed_scale = 3.0
-explosiveness = 0.0
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = false
-draw_order = 0
-process_material = SubResource( 4 )
-texture = ExtResource( 4 )
-normal_map = null
-h_frames = 1
-v_frames = 1
-_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform" ]
-
 [node name="audio_fire" type="AudioStreamPlayer2D" parent="." index="4"]
 
-stream = ExtResource( 5 )
+stream = ExtResource( 4 )
 volume_db = 0.0
 autoplay = false
 max_distance = 2000.0
@@ -347,10 +287,10 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/fire1 = SubResource( 5 )
-anims/fire2 = SubResource( 6 )
-anims/fire3 = SubResource( 7 )
-anims/fire4 = SubResource( 8 )
+anims/fire1 = SubResource( 4 )
+anims/fire2 = SubResource( 5 )
+anims/fire3 = SubResource( 6 )
+anims/fire4 = SubResource( 7 )
 blend_times = [  ]
 autoplay = ""
 _sections_unfolded = [ "Playback Options", "playback" ]

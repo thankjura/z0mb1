@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scripts/guns/bullets/bazooka_rocket.gd" type="Script" id=1]
 [ext_resource path="res://textures/guns/bazooka/smoke.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://textures/guns/bazooka/boom/010.png" type="Texture" id=17]
 [ext_resource path="res://textures/guns/bazooka/boom/011.png" type="Texture" id=18]
 [ext_resource path="res://sounds/guns/bazooka_roket_explosion.wav" type="AudioStream" id=19]
+[ext_resource path="res://sounds/guns/bazooka_shot.wav" type="AudioStream" id=20]
 
 [sub_resource type="ParticlesMaterial" id=1]
 
@@ -144,6 +145,7 @@ scale = Vector2( 3.33333, 3.33333 )
 z_index = -1
 frames = SubResource( 2 )
 animation = "default"
+frame = 3
 playing = true
 _sections_unfolded = [ "Transform", "Z Index" ]
 
@@ -170,5 +172,16 @@ max_distance = 2000.0
 attenuation = 1.0
 bus = "Master"
 area_mask = 1
+
+[node name="audio_fire" type="AudioStreamPlayer2D" parent="." index="5"]
+
+stream = ExtResource( 20 )
+volume_db = -10.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+_sections_unfolded = [ "Transform" ]
 
 

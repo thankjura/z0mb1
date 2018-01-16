@@ -1,6 +1,7 @@
 extends "res://scripts/guns/base.gd"
 
 const BULLET = preload("res://scenes/guns/bullets/bazooka_rocket.tscn")
+const SHELL = preload("res://scenes/guns/shells/minigun_shell.tscn")
 const ENTITY = preload("res://scenes/entities/bazooka_entity.tscn")
 const TIMEOUT = 2.5
 const OFFSET = Vector2(-24, -40)
@@ -30,7 +31,6 @@ func fire(delta, velocity):
         fired = true
         _fire_start()
 
-    _play_sound()
     var f = BULLET.instance()
     var bullet_velocity = _get_bullet_vector()
     var gun_angle = Vector2(1, 0).angle_to(bullet_velocity)

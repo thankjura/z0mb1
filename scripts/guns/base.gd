@@ -43,7 +43,7 @@ func _get_bullet_position(gun_angle):
 
 func _eject_shell():
     if SHELL:
-        var v = EJECT_SHELL_VECTOR * rand_range(0.8, 1.2)
+        var v = EJECT_SHELL_VECTOR * rand_range(1, 1.1)
         var s = SHELL.instance()
         s.set_global_position($shell_gate.global_position)
         var global_rot = $shell_gate.global_rotation
@@ -51,6 +51,7 @@ func _eject_shell():
             v.x = -v.x
             global_rot = PI - global_rot
         s.set_global_rotation(global_rot)
+        s.applied_torque = rand_range(-200, 500)
         world.add_child(s)
         var impulse = v.rotated(global_rot)
         s.apply_impulse(Vector2(0,0), impulse + player.movement.velocity)

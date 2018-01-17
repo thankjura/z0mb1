@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scripts/levels/intro.gd" type="Script" id=1]
 [ext_resource path="res://textures/levels/intro/bg1/l1_background.png" type="Texture" id=2]
@@ -22,10 +22,28 @@
 custom_solver_bias = 0.0
 extents = Vector2( 14.8284, 10 )
 
-[node name="world" type="Node2D"]
+[sub_resource type="OccluderPolygon2D" id=4]
+
+closed = false
+cull_mode = 0
+polygon = PoolVector2Array( -2096.78, -57, -2120.78, -39.5, -2122.78, -14, -2143.78, -3.5, -2148.78, 26.5 )
+
+[sub_resource type="OccluderPolygon2D" id=3]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( -2847, 11, -2805, 11.5, -2767, 7.5, -2827, 24, -2812, 33, -2765, 27.5, -2722, 26.5, -2692, 23, -2541, 16, -2534, 12.5, -2567, 9.5, -2568, 5, -2585, 2, -2594, -2, -2693, -5.5, -2790, -9.5, -2816, -10, -2869, -2, -2828, 5.5 )
+
+[sub_resource type="CanvasItemMaterial" id=2]
+
+render_priority = 0
+blend_mode = 0
+light_mode = 2
+
+[node name="world" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
-_sections_unfolded = [ "Pause", "Z Index" ]
+_sections_unfolded = [ "Pause", "Visibility", "Z Index" ]
 
 [node name="bg" type="StaticBody2D" parent="." index="0" groups=[
 "decals",
@@ -52,7 +70,8 @@ _sections_unfolded = [ "Z Index" ]
 
 position = Vector2( 951.987, 795.216 )
 build_mode = 0
-polygon = PoolVector2Array( 88.513, 90.284, 128.013, 84.284, 184.013, 87.784, 211.013, 108.284, 195.013, 136.284, 189.513, 165.284, 93.513, 175.284 )
+polygon = PoolVector2Array( 91.013, 93.784, 128.013, 84.284, 184.013, 87.784, 209.013, 113.784, 195.013, 136.284, 189.513, 165.284, 97.013, 171.784 )
+_sections_unfolded = [ "Z Index" ]
 
 [node name="collision_polygon_2d2" type="CollisionPolygon2D" parent="bg" index="2"]
 
@@ -74,7 +93,6 @@ polygon = PoolVector2Array( 88.513, 90.284, 128.013, 84.284, 184.013, 87.784, 20
 
 [node name="parallax_background" type="ParallaxBackground" parent="." index="1"]
 
-editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -212,7 +230,7 @@ size_flags_vertical = 1
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 2
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Rect", "Visibility" ]
 
 [node name="texture" type="TextureRect" parent="parallax_background/houses" index="1"]
 
@@ -353,7 +371,7 @@ position = Vector2( 1307.83, 918.267 )
 
 [node name="ak47_entity" parent="." index="7" instance=ExtResource( 13 )]
 
-position = Vector2( 964.483, 922.451 )
+position = Vector2( 705.483, 921.451 )
 
 [node name="pistol_entity" parent="." index="8" instance=ExtResource( 14 )]
 
@@ -370,10 +388,79 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="bazooka_entity" parent="." index="11" instance=ExtResource( 15 )]
 
-position = Vector2( 748, 908 )
+position = Vector2( 920, 931 )
 
 [node name="shortgun" parent="." index="12" instance=ExtResource( 16 )]
 
-position = Vector2( 327, 936 )
+position = Vector2( 127, 933.5 )
+
+[node name="light_occluder_2d" type="LightOccluder2D" parent="." index="13"]
+
+light_mask = 32
+position = Vector2( 2195.5, 940 )
+scale = Vector2( 0.5, 1 )
+occluder = SubResource( 4 )
+light_mask = 32
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="light_occluder_2d2" type="LightOccluder2D" parent="." index="14"]
+
+light_mask = 32
+position = Vector2( 1651.5, 913.5 )
+scale = Vector2( 0.5, 1 )
+occluder = SubResource( 3 )
+light_mask = 32
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="light_occluder_2d3" type="LightOccluder2D" parent="." index="15"]
+
+light_mask = 32
+position = Vector2( 3572, 913 )
+scale = Vector2( 0.5, 1 )
+occluder = SubResource( 3 )
+light_mask = 32
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="light_occluder_2d4" type="LightOccluder2D" parent="." index="16"]
+
+light_mask = 32
+position = Vector2( 5491, 913 )
+scale = Vector2( 0.5, 1 )
+occluder = SubResource( 3 )
+light_mask = 32
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="light_occluder_2d5" type="LightOccluder2D" parent="." index="17"]
+
+light_mask = 32
+position = Vector2( 7411.5, 914 )
+scale = Vector2( 0.5, 1 )
+occluder = SubResource( 3 )
+light_mask = 32
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="decal_poligon" type="Polygon2D" parent="." index="18"]
+
+light_mask = 32
+material = SubResource( 2 )
+position = Vector2( 523.5, 0.5 )
+scale = Vector2( 0.5, 1 )
+z_index = -30
+polygon = PoolVector2Array( 1048, 925, 944, 925.5, 543, 927, 348, 926, -61, 925.5, -154, 925, -197, 913, -328, 914, -452, 906.5, -552, 902, -613, 911.5, -753, 910.5, -768, 869.5, -843, 860.5, -942, 867, -958, 910.5, -1048, 911.5, -1045, 1016.5, -850, 1017.5, -544, 986, -366, 1022.5, -79, 987.5, 425, 1003.5, 446, 1013.5, 1045, 1044, 1319, 1025, 1310, 984, 2050, 1023, 2525, 1015.5, 2648, 1034.5, 2794, 1017, 2990, 1018, 3294, 985.5, 3475, 1023, 3757, 987.5, 4258, 1003.5, 4285, 1014.5, 4886, 1043, 5158, 1025.5, 5152, 984.5, 5896, 1023.5, 6364, 1015, 6484, 1033.5, 6635, 1017, 6829, 1018.5, 7137, 985.5, 7316, 1023, 7597, 987, 8102, 1003, 8127, 1015, 8724, 1042.5, 8999, 1024, 8991, 985, 9732, 1023, 10207, 1014.5, 10320, 1035.5, 10471, 1017, 10676, 1016.5, 10970, 985, 11156, 1023, 11436, 987.5, 11939, 1003.5, 11967, 1015, 12556, 1042.5, 12838, 1024.5, 12831, 984.5, 13575, 1024, 14043, 1015, 14164, 1034.5, 14310, 1017, 14512, 1016.5, 14554, 1011.5, 14553, 972.5, 14555, 972.5, 14555, 865, 14497, 860.5, 14418, 868, 14401, 911, 14313, 910.5, 14311, 895.5, 14228, 894, 14193, 887, 14131, 895.5, 14050, 892.5, 14029, 896, 13718, 895.5, 13677, 887.5, 13638, 852.5, 13614, 873.5, 13610, 850.5, 13578, 836.5, 13565, 887, 13556, 885.5, 13545, 868, 13531, 884.5, 13509, 882, 13436, 909, 12833, 909, 12771, 882.5, 12645, 876, 12626, 886.5, 12625, 899, 12613, 887.5, 12619, 875, 12568, 883.5, 12570, 902, 12563, 920.5, 12552, 922.5, 12493, 924, 11920, 926, 11379, 927, 11325, 912.5, 11191, 913, 10976, 903, 10910, 909.5, 10902, 912.5, 10763, 909.5, 10752, 869, 10672, 859.5, 10583, 867, 10562, 911, 10474, 911.5, 10473, 895.5, 10395, 893.5, 10358, 886, 10292, 896, 10256, 891, 10193, 896, 9883, 896, 9824, 880.5, 9802, 855, 9776, 872.5, 9771, 850.5, 9738, 837, 9726, 886.5, 9703, 870, 9692, 884, 9638, 890, 9618, 907, 9557, 908.5, 8995, 908.5, 8924, 880, 8807, 875.5, 8785, 885, 8785, 896.5, 8777, 884.5, 8779, 874.5, 8724, 883, 8730, 900, 8722, 922.5, 8645, 925.5, 7541, 927, 7485, 911.5, 7353, 913.5, 7132, 902, 7061, 912, 6920, 910, 6916, 868, 6826, 858.5, 6738, 867, 6721, 911.5, 6634, 911.5, 6631, 896, 6538, 894, 6517, 887, 6454, 895.5, 6418, 891.5, 6356, 894, 6043, 896, 5994, 885, 5959, 853, 5935, 871.5, 5929, 850, 5896, 836.5, 5883, 887.5, 5874, 884, 5864, 868.5, 5852, 884, 5820, 884, 5767, 908.5, 5152, 909.5, 5085, 882.5, 4966, 876, 4944, 898.5, 4940, 876, 4886, 883, 4886, 921, 4807, 926.5, 3702, 926, 3640, 911.5, 3510, 913, 3289, 903, 3223, 910.5, 3083, 909.5, 3071, 868.5, 2991, 859, 2902, 867, 2884, 912.5, 2794, 911, 2793, 896, 2703, 893.5, 2674, 887, 2613, 896.5, 2575, 892.5, 2531, 892.5, 2511, 896, 2203, 896.5, 2158, 887.5, 2120, 853.5, 2095, 873, 2089, 850, 2058, 837, 2044, 885.5, 2033, 884.5, 2027, 869, 2015, 884, 1997, 881.5, 1975, 887.5, 1949, 894, 1938, 906, 1918, 907.5, 1312, 910, 1247, 882, 1130, 876.5, 1106, 891, 1107, 899, 1101, 901.5, 1100, 875.5, 1048, 884.5, 1050, 900.5, 1044, 920 )
+uv = PoolVector2Array( 303.34, 127.085, 303.76, 119.162, 301.67, 111.657, 296.67, 97.897, 299.59, 69.959, 321.27, 64.121, 346, 67, 344, 89, 344, 102, 335, 112, 332, 131, 326, 139, 303.34, 138.76 )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = true
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 0.1
+_sections_unfolded = [ "Invert", "Material", "Texture", "Transform", "Visibility", "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
 

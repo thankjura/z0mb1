@@ -30,11 +30,7 @@ func _ready():
 func _process(delta):
     timer -= delta
     if timer <= 0:
-        if active and has_node("particles"):
-            _deactivate()
-            timer = $particles.lifetime/$particles.speed_scale
-        else:
-            queue_free()
+        queue_free()
 
 func _collision(body):
     if body.has_method("hit"):

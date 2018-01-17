@@ -2,7 +2,9 @@ extends RigidBody2D
 
 const constants = preload("res://scripts/constants.gd")
 
+const SHAPE_EXTENTS = Vector2(1.5,5.5)
 const TIMEOUT = 5
+var active = true
 
 var timer = TIMEOUT
 

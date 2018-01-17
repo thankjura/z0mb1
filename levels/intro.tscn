@@ -403,7 +403,34 @@ occluder = SubResource( 4 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="light_occluder_2d2" type="LightOccluder2D" parent="." index="14"]
+[node name="light_occluder_2d6" type="LightOccluder2D" parent="." index="14"]
+
+light_mask = 32
+position = Vector2( 4115.5, 940.5 )
+scale = Vector2( 0.5, 1 )
+occluder = SubResource( 4 )
+light_mask = 32
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="light_occluder_2d7" type="LightOccluder2D" parent="." index="15"]
+
+light_mask = 32
+position = Vector2( 6035, 939 )
+scale = Vector2( 0.5, 1 )
+occluder = SubResource( 4 )
+light_mask = 32
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="light_occluder_2d8" type="LightOccluder2D" parent="." index="16"]
+
+light_mask = 32
+position = Vector2( 7956, 940 )
+scale = Vector2( 0.5, 1 )
+occluder = SubResource( 4 )
+light_mask = 32
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="light_occluder_2d2" type="LightOccluder2D" parent="." index="17"]
 
 light_mask = 32
 position = Vector2( 1651.5, 913.5 )
@@ -412,7 +439,7 @@ occluder = SubResource( 3 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="light_occluder_2d3" type="LightOccluder2D" parent="." index="15"]
+[node name="light_occluder_2d3" type="LightOccluder2D" parent="." index="18"]
 
 light_mask = 32
 position = Vector2( 3572, 913 )
@@ -421,7 +448,7 @@ occluder = SubResource( 3 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="light_occluder_2d4" type="LightOccluder2D" parent="." index="16"]
+[node name="light_occluder_2d4" type="LightOccluder2D" parent="." index="19"]
 
 light_mask = 32
 position = Vector2( 5491, 913 )
@@ -430,7 +457,7 @@ occluder = SubResource( 3 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="light_occluder_2d5" type="LightOccluder2D" parent="." index="17"]
+[node name="light_occluder_2d5" type="LightOccluder2D" parent="." index="20"]
 
 light_mask = 32
 position = Vector2( 7411.5, 914 )
@@ -439,7 +466,7 @@ occluder = SubResource( 3 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="decal_poligon" type="Polygon2D" parent="." index="18"]
+[node name="decal_poligon" type="Polygon2D" parent="." index="21"]
 
 light_mask = 32
 material = SubResource( 2 )

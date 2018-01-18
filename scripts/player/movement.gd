@@ -7,8 +7,8 @@ const INIT_GRAVITY = Vector2(0, 2000)
 const INIT_MAX_SPEED = 400
 
 const JUMP_FORCE = 800
-const ACCELERATION = 0.6
-const AIR_ACCELERATION = 0.1
+const ACCELERATION = 30
+const AIR_ACCELERATION = 20
 const RUN_SPEED = 300
 const FLOOR_NORMAL = Vector2(0, -1)
 const SLOPE_FRICTION = 20
@@ -89,7 +89,7 @@ func _ground_state(delta, m = Vector2(), direction = 1):
     elif m.x > 0:
         movement = 1
     movement *= MAX_SPEED
-    velocity.x = lerp(velocity.x, movement, ACCELERATION)
+    velocity.x = lerp(velocity.x, movement, ACCELERATION*delta)
     if sign(velocity.x) * direction > 0:
         anim.blend2_node_set_amount(WALK_DIRECTION_NODE, 0)
         anim.blend2_node_set_amount(RUN_DIRECTION_NODE, 0)
@@ -111,7 +111,7 @@ func _air_state(delta, m = Vector2()):
     elif m.x > 0:
         movement = 1
     movement *= MAX_SPEED
-    velocity.x = lerp(velocity.x + recoil.x, movement, AIR_ACCELERATION)
+    velocity.x = lerp(velocity.x + recoil.x, movement, AIR_ACCELERATION*delta)
 
     if velocity.y and air_state:
         if velocity.y > 0:

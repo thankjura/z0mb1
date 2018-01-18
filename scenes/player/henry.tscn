@@ -4848,7 +4848,11 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "collision" ]
 
-[node name="camera" type="Camera2D" parent="." index="0"]
+[node name="aim" type="Position2D" parent="." index="0"]
+
+position = Vector2( -1, -170 )
+
+[node name="camera" type="Camera2D" parent="." index="1"]
 
 offset = Vector2( 0, -100 )
 anchor_mode = 1
@@ -4875,10 +4879,8 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Drag Margin", "Limit", "Offset", "Smoothing" ]
 
-[node name="base" type="Sprite" parent="." index="1"]
+[node name="base" type="Sprite" parent="." index="2"]
 
-editor/display_folded = true
-position = Vector2( 0, -10 )
 z_index = -20
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -4892,8 +4894,9 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="body" type="Sprite" parent="base" index="1"]
 
+editor/display_folded = true
 position = Vector2( -2, -38 )
-rotation = 0.0139626
+rotation = 0.0130923
 z_index = -1
 texture = ExtResource( 4 )
 offset = Vector2( 2.80622, -55.0469 )
@@ -4908,15 +4911,14 @@ _sections_unfolded = [ "Region", "Transform", "Z Index" ]
 [node name="head" type="Sprite" parent="base/body" index="1"]
 
 position = Vector2( -7.08409, -192.435 )
-rotation = -0.265639
 texture = ExtResource( 6 )
 offset = Vector2( 5.70396, -44.7243 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="sholder_r" type="Sprite" parent="base/body" index="2"]
 
-position = Vector2( -53.0925, -134.13 )
-rotation = -0.837383
+position = Vector2( -53.0139, -128.131 )
+rotation = 0.149137
 z_index = 4
 texture = ExtResource( 7 )
 offset = Vector2( -21.6014, 34.99 )
@@ -4928,8 +4930,8 @@ __meta__ = {
 
 [node name="forearm_r" type="Sprite" parent="base/body/sholder_r" index="0"]
 
-position = Vector2( -14.6523, 92.7831 )
-rotation = -1.46639
+position = Vector2( -21.042, 86.6691 )
+rotation = -0.0510006
 scale = Vector2( 1.00278, 1 )
 z_index = -1
 texture = ExtResource( 8 )
@@ -4942,13 +4944,13 @@ __meta__ = {
 [node name="gun_position" type="Position2D" parent="base/body/sholder_r/forearm_r" index="0"]
 
 position = Vector2( 5.74614, 110.311 )
-rotation = 2.28813
+rotation = 0.76425
 z_index = -1
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="hand_r" type="Sprite" parent="base/body/sholder_r/forearm_r" index="1"]
 
-position = Vector2( 2.27101, 86.7363 )
+position = Vector2( 2.75543, 87.4769 )
 texture = ExtResource( 9 )
 offset = Vector2( 7.35287, 23.6888 )
 _sections_unfolded = [ "Visibility", "Z Index" ]
@@ -4959,8 +4961,8 @@ __meta__ = {
 [node name="hand_r_pistol" type="Sprite" parent="base/body/sholder_r/forearm_r" index="2"]
 
 visible = false
-position = Vector2( 0.627266, 100.934 )
-rotation = 0.770997
+position = Vector2( 11.4002, 95.349 )
+rotation = -0.746793
 texture = ExtResource( 10 )
 offset = Vector2( -3.03796, 16.7419 )
 _sections_unfolded = [ "Visibility", "Z Index" ]
@@ -4983,8 +4985,7 @@ __meta__ = {
 
 [node name="sholder_l" type="Sprite" parent="base/body" index="3"]
 
-position = Vector2( 50, -127 )
-rotation = -1.05416
+position = Vector2( 60, -127 )
 z_index = -1
 texture = ExtResource( 12 )
 offset = Vector2( -4.87677, 35.1127 )
@@ -4996,8 +4997,9 @@ __meta__ = {
 
 [node name="forearm_l" type="Sprite" parent="base/body/sholder_l" index="0"]
 
-position = Vector2( -3.90147, 69.738 )
-rotation = -0.897466
+show_behind_parent = true
+position = Vector2( -3.9014, 69.7377 )
+rotation = -0.443216
 z_index = -1
 texture = ExtResource( 13 )
 offset = Vector2( -0.00780582, 27.8241 )
@@ -5008,7 +5010,7 @@ __meta__ = {
 
 [node name="hand_l" type="Sprite" parent="base/body/sholder_l/forearm_l" index="0"]
 
-position = Vector2( 2.57833, 66.1004 )
+position = Vector2( 9.48378, 70.2046 )
 texture = ExtResource( 14 )
 offset = Vector2( 1.7816, 22.0569 )
 _sections_unfolded = [ "Visibility", "Z Index" ]
@@ -5043,8 +5045,8 @@ __meta__ = {
 [node name="hand_l_shotgun" type="Sprite" parent="base/body/sholder_l/forearm_l" index="3"]
 
 visible = false
-position = Vector2( 3.16191, 63.7739 )
-rotation = -2.78027
+position = Vector2( 6.13538, 74.711 )
+rotation = -2.76708
 z_index = 2
 texture = ExtResource( 17 )
 offset = Vector2( -0.403517, -22.8452 )
@@ -5071,7 +5073,7 @@ _sections_unfolded = [ "Visibility", "Z Index" ]
 [node name="hip_r" type="Sprite" parent="base" index="2"]
 
 position = Vector2( -21.9143, 7.10666 )
-rotation = -0.916012
+rotation = -0.00942691
 texture = ExtResource( 20 )
 offset = Vector2( -0.587548, 32.3558 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
@@ -5082,8 +5084,8 @@ __meta__ = {
 
 [node name="shin_r" type="Sprite" parent="base/hip_r" index="0"]
 
-position = Vector2( -10.7184, 68.4985 )
-rotation = 1.69749
+position = Vector2( -10.7184, 68.4986 )
+rotation = 0.0838329
 texture = ExtResource( 21 )
 offset = Vector2( -7.85038, 29.2288 )
 _sections_unfolded = [ "Transform" ]
@@ -5093,8 +5095,8 @@ __meta__ = {
 
 [node name="foot_r" type="Sprite" parent="base/hip_r/shin_r" index="0"]
 
-position = Vector2( -7.46901, 63.5546 )
-rotation = -0.54187
+position = Vector2( -7.46902, 63.5548 )
+rotation = -0.104473
 texture = ExtResource( 22 )
 offset = Vector2( 9.16586, 11.3021 )
 _sections_unfolded = [ "Transform" ]
@@ -5116,7 +5118,7 @@ __meta__ = {
 [node name="hip_l" type="Sprite" parent="base" index="3"]
 
 position = Vector2( 26.1218, 1.49841 )
-rotation = -0.929987
+rotation = 0.0723669
 z_index = -2
 texture = ExtResource( 24 )
 offset = Vector2( 4.42052, 38.234 )
@@ -5129,7 +5131,7 @@ __meta__ = {
 [node name="shin_l" type="Sprite" parent="base/hip_l" index="0"]
 
 position = Vector2( 12.3492, 75.7984 )
-rotation = 1.39375
+rotation = 0.0439018
 scale = Vector2( 0.999999, 0.999999 )
 texture = ExtResource( 25 )
 offset = Vector2( 0.747225, 26.7965 )
@@ -5139,8 +5141,8 @@ __meta__ = {
 
 [node name="foot_l" type="Sprite" parent="base/hip_l/shin_l" index="0"]
 
-position = Vector2( 3.51444, 61.0184 )
-rotation = -0.243505
+position = Vector2( 3.51446, 61.0185 )
+rotation = -0.132318
 texture = ExtResource( 26 )
 offset = Vector2( 9.74501, 12.5678 )
 __meta__ = {
@@ -5156,7 +5158,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="collision" type="CollisionShape2D" parent="." index="2"]
+[node name="collision" type="CollisionShape2D" parent="." index="3"]
 
 position = Vector2( 0.975281, -79.0737 )
 scale = Vector2( 1, 0.956408 )
@@ -5167,7 +5169,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="audio_footstep" type="AudioStreamPlayer" parent="." index="3"]
+[node name="audio_footstep" type="AudioStreamPlayer" parent="." index="4"]
 
 stream = ExtResource( 28 )
 volume_db = -30.0
@@ -5175,7 +5177,7 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="animation_player" type="AnimationPlayer" parent="." index="4"]
+[node name="animation_player" type="AnimationPlayer" parent="." index="5"]
 
 root_node = NodePath("..")
 autoplay = "idle"
@@ -5201,7 +5203,7 @@ blend_times = [  ]
 autoplay = "idle"
 _sections_unfolded = [ "Playback Options", "playback" ]
 
-[node name="animation_tree_player" type="AnimationTreePlayer" parent="." index="5"]
+[node name="animation_tree_player" type="AnimationTreePlayer" parent="." index="6"]
 
 playback_process_mode = 0
 master_player = NodePath("../animation_player")
@@ -5209,7 +5211,7 @@ base_path = NodePath("..")
 active = false
 data = {
 "active": false,
-"connections": [ "aim_blend", "out", 0, "gun_angle", "bazooka_reload", 0, "anim_bazooka_reload", "bazooka_reload", 1, "walk_direction", "walk_blend", 0, "run_direction", "walk_blend", 1, "ground_air_transition", "aim_blend", 0, "bazooka_reload", "aim_blend", 1, "walk_blend", "ground_scale", 0, "anim_run", "run_direction", 0, "anim_run_reverse", "run_direction", 1, "blend2", "ground_air_transition", 0, "jump_up_anim", "ground_air_transition", 1, "jump_down_anim", "ground_air_transition", 2, "anim_pistol", "aim_transition", 0, "anim_ak47", "aim_transition", 1, "shotgun_reload", "aim_transition", 2, "anim_minigun", "aim_transition", 3, "anim", "aim_transition", 4, "ground_blend", "blend2", 0, "anim_chest", "blend2", 1, "anim_shotgun", "shotgun_reload", 0, "anim_shotgun_reload", "shotgun_reload", 1, "anim_walk", "walk_direction", 0, "anim_walk_reverse", "walk_direction", 1, "aim_transition", "gun_angle", 0, "anim_idle", "ground_blend", 0, "ground_scale", "ground_blend", 1 ],
+"connections": [ "aim_blend", "out", 0, "gun_angle", "bazooka_reload", 0, "anim_bazooka_reload", "bazooka_reload", 1, "blend2", "ground_air_transition", 0, "jump_up_anim", "ground_air_transition", 1, "jump_down_anim", "ground_air_transition", 2, "anim_pistol", "aim_transition", 0, "anim_ak47", "aim_transition", 1, "shotgun_reload", "aim_transition", 2, "anim_minigun", "aim_transition", 3, "anim", "aim_transition", 4, "walk_blend", "ground_scale", 0, "aim_transition", "gun_angle", 0, "anim_idle", "ground_blend", 0, "ground_scale", "ground_blend", 1, "ground_air_transition", "aim_blend", 0, "bazooka_reload", "aim_blend", 1, "anim_walk", "walk_direction", 0, "anim_walk_reverse", "walk_direction", 1, "walk_direction", "walk_blend", 0, "run_direction", "walk_blend", 1, "anim_shotgun", "shotgun_reload", 0, "anim_shotgun_reload", "shotgun_reload", 1, "anim_run", "run_direction", 0, "anim_run_reverse", "run_direction", 1, "ground_blend", "blend2", 0, "anim_chest", "blend2", 1 ],
 "master": NodePath("../animation_player"),
 "nodes": [ {
 "filter": [  ],
@@ -5222,6 +5224,12 @@ data = {
 "position": Vector2( 1850, 84 ),
 "type": "output"
 }, {
+"filter": [  ],
+"from": "aim_shotgun_reload",
+"id": "anim_shotgun_reload",
+"position": Vector2( 553, 499 ),
+"type": "animation"
+}, {
 "autorestart": false,
 "autorestart_delay": 0.0,
 "autorestart_random_delay": 0.0,
@@ -5232,59 +5240,6 @@ data = {
 "mix": false,
 "position": Vector2( 1512, 226 ),
 "type": "oneshot"
-}, {
-"blend": 0.0,
-"filter": [  ],
-"id": "walk_blend",
-"position": Vector2( 535, 131 ),
-"type": "blend2"
-}, {
-"filter": [  ],
-"from": "aim_shotgun_reload",
-"id": "anim_shotgun_reload",
-"position": Vector2( 553, 499 ),
-"type": "animation"
-}, {
-"filter": [  ],
-"from": "aim_ak47",
-"id": "anim_ak47",
-"position": Vector2( 954, 451 ),
-"type": "animation"
-}, {
-"filter": [  ],
-"from": "walk",
-"id": "anim_walk",
-"position": Vector2( 49, 20 ),
-"type": "animation"
-}, {
-"blend": 1.0,
-"filter": [ NodePath("base:rotation_degrees"), NodePath("base/hip_r:position"), NodePath("base/hip_l/shin_l/foot_l:position"), NodePath("base/hip_r:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position"), NodePath("base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position"), NodePath("base/hip_r/shin_r:position"), NodePath("base/hip_r/shin_r/foot_r:position"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/hip_l:position"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/hip_r/shin_r:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/hip_l:rotation_degrees"), NodePath("."), NodePath("base/body:position"), NodePath("base/belt:position"), NodePath("base/body/chest:scale"), NodePath("base/hip_l/shin_l:position"), NodePath("base/belt:rotation_degrees"), NodePath("base:position"), NodePath("base/hip_l/shin_l:rotation_degrees") ],
-"id": "aim_blend",
-"position": Vector2( 1703, 99 ),
-"type": "blend2"
-}, {
-"id": "ground_scale",
-"position": Vector2( 716, 133 ),
-"scale": 1.0,
-"type": "timescale"
-}, {
-"filter": [  ],
-"from": "aim_minigun",
-"id": "anim_minigun",
-"position": Vector2( 809, 666 ),
-"type": "animation"
-}, {
-"filter": [  ],
-"from": "jump_up",
-"id": "jump_up_anim",
-"position": Vector2( 1111, 194 ),
-"type": "animation"
-}, {
-"blend": 0.0,
-"filter": [  ],
-"id": "run_direction",
-"position": Vector2( 311, 220 ),
-"type": "blend2"
 }, {
 "filter": [  ],
 "from": "aim_shotgun",
@@ -5326,16 +5281,25 @@ data = {
 "type": "transition",
 "xfade": 0.0
 }, {
-"blend": 1.0,
-"filter": [ NodePath("base/hip_r:position"), NodePath("base/hip_l/shin_l/foot_l:position"), NodePath("base/body/sholder_l:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position"), NodePath("base/hip_r:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position"), NodePath("base/body/sholder_r/forearm_r:position"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:position"), NodePath("base/hip_r/shin_r:position"), NodePath("base/hip_l:position"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/body/sholder_r/forearm_r:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l/hand_l:position"), NodePath("base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/hip_r/shin_r:rotation_degrees"), NodePath("base/hip_l:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l/hand_l:rotation_degrees"), NodePath("."), NodePath("base/body:position"), NodePath("base/body/sholder_r/forearm_r/hand_r:position"), NodePath("base/body:rotation_degrees"), NodePath("base/body/sholder_r:position"), NodePath("base/body/sholder_r/forearm_r/hand_r:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l:position"), NodePath("base/belt:position"), NodePath("base/hip_l/shin_l:position"), NodePath("base/body/sholder_r:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l/hand_l:z_index"), NodePath("base/body/head:rotation_degrees"), NodePath("base/belt:rotation_degrees"), NodePath("base:position"), NodePath("base/hip_l/shin_l:rotation_degrees"), NodePath("base/body/sholder_l:position") ],
-"id": "blend2",
-"position": Vector2( 1158, 23 ),
+"id": "ground_scale",
+"position": Vector2( 716, 133 ),
+"scale": 1.0,
+"type": "timescale"
+}, {
+"id": "gun_angle",
+"position": Vector2( 1286, 307 ),
+"type": "timeseek"
+}, {
+"blend": 0.68,
+"filter": [  ],
+"id": "ground_blend",
+"position": Vector2( 939, 25 ),
 "type": "blend2"
 }, {
-"blend": 0.0,
-"filter": [  ],
-"id": "shotgun_reload",
-"position": Vector2( 797, 512 ),
+"blend": 1.0,
+"filter": [ NodePath("base/hip_l/shin_l/foot_l:position"), NodePath("base/hip_r:position"), NodePath("base:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position"), NodePath("base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position"), NodePath("base/hip_r:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/hip_l:position"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:position"), NodePath("base/hip_r/shin_r:position"), NodePath("."), NodePath("base/hip_l:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/hip_r/shin_r:rotation_degrees"), NodePath("base/body:position"), NodePath("base/body/chest:scale"), NodePath("base/belt:position"), NodePath("base/belt:rotation_degrees"), NodePath("base/hip_l/shin_l:position"), NodePath("base/hip_l/shin_l:rotation_degrees"), NodePath("base:position") ],
+"id": "aim_blend",
+"position": Vector2( 1703, 99 ),
 "type": "blend2"
 }, {
 "filter": [  ],
@@ -5362,16 +5326,6 @@ data = {
 "position": Vector2( 1093, 338 ),
 "type": "animation"
 }, {
-"id": "gun_angle",
-"position": Vector2( 1286, 307 ),
-"type": "timeseek"
-}, {
-"blend": 0.68,
-"filter": [  ],
-"id": "ground_blend",
-"position": Vector2( 939, 25 ),
-"type": "blend2"
-}, {
 "filter": [  ],
 "from": "walk_reverse",
 "id": "anim_walk_reverse",
@@ -5385,16 +5339,64 @@ data = {
 "type": "animation"
 }, {
 "filter": [  ],
+"from": "run",
+"id": "anim_run",
+"position": Vector2( 62, 254 ),
+"type": "animation"
+}, {
+"blend": 0.0,
+"filter": [  ],
+"id": "walk_blend",
+"position": Vector2( 535, 131 ),
+"type": "blend2"
+}, {
+"blend": 0.0,
+"filter": [  ],
+"id": "shotgun_reload",
+"position": Vector2( 797, 512 ),
+"type": "blend2"
+}, {
+"filter": [  ],
+"from": "jump_up",
+"id": "jump_up_anim",
+"position": Vector2( 1111, 194 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "walk",
+"id": "anim_walk",
+"position": Vector2( 49, 20 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "aim_ak47",
+"id": "anim_ak47",
+"position": Vector2( 954, 451 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "aim_minigun",
+"id": "anim_minigun",
+"position": Vector2( 809, 666 ),
+"type": "animation"
+}, {
+"blend": 0.0,
+"filter": [  ],
+"id": "run_direction",
+"position": Vector2( 311, 220 ),
+"type": "blend2"
+}, {
+"filter": [  ],
 "from": "chest",
 "id": "anim_chest",
 "position": Vector2( 953, 193 ),
 "type": "animation"
 }, {
-"filter": [  ],
-"from": "run",
-"id": "anim_run",
-"position": Vector2( 62, 254 ),
-"type": "animation"
+"blend": 1.0,
+"filter": [ NodePath("base/body/sholder_l:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l:position"), NodePath("base/hip_r:position"), NodePath("base/body/sholder_r/forearm_r:position"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position"), NodePath("base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/hip_r:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position"), NodePath("base/body/sholder_l/forearm_l/hand_l:position"), NodePath("base/body/sholder_r/forearm_r:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/hip_l:position"), NodePath("base/hip_r/shin_r:position"), NodePath("base/hip_r/shin_r/foot_r:position"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("."), NodePath("base/body/sholder_l/forearm_l/hand_l:rotation_degrees"), NodePath("base/hip_l:rotation_degrees"), NodePath("base/hip_r/shin_r:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/body/sholder_r/forearm_r/hand_r:position"), NodePath("base/body:position"), NodePath("base/belt:position"), NodePath("base/body/sholder_l/forearm_l:position"), NodePath("base/body/sholder_r/forearm_r/hand_r:rotation_degrees"), NodePath("base/body/sholder_r:position"), NodePath("base/body:rotation_degrees"), NodePath("base/belt:rotation_degrees"), NodePath("base/body/head:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l/hand_l:z_index"), NodePath("base/body/sholder_l/forearm_l:rotation_degrees"), NodePath("base/body/sholder_r:rotation_degrees"), NodePath("base/hip_l/shin_l:position"), NodePath("base/body/sholder_l:position"), NodePath("base/hip_l/shin_l:rotation_degrees"), NodePath("base:position") ],
+"id": "blend2",
+"position": Vector2( 1158, 23 ),
+"type": "blend2"
 } ]
 }
 _sections_unfolded = [ "Playback" ]

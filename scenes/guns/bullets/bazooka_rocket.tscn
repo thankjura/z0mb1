@@ -146,7 +146,6 @@ scale = Vector2( 3.33333, 3.33333 )
 z_index = -1
 frames = SubResource( 2 )
 animation = "default"
-frame = 1
 playing = true
 _sections_unfolded = [ "Transform", "Z Index" ]
 

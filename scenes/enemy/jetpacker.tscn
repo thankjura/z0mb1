@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/enemy/jetpacker.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 28.4617, 30.1782 )
@@ -13,14 +13,14 @@ extents = Vector2( 28.4617, 30.1782 )
 custom_solver_bias = 0.0
 extents = Vector2( 30.6386, 32.3024 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 
 resource_name = "die1"
 length = 0.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("body:visible")
+tracks/0/path = NodePath("base:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -190,14 +190,13 @@ tracks/13/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 
-resource_name = "idle"
 length = 2.0
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("body:position")
+tracks/0/path = NodePath("base:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -209,7 +208,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -15, 45 ), Vector2( 15, 45 ), Vector2( -15, -45 ), Vector2( 15, -45 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("body:visible")
+tracks/1/path = NodePath("base:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -228,7 +227,7 @@ length = 1.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("body:rotation_degrees")
+tracks/0/path = NodePath("base:rotation_degrees")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -240,7 +239,7 @@ tracks/0/keys = {
 "values": [ 0.0, -3.24288, 5.99012, 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("body:visible")
+tracks/1/path = NodePath("base:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -252,26 +251,12 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[node name="jetpacker" type="RigidBody2D"]
+[node name="jetpacker" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
-mode = 2
-mass = 1.0
-friction = 1.0
-bounce = 0.0
-gravity_scale = 1.0
-custom_integrator = true
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
+collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
@@ -288,10 +273,10 @@ audio_bus_name = "Master"
 [node name="collision" type="CollisionShape2D" parent="attack_area" index="0"]
 
 z_index = -5
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Z Index" ]
 
-[node name="body" type="Sprite" parent="." index="1"]
+[node name="base" type="Sprite" parent="." index="1"]
 
 position = Vector2( -5.71499, 13.7056 )
 texture = ExtResource( 2 )
@@ -358,14 +343,14 @@ __meta__ = {
 
 [node name="anim_player" type="AnimationPlayer" parent="." index="8"]
 
+root_node = NodePath("..")
+autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-root_node = NodePath("..")
-anims/die1 = SubResource( 6 )
-anims/idle = SubResource( 3 )
+playback_speed = 1.0
+anims/die1 = SubResource( 3 )
+anims/idle = SubResource( 4 )
 anims/spy = SubResource( 5 )
-playback/active = false
-playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 _sections_unfolded = [ "Playback Options", "playback" ]
@@ -402,12 +387,6 @@ data = {
 "position": Vector2( 1073, 51 ),
 "type": "output"
 }, {
-"filter": [  ],
-"from": "idle",
-"id": "anim_idle",
-"position": Vector2( 331, 29 ),
-"type": "animation"
-}, {
 "id": "current_anim",
 "position": Vector2( 908, 53 ),
 "transitions": [ {
@@ -417,6 +396,12 @@ data = {
 } ],
 "type": "transition",
 "xfade": 0.0
+}, {
+"filter": [  ],
+"from": "idle",
+"id": "anim_idle",
+"position": Vector2( 331, 29 ),
+"type": "animation"
 }, {
 "filter": [  ],
 "from": "spy",

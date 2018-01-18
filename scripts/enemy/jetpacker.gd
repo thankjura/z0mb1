@@ -2,6 +2,7 @@ extends "res://scripts/enemy/base_enemy.gd"
 
 const ATTACK_DISTANSE = 800
 const MOVEMENT_SPEED = 6000
+const GRAVITY = Vector2()
 
 const SPY_TIME = 1
 

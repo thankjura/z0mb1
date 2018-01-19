@@ -9,15 +9,16 @@ const AIM_SEEK_NODE = "aim"
 const GROUND_BLEND_NODE = "ground_blend"
 const AIM_BLEND_NODE = "aim_blend"
 const WALK_SCALE_NODE = "walk_scale"
+const FIRE_NODE = "fire_oneshot"
 
 const MAX_SPEED = 100
 const ACCELERATION = 20
-const RELOAD_TIME = 5
 const AIM_TIME = 3
 const AIM_SPEED = 6
+const ATTACK_FOLLOW_TIMEOUT = 2
 
 var aim_timeout = 0
-var reload_timeout = 0
+var idle_timeout = 0
 
 onready var bullet_spawn = get_node("base/body/sholder_l/forearm_l/hand_l_pistol/pistol/bullet_spawn")
 onready var world = get_tree().get_root().get_node("world")
@@ -37,7 +38,7 @@ func _set_direction(new_direction):
 func _fire():
     var b = BULLET.instance()
     var bullet_from = $base/body/sholder_l/forearm_l/hand_l_pistol/pistol/from
-
+    
     var bullet_velocity = (bullet_spawn.global_position - bullet_from.global_position).normalized()
     var gun_angle = Vector2(1, 0).angle_to(bullet_velocity)
 
@@ -45,7 +46,8 @@ func _fire():
     b.set_axis_velocity(bullet_velocity*BULLET_SPEED+velocity)
     b.set_global_position(bullet_spawn.global_position)
     world.add_child(b)
-    reload_timeout = RELOAD_TIME
+    $anim.oneshot_node_start(FIRE_NODE)
+    $audio_fire.play()
 
 func _aim(delta):
     var v = (player.get_node("aim").global_position -  bullet_spawn.global_position).normalized()
@@ -56,17 +58,34 @@ func _aim(delta):
     elif current_aim_angle > -180 and current_aim_angle < 0:
         $base.set_scale(Vector2(-body_scale.x, body_scale.y))
 
-func _physics_process(delta):
-    if attacking or aim_timeout > 0:
+func change_direction(t, new_direction):
+    direction = new_direction
+    idle_timeout = t
+
+func _process(delta):
+    var is_aim = aim_timeout > 0
+    
+    if is_aim:
         $anim.blend2_node_set_amount(AIM_BLEND_NODE, 1)
-        if aim_timeout <= 0:
-            aim_timeout = AIM_TIME
-        else:
+        if not attacking:
+            aim_timeout -= delta * 5
+                
+    if attacking:
+        if is_aim:
             aim_timeout -= delta
             if aim_timeout <= 0:
                 _fire()
             else:
                 _aim(delta)
+        else:
+            aim_timeout = AIM_TIME            
+
+func _physics_process(delta):
+    if attacking or aim_timeout > 0:
+        if abs(velocity.x) > 0:
+            velocity.x = lerp(velocity.x, 0, ACCELERATION*delta)
+    elif idle_timeout > 0:
+        idle_timeout -= delta
         if abs(velocity.x) > 0:
             velocity.x = lerp(velocity.x, 0, ACCELERATION*delta)
     else:
@@ -81,5 +100,4 @@ func _physics_process(delta):
         elif velocity.x < 0:
             $base.set_scale(Vector2(-body_scale.x, body_scale.y))
     else:
-        print("idle")
         $anim.blend2_node_set_amount(GROUND_BLEND_NODE, 0)

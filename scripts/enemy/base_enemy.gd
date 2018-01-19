@@ -42,8 +42,6 @@ func _check_attack():
     else:
         new_state = get_global_position().distance_squared_to(player.global_position) < ATTACK_DISTANSE_SQUARED
 
-    print(new_state)
-
     var b = is_back()
     if new_state:
         if _get_player_direction() == 1:
@@ -74,16 +72,17 @@ func hit(body):
     if health <= 0:
         die()
 
-func _physics_process(delta):
+func _process(delta):
     _check_attack()
-
+    
+    if attacking and attacking_timeout > 0:
+        attacking_timeout -= delta
+        if attacking_timeout <= 0:
+            attacking = false
+    
+func _physics_process(delta):
     velocity += GRAVITY * delta
     if velocity.y > MAX_FALL_SPEED:
         velocity.y = MAX_FALL_SPEED
 
     velocity = move_and_slide(velocity)
-
-    if attacking and attacking_timeout > 0:
-        attacking_timeout -= delta
-        if attacking_timeout <= 0:
-            attacking = false

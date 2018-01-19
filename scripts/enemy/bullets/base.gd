@@ -5,7 +5,7 @@ const constants = preload("res://scripts/constants.gd")
 const LIFE_TIME = 10
 const DAMAGE = 30
 
-var world
+onready var world = get_tree().get_root().get_node("world")
 
 var active = true
 var decal = false
@@ -23,7 +23,6 @@ func _ready():
         $particles.set_visibility_rect(Rect2(-s, s*2))
 
     timer = LIFE_TIME
-    world = get_tree().get_root().get_node("world")
 
 func _process(delta):
     timer -= delta

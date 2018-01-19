@@ -11,7 +11,7 @@ const MAX_FALL_SPEED = 800
 
 var ATTACK_DISTANSE_SQUARED = pow(ATTACK_DISTANSE, 2)
 
-var player
+onready var player = get_parent().get_node("player")
 var body_scale
 var health = 100
 var attacking = false
@@ -22,7 +22,6 @@ var velocity = Vector2()
 func _ready():
     set_collision_layer(constants.ENEMY_LAYER)
     set_collision_mask(constants.ENEMY_MASK)
-    player = get_parent().get_node("player")
     body_scale = $base.scale
 
 func _get_player_direction():

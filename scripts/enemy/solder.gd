@@ -19,8 +19,8 @@ const AIM_SPEED = 6
 var aim_timeout = 0
 var reload_timeout = 0
 
-var bullet_spawn
-var world
+onready var bullet_spawn = get_node("base/body/sholder_l/forearm_l/hand_l_pistol/pistol/bullet_spawn")
+onready var world = get_tree().get_root().get_node("world")
 
 var current_aim_angle = 0
 
@@ -29,8 +29,6 @@ export(int, "left", "stay", "right") var direction = 0 setget _set_direction
 func _ready():
     if direction == -1:
         body_scale = Vector2(-$base.scale.x, $base.scale.y)
-    bullet_spawn = $base/body/sholder_l/forearm_l/hand_l_pistol/pistol/bullet_spawn
-    world = get_tree().get_root().get_node("world")
     $anim.set_active(true)
 
 func _set_direction(new_direction):

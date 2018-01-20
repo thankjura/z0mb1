@@ -1,22 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/enemy/bullets/pistol_bullet.gd" type="Script" id=1]
 [ext_resource path="res://textures/enemy/bullets/pistol/bullet.png" type="Texture" id=2]
 [ext_resource path="res://textures/enemy/bullets/pistol/smoke.png" type="Texture" id=3]
 [ext_resource path="res://textures/enemy/bullets/pistol/decal.png" type="Texture" id=4]
 
-[sub_resource type="Gradient" id=1]
-
-offsets = PoolRealArray( 0, 0.130178, 0.449704, 0.763314, 1 )
-colors = PoolColorArray( 0.992188, 1, 0, 1, 0.835938, 0.176331, 0, 1, 0.789062, 0.789062, 0.789062, 1, 0, 0, 0, 1, 0.941176, 0.941176, 0.941176, 0 )
-
-[sub_resource type="GradientTexture" id=2]
-
-flags = 4
-gradient = SubResource( 1 )
-width = 512
-
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticlesMaterial" id=1]
 
 render_priority = 0
 trail_divisor = 1
@@ -26,14 +15,14 @@ flag_rotate_y = false
 flag_disable_z = true
 spread = 10.0
 flatness = 0.0
-gravity = Vector3( 0, -3, 0 )
-initial_velocity = 2.0
+gravity = Vector3( 0, -10, 0 )
+initial_velocity = 5.0
 initial_velocity_random = 0.2
 angular_velocity = 0.0
 angular_velocity_random = 0.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-linear_accel = 0.0
+linear_accel = 10.0
 linear_accel_random = 0.2
 radial_accel = 0.0
 radial_accel_random = 0.0
@@ -43,9 +32,9 @@ damping = 0.0
 damping_random = 0.0
 angle = 0.0
 angle_random = 0.0
-scale = 0.03
+scale = 0.6
 scale_random = 0.2
-color_ramp = SubResource( 2 )
+color = Color( 1, 1, 1, 1 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 0.0
@@ -53,12 +42,12 @@ anim_speed_random = 0.0
 anim_offset = 0.0
 anim_offset_random = 0.0
 anim_loop = false
-_sections_unfolded = [ "Angular Velocity", "Color", "Emission Shape", "Flags", "Gravity", "Initial Velocity", "Linear Accel", "Scale", "Spread", "Trail" ]
+_sections_unfolded = [ "Angular Velocity", "Emission Shape", "Flags", "Gravity", "Initial Velocity", "Linear Accel", "Scale", "Spread", "Trail" ]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 4.77663, 2.5976 )
+extents = Vector2( 7.38333, 4.93172 )
 
 [node name="enemy_pistol_bullet" type="RigidBody2D"]
 
@@ -81,13 +70,10 @@ linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
-_sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="sprite" type="Sprite" parent="." index="0"]
 
-scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
 
 [node name="light" type="Light2D" parent="sprite" index="0"]
 
@@ -128,16 +114,16 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = false
 draw_order = 0
-process_material = SubResource( 3 )
+process_material = SubResource( 1 )
 texture = ExtResource( 3 )
 normal_map = null
 h_frames = 2
 v_frames = 2
-_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform" ]
+_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time" ]
 
 [node name="collision" type="CollisionShape2D" parent="." index="2"]
 
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="decal" type="Sprite" parent="." index="3"]
 

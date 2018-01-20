@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scripts/guns/bullets/bazooka_rocket.gd" type="Script" id=1]
 [ext_resource path="res://textures/guns/bazooka/smoke.png" type="Texture" id=2]
@@ -84,7 +84,12 @@ animations = [ {
 "speed": 30.0
 } ]
 
-[node name="bazooka_rocket" type="RigidBody2D"]
+[sub_resource type="CircleShape2D" id=5]
+
+custom_solver_bias = 0.0
+radius = 229.965
+
+[node name="bazooka_rocket" type="RigidBody2D" index="0"]
 
 position = Vector2( 22, 0 )
 z_index = -30
@@ -134,6 +139,7 @@ _sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Trans
 
 [node name="sprite" type="Sprite" parent="." index="1"]
 
+editor/display_folded = true
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Animation", "Transform" ]
@@ -146,6 +152,7 @@ scale = Vector2( 3.33333, 3.33333 )
 z_index = -1
 frames = SubResource( 2 )
 animation = "default"
+frame = 3
 playing = true
 _sections_unfolded = [ "Transform", "Z Index" ]
 
@@ -210,5 +217,21 @@ shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 32
 _sections_unfolded = [ "Range", "Shadow", "Visibility" ]
+
+[node name="dead_zone" type="Area2D" parent="." index="7"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+monitorable = false
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="collision" type="CollisionShape2D" parent="dead_zone" index="0"]
+
+shape = SubResource( 5 )
 
 

@@ -38,7 +38,7 @@ func _set_direction(new_direction):
 func _fire():
     var b = BULLET.instance()
     var bullet_from = $base/body/sholder_l/forearm_l/hand_l_pistol/pistol/from
-    
+
     var bullet_velocity = (bullet_spawn.global_position - bullet_from.global_position).normalized()
     var gun_angle = Vector2(1, 0).angle_to(bullet_velocity)
 
@@ -64,12 +64,12 @@ func change_direction(t, new_direction):
 
 func _process(delta):
     var is_aim = aim_timeout > 0
-    
+
     if is_aim:
         $anim.blend2_node_set_amount(AIM_BLEND_NODE, 1)
         if not attacking:
             aim_timeout -= delta * 5
-                
+
     if attacking:
         if is_aim:
             aim_timeout -= delta
@@ -78,7 +78,7 @@ func _process(delta):
             else:
                 _aim(delta)
         else:
-            aim_timeout = AIM_TIME            
+            aim_timeout = AIM_TIME
 
 func _physics_process(delta):
     if attacking or aim_timeout > 0:

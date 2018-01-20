@@ -13,11 +13,12 @@ var ATTACK_DISTANSE_SQUARED = pow(ATTACK_DISTANSE, 2)
 
 onready var player = get_parent().get_node("player")
 var body_scale
-var health = 100
+export(int, 10, 1000) var health = 100
 var attacking = false
 var attacking_timeout = 0
 var active = true
 var velocity = Vector2()
+var recoil = Vector2()
 
 func _ready():
     set_collision_layer(constants.ENEMY_LAYER)
@@ -69,20 +70,29 @@ func hit(body):
         return
     health -= body.DAMAGE
     body.damage(STRENGTH)
+
+func damage(d, v):
+    recoil += v
+    if active:
+        health -= d
+
+func _process(delta):
     if health <= 0:
         die()
 
-func _process(delta):
     _check_attack()
-    
+
     if attacking and attacking_timeout > 0:
         attacking_timeout -= delta
         if attacking_timeout <= 0:
             attacking = false
-    
+
 func _physics_process(delta):
     velocity += GRAVITY * delta
     if velocity.y > MAX_FALL_SPEED:
         velocity.y = MAX_FALL_SPEED
 
+    if recoil:
+        move_and_slide(recoil)
+        recoil = Vector2()
     velocity = move_and_slide(velocity)

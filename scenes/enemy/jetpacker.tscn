@@ -399,15 +399,15 @@ data = {
 "xfade": 0.0
 }, {
 "filter": [  ],
-"from": "idle",
-"id": "anim_idle",
-"position": Vector2( 331, 29 ),
-"type": "animation"
-}, {
-"filter": [  ],
 "from": "spy",
 "id": "anim_spy",
 "position": Vector2( 329, 150 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "idle",
+"id": "anim_idle",
+"position": Vector2( 331, 29 ),
 "type": "animation"
 } ]
 }

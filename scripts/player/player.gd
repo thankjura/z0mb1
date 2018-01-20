@@ -1,9 +1,10 @@
 extends KinematicBody2D
 
 const constants = preload("res://scripts/constants.gd")
+const INIT_HEALTH = 100
 
 var dead
-var health = 100
+var health = INIT_HEALTH
 var gui
 var gun
 var movement
@@ -19,7 +20,7 @@ func _ready():
 
     movement = load("res://scripts/player/movement.gd").new(self, $animation_tree_player)
     gui = get_tree().get_root().get_node("world/gui")
-    _update_health()
+    _update_health(INIT_HEALTH)
     movement.look_default()
     camera_offset = $camera.get_offset()
 
@@ -44,12 +45,18 @@ func gun_reload():
 func gun_recoil(recoil_vector):
     movement.gun_recoil(recoil_vector)
 
-func hit(damage):
-    movement.input.vibrate(0.1)
-    health -= damage
-    _update_health()
+func hit(d):
+    _update_health(health - d)
 
-func _update_health():
+func damage(d, v):
+    gun_recoil(v/10)
+    _update_health(health - d)
+
+func _update_health(new_health):
+    var power = min(new_health / health, 1)
+    if power < 1:
+        movement.input.vibrate(0.1, power)
+    health = new_health
     gui.set_health(health)
 
 func _fire(delta):

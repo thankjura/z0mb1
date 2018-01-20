@@ -1447,7 +1447,6 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 [node name="from" type="Position2D" parent="base/body/sholder_l/forearm_l/hand_l_pistol/pistol" index="0"]
 
 position = Vector2( 36, 0 )
-scale = Vector2( 1, 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="bullet_spawn" type="Position2D" parent="base/body/sholder_l/forearm_l/hand_l_pistol/pistol" index="1"]
@@ -1507,7 +1506,6 @@ __meta__ = {
 show_behind_parent = true
 position = Vector2( -16.6333, 92.5689 )
 rotation = -0.27653
-scale = Vector2( 1, 1 )
 texture = ExtResource( 13 )
 offset = Vector2( -1.84066, 39.5057 )
 _sections_unfolded = [ "Material", "Visibility", "Z Index" ]
@@ -1550,7 +1548,6 @@ __meta__ = {
 [node name="foot_r" type="Sprite" parent="base/hip_r/shin_r" index="0"]
 
 position = Vector2( -9.98896, 58.0019 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 17 )
 offset = Vector2( 11.003, 15.9979 )
 __meta__ = {
@@ -1641,7 +1638,7 @@ base_path = NodePath("..")
 active = false
 data = {
 "active": false,
-"connections": [ "aim_blend", "out", 0, "anim", "ground_blend", 0, "walk_scale", "ground_blend", 1, "ground_blend", "aim_blend", 0, "aim", "aim_blend", 1, "walk", "walk_scale", 0, "aim_anim", "aim", 0 ],
+"connections": [ "aim_blend", "out", 0, "ground_blend", "aim_blend", 0, "aim", "aim_blend", 1, "aim_anim", "aim", 0, "anim", "ground_blend", 0, "walk_scale", "ground_blend", 1, "walk", "walk_scale", 0 ],
 "master": NodePath("../animation_player"),
 "nodes": [ {
 "filter": [  ],
@@ -1654,10 +1651,26 @@ data = {
 "position": Vector2( 1001, 5 ),
 "type": "output"
 }, {
+"blend": 0.0,
+"filter": [ NodePath("base/hip_l/shin_l/foot_l:position"), NodePath("base/hip_r:position"), NodePath("base:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position"), NodePath("base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position"), NodePath("base/hip_r:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/hip_l:position"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:position"), NodePath("base/hip_r/shin_r:position"), NodePath("base/hip_l:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/hip_r/shin_r:rotation_degrees"), NodePath("base/body:position"), NodePath("base/body/head:position"), NodePath("base/hip_l/shin_l:position"), NodePath("base/hip_l/shin_l:rotation_degrees"), NodePath("base:position") ],
+"id": "aim_blend",
+"position": Vector2( 804, 5 ),
+"type": "blend2"
+}, {
+"id": "aim",
+"position": Vector2( 616, 194 ),
+"type": "timeseek"
+}, {
 "filter": [  ],
 "from": "walk",
 "id": "walk",
 "position": Vector2( 77, 141 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "aim",
+"id": "aim_anim",
+"position": Vector2( 414, 233 ),
 "type": "animation"
 }, {
 "blend": 0.0,
@@ -1666,26 +1679,10 @@ data = {
 "position": Vector2( 567, 5 ),
 "type": "blend2"
 }, {
-"blend": 0.0,
-"filter": [ NodePath("base/hip_l/shin_l/foot_l:position"), NodePath("base/hip_r:position"), NodePath("base:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position"), NodePath("base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position"), NodePath("base/hip_r:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/hip_l:position"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:position"), NodePath("base/hip_r/shin_r:position"), NodePath("base/hip_l:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/hip_r/shin_r:rotation_degrees"), NodePath("base/body:position"), NodePath("base/body/head:position"), NodePath("base/hip_l/shin_l:position"), NodePath("base/hip_l/shin_l:rotation_degrees"), NodePath("base:position") ],
-"id": "aim_blend",
-"position": Vector2( 804, 5 ),
-"type": "blend2"
-}, {
 "id": "walk_scale",
 "position": Vector2( 380, 100 ),
 "scale": 1.0,
 "type": "timescale"
-}, {
-"filter": [  ],
-"from": "aim",
-"id": "aim_anim",
-"position": Vector2( 414, 233 ),
-"type": "animation"
-}, {
-"id": "aim",
-"position": Vector2( 616, 194 ),
-"type": "timeseek"
 } ]
 }
 

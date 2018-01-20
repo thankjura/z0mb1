@@ -4,7 +4,7 @@ const DAMAGE = 1000
 const HEALTH = 10
 const LIFE_TIME = 20
 
-const SHOCK_WAVE_FORCE = 10000
+const SHOCK_WAVE_FORCE = 40000
 var SHOCK_WAVE_DISTANCE_SQUARED = 1
 
 func _ready():
@@ -22,11 +22,9 @@ func _collision(body):
     _deactivate()
 
 func _damage(body):
-    print(body)
-    var distance = global_position.distance_squared_to(body.global_position)
-    var vector = (body.global_position - global_position).normalized()
+    var distance = $dead_zone.global_position.distance_squared_to(body.global_position)
+    var vector = (body.global_position - $dead_zone.global_position).normalized()
     var percent = (1 - distance/SHOCK_WAVE_DISTANCE_SQUARED)
-    print(vector*SHOCK_WAVE_FORCE*percent)
     if body.has_method("damage"):
         body.damage(DAMAGE*percent, vector*SHOCK_WAVE_FORCE*percent)
     elif body is RigidBody2D:

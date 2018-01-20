@@ -7,8 +7,8 @@ const INIT_GRAVITY = Vector2(0, 2000)
 const INIT_MAX_SPEED = 400
 
 const JUMP_FORCE = 800
-const ACCELERATION = 30
-const AIR_ACCELERATION = 20
+const ACCELERATION = 20
+const AIR_ACCELERATION = 10
 const RUN_SPEED = 300
 const FLOOR_NORMAL = Vector2(0, -1)
 const SLOPE_FRICTION = 20
@@ -34,6 +34,7 @@ const AIM_SHOTGUN_NAME = "aim_shotgun"
 var MOVEMENT_MODE = 1
 var MAX_SPEED = 600
 var GRAVITY = INIT_GRAVITY
+const RECOIL_DEACCELERATION = 20
 
 enum STATE {
     ground,
@@ -88,8 +89,7 @@ func _ground_state(delta, m = Vector2(), direction = 1):
         movement = -1
     elif m.x > 0:
         movement = 1
-    movement *= MAX_SPEED
-    velocity.x = lerp(velocity.x, movement, ACCELERATION*delta)
+    velocity.x = lerp(velocity.x, movement * MAX_SPEED, ACCELERATION*delta)
     if sign(velocity.x) * direction > 0:
         anim.blend2_node_set_amount(WALK_DIRECTION_NODE, 0)
         anim.blend2_node_set_amount(RUN_DIRECTION_NODE, 0)
@@ -116,7 +116,7 @@ func _air_state(delta, m = Vector2()):
     if velocity.y and air_state:
         if velocity.y > 0:
             anim.transition_node_set_current(STATE_NODE, STATE.jump_down)
-        elif velocity.y < 0:
+        elif velocity.y:
             anim.transition_node_set_current(STATE_NODE, STATE.jump_up)
     else:
         air_state = true
@@ -181,7 +181,11 @@ func gun_reload():
         anim.oneshot_node_start(BAZOOKA_RELOAD_NODE)
 
 func gun_recoil(recoil_vector):
-    recoil.x += recoil_vector.x
+    var new_recoil = recoil_vector
+
+    if -new_recoil.y < GRAVITY.y:
+        new_recoil.y = 0
+    recoil += new_recoil
 
 func is_back():
     return player.get_node("base").scale != body_scale
@@ -253,9 +257,14 @@ func process(delta):
     if velocity.y > MAX_FALL_SPEED:
         velocity.y = MAX_FALL_SPEED
 
-    player.move_and_slide(recoil, FLOOR_NORMAL, SLOPE_FRICTION)
-    velocity = player.move_and_slide(velocity, FLOOR_NORMAL, SLOPE_FRICTION)
-    recoil = Vector2()
+    velocity = player.move_and_slide(velocity + recoil, FLOOR_NORMAL, SLOPE_FRICTION)
+    velocity -= recoil
+    var new_recoil = recoil.linear_interpolate(Vector2(), RECOIL_DEACCELERATION*delta)
+    if sign(recoil.x) != sign(new_recoil.x):
+        new_recoil.x = 0
+    if sign(recoil.y) != sign(new_recoil.y):
+        new_recoil.y = 0
+    recoil = new_recoil
 
     if not player.gun:
         anim.blend2_node_set_amount(AIM_BLEND_NODE, 0)

@@ -47,13 +47,15 @@ func _eject_shell():
         var s = SHELL.instance()
         s.set_global_position($shell_gate.global_position)
         var global_rot = $shell_gate.global_rotation
+        var ext_rotate = -0.2
         if abs($shell_gate.global_rotation) > PI/2:
             v.x = -v.x
-            global_rot = PI - global_rot
+            global_rot = PI - global_rot - 0.02
+            ext_rotate = -ext_rotate
         s.set_global_rotation(global_rot)
-        s.applied_torque = rand_range(-200, 500)
+        s.applied_torque = rand_range(-300, 500)
         world.add_child(s)
-        var impulse = v.rotated(global_rot)
+        var impulse = v.rotated(global_rot + ext_rotate)
         s.apply_impulse(Vector2(0,0), impulse + player.movement.velocity)
 
 func fire(delta, velocity):

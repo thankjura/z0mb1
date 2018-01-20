@@ -263,7 +263,7 @@ position = Vector2( 3139.97, 272.646 )
 
 [node name="player" parent="." index="4" instance=ExtResource( 10 )]
 
-position = Vector2( 1547.29, 898.002 )
+position = Vector2( 895.29, 846.002 )
 scale = Vector2( 0.3, 0.3 )
 _sections_unfolded = [ "Transform", "collision" ]
 

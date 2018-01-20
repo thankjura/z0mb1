@@ -114,7 +114,7 @@ tracks/6/keys = {
 "values": [ Vector2( 236, 17 ), Vector2( 236, 19 ), Vector2( 236, 16 ), Vector2( 236, 19 ), Vector2( 236, 17 ), Vector2( 236, 18 ) ]
 }
 
-[node name="minigun" type="Node2D"]
+[node name="minigun" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform" ]
@@ -173,6 +173,7 @@ _sections_unfolded = [ "Hint", "Material", "Rect", "Visibility" ]
 
 [node name="flash" type="Sprite" parent="." index="2"]
 
+editor/display_folded = true
 visible = false
 position = Vector2( 374, -12 )
 scale = Vector2( 0.956865, -0.594313 )

@@ -34,7 +34,7 @@ func quit_confirm():
     get_tree().get_root().add_child(current_menu)
 
 func _input(event):
-    if event.is_action_released("ui_cancel"):
+    if event.is_action_released("ui_esc"):
         if current_menu:
             if current_menu.get_filename() == GAME_MENU.get_path():
                 current_menu.queue_free()

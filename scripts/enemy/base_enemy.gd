@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 const constants = preload("res://scripts/constants.gd")
 const MOVEMENT_SPEED = 50
-const STRENGTH = 150
 const ATTACK_DISTANSE = 300
 const ATTACK_FOLLOW_TIMEOUT = 5
 const ATTACK_DAMAGE = 30
@@ -21,8 +20,7 @@ var velocity = Vector2()
 var recoil = Vector2()
 
 func _ready():
-    set_collision_layer(constants.ENEMY_LAYER)
-    set_collision_mask(constants.ENEMY_MASK)
+    set_collision_mask(constants.GROUND_LAYER)
     body_scale = $base.scale
 
 func _get_player_direction():
@@ -58,25 +56,21 @@ func _check_attack():
 
 
 func _deactivate():
-    set_collision_layer(0)
     set_collision_mask(constants.GROUND_LAYER)
     active = false
 
 func die():
-    queue_free()
-
-func hit(body):
-    if not active:
-        return
-    health -= body.DAMAGE
-    body.damage(STRENGTH)
+    _deactivate()
 
 func damage(d, v):
-    recoil += v
+    recoil += v / 20
     if active:
         health -= d
 
 func _process(delta):
+    if not active:
+        return
+
     if health <= 0:
         die()
 
@@ -92,7 +86,13 @@ func _physics_process(delta):
     if velocity.y > MAX_FALL_SPEED:
         velocity.y = MAX_FALL_SPEED
 
-    if recoil:
-        move_and_slide(recoil)
-        recoil = Vector2()
-    velocity = move_and_slide(velocity)
+    if not active:
+        velocity = velocity.linear_interpolate(Vector2(), 20*delta)
+    velocity = move_and_slide(velocity + recoil)
+    velocity -= recoil
+    var new_recoil = recoil.linear_interpolate(Vector2(), 20*delta)
+    if sign(recoil.x) != sign(new_recoil.x):
+        new_recoil.x = 0
+    if sign(recoil.y) != sign(new_recoil.y):
+        new_recoil.y = 0
+    recoil = new_recoil

@@ -2,7 +2,7 @@ extends "res://scripts/guns/bullets/base.gd"
 
 const DAMAGE = 1000
 const HEALTH = 10
-const LIFE_TIME = 20
+const LIFE_TIME = 60
 
 const SHOCK_WAVE_FORCE = 40000
 var SHOCK_WAVE_DISTANCE_SQUARED = 1

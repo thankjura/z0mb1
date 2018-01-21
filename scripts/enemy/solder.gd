@@ -10,13 +10,20 @@ const GROUND_BLEND_NODE = "ground_blend"
 const AIM_BLEND_NODE = "aim_blend"
 const WALK_SCALE_NODE = "walk_scale"
 const FIRE_NODE = "fire_oneshot"
+const DIE_NODE = "die_transition"
 
 const MAX_SPEED = 100
 const ACCELERATION = 20
 const AIM_TIME = 3
 const AIM_SPEED = 6
 const ATTACK_FOLLOW_TIMEOUT = 2
+const AIM_BLEND_TIME = 0.5
 
+const BODY_STRENGTH = 120
+const HEAD_STRENGTH = 100
+
+var aim_blend_timeout = 0
+var aim_blend_enabled = false
 var aim_timeout = 0
 var idle_timeout = 0
 
@@ -30,7 +37,27 @@ export(int, "left", "stay", "right") var direction = 0 setget _set_direction
 func _ready():
     if direction == -1:
         body_scale = Vector2(-$base.scale.x, $base.scale.y)
+
+    $base/body/body_area.set_collision_layer(constants.ENEMY_LAYER)
+    $base/body/body_area.set_collision_mask(constants.ENEMY_MASK)
+    $base/body/head/head_area.set_collision_layer(constants.ENEMY_LAYER)
+    $base/body/head/head_area.set_collision_mask(constants.ENEMY_MASK)
+
+    $base/body/body_area.connect("body_entered", self, "_body_hit")
+    $base/body/head/head_area.connect("body_entered", self, "_head_hit")
     $anim.set_active(true)
+
+func _body_hit(obj):
+    if obj.has_method("damage"):
+        obj.damage(BODY_STRENGTH)
+    if obj.DAMAGE:
+        health -= obj.DAMAGE
+
+func _head_hit(obj):
+    if obj.has_method("damage"):
+        obj.damage(HEAD_STRENGTH)
+    if obj.DAMAGE:
+        health -= obj.DAMAGE * 2
 
 func _set_direction(new_direction):
     direction = new_direction - 1
@@ -46,7 +73,6 @@ func _fire():
     b.set_axis_velocity(bullet_velocity*BULLET_SPEED+velocity)
     b.set_global_position(bullet_spawn.global_position)
     world.add_child(b)
-    $anim.oneshot_node_start(FIRE_NODE)
     $audio_fire.play()
 
 func _aim(delta):
@@ -62,13 +88,39 @@ func change_direction(t, new_direction):
     direction = new_direction
     idle_timeout = t
 
+func die():
+    _deactivate()
+    $base/body/body_area.disconnect("body_entered", self, "_body_hit")
+    $base/body/head/head_area.disconnect("body_entered", self, "_head_hit")
+    $anim.transition_node_set_current(DIE_NODE, 1)
+
 func _process(delta):
+    if not active:
+        return
+
     var is_aim = aim_timeout > 0
 
+    if aim_blend_timeout > 0:
+        aim_blend_timeout -= delta
+        if aim_blend_timeout < 0:
+            aim_blend_timeout = 0
+
     if is_aim:
-        $anim.blend2_node_set_amount(AIM_BLEND_NODE, 1)
+        if aim_blend_enabled:
+            $anim.blend2_node_set_amount(AIM_BLEND_NODE, (1 - aim_blend_timeout/AIM_BLEND_TIME))
+        else:
+            if aim_blend_timeout <= 0:
+                aim_blend_timeout = AIM_BLEND_TIME
+            aim_blend_enabled = true
         if not attacking:
             aim_timeout -= delta * 5
+    else:
+        if aim_blend_enabled:
+            if aim_blend_timeout <= 0:
+                aim_blend_timeout = AIM_BLEND_TIME
+            aim_blend_enabled = false
+        else:
+            $anim.blend2_node_set_amount(AIM_BLEND_NODE, (aim_blend_timeout/AIM_BLEND_TIME))
 
     if attacking:
         if is_aim:
@@ -81,6 +133,9 @@ func _process(delta):
             aim_timeout = AIM_TIME
 
 func _physics_process(delta):
+    if not active:
+        return
+
     if attacking or aim_timeout > 0:
         if abs(velocity.x) > 0:
             velocity.x = lerp(velocity.x, 0, ACCELERATION*delta)
@@ -90,7 +145,6 @@ func _physics_process(delta):
             velocity.x = lerp(velocity.x, 0, ACCELERATION*delta)
     else:
         velocity.x = lerp(velocity.x, MAX_SPEED * direction, ACCELERATION*delta)
-        $anim.blend2_node_set_amount(AIM_BLEND_NODE, 0)
 
     if abs(velocity.x) > 5:
         $anim.timescale_node_set_scale(WALK_SCALE_NODE, abs(velocity.x)*delta*1.2)

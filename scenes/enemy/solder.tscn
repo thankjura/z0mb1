@@ -655,22 +655,10 @@ tracks/20/loop_wrap = true
 tracks/20/imported = false
 tracks/20/enabled = true
 tracks/20/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 62, 265 ) ]
-}
-tracks/21/type = "value"
-tracks/21/path = NodePath("collision:shape:position")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Vector2( -1, -88 ) ]
+"values": [ Vector2( 62, 265 ), Vector2( 62, 265 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -1135,7 +1123,6 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="base" type="Sprite" parent="." index="1"]
 
-position = Vector2( 0, 14 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
@@ -1189,7 +1176,7 @@ texture = ExtResource( 6 )
 
 editor/display_folded = true
 position = Vector2( 44.998, -134.498 )
-rotation = 0.830129
+rotation = 0.385212
 z_index = -2
 texture = ExtResource( 7 )
 offset = Vector2( -2.88448, 28.5098 )
@@ -1203,7 +1190,7 @@ __meta__ = {
 
 show_behind_parent = true
 position = Vector2( 0.625458, 65.8531 )
-rotation = -0.608776
+rotation = -0.531538
 scale = Vector2( 1, 1 )
 z_index = -1
 texture = ExtResource( 8 )
@@ -1278,7 +1265,7 @@ shadow_item_cull_mask = 1
 
 editor/display_folded = true
 position = Vector2( -74, -142 )
-rotation = -0.49038
+rotation = 0.108312
 z_index = 4
 texture = ExtResource( 12 )
 offset = Vector2( -17.6188, 38.3185 )
@@ -1292,7 +1279,7 @@ __meta__ = {
 
 show_behind_parent = true
 position = Vector2( -16.6333, 92.569 )
-rotation = -0.826171
+rotation = -0.27653
 texture = ExtResource( 13 )
 offset = Vector2( -1.84066, 39.5057 )
 _sections_unfolded = [ "Material", "Visibility", "Z Index" ]
@@ -1329,7 +1316,7 @@ polygon = PoolVector2Array( -38.3316, 20.7048, 32.1015, 13.2096, 39.6661, -27.21
 
 editor/display_folded = true
 position = Vector2( -22.002, 6.50195 )
-rotation = 0.313758
+rotation = 0.000190367
 z_index = 1
 texture = ExtResource( 15 )
 offset = Vector2( -1.99805, 37.498 )
@@ -1342,7 +1329,6 @@ __meta__ = {
 [node name="shin_r" type="Sprite" parent="base/hip_r" index="0"]
 
 position = Vector2( -10.9863, 72.0021 )
-rotation = 0.383004
 texture = ExtResource( 16 )
 offset = Vector2( -7.99448, 29.0015 )
 _sections_unfolded = [ "Transform" ]
@@ -1362,7 +1348,7 @@ __meta__ = {
 [node name="foot_r_toe" type="Sprite" parent="base/hip_r/shin_r/foot_r" index="0"]
 
 position = Vector2( 31.5085, 34.2421 )
-rotation = -0.636764
+rotation = -0.00249025
 texture = ExtResource( 18 )
 offset = Vector2( 12.4975, -2.75043 )
 __meta__ = {
@@ -1373,7 +1359,6 @@ __meta__ = {
 
 editor/display_folded = true
 position = Vector2( 30, 4 )
-rotation = -0.275872
 z_index = -1
 texture = ExtResource( 19 )
 offset = Vector2( 2.30478, 39.2508 )
@@ -1386,7 +1371,6 @@ __meta__ = {
 [node name="shin_l" type="Sprite" parent="base/hip_l" index="0"]
 
 position = Vector2( 11, 74 )
-rotation = -0.175491
 texture = ExtResource( 20 )
 offset = Vector2( 1, 28 )
 _sections_unfolded = [ "Transform" ]
@@ -1397,7 +1381,6 @@ __meta__ = {
 [node name="foot_l" type="Sprite" parent="base/hip_l/shin_l" index="0"]
 
 position = Vector2( 3, 57 )
-rotation = -0.455751
 scale = Vector2( 1, 1 )
 texture = ExtResource( 21 )
 offset = Vector2( 9.75, 16 )
@@ -1408,7 +1391,6 @@ __meta__ = {
 [node name="foot_l_toe" type="Sprite" parent="base/hip_l/shin_l/foot_l" index="0"]
 
 position = Vector2( 32, 35.25 )
-rotation = -0.327019
 texture = ExtResource( 22 )
 offset = Vector2( 11.5, -4.5 )
 _sections_unfolded = [ "Transform" ]

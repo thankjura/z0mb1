@@ -20,7 +20,8 @@ var velocity = Vector2()
 var recoil = Vector2()
 
 func _ready():
-    set_collision_mask(constants.GROUND_LAYER)
+    set_collision_mask(constants.ENEMY_MASK)
+    set_collision_layer(constants.ENEMY_LAYER)
     body_scale = $base.scale
 
 func _get_player_direction():

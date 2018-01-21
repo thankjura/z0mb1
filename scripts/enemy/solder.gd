@@ -1,5 +1,8 @@
 extends "res://scripts/enemy/base_enemy.gd"
 
+const ATTACK_DISTANSE = 1000
+const ATTACK_DAMAGE = 30
+
 const DEFAULT_VECTOR = Vector2(0, -1)
 
 const BULLET = preload("res://scenes/enemy/bullets/enemy_pistol_bullet.tscn")
@@ -11,6 +14,8 @@ const AIM_BLEND_NODE = "aim_blend"
 const WALK_SCALE_NODE = "walk_scale"
 const FIRE_NODE = "fire_oneshot"
 const DIE_NODE = "die_transition"
+const HIT_NODE = "hit_oneshot"
+const HIT_ANIM_NODE = "hit_transition"
 
 const MAX_SPEED = 100
 const ACCELERATION = 20
@@ -21,6 +26,17 @@ const AIM_BLEND_TIME = 0.5
 
 const BODY_STRENGTH = 120
 const HEAD_STRENGTH = 100
+
+enum DIE_ANIM {
+    DEFAULT,
+    HEAD_BACK,
+    HEAD_FORWARD
+}
+
+enum HIT_ANIM {
+    HEAD_BACK,
+    HEAD_FORWARD
+}
 
 var aim_blend_timeout = 0
 var aim_blend_enabled = false
@@ -38,10 +54,10 @@ func _ready():
     if direction == -1:
         body_scale = Vector2(-$base.scale.x, $base.scale.y)
 
-    $base/body/body_area.set_collision_layer(constants.ENEMY_LAYER)
-    $base/body/body_area.set_collision_mask(constants.ENEMY_MASK)
-    $base/body/head/head_area.set_collision_layer(constants.ENEMY_LAYER)
-    $base/body/head/head_area.set_collision_mask(constants.ENEMY_MASK)
+    $base/body/body_area.set_collision_layer(constants.ENEMY_DAMAGE_LAYER)
+    $base/body/body_area.set_collision_mask(constants.ENEMY_DAMAGE_MASK)
+    $base/body/head/head_area.set_collision_layer(constants.ENEMY_DAMAGE_LAYER)
+    $base/body/head/head_area.set_collision_mask(constants.ENEMY_DAMAGE_MASK)
 
     $base/body/body_area.connect("body_entered", self, "_body_hit")
     $base/body/head/head_area.connect("body_entered", self, "_head_hit")
@@ -54,11 +70,27 @@ func _body_hit(obj):
         health -= obj.DAMAGE
 
 func _head_hit(obj):
+    var back = is_back()
+
     if obj.has_method("damage"):
         obj.damage(HEAD_STRENGTH)
     if obj.DAMAGE:
         health -= obj.DAMAGE * 2
-
+    if health > 0:
+        if obj is RigidBody2D:
+            if obj.get_linear_velocity().x > 0:
+                print("->")
+                if back:
+                    $anim.transition_node_set_current(HIT_ANIM_NODE, HIT_ANIM.HEAD_FORWARD)
+                else:
+                    $anim.transition_node_set_current(HIT_ANIM_NODE, HIT_ANIM.HEAD_BACK)
+            else:
+                print("<-")
+                if back:
+                    $anim.transition_node_set_current(HIT_ANIM_NODE, HIT_ANIM.HEAD_BACK)
+                else:
+                    $anim.transition_node_set_current(HIT_ANIM_NODE, HIT_ANIM.HEAD_FORWARD)
+            $anim.oneshot_node_start(HIT_NODE)
 func _set_direction(new_direction):
     direction = new_direction - 1
 

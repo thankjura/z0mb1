@@ -29,13 +29,13 @@ const HEAD_STRENGTH = 100
 
 enum DIE_ANIM {
     DEFAULT,
-    HEAD_BACK,
-    HEAD_FORWARD
+    HEAD_ON_BACK,
+    HEAD_ON_FACE
 }
 
 enum HIT_ANIM {
     HEAD_BACK,
-    HEAD_FORWARD
+    HEAD_FACE
 }
 
 var aim_blend_timeout = 0
@@ -43,8 +43,10 @@ var aim_blend_enabled = false
 var aim_timeout = 0
 var idle_timeout = 0
 
-onready var bullet_spawn = get_node("base/body/sholder_l/forearm_l/hand_l_pistol/pistol/bullet_spawn")
+onready var bullet_spawn = get_node("base/base/body/sholder_l/forearm_l/hand_l_pistol/pistol/bullet_spawn")
 onready var world = get_tree().get_root().get_node("world")
+
+var die_anim = DIE_ANIM.HEAD_ON_BACK
 
 var current_aim_angle = 0
 
@@ -54,13 +56,13 @@ func _ready():
     if direction == -1:
         body_scale = Vector2(-$base.scale.x, $base.scale.y)
 
-    $base/body/body_area.set_collision_layer(constants.ENEMY_DAMAGE_LAYER)
-    $base/body/body_area.set_collision_mask(constants.ENEMY_DAMAGE_MASK)
-    $base/body/head/head_area.set_collision_layer(constants.ENEMY_DAMAGE_LAYER)
-    $base/body/head/head_area.set_collision_mask(constants.ENEMY_DAMAGE_MASK)
+    $base/base/body/body_area.set_collision_layer(constants.ENEMY_DAMAGE_LAYER)
+    $base/base/body/body_area.set_collision_mask(constants.ENEMY_DAMAGE_MASK)
+    $base/base/body/head/head_area.set_collision_layer(constants.ENEMY_DAMAGE_LAYER)
+    $base/base/body/head/head_area.set_collision_mask(constants.ENEMY_DAMAGE_MASK)
 
-    $base/body/body_area.connect("body_entered", self, "_body_hit")
-    $base/body/head/head_area.connect("body_entered", self, "_head_hit")
+    $base/base/body/body_area.connect("body_entered", self, "_body_hit")
+    $base/base/body/head/head_area.connect("body_entered", self, "_head_hit")
     $anim.set_active(true)
 
 func _body_hit(obj):
@@ -78,25 +80,27 @@ func _head_hit(obj):
         health -= obj.DAMAGE * 2
     if health > 0:
         if obj is RigidBody2D:
-            if obj.get_linear_velocity().x > 0:
+            if obj.get_linear_velocity().x > 0 != back:
                 print("->")
-                if back:
-                    $anim.transition_node_set_current(HIT_ANIM_NODE, HIT_ANIM.HEAD_FORWARD)
-                else:
-                    $anim.transition_node_set_current(HIT_ANIM_NODE, HIT_ANIM.HEAD_BACK)
+                print(back)
+                print("on face")
+                die_anim = DIE_ANIM.HEAD_ON_FACE
+                $anim.transition_node_set_current(HIT_ANIM_NODE, HIT_ANIM.HEAD_BACK)
             else:
-                print("<-")
-                if back:
-                    $anim.transition_node_set_current(HIT_ANIM_NODE, HIT_ANIM.HEAD_BACK)
-                else:
-                    $anim.transition_node_set_current(HIT_ANIM_NODE, HIT_ANIM.HEAD_FORWARD)
+                print("->")
+                print(back)
+                print("on back")
+                die_anim = DIE_ANIM.HEAD_ON_BACK
+                $anim.transition_node_set_current(HIT_ANIM_NODE, HIT_ANIM.HEAD_FACE)
+            print(die_anim)
             $anim.oneshot_node_start(HIT_NODE)
+
 func _set_direction(new_direction):
     direction = new_direction - 1
 
 func _fire():
     var b = BULLET.instance()
-    var bullet_from = $base/body/sholder_l/forearm_l/hand_l_pistol/pistol/from
+    var bullet_from = $base/base/body/sholder_l/forearm_l/hand_l_pistol/pistol/from
 
     var bullet_velocity = (bullet_spawn.global_position - bullet_from.global_position).normalized()
     var gun_angle = Vector2(1, 0).angle_to(bullet_velocity)
@@ -122,9 +126,10 @@ func change_direction(t, new_direction):
 
 func die():
     _deactivate()
-    $base/body/body_area.disconnect("body_entered", self, "_body_hit")
-    $base/body/head/head_area.disconnect("body_entered", self, "_head_hit")
-    $anim.transition_node_set_current(DIE_NODE, 1)
+    $base/base/body/body_area.disconnect("body_entered", self, "_body_hit")
+    $base/base/body/head/head_area.disconnect("body_entered", self, "_head_hit")
+    $anim.oneshot_node_stop(HIT_NODE)
+    $anim.transition_node_set_current(DIE_NODE, die_anim)
 
 func _process(delta):
     if not active:

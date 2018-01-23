@@ -14,7 +14,7 @@ func _ready():
     $anim.set_active(true)
 
 func _integrate_forces(s):
-    if global_position.distance_squared_to(player.global_position) < ATTACK_DISTANSE_SQUARED:
+    if global_position.distance_squared_to(player.global_position) < ATTACK_DISTANCE_SQUARED:
         spy = true
         spy_timeout = SPY_TIME
     else:

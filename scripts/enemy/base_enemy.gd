@@ -2,16 +2,15 @@ extends KinematicBody2D
 
 const constants = preload("res://scripts/constants.gd")
 const MOVEMENT_SPEED = 50
-const ATTACK_DISTANSE = 300
+const ATTACK_DISTANCE = 300
 const ATTACK_FOLLOW_TIMEOUT = 5
 const ATTACK_DAMAGE = 30
 const GRAVITY = Vector2(0, 2000)
 const MAX_FALL_SPEED = 800
 
-var ATTACK_DISTANSE_SQUARED = pow(ATTACK_DISTANSE, 2)
+var ATTACK_DISTANCE_SQUARED = pow(ATTACK_DISTANCE, 2)
 
 onready var player = get_parent().get_node("player")
-var body_scale
 export(int, 10, 1000) var health = 100
 var attacking = false
 var attacking_timeout = 0
@@ -22,7 +21,6 @@ var recoil = Vector2()
 func _ready():
     set_collision_mask(constants.ENEMY_MASK)
     set_collision_layer(constants.ENEMY_LAYER)
-    body_scale = $base.scale
 
 func _get_player_direction():
     if player.global_position.x > global_position.x:
@@ -31,16 +29,16 @@ func _get_player_direction():
         return -1
 
 func is_back():
-    return $base.scale != body_scale
+    return $base.scale.x == -1
 
 func _check_attack():
     if attacking:
         return
     var new_state
     if has_node("visibility_notifier"):
-        new_state = $visibility_notifier.is_on_screen() and get_global_position().distance_squared_to(player.global_position) < ATTACK_DISTANSE_SQUARED
+        new_state = $visibility_notifier.is_on_screen() and get_global_position().distance_squared_to(player.global_position) < ATTACK_DISTANCE_SQUARED
     else:
-        new_state = get_global_position().distance_squared_to(player.global_position) < ATTACK_DISTANSE_SQUARED
+        new_state = get_global_position().distance_squared_to(player.global_position) < ATTACK_DISTANCE_SQUARED
 
     var b = is_back()
     if new_state:

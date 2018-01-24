@@ -39,7 +39,7 @@ func drop_gun():
     movement.drop_gun()
 
 func gun_reload():
-    $anim.gun_reload()
+    $animation_tree_player.gun_reload()
 
 func gun_recoil(recoil_vector):
     movement.gun_recoil(recoil_vector)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://scripts/player/player.gd" type="Script" id=1]
 [ext_resource path="res://textures/player/henry/base.png" type="Texture" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://textures/player/henry/foot_l.png" type="Texture" id=26]
 [ext_resource path="res://textures/player/henry/foot_l_toe.png" type="Texture" id=27]
 [ext_resource path="res://sounds/player/footstep.wav" type="AudioStream" id=28]
+[ext_resource path="res://scripts/player/animation.gd" type="Script" id=29]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -41,7 +42,7 @@ length = 180.0
 loop = false
 step = 1.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("base/body/sholder_l/forearm_l/hand_l_shotgun:position")
+tracks/0/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -53,7 +54,7 @@ tracks/0/keys = {
 "values": [ Vector2( 6.13538, 74.711 ), Vector2( 6.13538, 74.711 ), Vector2( 6.13538, 74.711 ), Vector2( 6.13538, 74.711 ), Vector2( 6.13538, 74.711 ), Vector2( 6.13538, 74.711 ), Vector2( 6.13538, 74.711 ), Vector2( 10.3604, 51.2973 ), Vector2( 13.4951, 66.0385 ), Vector2( 6.13538, 74.711 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("base/body/sholder_l/forearm_l/hand_l_shotgun:rotation_degrees")
+tracks/1/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -65,7 +66,7 @@ tracks/1/keys = {
 "values": [ -71.1089, -60.6309, -56.1884, -55.1307, -67.0054, -86.5638, -104.158, -152.314, -138.999, -158.542 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("base/body/sholder_l/forearm_l:position")
+tracks/2/path = NodePath("base/pelvis/body/sholder_l/forearm_l:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -77,7 +78,7 @@ tracks/2/keys = {
 "values": [ Vector2( -3.90143, 69.7379 ), Vector2( -3.9014, 69.7381 ), Vector2( -3.90141, 69.738 ), Vector2( -3.90147, 69.7379 ), Vector2( -3.9014, 69.7379 ), Vector2( -3.90139, 69.7378 ), Vector2( -3.90141, 69.7379 ), Vector2( 4.97579, 65.5125 ), Vector2( 11.9508, 62.1925 ), Vector2( -3.90136, 69.7379 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("base/body/sholder_l/forearm_l:rotation_degrees")
+tracks/3/path = NodePath("base/pelvis/body/sholder_l/forearm_l:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -89,7 +90,7 @@ tracks/3/keys = {
 "values": [ -23.5214, -51.5232, -70.9244, -103.144, -108.543, -101.476, -98.5514, 1.47116, 18.7487, 79.1829 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("base/body/sholder_l:position")
+tracks/4/path = NodePath("base/pelvis/body/sholder_l:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -101,7 +102,7 @@ tracks/4/keys = {
 "values": [ Vector2( 60, -127 ), Vector2( 60, -127 ), Vector2( 60, -127 ), Vector2( 60, -127 ), Vector2( 60, -127 ), Vector2( 60, -127 ), Vector2( 60, -127 ), Vector2( 49.6061, -147.394 ), Vector2( 37.2303, -149.064 ), Vector2( 34.4595, -149.545 ), Vector2( 60, -127 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("base/body/sholder_l:rotation_degrees")
+tracks/5/path = NodePath("base/pelvis/body/sholder_l:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -113,7 +114,7 @@ tracks/5/keys = {
 "values": [ -150.77, -131.571, -110.61, -58.7419, -29.1872, 3.53265, 22.7954, 8.2068, -18.0527, -24.9666, -42.4834 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("base/body/sholder_r/forearm_r/hand_r_pistol:position")
+tracks/6/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r_pistol:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -125,7 +126,7 @@ tracks/6/keys = {
 "values": [ Vector2( 11.4002, 95.349 ), Vector2( 11.4002, 95.349 ), Vector2( 11.4002, 95.349 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("base/body/sholder_r/forearm_r/hand_r_pistol:rotation_degrees")
+tracks/7/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r_pistol:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -137,7 +138,7 @@ tracks/7/keys = {
 "values": [ -42.7881, -42.7881, -42.7881 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("base/body/sholder_r/forearm_r:position")
+tracks/8/path = NodePath("base/pelvis/body/sholder_r/forearm_r:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -149,7 +150,7 @@ tracks/8/keys = {
 "values": [ Vector2( -1.95084, 79.4919 ), Vector2( -1.95084, 79.4916 ), Vector2( -1.95093, 79.4917 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("base/body/sholder_r/forearm_r:rotation_degrees")
+tracks/9/path = NodePath("base/pelvis/body/sholder_r/forearm_r:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -161,7 +162,7 @@ tracks/9/keys = {
 "values": [ -62.5864, -88.2061, -128.912 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("base/body/sholder_r:position")
+tracks/10/path = NodePath("base/pelvis/body/sholder_r:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -173,7 +174,7 @@ tracks/10/keys = {
 "values": [ Vector2( -69.8524, -128.861 ), Vector2( -48.3837, -128.167 ), Vector2( -48.3837, -128.167 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("base/body/sholder_r:rotation_degrees")
+tracks/11/path = NodePath("base/pelvis/body/sholder_r:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -185,7 +186,7 @@ tracks/11/keys = {
 "values": [ -40.678, 44.0092, 129.138 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("base/body/sholder_r/forearm_r/gun_position:position")
+tracks/12/path = NodePath("base/pelvis/body/sholder_r/forearm_r/gun_position:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -197,7 +198,7 @@ tracks/12/keys = {
 "values": [ Vector2( 5.74614, 110.311 ), Vector2( 5.74614, 110.311 ), Vector2( 5.74614, 110.311 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("base/body/sholder_r/forearm_r/gun_position:rotation_degrees")
+tracks/13/path = NodePath("base/pelvis/body/sholder_r/forearm_r/gun_position:rotation_degrees")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -209,7 +210,7 @@ tracks/13/keys = {
 "values": [ 43.7883, 43.7883, 43.7883 ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("base/belt:position")
+tracks/14/path = NodePath("base/pelvis/belt:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -221,7 +222,7 @@ tracks/14/keys = {
 "values": [ Vector2( 9.75356, -33.162 ), Vector2( 10.7289, -24.3838 ), Vector2( 10.7289, -24.3838 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("base/belt:rotation_degrees")
+tracks/15/path = NodePath("base/pelvis/belt:rotation_degrees")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -233,7 +234,7 @@ tracks/15/keys = {
 "values": [ -14.2236, 0.0, 15.6832 ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("base/body:rotation_degrees")
+tracks/16/path = NodePath("base/pelvis/body:rotation_degrees")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -245,7 +246,7 @@ tracks/16/keys = {
 "values": [ -29.2186, 0.750136, 47.0621 ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("base/body/head:rotation_degrees")
+tracks/17/path = NodePath("base/pelvis/body/head:rotation_degrees")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -257,7 +258,7 @@ tracks/17/keys = {
 "values": [ -46.0859, 0.0, 38.1655 ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("base/body/sholder_l/forearm_l/hand_l_shotgun:z_index")
+tracks/18/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun:z_index")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -276,7 +277,7 @@ length = 180.0
 loop = false
 step = 1.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("base/body/sholder_l/forearm_l:position")
+tracks/0/path = NodePath("base/pelvis/body/sholder_l/forearm_l:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -288,7 +289,7 @@ tracks/0/keys = {
 "values": [ Vector2( -4.82957, 69.3659 ), Vector2( -4.36559, 69.5519 ), Vector2( -3.90147, 69.738 ), Vector2( -3.90144, 69.7381 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("base/body/sholder_l/forearm_l:rotation_degrees")
+tracks/1/path = NodePath("base/pelvis/body/sholder_l/forearm_l:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -300,7 +301,7 @@ tracks/1/keys = {
 "values": [ 3.8313, -47.3427, -51.421, -55.6337 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("base/body/sholder_l:position")
+tracks/2/path = NodePath("base/pelvis/body/sholder_l:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -312,7 +313,7 @@ tracks/2/keys = {
 "values": [ Vector2( 32.3202, -143.505 ), Vector2( 41.1601, -135.253 ), Vector2( 50, -127 ), Vector2( 50, -127 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("base/body/sholder_l:rotation_degrees")
+tracks/3/path = NodePath("base/pelvis/body/sholder_l:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -324,7 +325,7 @@ tracks/3/keys = {
 "values": [ -194.061, -122.805, -60.3991, 3.80657 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("base/body/sholder_l/forearm_l/hand_l_shotgun:position")
+tracks/4/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -336,7 +337,7 @@ tracks/4/keys = {
 "values": [ Vector2( 3.16191, 63.7739 ), Vector2( 3.16191, 63.7739 ), Vector2( 3.16191, 63.7739 ), Vector2( 3.16191, 63.7739 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("base/body/sholder_l/forearm_l/hand_l_shotgun:rotation_degrees")
+tracks/5/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -348,7 +349,7 @@ tracks/5/keys = {
 "values": [ -159.298, -139.002, -159.298, -179.52 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("base/body/sholder_r/forearm_r/gun_position:position")
+tracks/6/path = NodePath("base/pelvis/body/sholder_r/forearm_r/gun_position:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -360,7 +361,7 @@ tracks/6/keys = {
 "values": [ Vector2( 5.74614, 110.311 ), Vector2( 5.74614, 110.311 ), Vector2( 5.74614, 110.311 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("base/body/sholder_r/forearm_r/gun_position:rotation_degrees")
+tracks/7/path = NodePath("base/pelvis/body/sholder_r/forearm_r/gun_position:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -372,7 +373,7 @@ tracks/7/keys = {
 "values": [ 146.452, 131.484, 143.143 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("base/body/sholder_r:position")
+tracks/8/path = NodePath("base/pelvis/body/sholder_r:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -384,7 +385,7 @@ tracks/8/keys = {
 "values": [ Vector2( -54.0657, -134.36 ), Vector2( -53.0925, -134.13 ), Vector2( -53.0925, -134.13 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("base/body/sholder_r:rotation_degrees")
+tracks/9/path = NodePath("base/pelvis/body/sholder_r:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -396,7 +397,7 @@ tracks/9/keys = {
 "values": [ -95.1278, -47.9785, -1.92766 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("base/body/sholder_r/forearm_r:position")
+tracks/10/path = NodePath("base/pelvis/body/sholder_r/forearm_r:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -408,7 +409,7 @@ tracks/10/keys = {
 "values": [ Vector2( -14.7004, 92.6919 ), Vector2( -14.6523, 92.7831 ), Vector2( -14.6522, 92.7838 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("base/body/sholder_r/forearm_r:rotation_degrees")
+tracks/11/path = NodePath("base/pelvis/body/sholder_r/forearm_r:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -420,7 +421,7 @@ tracks/11/keys = {
 "values": [ -127.789, -84.0182, -106.428 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("base/body/head:rotation_degrees")
+tracks/12/path = NodePath("base/pelvis/body/head:rotation_degrees")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -432,7 +433,7 @@ tracks/12/keys = {
 "values": [ -60.3857, 0.898415, 30.292 ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("base/body:rotation_degrees")
+tracks/13/path = NodePath("base/pelvis/body:rotation_degrees")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -444,7 +445,7 @@ tracks/13/keys = {
 "values": [ -13.2872, 0.750134, 54.7102 ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("base/belt:position")
+tracks/14/path = NodePath("base/pelvis/belt:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -456,7 +457,7 @@ tracks/14/keys = {
 "values": [ Vector2( 10.7289, -24.3838 ), Vector2( 10.7289, -24.3838 ), Vector2( 11.7289, -23.3838 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("base/belt:rotation_degrees")
+tracks/15/path = NodePath("base/pelvis/belt:rotation_degrees")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -468,7 +469,7 @@ tracks/15/keys = {
 "values": [ 0.0, 0.0, 19.9225 ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("base/body/sholder_r/forearm_r/hand_r_pistol:position")
+tracks/16/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r_pistol:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -480,7 +481,7 @@ tracks/16/keys = {
 "values": [ Vector2( 0.627266, 100.934 ), Vector2( 0.627266, 100.934 ), Vector2( 0.627266, 100.934 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("base/body/sholder_r/forearm_r/hand_r_pistol:rotation_degrees")
+tracks/17/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r_pistol:rotation_degrees")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -492,7 +493,7 @@ tracks/17/keys = {
 "values": [ 57.3214, 44.1749, 52.9211 ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("base/body/sholder_l/forearm_l/hand_l_shotgun:z_index")
+tracks/18/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun:z_index")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -510,7 +511,7 @@ length = 180.0
 loop = false
 step = 1.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("base/body/sholder_l:position")
+tracks/0/path = NodePath("base/pelvis/body/sholder_l:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -522,7 +523,7 @@ tracks/0/keys = {
 "values": [ Vector2( 50, -127 ), Vector2( 50, -127 ), Vector2( 59.0548, -118.999 ), Vector2( 56.9329, -119.793 ), Vector2( 64, -115 ), Vector2( 50, -127 ), Vector2( 45.2804, -140.632 ), Vector2( 44.6325, -137.076 ), Vector2( 50, -127 ), Vector2( 50, -127 ), Vector2( 41.862, -120.854 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("base/body/sholder_l:rotation_degrees")
+tracks/1/path = NodePath("base/pelvis/body/sholder_l:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -534,7 +535,7 @@ tracks/1/keys = {
 "values": [ -44.3791, -8.29267, 8.5688, 13.4913, 14.5101, 30.1515, -21.3127, -40.6008, -50.4374, -43.5259, -33.8961 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("base/body/sholder_l/forearm_l:position")
+tracks/2/path = NodePath("base/pelvis/body/sholder_l/forearm_l:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -546,7 +547,7 @@ tracks/2/keys = {
 "values": [ Vector2( -3.90166, 69.7381 ), Vector2( -3.90151, 69.7379 ), Vector2( -3.9015, 69.7379 ), Vector2( -3.90147, 69.738 ), Vector2( -3.90142, 69.738 ), Vector2( 2.22277, 68.1688 ), Vector2( 3.33622, 67.8835 ), Vector2( 4.44978, 67.5982 ), Vector2( 5.56322, 67.3129 ), Vector2( 9.46042, 66.3141 ), Vector2( -3.90152, 69.7379 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("base/body/sholder_l/forearm_l:rotation_degrees")
+tracks/3/path = NodePath("base/pelvis/body/sholder_l/forearm_l:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -558,7 +559,7 @@ tracks/3/keys = {
 "values": [ -113.086, -113.181, -100.733, -86.5248, -62.3184, -69.0595, 17.4574, 49.0248, 67.5408, 73.0813, 107.125 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("base/body/sholder_r/forearm_r:position")
+tracks/4/path = NodePath("base/pelvis/body/sholder_r/forearm_r:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -570,7 +571,7 @@ tracks/4/keys = {
 "values": [ Vector2( -1.95071, 79.4918 ), Vector2( -1.9509, 79.4916 ), Vector2( -1.95065, 79.4925 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("base/body/sholder_r/forearm_r:rotation_degrees")
+tracks/5/path = NodePath("base/pelvis/body/sholder_r/forearm_r:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -582,7 +583,7 @@ tracks/5/keys = {
 "values": [ -85.9188, -57.3594, -66.0727 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("base/body/sholder_r:position")
+tracks/6/path = NodePath("base/pelvis/body/sholder_r:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -594,7 +595,7 @@ tracks/6/keys = {
 "values": [ Vector2( -48.3564, -119.728 ), Vector2( -48.2505, -116.171 ), Vector2( -48.0602, -113.915 ), Vector2( -49, -115 ), Vector2( -61.8237, -126.93 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("base/body/sholder_r:rotation_degrees")
+tracks/7/path = NodePath("base/pelvis/body/sholder_r:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -606,7 +607,7 @@ tracks/7/keys = {
 "values": [ 40.4525, 50.7632, 53.7626, 57.3245, 146.099 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("base/body/sholder_r/forearm_r/gun_position:position")
+tracks/8/path = NodePath("base/pelvis/body/sholder_r/forearm_r/gun_position:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -618,7 +619,7 @@ tracks/8/keys = {
 "values": [ Vector2( 5.74614, 110.311 ), Vector2( 5.74614, 110.311 ), Vector2( 7.0152, 99.3494 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("base/body/sholder_r/forearm_r/gun_position:rotation_degrees")
+tracks/9/path = NodePath("base/pelvis/body/sholder_r/forearm_r/gun_position:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -630,7 +631,7 @@ tracks/9/keys = {
 "values": [ -0.341207, -0.341207, -38.4435 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("base/body/head:rotation_degrees")
+tracks/10/path = NodePath("base/pelvis/body/head:rotation_degrees")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -642,7 +643,7 @@ tracks/10/keys = {
 "values": [ -37.0504, 0.0, 34.4176 ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("base/body:rotation_degrees")
+tracks/11/path = NodePath("base/pelvis/body:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -654,7 +655,7 @@ tracks/11/keys = {
 "values": [ -43.7635, 0.0, 48.3702 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("base/belt:position")
+tracks/12/path = NodePath("base/pelvis/belt:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -666,7 +667,7 @@ tracks/12/keys = {
 "values": [ Vector2( 10.7289, -24.3838 ), Vector2( 10.7289, -24.3838 ), Vector2( 15.6056, -23.4084 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("base/belt:rotation_degrees")
+tracks/13/path = NodePath("base/pelvis/belt:rotation_degrees")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -678,7 +679,7 @@ tracks/13/keys = {
 "values": [ -17.8385, 0.0, 11.2642 ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("base/body/sholder_l/forearm_l:z_index")
+tracks/14/path = NodePath("base/pelvis/body/sholder_l/forearm_l:z_index")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -690,7 +691,7 @@ tracks/14/keys = {
 "values": [ -1, -1, 5 ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("base/body/sholder_r/forearm_r/hand_r_minigun:position")
+tracks/15/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r_minigun:position")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -702,7 +703,7 @@ tracks/15/keys = {
 "values": [ Vector2( 14.8169, 90.4743 ), Vector2( 14.8169, 90.4743 ), Vector2( 8.88892, 87.7051 ) ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("base/body/sholder_r/forearm_r/hand_r_minigun:rotation_degrees")
+tracks/16/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r_minigun:rotation_degrees")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -714,7 +715,7 @@ tracks/16/keys = {
 "values": [ -49.4014, -49.4014, -97.0038 ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("base/body/sholder_l/forearm_l/hand_l_minigun:position")
+tracks/17/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_minigun:position")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -726,7 +727,7 @@ tracks/17/keys = {
 "values": [ Vector2( 4.40468, 74.6619 ), Vector2( 9.04833, 68.0949 ), Vector2( 9.04833, 68.0949 ), Vector2( 9.04833, 68.0949 ), Vector2( 9.04833, 68.0949 ), Vector2( 4.89081, 69.4542 ), Vector2( 5.47778, 48.5834 ), Vector2( 2.66386, 65.9931 ), Vector2( 1.81259, 65.7128 ), Vector2( 9.04833, 68.0949 ), Vector2( 9.04833, 68.0949 ) ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("base/body/sholder_l/forearm_l/hand_l_minigun:rotation_degrees")
+tracks/18/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_minigun:rotation_degrees")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -738,7 +739,7 @@ tracks/18/keys = {
 "values": [ -5.7774, -5.7774, -5.7774, -5.7774, -5.7774, -12.624, -5.7774, -5.7774, -5.7774, -5.7774, -5.7774 ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("base/body/sholder_l/forearm_l/hand_l_minigun:z_index")
+tracks/19/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_minigun:z_index")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -750,7 +751,7 @@ tracks/19/keys = {
 "values": [ 0, 5 ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("base/body/sholder_l/forearm_l/hand_l_shotgun:z_index")
+tracks/20/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun:z_index")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -768,7 +769,7 @@ length = 180.0
 loop = false
 step = 1.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("base/body/sholder_r:position")
+tracks/0/path = NodePath("base/pelvis/body/sholder_r:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -780,7 +781,7 @@ tracks/0/keys = {
 "values": [ Vector2( -59.6789, -139.004 ), Vector2( -64.237, -135.587 ), Vector2( -59.6789, -139.004 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("base/body/sholder_r:rotation_degrees")
+tracks/1/path = NodePath("base/pelvis/body/sholder_r:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -792,7 +793,7 @@ tracks/1/keys = {
 "values": [ -102.837, -75.2513, -38.9268 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("base/body/sholder_r/forearm_r/gun_position:position")
+tracks/2/path = NodePath("base/pelvis/body/sholder_r/forearm_r/gun_position:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -804,7 +805,7 @@ tracks/2/keys = {
 "values": [ Vector2( 5.74614, 110.311 ), Vector2( 5.74614, 110.311 ), Vector2( 5.74614, 110.311 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("base/body/sholder_r/forearm_r/gun_position:rotation_degrees")
+tracks/3/path = NodePath("base/pelvis/body/sholder_r/forearm_r/gun_position:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -816,7 +817,7 @@ tracks/3/keys = {
 "values": [ 90.0, 90.0, 101.637 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("base/body/sholder_r/forearm_r:position")
+tracks/4/path = NodePath("base/pelvis/body/sholder_r/forearm_r:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -828,7 +829,7 @@ tracks/4/keys = {
 "values": [ Vector2( -2.02515, 83.9702 ), Vector2( -2.02533, 83.9699 ), Vector2( -2.02529, 83.9701 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("base/body/sholder_r/forearm_r:rotation_degrees")
+tracks/5/path = NodePath("base/pelvis/body/sholder_r/forearm_r:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -840,7 +841,7 @@ tracks/5/keys = {
 "values": [ -45.873, -14.7241, -15.4501 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("base/body/sholder_r/forearm_r/hand_r_pistol:position")
+tracks/6/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r_pistol:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -852,7 +853,7 @@ tracks/6/keys = {
 "values": [ Vector2( 11.4002, 95.349 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("base/body/sholder_r/forearm_r/hand_r_pistol:rotation_degrees")
+tracks/7/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r_pistol:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -864,7 +865,7 @@ tracks/7/keys = {
 "values": [ 5.16728 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("base/body/sholder_l/forearm_l/hand_l:position")
+tracks/8/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -876,7 +877,7 @@ tracks/8/keys = {
 "values": [ Vector2( 11.9562, 64.3438 ), Vector2( 11.9562, 64.3438 ), Vector2( 11.9562, 64.3438 ), Vector2( 11.9562, 64.3438 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("base/body/sholder_l/forearm_l/hand_l:rotation_degrees")
+tracks/9/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -888,7 +889,7 @@ tracks/9/keys = {
 "values": [ 28.3624, 1.81011, -18.4946, -18.4946 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("base/body/sholder_l/forearm_l:position")
+tracks/10/path = NodePath("base/pelvis/body/sholder_l/forearm_l:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -900,7 +901,7 @@ tracks/10/keys = {
 "values": [ Vector2( -8.68136, 68.1334 ), Vector2( -8.68134, 68.1333 ), Vector2( -8.68127, 68.1332 ), Vector2( -8.68121, 68.1332 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("base/body/sholder_l/forearm_l:rotation_degrees")
+tracks/11/path = NodePath("base/pelvis/body/sholder_l/forearm_l:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -912,7 +913,7 @@ tracks/11/keys = {
 "values": [ -70.4251, -94.9972, -84.7197, -57.8574 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("base/body/sholder_l:position")
+tracks/12/path = NodePath("base/pelvis/body/sholder_l:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -924,7 +925,7 @@ tracks/12/keys = {
 "values": [ Vector2( 34.7586, -113.368 ), Vector2( 34.7586, -113.368 ), Vector2( 30.7586, -133.368 ), Vector2( 34.7586, -113.368 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("base/body/sholder_l:rotation_degrees")
+tracks/13/path = NodePath("base/pelvis/body/sholder_l:rotation_degrees")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -936,7 +937,7 @@ tracks/13/keys = {
 "values": [ -124.773, -59.7362, -24.3119, 15.0109 ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("base/body:rotation_degrees")
+tracks/14/path = NodePath("base/pelvis/body:rotation_degrees")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -948,7 +949,7 @@ tracks/14/keys = {
 "values": [ -31.3085, 0.0, 42.7407 ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("base/body/head:rotation_degrees")
+tracks/15/path = NodePath("base/pelvis/body/head:rotation_degrees")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -960,7 +961,7 @@ tracks/15/keys = {
 "values": [ -50.9413, 1.68205, 37.7828 ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("base/belt:position")
+tracks/16/path = NodePath("base/pelvis/belt:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -972,7 +973,7 @@ tracks/16/keys = {
 "values": [ Vector2( 10.7289, -24.3838 ), Vector2( 10.7289, -24.3838 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("base/belt:rotation_degrees")
+tracks/17/path = NodePath("base/pelvis/belt:rotation_degrees")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -984,7 +985,7 @@ tracks/17/keys = {
 "values": [ -6.55942, 14.3643 ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("base/body/sholder_l/forearm_l/hand_l_pistol:z_index")
+tracks/18/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_pistol:z_index")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -996,7 +997,7 @@ tracks/18/keys = {
 "values": [ 0 ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("base/body/sholder_l/forearm_l/hand_l_shotgun:z_index")
+tracks/19/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun:z_index")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -1014,7 +1015,7 @@ length = 180.0
 loop = false
 step = 1.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("base/body/sholder_l:position")
+tracks/0/path = NodePath("base/pelvis/body/sholder_l:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -1026,7 +1027,7 @@ tracks/0/keys = {
 "values": [ Vector2( 53.607, -119.813 ), Vector2( 48.7967, -123.572 ), Vector2( 52.4028, -124.327 ), Vector2( 65.8522, -116.049 ), Vector2( 59.3522, -107.737 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("base/body/sholder_l:rotation_degrees")
+tracks/1/path = NodePath("base/pelvis/body/sholder_l:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1038,7 +1039,7 @@ tracks/1/keys = {
 "values": [ -141.1, -78.5272, -48.1452, -43.1489, -41.9914 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("base/body/sholder_r/forearm_r:position")
+tracks/2/path = NodePath("base/pelvis/body/sholder_r/forearm_r:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1050,7 +1051,7 @@ tracks/2/keys = {
 "values": [ Vector2( -1.95067, 79.4919 ), Vector2( -1.95058, 79.4915 ), Vector2( -1.95058, 79.4915 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("base/body/sholder_r/forearm_r:rotation_degrees")
+tracks/3/path = NodePath("base/pelvis/body/sholder_r/forearm_r:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -1062,7 +1063,7 @@ tracks/3/keys = {
 "values": [ -115.026, -103.478, -141.273 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("base/body/sholder_r:position")
+tracks/4/path = NodePath("base/pelvis/body/sholder_r:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -1074,7 +1075,7 @@ tracks/4/keys = {
 "values": [ Vector2( -51, -125 ), Vector2( -53, -118 ), Vector2( -55.2726, -152.382 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("base/body/sholder_r:rotation_degrees")
+tracks/5/path = NodePath("base/pelvis/body/sholder_r:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -1086,7 +1087,7 @@ tracks/5/keys = {
 "values": [ 22.6316, 59.5754, 98.5511 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("base/body/head:rotation_degrees")
+tracks/6/path = NodePath("base/pelvis/body/head:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -1098,7 +1099,7 @@ tracks/6/keys = {
 "values": [ -38.1179, 0.0, 36.2415 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("base/body/sholder_r/forearm_r/hand_r:position")
+tracks/7/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -1110,7 +1111,7 @@ tracks/7/keys = {
 "values": [ Vector2( -5.96849, 88.4513 ), Vector2( -5.96849, 88.4513 ), Vector2( -5.96849, 88.4513 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("base/body/sholder_r/forearm_r/hand_r:rotation_degrees")
+tracks/8/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r:rotation_degrees")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -1122,7 +1123,7 @@ tracks/8/keys = {
 "values": [ 0.0, 0.0, 0.0 ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("base/body:rotation_degrees")
+tracks/9/path = NodePath("base/pelvis/body:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -1134,7 +1135,7 @@ tracks/9/keys = {
 "values": [ -35.3247, 0.0, 55.9649 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("base/body/sholder_l/forearm_l:position")
+tracks/10/path = NodePath("base/pelvis/body/sholder_l/forearm_l:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -1146,7 +1147,7 @@ tracks/10/keys = {
 "values": [ Vector2( -14.0447, 67.0039 ), Vector2( -9.46077, 67.3955 ), Vector2( -7.11786, 67.5956 ), Vector2( -4.87694, 67.787 ), Vector2( -4.87669, 67.7871 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("base/body/sholder_l/forearm_l:rotation_degrees")
+tracks/11/path = NodePath("base/pelvis/body/sholder_l/forearm_l:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -1158,7 +1159,7 @@ tracks/11/keys = {
 "values": [ -5.52375, -44.1786, -50.8029, -21.4798, 10.0786 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("base/belt:position")
+tracks/12/path = NodePath("base/pelvis/belt:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -1170,7 +1171,7 @@ tracks/12/keys = {
 "values": [ Vector2( 10.7289, -24.3838 ), Vector2( 10.7289, -24.3838 ), Vector2( 10.7289, -24.3838 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("base/belt:rotation_degrees")
+tracks/13/path = NodePath("base/pelvis/belt:rotation_degrees")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -1182,7 +1183,7 @@ tracks/13/keys = {
 "values": [ -10.8579, 0.0, 21.7022 ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("base/body/sholder_r/forearm_r/gun_position:position")
+tracks/14/path = NodePath("base/pelvis/body/sholder_r/forearm_r/gun_position:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -1194,7 +1195,7 @@ tracks/14/keys = {
 "values": [ Vector2( 5.74614, 110.311 ), Vector2( 5.74614, 110.311 ), Vector2( 5.74614, 110.311 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("base/body/sholder_r/forearm_r/gun_position:rotation_degrees")
+tracks/15/path = NodePath("base/pelvis/body/sholder_r/forearm_r/gun_position:rotation_degrees")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -1206,7 +1207,7 @@ tracks/15/keys = {
 "values": [ 39.1536, 43.7883, 76.0973 ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("base/body/sholder_l/forearm_l/hand_l_shotgun:position")
+tracks/16/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -1218,7 +1219,7 @@ tracks/16/keys = {
 "values": [ Vector2( 28.2522, 88.4168 ), Vector2( 17.1938, 81.5639 ), Vector2( 11.5417, 78.0613 ), Vector2( 6.13538, 74.711 ), Vector2( 6.13538, 74.711 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("base/body/sholder_l/forearm_l/hand_l_shotgun:rotation_degrees")
+tracks/17/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun:rotation_degrees")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -1230,7 +1231,7 @@ tracks/17/keys = {
 "values": [ -90.4523, -83.2494, -94.7985, -113.7, -113.7 ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("base/body/sholder_r/forearm_r/hand_r_pistol:position")
+tracks/18/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r_pistol:position")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -1242,7 +1243,7 @@ tracks/18/keys = {
 "values": [ Vector2( 11.4002, 95.349 ), Vector2( 11.4002, 95.349 ), Vector2( 11.4002, 95.349 ) ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("base/body/sholder_r/forearm_r/hand_r_pistol:rotation_degrees")
+tracks/19/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r_pistol:rotation_degrees")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -1254,7 +1255,7 @@ tracks/19/keys = {
 "values": [ -2.09107, 0.62268, 23.9018 ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("base/body/sholder_l/forearm_l/hand_l_shotgun:z_index")
+tracks/20/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun:z_index")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -1272,7 +1273,7 @@ length = 180.0
 loop = false
 step = 1.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("base/body/sholder_l:position")
+tracks/0/path = NodePath("base/pelvis/body/sholder_l:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -1284,7 +1285,7 @@ tracks/0/keys = {
 "values": [ Vector2( 41.7412, -122.094 ), Vector2( 48.7967, -123.572 ), Vector2( 52.4028, -124.327 ), Vector2( 55.8522, -125.049 ), Vector2( 53.7889, -119.404 ), Vector2( 45.6183, -135.48 ), Vector2( 46.6119, -136.178 ), Vector2( 52.7125, -116.459 ), Vector2( 51.8154, -114.004 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("base/body/sholder_l:rotation_degrees")
+tracks/1/path = NodePath("base/pelvis/body/sholder_l:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1296,7 +1297,7 @@ tracks/1/keys = {
 "values": [ -107.999, -38.1084, -10.6376, 1.26366, 0.0767543, -21.5601, -45.9015, -64.8338, -56.4465 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("base/body/sholder_r/forearm_r:position")
+tracks/2/path = NodePath("base/pelvis/body/sholder_r/forearm_r:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1308,7 +1309,7 @@ tracks/2/keys = {
 "values": [ Vector2( -1.95067, 79.4919 ), Vector2( -1.95058, 79.4915 ), Vector2( -1.95058, 79.4915 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("base/body/sholder_r/forearm_r:rotation_degrees")
+tracks/3/path = NodePath("base/pelvis/body/sholder_r/forearm_r:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -1320,7 +1321,7 @@ tracks/3/keys = {
 "values": [ -115.026, -103.478, -141.273 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("base/body/sholder_r:position")
+tracks/4/path = NodePath("base/pelvis/body/sholder_r:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -1332,7 +1333,7 @@ tracks/4/keys = {
 "values": [ Vector2( -51, -125 ), Vector2( -53, -118 ), Vector2( -55.2726, -152.382 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("base/body/sholder_r:rotation_degrees")
+tracks/5/path = NodePath("base/pelvis/body/sholder_r:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -1344,7 +1345,7 @@ tracks/5/keys = {
 "values": [ 22.6316, 59.5754, 98.5511 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("base/body/head:rotation_degrees")
+tracks/6/path = NodePath("base/pelvis/body/head:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -1356,7 +1357,7 @@ tracks/6/keys = {
 "values": [ -38.1179, 0.0, 36.2415 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("base/body/sholder_r/forearm_r/hand_r:position")
+tracks/7/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -1368,7 +1369,7 @@ tracks/7/keys = {
 "values": [ Vector2( -5.96849, 88.4513 ), Vector2( -5.96849, 88.4513 ), Vector2( -5.96849, 88.4513 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("base/body/sholder_r/forearm_r/hand_r:rotation_degrees")
+tracks/8/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r:rotation_degrees")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -1380,7 +1381,7 @@ tracks/8/keys = {
 "values": [ 0.0, 0.0, 0.0 ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("base/body:rotation_degrees")
+tracks/9/path = NodePath("base/pelvis/body:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -1392,7 +1393,7 @@ tracks/9/keys = {
 "values": [ -35.3247, 0.0, 55.9649 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("base/body/sholder_l/forearm_l:position")
+tracks/10/path = NodePath("base/pelvis/body/sholder_l/forearm_l:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -1404,7 +1405,7 @@ tracks/10/keys = {
 "values": [ Vector2( -14.0448, 67.004 ), Vector2( -9.46077, 67.3956 ), Vector2( -7.1179, 67.5957 ), Vector2( -4.87697, 67.7871 ), Vector2( -4.87687, 67.7872 ), Vector2( -4.87685, 67.7871 ), Vector2( -4.87672, 67.787 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("base/body/sholder_l/forearm_l:rotation_degrees")
+tracks/11/path = NodePath("base/pelvis/body/sholder_l/forearm_l:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -1416,7 +1417,7 @@ tracks/11/keys = {
 "values": [ -63.4383, -96.8393, -94.3415, -74.8873, -54.5328, 79.5317, 68.5282 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("base/belt:position")
+tracks/12/path = NodePath("base/pelvis/belt:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -1428,7 +1429,7 @@ tracks/12/keys = {
 "values": [ Vector2( 10.7289, -24.3838 ), Vector2( 10.7289, -24.3838 ), Vector2( 10.7289, -24.3838 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("base/belt:rotation_degrees")
+tracks/13/path = NodePath("base/pelvis/belt:rotation_degrees")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -1440,7 +1441,7 @@ tracks/13/keys = {
 "values": [ -10.8579, 0.0, 21.7022 ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("base/body/sholder_r/forearm_r/gun_position:position")
+tracks/14/path = NodePath("base/pelvis/body/sholder_r/forearm_r/gun_position:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -1452,7 +1453,7 @@ tracks/14/keys = {
 "values": [ Vector2( 5.74614, 110.311 ), Vector2( 5.74614, 110.311 ), Vector2( 5.74614, 110.311 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("base/body/sholder_r/forearm_r/gun_position:rotation_degrees")
+tracks/15/path = NodePath("base/pelvis/body/sholder_r/forearm_r/gun_position:rotation_degrees")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -1464,7 +1465,7 @@ tracks/15/keys = {
 "values": [ 39.1536, 43.7883, 76.0973 ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("base/body/sholder_l/forearm_l/hand_l_shotgun:position")
+tracks/16/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -1476,7 +1477,7 @@ tracks/16/keys = {
 "values": [ Vector2( 28.2522, 88.4168 ), Vector2( 17.1938, 81.5639 ), Vector2( 11.5417, 78.0613 ), Vector2( 6.13538, 74.711 ), Vector2( 22.2142, 74.1313 ), Vector2( 18.6426, 63.262 ), Vector2( 17.7651, 57.6076 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("base/body/sholder_l/forearm_l/hand_l_shotgun:rotation_degrees")
+tracks/17/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun:rotation_degrees")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -1488,7 +1489,7 @@ tracks/17/keys = {
 "values": [ -65.6045, -79.2989, -94.7985, -108.567, -103.186, -170.024, -153.647 ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("base/body/sholder_r/forearm_r/hand_r_pistol:position")
+tracks/18/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r_pistol:position")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -1500,7 +1501,7 @@ tracks/18/keys = {
 "values": [ Vector2( 11.4002, 95.349 ), Vector2( 11.4002, 95.349 ), Vector2( 11.4002, 95.349 ) ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("base/body/sholder_r/forearm_r/hand_r_pistol:rotation_degrees")
+tracks/19/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r_pistol:rotation_degrees")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -1512,7 +1513,7 @@ tracks/19/keys = {
 "values": [ -2.09107, 0.62268, 23.9018 ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("base/body/sholder_l/forearm_l:z_index")
+tracks/20/path = NodePath("base/pelvis/body/sholder_l/forearm_l:z_index")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -1524,7 +1525,7 @@ tracks/20/keys = {
 "values": [ -1, -1, 1 ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("base/body/sholder_l/forearm_l/hand_l_shotgun:z_index")
+tracks/21/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun:z_index")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
@@ -1543,7 +1544,7 @@ length = 1.8
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("base/body:rotation_degrees")
+tracks/0/path = NodePath("base/pelvis/body:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -1555,7 +1556,7 @@ tracks/0/keys = {
 "values": [ 0.750134, -7.82646, 0.8 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("base/body/head:rotation_degrees")
+tracks/1/path = NodePath("base/pelvis/body/head:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1567,7 +1568,7 @@ tracks/1/keys = {
 "values": [ 0.898415, 13.1363, -15.22 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("base/body/sholder_l/forearm_l:position")
+tracks/2/path = NodePath("base/pelvis/body/sholder_l/forearm_l:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1579,7 +1580,7 @@ tracks/2/keys = {
 "values": [ Vector2( -3.90147, 69.738 ), Vector2( -3.90154, 69.7381 ), Vector2( -3.90152, 69.7381 ), Vector2( -3.90152, 69.7381 ), Vector2( 1.21693, 80.2169 ), Vector2( -3.90172, 69.7385 ), Vector2( -3.90189, 69.7387 ), Vector2( -3.90147, 69.738 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("base/body/sholder_l/forearm_l:rotation_degrees")
+tracks/3/path = NodePath("base/pelvis/body/sholder_l/forearm_l:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -1591,7 +1592,7 @@ tracks/3/keys = {
 "values": [ -51.421, -49.2663, -19.005, -68.4261, -3.91605, -22.8483, -111.144, -51.421 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("base/body/sholder_l:position")
+tracks/4/path = NodePath("base/pelvis/body/sholder_l:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -1603,7 +1604,7 @@ tracks/4/keys = {
 "values": [ Vector2( 50, -127 ), Vector2( 50, -127 ), Vector2( 50, -127 ), Vector2( 50, -127 ), Vector2( 58.8038, -126.381 ), Vector2( 45.2678, -145.401 ), Vector2( 33.863, -135.865 ), Vector2( 50, -127 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("base/body/sholder_l:rotation_degrees")
+tracks/5/path = NodePath("base/pelvis/body/sholder_l:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -1615,7 +1616,7 @@ tracks/5/keys = {
 "values": [ -60.3991, -10.492, 24.1879, 4.29508, -87.1029, -99.5611, -73.6268, -60.3991 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("base/body/sholder_l/forearm_l/hand_l_shotgun:position")
+tracks/6/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -1627,7 +1628,7 @@ tracks/6/keys = {
 "values": [ Vector2( 3.16191, 63.7739 ), Vector2( 3.16191, 63.7739 ), Vector2( 3.16191, 63.7739 ), Vector2( 3.16191, 63.7739 ), Vector2( 3.16191, 63.7739 ), Vector2( 3.16191, 63.7739 ), Vector2( 3.16191, 63.7739 ), Vector2( 3.16191, 63.7739 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("base/body/sholder_l/forearm_l/hand_l_shotgun:rotation_degrees")
+tracks/7/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -1639,7 +1640,7 @@ tracks/7/keys = {
 "values": [ -159.298, -159.298, -119.828, -205.429, -188.205, -238.548, -184.212, -159.298 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("base/body/sholder_r/forearm_r/gun_position:position")
+tracks/8/path = NodePath("base/pelvis/body/sholder_r/forearm_r/gun_position:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -1651,7 +1652,7 @@ tracks/8/keys = {
 "values": [ Vector2( 5.74614, 110.311 ), Vector2( 5.74614, 110.311 ), Vector2( 5.74614, 110.311 ), Vector2( 5.74614, 110.311 ), Vector2( 5.74614, 110.311 ), Vector2( 5.74614, 110.311 ), Vector2( 5.74614, 110.311 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("base/body/sholder_r/forearm_r/gun_position:rotation_degrees")
+tracks/9/path = NodePath("base/pelvis/body/sholder_r/forearm_r/gun_position:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -1663,7 +1664,7 @@ tracks/9/keys = {
 "values": [ 131.1, 131.484, 131.484, 152.905, 152.905, 152.905, 131.1 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("base/body/sholder_r/forearm_r/hand_r_pistol:position")
+tracks/10/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r_pistol:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -1675,7 +1676,7 @@ tracks/10/keys = {
 "values": [ Vector2( 0.627266, 100.934 ), Vector2( 0.627266, 100.934 ), Vector2( 0.627266, 100.934 ), Vector2( 0.627266, 100.934 ), Vector2( 0.627266, 100.934 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("base/body/sholder_r/forearm_r/hand_r_pistol:rotation_degrees")
+tracks/11/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r_pistol:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -1687,7 +1688,7 @@ tracks/11/keys = {
 "values": [ 44.1749, 44.1749, 54.3499, 54.3499, 44.1749 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("base/body/sholder_r/forearm_r:position")
+tracks/12/path = NodePath("base/pelvis/body/sholder_r/forearm_r:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -1699,7 +1700,7 @@ tracks/12/keys = {
 "values": [ Vector2( -14.6523, 92.7831 ), Vector2( -14.6523, 92.7831 ), Vector2( -14.6523, 92.7831 ), Vector2( -14.6523, 92.7834 ), Vector2( -14.6523, 92.7834 ), Vector2( -14.6523, 92.7834 ), Vector2( -14.6523, 92.7831 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("base/body/sholder_r/forearm_r:rotation_degrees")
+tracks/13/path = NodePath("base/pelvis/body/sholder_r/forearm_r:rotation_degrees")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -1711,7 +1712,7 @@ tracks/13/keys = {
 "values": [ -84.0182, -86.9232, -86.9232, -144.197, -144.197, -144.197, -84.0182 ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("base/body/sholder_r:position")
+tracks/14/path = NodePath("base/pelvis/body/sholder_r:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -1723,7 +1724,7 @@ tracks/14/keys = {
 "values": [ Vector2( -53.0925, -134.13 ), Vector2( -53.0925, -134.13 ), Vector2( -53.0925, -134.13 ), Vector2( -69.116, -127.053 ), Vector2( -69.2522, -126.062 ), Vector2( -69.2522, -126.062 ), Vector2( -53.0925, -134.13 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("base/body/sholder_r:rotation_degrees")
+tracks/15/path = NodePath("base/pelvis/body/sholder_r:rotation_degrees")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -1735,7 +1736,7 @@ tracks/15/keys = {
 "values": [ -47.9785, -32.6502, -32.6502, -16.3674, -16.3674, -16.3674, -47.9785 ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("base/belt:position")
+tracks/16/path = NodePath("base/pelvis/belt:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -1747,7 +1748,7 @@ tracks/16/keys = {
 "values": [ Vector2( 10.7289, -24.3838 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("base/belt:rotation_degrees")
+tracks/17/path = NodePath("base/pelvis/belt:rotation_degrees")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -1759,7 +1760,7 @@ tracks/17/keys = {
 "values": [ 0.0 ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("base/body/sholder_l/forearm_l/hand_l_shotgun/rocket:visible")
+tracks/18/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun/rocket:visible")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -1771,7 +1772,7 @@ tracks/18/keys = {
 "values": [ false, true, false ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("base/body/sholder_l/forearm_l/hand_l_shotgun/rocket:position")
+tracks/19/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun/rocket:position")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -1783,7 +1784,7 @@ tracks/19/keys = {
 "values": [ Vector2( 2.33121, -19.172 ), Vector2( -4.12501, -13.9637 ) ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("base/body/sholder_l/forearm_l/hand_l_shotgun/rocket:rotation_degrees")
+tracks/20/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun/rocket:rotation_degrees")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -1795,7 +1796,7 @@ tracks/20/keys = {
 "values": [ -6.181, -6.33964 ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("base/body/sholder_l/forearm_l/hand_l_shotgun:z_index")
+tracks/21/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun:z_index")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
@@ -1813,7 +1814,7 @@ length = 4.0
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("base/body/chest:scale")
+tracks/0/path = NodePath("base/pelvis/body/chest:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -1831,7 +1832,7 @@ length = 4.0
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("base/body/sholder_l:position")
+tracks/0/path = NodePath("base/pelvis/body/sholder_l:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -1843,7 +1844,7 @@ tracks/0/keys = {
 "values": [ Vector2( 60, -127 ), Vector2( 60, -127 ), Vector2( 60, -127 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("base/body/sholder_l:rotation_degrees")
+tracks/1/path = NodePath("base/pelvis/body/sholder_l:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1855,7 +1856,7 @@ tracks/1/keys = {
 "values": [ 0.0, 6.03607, -6.52071 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("base/body/sholder_r/forearm_r:position")
+tracks/2/path = NodePath("base/pelvis/body/sholder_r/forearm_r:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1867,7 +1868,7 @@ tracks/2/keys = {
 "values": [ Vector2( -21.042, 86.6691 ), Vector2( -21.042, 86.6691 ), Vector2( -21.042, 86.6691 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("base/body/sholder_r/forearm_r:rotation_degrees")
+tracks/3/path = NodePath("base/pelvis/body/sholder_r/forearm_r:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -1879,7 +1880,7 @@ tracks/3/keys = {
 "values": [ -2.92212, -12.339, -9.71624 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("base/body/sholder_r:position")
+tracks/4/path = NodePath("base/pelvis/body/sholder_r:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -1891,7 +1892,7 @@ tracks/4/keys = {
 "values": [ Vector2( -53.0139, -128.131 ), Vector2( -53.0139, -128.131 ), Vector2( -53.0139, -128.131 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("base/body/sholder_r:rotation_degrees")
+tracks/5/path = NodePath("base/pelvis/body/sholder_r:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -1903,7 +1904,7 @@ tracks/5/keys = {
 "values": [ 8.54491, 3.62809, 9.12775 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("base/body/head:rotation_degrees")
+tracks/6/path = NodePath("base/pelvis/body/head:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -1915,7 +1916,7 @@ tracks/6/keys = {
 "values": [ 0.0 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("base/body/sholder_r/forearm_r/hand_r:position")
+tracks/7/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -1927,7 +1928,7 @@ tracks/7/keys = {
 "values": [ Vector2( 2.75543, 87.4769 ), Vector2( 2.75543, 87.4769 ), Vector2( 2.75543, 87.4769 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("base/body/sholder_r/forearm_r/hand_r:rotation_degrees")
+tracks/8/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r:rotation_degrees")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -1939,7 +1940,7 @@ tracks/8/keys = {
 "values": [ 0.0, 0.0, 0.0 ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("base/body:rotation_degrees")
+tracks/9/path = NodePath("base/pelvis/body:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -1951,7 +1952,7 @@ tracks/9/keys = {
 "values": [ 0.750136, -1.6, 1.36471, 4.7, 2.16923, 0.8 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("base/body/sholder_l/forearm_l/hand_l:position")
+tracks/10/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -1963,7 +1964,7 @@ tracks/10/keys = {
 "values": [ Vector2( 9.48378, 70.2046 ), Vector2( 9.48378, 70.2046 ), Vector2( 9.48378, 70.2046 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("base/body/sholder_l/forearm_l/hand_l:rotation_degrees")
+tracks/11/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -1975,7 +1976,7 @@ tracks/11/keys = {
 "values": [ 0.0, 0.0, 0.0 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("base/body/sholder_l/forearm_l:position")
+tracks/12/path = NodePath("base/pelvis/body/sholder_l/forearm_l:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -1987,7 +1988,7 @@ tracks/12/keys = {
 "values": [ Vector2( -3.9014, 69.7377 ), Vector2( -3.90141, 69.7377 ), Vector2( -3.90137, 69.7378 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("base/body/sholder_l/forearm_l:rotation_degrees")
+tracks/13/path = NodePath("base/pelvis/body/sholder_l/forearm_l:rotation_degrees")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -1999,7 +2000,7 @@ tracks/13/keys = {
 "values": [ -25.3944, -15.7933, -13.0248 ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("base/belt:position")
+tracks/14/path = NodePath("base/pelvis/belt:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -2011,7 +2012,7 @@ tracks/14/keys = {
 "values": [ Vector2( 10.7289, -24.3838 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("base/belt:rotation_degrees")
+tracks/15/path = NodePath("base/pelvis/belt:rotation_degrees")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -2023,7 +2024,7 @@ tracks/15/keys = {
 "values": [ 0.0, -4.5, 3.8, 0.0 ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("base:position")
+tracks/16/path = NodePath("base/pelvis:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -2035,7 +2036,7 @@ tracks/16/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("base/hip_r:position")
+tracks/17/path = NodePath("base/pelvis/hip_r:position")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -2047,7 +2048,7 @@ tracks/17/keys = {
 "values": [ Vector2( -22.9143, 12.1067 ) ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("base/hip_r:rotation_degrees")
+tracks/18/path = NodePath("base/pelvis/hip_r:rotation_degrees")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -2059,7 +2060,7 @@ tracks/18/keys = {
 "values": [ -0.540122 ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("base/hip_r/shin_r:position")
+tracks/19/path = NodePath("base/pelvis/hip_r/shin_r:position")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -2071,7 +2072,7 @@ tracks/19/keys = {
 "values": [ Vector2( -10.7184, 68.4986 ) ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("base/hip_r/shin_r:rotation_degrees")
+tracks/20/path = NodePath("base/pelvis/hip_r/shin_r:rotation_degrees")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -2083,7 +2084,7 @@ tracks/20/keys = {
 "values": [ 4.80327 ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("base/hip_r/shin_r/foot_r:position")
+tracks/21/path = NodePath("base/pelvis/hip_r/shin_r/foot_r:position")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
@@ -2095,7 +2096,7 @@ tracks/21/keys = {
 "values": [ Vector2( -7.46902, 63.5548 ) ]
 }
 tracks/22/type = "value"
-tracks/22/path = NodePath("base/hip_r/shin_r/foot_r:rotation_degrees")
+tracks/22/path = NodePath("base/pelvis/hip_r/shin_r/foot_r:rotation_degrees")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
@@ -2107,7 +2108,7 @@ tracks/22/keys = {
 "values": [ -5.98585 ]
 }
 tracks/23/type = "value"
-tracks/23/path = NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position")
+tracks/23/path = NodePath("base/pelvis/hip_r/shin_r/foot_r/foot_r_toe:position")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false
@@ -2119,7 +2120,7 @@ tracks/23/keys = {
 "values": [ Vector2( 27.7717, 29.9662 ) ]
 }
 tracks/24/type = "value"
-tracks/24/path = NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees")
+tracks/24/path = NodePath("base/pelvis/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/imported = false
@@ -2131,7 +2132,7 @@ tracks/24/keys = {
 "values": [ 0.233181 ]
 }
 tracks/25/type = "value"
-tracks/25/path = NodePath("base/hip_l:position")
+tracks/25/path = NodePath("base/pelvis/hip_l:position")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/imported = false
@@ -2143,7 +2144,7 @@ tracks/25/keys = {
 "values": [ Vector2( 26.1218, 1.49841 ) ]
 }
 tracks/26/type = "value"
-tracks/26/path = NodePath("base/hip_l:rotation_degrees")
+tracks/26/path = NodePath("base/pelvis/hip_l:rotation_degrees")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/imported = false
@@ -2155,7 +2156,7 @@ tracks/26/keys = {
 "values": [ 4.14632 ]
 }
 tracks/27/type = "value"
-tracks/27/path = NodePath("base/hip_l/shin_l:position")
+tracks/27/path = NodePath("base/pelvis/hip_l/shin_l:position")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/imported = false
@@ -2167,7 +2168,7 @@ tracks/27/keys = {
 "values": [ Vector2( 12.3492, 75.7984 ) ]
 }
 tracks/28/type = "value"
-tracks/28/path = NodePath("base/hip_l/shin_l:rotation_degrees")
+tracks/28/path = NodePath("base/pelvis/hip_l/shin_l:rotation_degrees")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/imported = false
@@ -2179,7 +2180,7 @@ tracks/28/keys = {
 "values": [ 2.51539 ]
 }
 tracks/29/type = "value"
-tracks/29/path = NodePath("base/hip_l/shin_l/foot_l:position")
+tracks/29/path = NodePath("base/pelvis/hip_l/shin_l/foot_l:position")
 tracks/29/interp = 1
 tracks/29/loop_wrap = true
 tracks/29/imported = false
@@ -2191,7 +2192,7 @@ tracks/29/keys = {
 "values": [ Vector2( 3.51446, 61.0185 ) ]
 }
 tracks/30/type = "value"
-tracks/30/path = NodePath("base/hip_l/shin_l/foot_l:rotation_degrees")
+tracks/30/path = NodePath("base/pelvis/hip_l/shin_l/foot_l:rotation_degrees")
 tracks/30/interp = 1
 tracks/30/loop_wrap = true
 tracks/30/imported = false
@@ -2203,7 +2204,7 @@ tracks/30/keys = {
 "values": [ -7.58126 ]
 }
 tracks/31/type = "value"
-tracks/31/path = NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position")
+tracks/31/path = NodePath("base/pelvis/hip_l/shin_l/foot_l/foot_l_toe:position")
 tracks/31/interp = 1
 tracks/31/loop_wrap = true
 tracks/31/imported = false
@@ -2215,7 +2216,7 @@ tracks/31/keys = {
 "values": [ Vector2( 28.5516, 28.5174 ) ]
 }
 tracks/32/type = "value"
-tracks/32/path = NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees")
+tracks/32/path = NodePath("base/pelvis/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees")
 tracks/32/interp = 1
 tracks/32/loop_wrap = true
 tracks/32/imported = false
@@ -2227,7 +2228,7 @@ tracks/32/keys = {
 "values": [ 0.0 ]
 }
 tracks/33/type = "value"
-tracks/33/path = NodePath("base/body:position")
+tracks/33/path = NodePath("base/pelvis/body:position")
 tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/imported = false
@@ -2245,7 +2246,7 @@ length = 0.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("base/body/sholder_l:position")
+tracks/0/path = NodePath("base/pelvis/body/sholder_l:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -2257,7 +2258,7 @@ tracks/0/keys = {
 "values": [ Vector2( 42, -124 ), Vector2( 54, -127 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("base/body/sholder_l:rotation_degrees")
+tracks/1/path = NodePath("base/pelvis/body/sholder_l:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -2269,7 +2270,7 @@ tracks/1/keys = {
 "values": [ -51.9093, -6.53945 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("base/body/sholder_r/forearm_r:position")
+tracks/2/path = NodePath("base/pelvis/body/sholder_r/forearm_r:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -2281,7 +2282,7 @@ tracks/2/keys = {
 "values": [ Vector2( -13.5995, 84.8117 ), Vector2( -10.9706, 83.4463 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("base/body/sholder_r/forearm_r:rotation_degrees")
+tracks/3/path = NodePath("base/pelvis/body/sholder_r/forearm_r:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -2293,7 +2294,7 @@ tracks/3/keys = {
 "values": [ -56.5072, -40.1912 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("base/body/sholder_r:position")
+tracks/4/path = NodePath("base/pelvis/body/sholder_r:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -2305,7 +2306,7 @@ tracks/4/keys = {
 "values": [ Vector2( -53, -136 ), Vector2( -52, -130 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("base/body/sholder_r:rotation_degrees")
+tracks/5/path = NodePath("base/pelvis/body/sholder_r:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -2317,7 +2318,7 @@ tracks/5/keys = {
 "values": [ -26.7928, -0.287313 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("base/body/head:rotation_degrees")
+tracks/6/path = NodePath("base/pelvis/body/head:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -2329,7 +2330,7 @@ tracks/6/keys = {
 "values": [ -28.37, 26.6571 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("base/body/sholder_r/forearm_r/hand_r:position")
+tracks/7/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -2341,7 +2342,7 @@ tracks/7/keys = {
 "values": [ Vector2( 1.39351, 82.5521 ), Vector2( 2.49039, 87.7824 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("base/body/sholder_r/forearm_r/hand_r:rotation_degrees")
+tracks/8/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r:rotation_degrees")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -2353,7 +2354,7 @@ tracks/8/keys = {
 "values": [ 0.0, 0.0 ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("base/body:rotation_degrees")
+tracks/9/path = NodePath("base/pelvis/body:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -2365,7 +2366,7 @@ tracks/9/keys = {
 "values": [ 0.0, 0.0 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("base/body/sholder_l/forearm_l/hand_l:position")
+tracks/10/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -2377,7 +2378,7 @@ tracks/10/keys = {
 "values": [ Vector2( 2.7397, 67.4628 ), Vector2( 2.53799, 65.7598 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("base/body/sholder_l/forearm_l/hand_l:rotation_degrees")
+tracks/11/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -2389,7 +2390,7 @@ tracks/11/keys = {
 "values": [ 0.0, 0.0 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("base/body/sholder_l/forearm_l:position")
+tracks/12/path = NodePath("base/pelvis/body/sholder_l/forearm_l:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -2401,7 +2402,7 @@ tracks/12/keys = {
 "values": [ Vector2( -3.90137, 69.7377 ), Vector2( -3.90144, 69.7377 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("base/body/sholder_l/forearm_l:rotation_degrees")
+tracks/13/path = NodePath("base/pelvis/body/sholder_l/forearm_l:rotation_degrees")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -2413,7 +2414,7 @@ tracks/13/keys = {
 "values": [ -76.16, -40.1129 ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("base/belt:position")
+tracks/14/path = NodePath("base/pelvis/belt:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -2425,7 +2426,7 @@ tracks/14/keys = {
 "values": [ Vector2( 10.7289, -24.3838 ), Vector2( 10.7289, -24.3838 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("base/belt:rotation_degrees")
+tracks/15/path = NodePath("base/pelvis/belt:rotation_degrees")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -2437,7 +2438,7 @@ tracks/15/keys = {
 "values": [ 0.0, 0.0 ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("base/hip_r:position")
+tracks/16/path = NodePath("base/pelvis/hip_r:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -2449,7 +2450,7 @@ tracks/16/keys = {
 "values": [ Vector2( -21.9143, 7.10666 ), Vector2( -21.9143, 7.10666 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("base/hip_r:rotation_degrees")
+tracks/17/path = NodePath("base/pelvis/hip_r:rotation_degrees")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -2461,7 +2462,7 @@ tracks/17/keys = {
 "values": [ -15.8092, -61.6522 ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("base/hip_r/shin_r:position")
+tracks/18/path = NodePath("base/pelvis/hip_r/shin_r:position")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -2473,7 +2474,7 @@ tracks/18/keys = {
 "values": [ Vector2( -10.7184, 68.4985 ), Vector2( -10.7184, 68.4985 ) ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("base/hip_r/shin_r:rotation_degrees")
+tracks/19/path = NodePath("base/pelvis/hip_r/shin_r:rotation_degrees")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -2485,7 +2486,7 @@ tracks/19/keys = {
 "values": [ 59.8149, 106.62 ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("base:position")
+tracks/20/path = NodePath("base/pelvis:position")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -2497,7 +2498,7 @@ tracks/20/keys = {
 "values": [ Vector2( 0, -10 ) ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("base:rotation_degrees")
+tracks/21/path = NodePath("base/pelvis:rotation_degrees")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
@@ -2509,7 +2510,7 @@ tracks/21/keys = {
 "values": [  ]
 }
 tracks/22/type = "value"
-tracks/22/path = NodePath("base/hip_r/shin_r/foot_r:position")
+tracks/22/path = NodePath("base/pelvis/hip_r/shin_r/foot_r:position")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
@@ -2521,7 +2522,7 @@ tracks/22/keys = {
 "values": [ Vector2( -7.46899, 63.5546 ), Vector2( -7.46902, 63.5546 ) ]
 }
 tracks/23/type = "value"
-tracks/23/path = NodePath("base/hip_r/shin_r/foot_r:rotation_degrees")
+tracks/23/path = NodePath("base/pelvis/hip_r/shin_r/foot_r:rotation_degrees")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false
@@ -2533,7 +2534,7 @@ tracks/23/keys = {
 "values": [ 31.5281, -46.6906 ]
 }
 tracks/24/type = "value"
-tracks/24/path = NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position")
+tracks/24/path = NodePath("base/pelvis/hip_r/shin_r/foot_r/foot_r_toe:position")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/imported = false
@@ -2545,7 +2546,7 @@ tracks/24/keys = {
 "values": [ Vector2( 27.7717, 29.9662 ), Vector2( 27.7717, 29.9662 ) ]
 }
 tracks/25/type = "value"
-tracks/25/path = NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees")
+tracks/25/path = NodePath("base/pelvis/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/imported = false
@@ -2557,7 +2558,7 @@ tracks/25/keys = {
 "values": [ 0.233181, 0.233181 ]
 }
 tracks/26/type = "value"
-tracks/26/path = NodePath("base/hip_l:position")
+tracks/26/path = NodePath("base/pelvis/hip_l:position")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/imported = false
@@ -2569,7 +2570,7 @@ tracks/26/keys = {
 "values": [ Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ) ]
 }
 tracks/27/type = "value"
-tracks/27/path = NodePath("base/hip_l:rotation_degrees")
+tracks/27/path = NodePath("base/pelvis/hip_l:rotation_degrees")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/imported = false
@@ -2581,7 +2582,7 @@ tracks/27/keys = {
 "values": [ -38.1397, -57.0705 ]
 }
 tracks/28/type = "value"
-tracks/28/path = NodePath("base/hip_l/shin_l:position")
+tracks/28/path = NodePath("base/pelvis/hip_l/shin_l:position")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/imported = false
@@ -2593,7 +2594,7 @@ tracks/28/keys = {
 "values": [ Vector2( 12.3493, 75.7984 ), Vector2( 12.3492, 75.7984 ) ]
 }
 tracks/29/type = "value"
-tracks/29/path = NodePath("base/hip_l/shin_l:rotation_degrees")
+tracks/29/path = NodePath("base/pelvis/hip_l/shin_l:rotation_degrees")
 tracks/29/interp = 1
 tracks/29/loop_wrap = true
 tracks/29/imported = false
@@ -2605,7 +2606,7 @@ tracks/29/keys = {
 "values": [ 64.7112, 83.642 ]
 }
 tracks/30/type = "value"
-tracks/30/path = NodePath("base/hip_l/shin_l/foot_l:position")
+tracks/30/path = NodePath("base/pelvis/hip_l/shin_l/foot_l:position")
 tracks/30/interp = 1
 tracks/30/loop_wrap = true
 tracks/30/imported = false
@@ -2617,7 +2618,7 @@ tracks/30/keys = {
 "values": [ Vector2( 3.51444, 61.0184 ), Vector2( 3.51444, 61.0184 ) ]
 }
 tracks/31/type = "value"
-tracks/31/path = NodePath("base/hip_l/shin_l/foot_l:rotation_degrees")
+tracks/31/path = NodePath("base/pelvis/hip_l/shin_l/foot_l:rotation_degrees")
 tracks/31/interp = 1
 tracks/31/loop_wrap = true
 tracks/31/imported = false
@@ -2629,7 +2630,7 @@ tracks/31/keys = {
 "values": [ -13.9518, -13.9518 ]
 }
 tracks/32/type = "value"
-tracks/32/path = NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position")
+tracks/32/path = NodePath("base/pelvis/hip_l/shin_l/foot_l/foot_l_toe:position")
 tracks/32/interp = 1
 tracks/32/loop_wrap = true
 tracks/32/imported = false
@@ -2641,7 +2642,7 @@ tracks/32/keys = {
 "values": [ Vector2( 28.5516, 28.5174 ), Vector2( 28.5516, 28.5174 ) ]
 }
 tracks/33/type = "value"
-tracks/33/path = NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees")
+tracks/33/path = NodePath("base/pelvis/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees")
 tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/imported = false
@@ -2653,7 +2654,7 @@ tracks/33/keys = {
 "values": [ 0.0, 0.0 ]
 }
 tracks/34/type = "value"
-tracks/34/path = NodePath("base/body/chest:scale")
+tracks/34/path = NodePath("base/pelvis/body/chest:scale")
 tracks/34/interp = 1
 tracks/34/loop_wrap = true
 tracks/34/imported = false
@@ -2665,7 +2666,7 @@ tracks/34/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/35/type = "value"
-tracks/35/path = NodePath("base/body:position")
+tracks/35/path = NodePath("base/pelvis/body:position")
 tracks/35/interp = 1
 tracks/35/loop_wrap = true
 tracks/35/imported = false
@@ -2683,7 +2684,7 @@ length = 0.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("base/body/sholder_r/forearm_r:position")
+tracks/0/path = NodePath("base/pelvis/body/sholder_r/forearm_r:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -2695,7 +2696,7 @@ tracks/0/keys = {
 "values": [ Vector2( -20.4731, 91.2353 ), Vector2( -16.7427, 87.8099 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("base/body/sholder_r/forearm_r:rotation_degrees")
+tracks/1/path = NodePath("base/pelvis/body/sholder_r/forearm_r:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -2707,7 +2708,7 @@ tracks/1/keys = {
 "values": [ -2.52566, -67.6517 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("base/body/sholder_r:position")
+tracks/2/path = NodePath("base/pelvis/body/sholder_r:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -2719,7 +2720,7 @@ tracks/2/keys = {
 "values": [ Vector2( -50, -129 ), Vector2( -53, -132 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("base/body/sholder_r:rotation_degrees")
+tracks/3/path = NodePath("base/pelvis/body/sholder_r:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -2731,7 +2732,7 @@ tracks/3/keys = {
 "values": [ 8.14845, -15.6483 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("base/body/head:rotation_degrees")
+tracks/4/path = NodePath("base/pelvis/body/head:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -2743,7 +2744,7 @@ tracks/4/keys = {
 "values": [ 0.0, -28.37 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("base/body/sholder_r/forearm_r/hand_r:position")
+tracks/5/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -2755,7 +2756,7 @@ tracks/5/keys = {
 "values": [ Vector2( 0.605911, 83.7847 ), Vector2( 1.97688, 87.5179 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("base/body/sholder_r/forearm_r/hand_r:rotation_degrees")
+tracks/6/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -2767,7 +2768,7 @@ tracks/6/keys = {
 "values": [ 0.0, 0.0 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("base/body:rotation_degrees")
+tracks/7/path = NodePath("base/pelvis/body:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -2779,7 +2780,7 @@ tracks/7/keys = {
 "values": [ 0.0 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("base/body/sholder_l/forearm_l/hand_l:position")
+tracks/8/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -2791,7 +2792,7 @@ tracks/8/keys = {
 "values": [ Vector2( 4.44667, 64.4925 ), Vector2( 1.61113, 64.0385 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("base/body/sholder_l/forearm_l/hand_l:rotation_degrees")
+tracks/9/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -2803,7 +2804,7 @@ tracks/9/keys = {
 "values": [ 0.0, 0.0 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("base/body/sholder_l/forearm_l:position")
+tracks/10/path = NodePath("base/pelvis/body/sholder_l/forearm_l:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -2815,7 +2816,7 @@ tracks/10/keys = {
 "values": [ Vector2( -3.9014, 69.7377 ), Vector2( -3.90137, 69.7377 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("base/body/sholder_l/forearm_l:rotation_degrees")
+tracks/11/path = NodePath("base/pelvis/body/sholder_l/forearm_l:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -2827,7 +2828,7 @@ tracks/11/keys = {
 "values": [ -25.3944, -76.16 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("base/belt:position")
+tracks/12/path = NodePath("base/pelvis/belt:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -2839,7 +2840,7 @@ tracks/12/keys = {
 "values": [ Vector2( 10.7289, -24.3838 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("base/belt:rotation_degrees")
+tracks/13/path = NodePath("base/pelvis/belt:rotation_degrees")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -2851,7 +2852,7 @@ tracks/13/keys = {
 "values": [ 0.0 ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("base/hip_r:position")
+tracks/14/path = NodePath("base/pelvis/hip_r:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -2863,7 +2864,7 @@ tracks/14/keys = {
 "values": [ Vector2( -21.9143, 7.10666 ), Vector2( -21.9143, 7.10666 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("base/hip_r:rotation_degrees")
+tracks/15/path = NodePath("base/pelvis/hip_r:rotation_degrees")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -2875,7 +2876,7 @@ tracks/15/keys = {
 "values": [ 0.0810957, -15.8092 ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("base/hip_r/shin_r:position")
+tracks/16/path = NodePath("base/pelvis/hip_r/shin_r:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -2887,7 +2888,7 @@ tracks/16/keys = {
 "values": [ Vector2( -10.7184, 68.4984 ), Vector2( -10.7184, 68.4985 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("base/hip_r/shin_r:rotation_degrees")
+tracks/17/path = NodePath("base/pelvis/hip_r/shin_r:rotation_degrees")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -2899,7 +2900,7 @@ tracks/17/keys = {
 "values": [ 0.0, 59.8149 ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("base:position")
+tracks/18/path = NodePath("base/pelvis:position")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -2911,7 +2912,7 @@ tracks/18/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -10 ) ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("base:rotation_degrees")
+tracks/19/path = NodePath("base/pelvis:rotation_degrees")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -2923,7 +2924,7 @@ tracks/19/keys = {
 "values": [ 0.0 ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("base/hip_r/shin_r/foot_r:position")
+tracks/20/path = NodePath("base/pelvis/hip_r/shin_r/foot_r:position")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -2935,7 +2936,7 @@ tracks/20/keys = {
 "values": [ Vector2( -7.46899, 63.5546 ), Vector2( -7.46899, 63.5546 ) ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("base/hip_r/shin_r/foot_r:rotation_degrees")
+tracks/21/path = NodePath("base/pelvis/hip_r/shin_r/foot_r:rotation_degrees")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
@@ -2947,7 +2948,7 @@ tracks/21/keys = {
 "values": [ 0.0, 31.5281 ]
 }
 tracks/22/type = "value"
-tracks/22/path = NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position")
+tracks/22/path = NodePath("base/pelvis/hip_r/shin_r/foot_r/foot_r_toe:position")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
@@ -2959,7 +2960,7 @@ tracks/22/keys = {
 "values": [ Vector2( 26.8007, 31.4931 ), Vector2( 27.7717, 29.9662 ) ]
 }
 tracks/23/type = "value"
-tracks/23/path = NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees")
+tracks/23/path = NodePath("base/pelvis/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false
@@ -2971,7 +2972,7 @@ tracks/23/keys = {
 "values": [ 0.233181, 0.233181 ]
 }
 tracks/24/type = "value"
-tracks/24/path = NodePath("base/hip_l:position")
+tracks/24/path = NodePath("base/pelvis/hip_l:position")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/imported = false
@@ -2983,7 +2984,7 @@ tracks/24/keys = {
 "values": [ Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ) ]
 }
 tracks/25/type = "value"
-tracks/25/path = NodePath("base/hip_l:rotation_degrees")
+tracks/25/path = NodePath("base/pelvis/hip_l:rotation_degrees")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/imported = false
@@ -2995,7 +2996,7 @@ tracks/25/keys = {
 "values": [ 0.0, -38.1397 ]
 }
 tracks/26/type = "value"
-tracks/26/path = NodePath("base/hip_l/shin_l:position")
+tracks/26/path = NodePath("base/pelvis/hip_l/shin_l:position")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/imported = false
@@ -3007,7 +3008,7 @@ tracks/26/keys = {
 "values": [ Vector2( 12.3493, 75.7983 ), Vector2( 12.3493, 75.7984 ) ]
 }
 tracks/27/type = "value"
-tracks/27/path = NodePath("base/hip_l/shin_l:rotation_degrees")
+tracks/27/path = NodePath("base/pelvis/hip_l/shin_l:rotation_degrees")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/imported = false
@@ -3019,7 +3020,7 @@ tracks/27/keys = {
 "values": [ -1.96845, 64.7112 ]
 }
 tracks/28/type = "value"
-tracks/28/path = NodePath("base/hip_l/shin_l/foot_l:position")
+tracks/28/path = NodePath("base/pelvis/hip_l/shin_l/foot_l:position")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/imported = false
@@ -3031,7 +3032,7 @@ tracks/28/keys = {
 "values": [ Vector2( 3.51444, 61.0184 ), Vector2( 3.51444, 61.0184 ) ]
 }
 tracks/29/type = "value"
-tracks/29/path = NodePath("base/hip_l/shin_l/foot_l:rotation_degrees")
+tracks/29/path = NodePath("base/pelvis/hip_l/shin_l/foot_l:rotation_degrees")
 tracks/29/interp = 1
 tracks/29/loop_wrap = true
 tracks/29/imported = false
@@ -3043,7 +3044,7 @@ tracks/29/keys = {
 "values": [ 1.65572, -13.9518 ]
 }
 tracks/30/type = "value"
-tracks/30/path = NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position")
+tracks/30/path = NodePath("base/pelvis/hip_l/shin_l/foot_l/foot_l_toe:position")
 tracks/30/interp = 1
 tracks/30/loop_wrap = true
 tracks/30/imported = false
@@ -3055,7 +3056,7 @@ tracks/30/keys = {
 "values": [ Vector2( 28.5516, 28.5174 ), Vector2( 28.5516, 28.5174 ) ]
 }
 tracks/31/type = "value"
-tracks/31/path = NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees")
+tracks/31/path = NodePath("base/pelvis/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees")
 tracks/31/interp = 1
 tracks/31/loop_wrap = true
 tracks/31/imported = false
@@ -3067,7 +3068,7 @@ tracks/31/keys = {
 "values": [ 0.0, 0.0 ]
 }
 tracks/32/type = "value"
-tracks/32/path = NodePath("base/body/chest:scale")
+tracks/32/path = NodePath("base/pelvis/body/chest:scale")
 tracks/32/interp = 1
 tracks/32/loop_wrap = true
 tracks/32/imported = false
@@ -3079,7 +3080,7 @@ tracks/32/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/33/type = "value"
-tracks/33/path = NodePath("base/body:position")
+tracks/33/path = NodePath("base/pelvis/body:position")
 tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/imported = false
@@ -3097,7 +3098,7 @@ length = 4.4
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("base/body:rotation_degrees")
+tracks/0/path = NodePath("base/pelvis/body:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -3109,7 +3110,7 @@ tracks/0/keys = {
 "values": [ 23.7108, 23.7108 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("base/body/head:rotation_degrees")
+tracks/1/path = NodePath("base/pelvis/body/head:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -3121,7 +3122,7 @@ tracks/1/keys = {
 "values": [ -5.37249, -5.37249 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("base/belt:position")
+tracks/2/path = NodePath("base/pelvis/belt:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -3133,7 +3134,7 @@ tracks/2/keys = {
 "values": [ Vector2( 10.7289, -24.3838 ), Vector2( 10.7289, -24.3838 ), Vector2( 10.7289, -24.3838 ), Vector2( 10.7289, -24.3838 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("base/belt:rotation_degrees")
+tracks/3/path = NodePath("base/pelvis/belt:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -3145,7 +3146,7 @@ tracks/3/keys = {
 "values": [ 11.0076, 14.2211, 7.03473, 11.0076 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("base/body/sholder_r:position")
+tracks/4/path = NodePath("base/pelvis/body/sholder_r:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -3157,7 +3158,7 @@ tracks/4/keys = {
 "values": [ Vector2( -57.5313, -137.294 ), Vector2( -53.8441, -131.022 ), Vector2( -49.6002, -126.332 ), Vector2( -48.3939, -123.586 ), Vector2( -48.796, -124.501 ), Vector2( -53.2193, -134.572 ), Vector2( -57.5313, -137.294 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("base/body/sholder_r:rotation_degrees")
+tracks/5/path = NodePath("base/pelvis/body/sholder_r:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -3169,7 +3170,7 @@ tracks/5/keys = {
 "values": [ -53.0223, -0.433743, 22.1097, 33.7971, 25.9816, -19.3846, -53.0223 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("base/body/sholder_r/forearm_r:position")
+tracks/6/path = NodePath("base/pelvis/body/sholder_r/forearm_r:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -3181,7 +3182,7 @@ tracks/6/keys = {
 "values": [ Vector2( -16.6522, 87.2929 ), Vector2( -18.742, 91.0695 ), Vector2( -18.7372, 92.4612 ), Vector2( -17.2179, 92.2943 ), Vector2( -17.2919, 91.3931 ), Vector2( -17.2261, 89.673 ), Vector2( -16.2698, 88.6544 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("base/body/sholder_r/forearm_r:rotation_degrees")
+tracks/7/path = NodePath("base/pelvis/body/sholder_r/forearm_r:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -3193,7 +3194,7 @@ tracks/7/keys = {
 "values": [ -58.9263, -50.2103, -33.9777, -42.8923, -75.8606, -62.4238, -58.9263 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("base/body/sholder_l:position")
+tracks/8/path = NodePath("base/pelvis/body/sholder_l:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -3205,7 +3206,7 @@ tracks/8/keys = {
 "values": [ Vector2( 50, -127 ), Vector2( 47.9461, -121.729 ), Vector2( 47.9461, -121.729 ), Vector2( 47.9461, -121.729 ), Vector2( 51.0269, -129.635 ), Vector2( 51.0269, -129.635 ), Vector2( 50, -127 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("base/body/sholder_l:rotation_degrees")
+tracks/9/path = NodePath("base/pelvis/body/sholder_l:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -3217,7 +3218,7 @@ tracks/9/keys = {
 "values": [ 59.852, 31.884, -19.5509, -56.0573, -5.54572, 27.9192, 59.852 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("base/body/sholder_l/forearm_l:position")
+tracks/10/path = NodePath("base/pelvis/body/sholder_l/forearm_l:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -3229,7 +3230,7 @@ tracks/10/keys = {
 "values": [ Vector2( -3.90139, 69.7377 ), Vector2( -3.90131, 69.7378 ), Vector2( -3.90131, 69.7378 ), Vector2( -3.90134, 69.7379 ), Vector2( -3.9013, 69.738 ), Vector2( -3.9013, 69.738 ), Vector2( -3.90139, 69.7377 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("base/body/sholder_l/forearm_l:rotation_degrees")
+tracks/11/path = NodePath("base/pelvis/body/sholder_l/forearm_l:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -3241,7 +3242,7 @@ tracks/11/keys = {
 "values": [ -87.2727, -85.3957, -86.6546, -73.5321, -67.5085, -55.4734, -87.2727 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("base/body/sholder_l/forearm_l/hand_l:position")
+tracks/12/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -3253,7 +3254,7 @@ tracks/12/keys = {
 "values": [ Vector2( 9.04833, 68.0949 ), Vector2( 9.04833, 68.0949 ), Vector2( 9.04833, 68.0949 ), Vector2( 6.02175, 64.115 ), Vector2( 6.02175, 64.115 ), Vector2( 6.02175, 64.115 ), Vector2( 9.04833, 68.0949 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("base/body/sholder_l/forearm_l/hand_l:rotation_degrees")
+tracks/13/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:rotation_degrees")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -3265,7 +3266,7 @@ tracks/13/keys = {
 "values": [ -8.7076, -8.7076, -8.7076, 12.2747, -28.1307, -28.1307, -8.7076 ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("base/body/sholder_r/forearm_r/hand_r:position")
+tracks/14/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -3277,7 +3278,7 @@ tracks/14/keys = {
 "values": [ Vector2( 2.67078, 82.4628 ), Vector2( 0.159132, 81.7171 ), Vector2( 1.15995, 77.2146 ), Vector2( 1.15995, 77.2146 ), Vector2( 1.15995, 77.2146 ), Vector2( 1.15995, 77.2146 ), Vector2( 2.67078, 82.4628 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("base/body/sholder_r/forearm_r/hand_r:rotation_degrees")
+tracks/15/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r:rotation_degrees")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -3289,7 +3290,7 @@ tracks/15/keys = {
 "values": [ -1.29225, -1.29225, -1.29225, -1.29225, -1.29225, -1.29225, -1.29225 ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("base/hip_l/shin_l:position")
+tracks/16/path = NodePath("base/pelvis/hip_l/shin_l:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -3301,7 +3302,7 @@ tracks/16/keys = {
 "values": [ Vector2( 12.3493, 75.7984 ), Vector2( 12.3493, 75.7985 ), Vector2( 12.3493, 75.7985 ), Vector2( 12.3493, 75.7985 ), Vector2( 12.3493, 75.7986 ), Vector2( 12.3493, 75.7986 ), Vector2( 12.3493, 75.7984 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("base/hip_l/shin_l:rotation_degrees")
+tracks/17/path = NodePath("base/pelvis/hip_l/shin_l:rotation_degrees")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -3313,7 +3314,7 @@ tracks/17/keys = {
 "values": [ -1.70845, -3.60347, 14.3691, 30.2176, 82.1703, 55.7961, -1.70845 ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("base/hip_l:position")
+tracks/18/path = NodePath("base/pelvis/hip_l:position")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -3325,7 +3326,7 @@ tracks/18/keys = {
 "values": [ Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 34.1218, 1.49841 ), Vector2( 30.1218, 5.49841 ), Vector2( 30.1218, 5.49841 ), Vector2( 26.1218, 1.49841 ) ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("base/hip_l:rotation_degrees")
+tracks/19/path = NodePath("base/pelvis/hip_l:rotation_degrees")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -3337,7 +3338,7 @@ tracks/19/keys = {
 "values": [ -40.8, 10.8927, 23.5938, 51.0935, -4.80132, -41.7129, -40.8 ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position")
+tracks/20/path = NodePath("base/pelvis/hip_l/shin_l/foot_l/foot_l_toe:position")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -3349,7 +3350,7 @@ tracks/20/keys = {
 "values": [ Vector2( 28.5516, 28.5174 ), Vector2( 28.5516, 28.5174 ), Vector2( 29.2598, 29.2234 ), Vector2( 29.2598, 29.2234 ), Vector2( 29.2598, 29.2234 ), Vector2( 29.2598, 29.2234 ), Vector2( 28.5516, 28.5174 ) ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees")
+tracks/21/path = NodePath("base/pelvis/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
@@ -3361,7 +3362,7 @@ tracks/21/keys = {
 "values": [ -21.3034, 1.05484, -44.3093, -56.3355, -56.3355, -40.8842, -21.3034 ]
 }
 tracks/22/type = "value"
-tracks/22/path = NodePath("base/hip_l/shin_l/foot_l:position")
+tracks/22/path = NodePath("base/pelvis/hip_l/shin_l/foot_l:position")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
@@ -3373,7 +3374,7 @@ tracks/22/keys = {
 "values": [ Vector2( 3.68064, 60.4024 ), Vector2( 3.68064, 60.4024 ), Vector2( 3.68064, 60.4024 ), Vector2( 3.68064, 60.4024 ), Vector2( 3.68064, 60.4024 ), Vector2( 3.68064, 60.4024 ), Vector2( 3.68064, 60.4024 ) ]
 }
 tracks/23/type = "value"
-tracks/23/path = NodePath("base/hip_l/shin_l/foot_l:rotation_degrees")
+tracks/23/path = NodePath("base/pelvis/hip_l/shin_l/foot_l:rotation_degrees")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false
@@ -3385,7 +3386,7 @@ tracks/23/keys = {
 "values": [ -17.793, -7.124, 7.12566, 7.12566, 7.12566, -13.2307, -17.793 ]
 }
 tracks/24/type = "value"
-tracks/24/path = NodePath("base/hip_r/shin_r:position")
+tracks/24/path = NodePath("base/pelvis/hip_r/shin_r:position")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/imported = false
@@ -3397,7 +3398,7 @@ tracks/24/keys = {
 "values": [ Vector2( -10.7184, 68.4985 ), Vector2( -10.7184, 68.4985 ), Vector2( -10.7184, 68.4985 ), Vector2( -10.7184, 68.4985 ), Vector2( -10.7184, 68.4986 ), Vector2( -10.7184, 68.4986 ), Vector2( -10.7184, 68.4985 ) ]
 }
 tracks/25/type = "value"
-tracks/25/path = NodePath("base/hip_r/shin_r:rotation_degrees")
+tracks/25/path = NodePath("base/pelvis/hip_r/shin_r:rotation_degrees")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/imported = false
@@ -3409,7 +3410,7 @@ tracks/25/keys = {
 "values": [ 11.5245, 91.2837, 93.4864, 4.49035, 25.7828, 18.7213, 11.5245 ]
 }
 tracks/26/type = "value"
-tracks/26/path = NodePath("base/hip_r:position")
+tracks/26/path = NodePath("base/pelvis/hip_r:position")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/imported = false
@@ -3421,7 +3422,7 @@ tracks/26/keys = {
 "values": [ Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ) ]
 }
 tracks/27/type = "value"
-tracks/27/path = NodePath("base/hip_r:rotation_degrees")
+tracks/27/path = NodePath("base/pelvis/hip_r:rotation_degrees")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/imported = false
@@ -3433,7 +3434,7 @@ tracks/27/keys = {
 "values": [ 43.6062, -19.682, -60.8514, -60.8514, -17.2061, 6.98542, 43.6062 ]
 }
 tracks/28/type = "value"
-tracks/28/path = NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position")
+tracks/28/path = NodePath("base/pelvis/hip_r/shin_r/foot_r/foot_r_toe:position")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/imported = false
@@ -3445,7 +3446,7 @@ tracks/28/keys = {
 "values": [ Vector2( 34.0374, 33.119 ), Vector2( 30.5121, 32.3627 ), Vector2( 30.5121, 32.3627 ), Vector2( 30.5121, 32.3627 ), Vector2( 30.5121, 32.3627 ), Vector2( 30.5121, 32.3627 ), Vector2( 34.0374, 33.119 ) ]
 }
 tracks/29/type = "value"
-tracks/29/path = NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees")
+tracks/29/path = NodePath("base/pelvis/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees")
 tracks/29/interp = 1
 tracks/29/loop_wrap = true
 tracks/29/imported = false
@@ -3457,7 +3458,7 @@ tracks/29/keys = {
 "values": [ -76.0425, 3.87934, -34.1589, -34.1589, 3.60326, -20.0999, -76.0425 ]
 }
 tracks/30/type = "value"
-tracks/30/path = NodePath("base/hip_r/shin_r/foot_r:position")
+tracks/30/path = NodePath("base/pelvis/hip_r/shin_r/foot_r:position")
 tracks/30/interp = 1
 tracks/30/loop_wrap = true
 tracks/30/imported = false
@@ -3469,7 +3470,7 @@ tracks/30/keys = {
 "values": [ Vector2( -7.46899, 63.5546 ), Vector2( -7.46899, 63.5546 ), Vector2( -7.46899, 63.5546 ), Vector2( -7.46899, 63.5546 ), Vector2( -7.46899, 63.5546 ), Vector2( -7.46899, 63.5546 ), Vector2( -7.46899, 63.5546 ) ]
 }
 tracks/31/type = "value"
-tracks/31/path = NodePath("base/hip_r/shin_r/foot_r:rotation_degrees")
+tracks/31/path = NodePath("base/pelvis/hip_r/shin_r/foot_r:rotation_degrees")
 tracks/31/interp = 1
 tracks/31/loop_wrap = true
 tracks/31/imported = false
@@ -3481,7 +3482,7 @@ tracks/31/keys = {
 "values": [ 24.7543, 39.9804, -21.9147, -21.9147, -11.0218, -5.45745, 24.7543 ]
 }
 tracks/32/type = "value"
-tracks/32/path = NodePath("base:position")
+tracks/32/path = NodePath("base/pelvis:position")
 tracks/32/interp = 1
 tracks/32/loop_wrap = true
 tracks/32/imported = false
@@ -3510,7 +3511,7 @@ tracks/33/keys = {
 } ]
 }
 tracks/34/type = "value"
-tracks/34/path = NodePath("base/body:position")
+tracks/34/path = NodePath("base/pelvis/body:position")
 tracks/34/interp = 1
 tracks/34/loop_wrap = true
 tracks/34/imported = false
@@ -3528,7 +3529,7 @@ length = 4.4
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("base/body:rotation_degrees")
+tracks/0/path = NodePath("base/pelvis/body:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -3540,7 +3541,7 @@ tracks/0/keys = {
 "values": [ 23.7108, 23.7108 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("base/body/head:rotation_degrees")
+tracks/1/path = NodePath("base/pelvis/body/head:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -3552,7 +3553,7 @@ tracks/1/keys = {
 "values": [ -5.37249, -5.37249 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("base/belt:position")
+tracks/2/path = NodePath("base/pelvis/belt:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -3564,7 +3565,7 @@ tracks/2/keys = {
 "values": [ Vector2( 10.7289, -24.3838 ), Vector2( 10.7289, -24.3838 ), Vector2( 10.7289, -24.3838 ), Vector2( 10.7289, -24.3838 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("base/belt:rotation_degrees")
+tracks/3/path = NodePath("base/pelvis/belt:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -3576,7 +3577,7 @@ tracks/3/keys = {
 "values": [ 11.0076, 7.03473, 14.2211, 11.0076 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("base/body/sholder_r:position")
+tracks/4/path = NodePath("base/pelvis/body/sholder_r:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -3588,7 +3589,7 @@ tracks/4/keys = {
 "values": [ Vector2( -57.5313, -137.294 ), Vector2( -53.2193, -134.572 ), Vector2( -58.9355, -127.693 ), Vector2( -48.9074, -122.268 ), Vector2( -51.4314, -125.528 ), Vector2( -52.6378, -128.275 ), Vector2( -57.5313, -137.294 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("base/body/sholder_r:rotation_degrees")
+tracks/5/path = NodePath("base/pelvis/body/sholder_r:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -3600,7 +3601,7 @@ tracks/5/keys = {
 "values": [ -53.0223, -19.3846, 25.9816, 33.7971, 22.1097, -0.433743, -53.0223 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("base/body/sholder_r/forearm_r:position")
+tracks/6/path = NodePath("base/pelvis/body/sholder_r/forearm_r:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -3612,7 +3613,7 @@ tracks/6/keys = {
 "values": [ Vector2( -14.0363, 88.7616 ), Vector2( -14.1592, 90.4439 ), Vector2( -11.8853, 88.1114 ), Vector2( -16.3744, 92.8315 ), Vector2( -21.5856, 91.0877 ), Vector2( -19.5324, 89.2323 ), Vector2( -13.0572, 87.0176 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("base/body/sholder_r/forearm_r:rotation_degrees")
+tracks/7/path = NodePath("base/pelvis/body/sholder_r/forearm_r:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -3624,7 +3625,7 @@ tracks/7/keys = {
 "values": [ -58.9263, -62.4238, -75.8606, -42.8923, -33.9777, -50.2103, -58.9263 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("base/body/sholder_l:position")
+tracks/8/path = NodePath("base/pelvis/body/sholder_l:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -3636,7 +3637,7 @@ tracks/8/keys = {
 "values": [ Vector2( 50, -127 ), Vector2( 51.0269, -129.635 ), Vector2( 51.0269, -129.635 ), Vector2( 47.9461, -121.729 ), Vector2( 47.9461, -121.729 ), Vector2( 47.9461, -121.729 ), Vector2( 50, -127 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("base/body/sholder_l:rotation_degrees")
+tracks/9/path = NodePath("base/pelvis/body/sholder_l:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -3648,7 +3649,7 @@ tracks/9/keys = {
 "values": [ 59.852, 27.9192, -5.54572, -56.0573, -19.5509, 31.884, 59.852 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("base/body/sholder_l/forearm_l:position")
+tracks/10/path = NodePath("base/pelvis/body/sholder_l/forearm_l:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -3660,7 +3661,7 @@ tracks/10/keys = {
 "values": [ Vector2( -3.90139, 69.7377 ), Vector2( -3.9013, 69.738 ), Vector2( -3.9013, 69.738 ), Vector2( -3.90134, 69.7379 ), Vector2( -3.90131, 69.7378 ), Vector2( -3.90131, 69.7378 ), Vector2( -3.90139, 69.7377 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("base/body/sholder_l/forearm_l:rotation_degrees")
+tracks/11/path = NodePath("base/pelvis/body/sholder_l/forearm_l:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -3672,7 +3673,7 @@ tracks/11/keys = {
 "values": [ -87.2727, -55.4734, -67.5085, -73.5321, -86.6546, -85.3957, -87.2727 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("base/body/sholder_l/forearm_l/hand_l:position")
+tracks/12/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -3684,7 +3685,7 @@ tracks/12/keys = {
 "values": [ Vector2( 9.04833, 68.0949 ), Vector2( 6.02175, 64.115 ), Vector2( 6.02175, 64.115 ), Vector2( 6.02175, 64.115 ), Vector2( 9.04833, 68.0949 ), Vector2( 9.04833, 68.0949 ), Vector2( 9.04833, 68.0949 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("base/body/sholder_l/forearm_l/hand_l:rotation_degrees")
+tracks/13/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:rotation_degrees")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -3696,7 +3697,7 @@ tracks/13/keys = {
 "values": [ -8.7076, -28.1307, -28.1307, 12.2747, -8.7076, -8.7076, -8.7076 ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("base/body/sholder_r/forearm_r/hand_r:position")
+tracks/14/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -3708,7 +3709,7 @@ tracks/14/keys = {
 "values": [ Vector2( 2.67078, 82.4628 ), Vector2( 1.15995, 77.2146 ), Vector2( 1.15995, 77.2146 ), Vector2( 1.15995, 77.2146 ), Vector2( 1.15995, 77.2146 ), Vector2( 0.159132, 81.7171 ), Vector2( 2.67078, 82.4628 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("base/body/sholder_r/forearm_r/hand_r:rotation_degrees")
+tracks/15/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r:rotation_degrees")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -3720,7 +3721,7 @@ tracks/15/keys = {
 "values": [ -1.29225, -1.29225, -1.29225, -1.29225, -1.29225, -1.29225, -1.29225 ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("base/hip_l/shin_l:position")
+tracks/16/path = NodePath("base/pelvis/hip_l/shin_l:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -3732,7 +3733,7 @@ tracks/16/keys = {
 "values": [ Vector2( 12.3493, 75.7984 ), Vector2( 12.3493, 75.7986 ), Vector2( 12.3493, 75.7986 ), Vector2( 12.3493, 75.7985 ), Vector2( 12.3493, 75.7985 ), Vector2( 12.3493, 75.7985 ), Vector2( 12.3493, 75.7984 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("base/hip_l/shin_l:rotation_degrees")
+tracks/17/path = NodePath("base/pelvis/hip_l/shin_l:rotation_degrees")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -3744,7 +3745,7 @@ tracks/17/keys = {
 "values": [ -1.70845, 55.7961, 82.1703, 30.2176, 14.3691, -3.60347, -1.70845 ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("base/hip_l:position")
+tracks/18/path = NodePath("base/pelvis/hip_l:position")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -3756,7 +3757,7 @@ tracks/18/keys = {
 "values": [ Vector2( 26.1218, 1.49841 ), Vector2( 30.1218, 5.49841 ), Vector2( 30.1218, 5.49841 ), Vector2( 34.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ) ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("base/hip_l:rotation_degrees")
+tracks/19/path = NodePath("base/pelvis/hip_l:rotation_degrees")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -3768,7 +3769,7 @@ tracks/19/keys = {
 "values": [ -40.8, -41.7129, -4.80132, 51.0935, 23.5938, 10.8927, -40.8 ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position")
+tracks/20/path = NodePath("base/pelvis/hip_l/shin_l/foot_l/foot_l_toe:position")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -3780,7 +3781,7 @@ tracks/20/keys = {
 "values": [ Vector2( 28.5516, 28.5174 ), Vector2( 29.2598, 29.2234 ), Vector2( 29.2598, 29.2234 ), Vector2( 29.2598, 29.2234 ), Vector2( 29.2598, 29.2234 ), Vector2( 28.5516, 28.5174 ), Vector2( 28.5516, 28.5174 ) ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees")
+tracks/21/path = NodePath("base/pelvis/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
@@ -3792,7 +3793,7 @@ tracks/21/keys = {
 "values": [ -21.3034, -40.8842, -56.3355, -56.3355, -44.3093, 1.05484, -21.3034 ]
 }
 tracks/22/type = "value"
-tracks/22/path = NodePath("base/hip_l/shin_l/foot_l:position")
+tracks/22/path = NodePath("base/pelvis/hip_l/shin_l/foot_l:position")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
@@ -3804,7 +3805,7 @@ tracks/22/keys = {
 "values": [ Vector2( 3.68064, 60.4024 ), Vector2( 3.68064, 60.4024 ), Vector2( 3.68064, 60.4024 ), Vector2( 3.68064, 60.4024 ), Vector2( 3.68064, 60.4024 ), Vector2( 3.68064, 60.4024 ), Vector2( 3.68064, 60.4024 ) ]
 }
 tracks/23/type = "value"
-tracks/23/path = NodePath("base/hip_l/shin_l/foot_l:rotation_degrees")
+tracks/23/path = NodePath("base/pelvis/hip_l/shin_l/foot_l:rotation_degrees")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false
@@ -3816,7 +3817,7 @@ tracks/23/keys = {
 "values": [ -17.793, -13.2307, 7.12566, 7.12566, 7.12566, -7.124, -17.793 ]
 }
 tracks/24/type = "value"
-tracks/24/path = NodePath("base/hip_r/shin_r:position")
+tracks/24/path = NodePath("base/pelvis/hip_r/shin_r:position")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/imported = false
@@ -3828,7 +3829,7 @@ tracks/24/keys = {
 "values": [ Vector2( -10.7184, 68.4985 ), Vector2( -10.7184, 68.4986 ), Vector2( -10.7184, 68.4986 ), Vector2( -10.7184, 68.4985 ), Vector2( -10.7184, 68.4985 ), Vector2( -10.7184, 68.4985 ), Vector2( -10.7184, 68.4985 ) ]
 }
 tracks/25/type = "value"
-tracks/25/path = NodePath("base/hip_r/shin_r:rotation_degrees")
+tracks/25/path = NodePath("base/pelvis/hip_r/shin_r:rotation_degrees")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/imported = false
@@ -3840,7 +3841,7 @@ tracks/25/keys = {
 "values": [ 11.5245, 18.7213, 25.7828, 4.49035, 93.4864, 91.2837, 11.5245 ]
 }
 tracks/26/type = "value"
-tracks/26/path = NodePath("base/hip_r:position")
+tracks/26/path = NodePath("base/pelvis/hip_r:position")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/imported = false
@@ -3852,7 +3853,7 @@ tracks/26/keys = {
 "values": [ Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ) ]
 }
 tracks/27/type = "value"
-tracks/27/path = NodePath("base/hip_r:rotation_degrees")
+tracks/27/path = NodePath("base/pelvis/hip_r:rotation_degrees")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/imported = false
@@ -3864,7 +3865,7 @@ tracks/27/keys = {
 "values": [ 43.6062, 6.98542, -17.2061, -60.8514, -60.8514, -19.682, 43.6062 ]
 }
 tracks/28/type = "value"
-tracks/28/path = NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position")
+tracks/28/path = NodePath("base/pelvis/hip_r/shin_r/foot_r/foot_r_toe:position")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/imported = false
@@ -3876,7 +3877,7 @@ tracks/28/keys = {
 "values": [ Vector2( 34.0374, 33.119 ), Vector2( 30.5121, 32.3627 ), Vector2( 30.5121, 32.3627 ), Vector2( 30.5121, 32.3627 ), Vector2( 30.5121, 32.3627 ), Vector2( 30.5121, 32.3627 ), Vector2( 34.0374, 33.119 ) ]
 }
 tracks/29/type = "value"
-tracks/29/path = NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees")
+tracks/29/path = NodePath("base/pelvis/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees")
 tracks/29/interp = 1
 tracks/29/loop_wrap = true
 tracks/29/imported = false
@@ -3888,7 +3889,7 @@ tracks/29/keys = {
 "values": [ -76.0425, -20.0999, 3.60326, -34.1589, -34.1589, 3.87934, -76.0425 ]
 }
 tracks/30/type = "value"
-tracks/30/path = NodePath("base/hip_r/shin_r/foot_r:position")
+tracks/30/path = NodePath("base/pelvis/hip_r/shin_r/foot_r:position")
 tracks/30/interp = 1
 tracks/30/loop_wrap = true
 tracks/30/imported = false
@@ -3900,7 +3901,7 @@ tracks/30/keys = {
 "values": [ Vector2( -7.46899, 63.5546 ), Vector2( -7.46899, 63.5546 ), Vector2( -7.46899, 63.5546 ), Vector2( -7.46899, 63.5546 ), Vector2( -7.46899, 63.5546 ), Vector2( -7.46899, 63.5546 ), Vector2( -7.46899, 63.5546 ) ]
 }
 tracks/31/type = "value"
-tracks/31/path = NodePath("base/hip_r/shin_r/foot_r:rotation_degrees")
+tracks/31/path = NodePath("base/pelvis/hip_r/shin_r/foot_r:rotation_degrees")
 tracks/31/interp = 1
 tracks/31/loop_wrap = true
 tracks/31/imported = false
@@ -3912,7 +3913,7 @@ tracks/31/keys = {
 "values": [ 24.7543, -5.45745, -11.0218, -21.9147, -21.9147, 39.9804, 24.7543 ]
 }
 tracks/32/type = "value"
-tracks/32/path = NodePath("base:position")
+tracks/32/path = NodePath("base/pelvis:position")
 tracks/32/interp = 1
 tracks/32/loop_wrap = true
 tracks/32/imported = false
@@ -3941,7 +3942,7 @@ tracks/33/keys = {
 } ]
 }
 tracks/34/type = "value"
-tracks/34/path = NodePath("base/body:position")
+tracks/34/path = NodePath("base/pelvis/body:position")
 tracks/34/interp = 1
 tracks/34/loop_wrap = true
 tracks/34/imported = false
@@ -3959,7 +3960,7 @@ length = 2.9
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("base/hip_l:position")
+tracks/0/path = NodePath("base/pelvis/hip_l:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -3971,7 +3972,7 @@ tracks/0/keys = {
 "values": [ Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("base/hip_l:rotation_degrees")
+tracks/1/path = NodePath("base/pelvis/hip_l:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -3983,7 +3984,7 @@ tracks/1/keys = {
 "values": [ -17.473, -21.2734, 6.60239, 4.55398, 7.97675, 18.2521, 27.0065, -7.08629, -26.6414, -42.9984, -17.473 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("base/hip_l/shin_l:position")
+tracks/2/path = NodePath("base/pelvis/hip_l/shin_l:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -3995,7 +3996,7 @@ tracks/2/keys = {
 "values": [ Vector2( 12.3493, 75.7983 ), Vector2( 12.3493, 75.7983 ), Vector2( 12.3493, 75.7983 ), Vector2( 12.3493, 75.7983 ), Vector2( 12.3493, 75.7983 ), Vector2( 12.3493, 75.7983 ), Vector2( 12.3492, 75.7983 ), Vector2( 12.3492, 75.7983 ), Vector2( 12.3493, 75.7983 ), Vector2( 12.3493, 75.7983 ), Vector2( 12.3493, 75.7983 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("base/hip_l/shin_l:rotation_degrees")
+tracks/3/path = NodePath("base/pelvis/hip_l/shin_l:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -4007,7 +4008,7 @@ tracks/3/keys = {
 "values": [ -2.78035, 33.6662, 4.60924, 28.4877, 28.0425, 21.6722, 30.3143, 94.9823, 114.537, 81.5474, -2.78035 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("base/hip_l/shin_l/foot_l:position")
+tracks/4/path = NodePath("base/pelvis/hip_l/shin_l/foot_l:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -4019,7 +4020,7 @@ tracks/4/keys = {
 "values": [ Vector2( 3.68064, 60.4024 ), Vector2( 3.68066, 60.4025 ), Vector2( 3.68062, 60.4026 ), Vector2( 3.68057, 60.4026 ), Vector2( 3.68059, 60.4026 ), Vector2( 3.68056, 60.4026 ), Vector2( 3.6806, 60.4027 ), Vector2( 3.68054, 60.4029 ), Vector2( 3.68054, 60.4029 ), Vector2( 3.68054, 60.4029 ), Vector2( 3.68064, 60.4024 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("base/hip_l/shin_l/foot_l:rotation_degrees")
+tracks/5/path = NodePath("base/pelvis/hip_l/shin_l/foot_l:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -4031,7 +4032,7 @@ tracks/5/keys = {
 "values": [ 1.65572, -14.8796, -13.2197, -14.7173, -2.89066, 7.43839, 5.67828, 25.9418, -7.56212, -7.56212, 1.65572 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position")
+tracks/6/path = NodePath("base/pelvis/hip_l/shin_l/foot_l/foot_l_toe:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -4043,7 +4044,7 @@ tracks/6/keys = {
 "values": [ Vector2( 28.5516, 28.5174 ), Vector2( 28.5516, 28.5174 ), Vector2( 28.5516, 28.5174 ), Vector2( 28.5516, 28.5174 ), Vector2( 28.5516, 28.5174 ), Vector2( 28.5516, 28.5174 ), Vector2( 30.3968, 29.3871 ), Vector2( 30.3968, 29.3871 ), Vector2( 30.3968, 29.3871 ), Vector2( 30.4797, 27.6307 ), Vector2( 28.5516, 28.5174 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees")
+tracks/7/path = NodePath("base/pelvis/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -4055,7 +4056,7 @@ tracks/7/keys = {
 "values": [ -21.3034, 2.39646, 4.90004, -15.4493, -33.468, -44.7683, -60.6754, 2.49508, -28.4777, -35.879, -21.3034 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("base/hip_r:position")
+tracks/8/path = NodePath("base/pelvis/hip_r:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -4067,7 +4068,7 @@ tracks/8/keys = {
 "values": [ Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 7.10666 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("base/hip_r:rotation_degrees")
+tracks/9/path = NodePath("base/pelvis/hip_r:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -4079,7 +4080,7 @@ tracks/9/keys = {
 "values": [ 0.0810957, -4.68477, -33.6997, -60.5988, -53.0448, -49.825, -19.0759, -14.2818, 0.0810957 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("base/hip_r/shin_r:position")
+tracks/10/path = NodePath("base/pelvis/hip_r/shin_r:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -4091,7 +4092,7 @@ tracks/10/keys = {
 "values": [ Vector2( -10.7184, 68.4984 ), Vector2( -10.7184, 68.4984 ), Vector2( -10.7184, 68.4985 ), Vector2( -10.7184, 68.4985 ), Vector2( -10.7184, 68.4985 ), Vector2( -10.7184, 68.4985 ), Vector2( -10.7185, 68.4987 ), Vector2( -10.7185, 68.4987 ), Vector2( -10.7184, 68.4984 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("base/hip_r/shin_r:rotation_degrees")
+tracks/11/path = NodePath("base/pelvis/hip_r/shin_r:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -4103,7 +4104,7 @@ tracks/11/keys = {
 "values": [ 42.7864, 89.3925, 118.407, 78.3701, 13.1325, 43.4748, 25.1976, 47.8587, 42.7864 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("base/hip_r/shin_r/foot_r:position")
+tracks/12/path = NodePath("base/pelvis/hip_r/shin_r/foot_r:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -4115,7 +4116,7 @@ tracks/12/keys = {
 "values": [ Vector2( -7.46899, 63.5546 ), Vector2( -7.46899, 63.5546 ), Vector2( -7.46899, 63.5546 ), Vector2( -7.469, 63.5547 ), Vector2( -7.469, 63.5547 ), Vector2( -7.469, 63.5547 ), Vector2( -7.469, 63.5547 ), Vector2( -7.46899, 63.555 ), Vector2( -7.46899, 63.5546 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("base/hip_r/shin_r/foot_r:rotation_degrees")
+tracks/13/path = NodePath("base/pelvis/hip_r/shin_r/foot_r:rotation_degrees")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -4127,7 +4128,7 @@ tracks/13/keys = {
 "values": [ 30.0, 30.0, 32.5608, 3.26096, -5.08606, 3.95411, -7.30505, 28.473, 30.0 ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position")
+tracks/14/path = NodePath("base/pelvis/hip_r/shin_r/foot_r/foot_r_toe:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -4139,7 +4140,7 @@ tracks/14/keys = {
 "values": [ Vector2( 34.0374, 33.119 ), Vector2( 34.0374, 33.119 ), Vector2( 34.0374, 33.119 ), Vector2( 34.0374, 33.119 ), Vector2( 34.0374, 33.119 ), Vector2( 31.6653, 31.501 ), Vector2( 31.6653, 31.501 ), Vector2( 35.3929, 30.7186 ), Vector2( 34.0374, 33.119 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees")
+tracks/15/path = NodePath("base/pelvis/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -4151,7 +4152,7 @@ tracks/15/keys = {
 "values": [ -68.9912, -2.9768, -2.9768, -40.5979, -40.5979, 2.33035, 2.33035, -62.4505, -68.9912 ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("base:position")
+tracks/16/path = NodePath("base/pelvis:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -4163,7 +4164,7 @@ tracks/16/keys = {
 "values": [ Vector2( 0, 11 ), Vector2( 0, 11 ), Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 16 ), Vector2( 0, 16 ), Vector2( 0, 2 ), Vector2( 0, -5 ), Vector2( 0, 1 ), Vector2( 0, 11 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("base/body/sholder_r/forearm_r:position")
+tracks/17/path = NodePath("base/pelvis/body/sholder_r/forearm_r:position")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -4175,7 +4176,7 @@ tracks/17/keys = {
 "values": [ Vector2( -18.583, 89.102 ), Vector2( -20.3309, 90.4535 ), Vector2( -23.1707, 89.0157 ), Vector2( -17.4537, 88.167 ), Vector2( -19.4151, 91.4923 ), Vector2( -14.7505, 92.4337 ), Vector2( -18.1765, 92.245 ), Vector2( -21.0475, 94.2388 ), Vector2( -2.13298, 90.4385 ), Vector2( -17.5801, 94.7264 ), Vector2( -18.0775, 90.4141 ), Vector2( -13.8366, 87.6309 ), Vector2( -11.9029, 88.4887 ) ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("base/body/sholder_r/forearm_r:rotation_degrees")
+tracks/18/path = NodePath("base/pelvis/body/sholder_r/forearm_r:rotation_degrees")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -4187,7 +4188,7 @@ tracks/18/keys = {
 "values": [ -48.5682, -56.0731, -23.0067, -31.962, -40.9174, -58.828, -17.9971, -12.5062, 1.12795, -13.6858, -36.6983, -59.4081, -48.5682 ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("base/body/sholder_r:position")
+tracks/19/path = NodePath("base/pelvis/body/sholder_r:position")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -4199,7 +4200,7 @@ tracks/19/keys = {
 "values": [ Vector2( -51.0665, -132.157 ), Vector2( -53.027, -129.131 ), Vector2( -53.0532, -131.131 ), Vector2( -52.5402, -130.137 ), Vector2( -52.0271, -129.144 ), Vector2( -51.001, -127.157 ), Vector2( -48.9881, -126.183 ), Vector2( -48.498, -126.94 ), Vector2( -63, -127 ), Vector2( -48.9881, -126.183 ), Vector2( -52.0271, -129.144 ), Vector2( -54.0662, -132.117 ), Vector2( -51.1058, -135.156 ) ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("base/body/sholder_r:rotation_degrees")
+tracks/20/path = NodePath("base/pelvis/body/sholder_r:rotation_degrees")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -4211,7 +4212,7 @@ tracks/20/keys = {
 "values": [ -22.0696, -7.34311, -2.04136, 4.86348, 11.7683, 25.578, 21.2455, 13.7019, 11.1874, 11.1874, -0.906089, -9.97617, -22.0696 ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("base/body/sholder_l:position")
+tracks/21/path = NodePath("base/pelvis/body/sholder_l:position")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
@@ -4223,7 +4224,7 @@ tracks/21/keys = {
 "values": [ Vector2( 50, -127 ), Vector2( 50, -127 ), Vector2( 50, -127 ), Vector2( 50, -127 ), Vector2( 50, -127 ), Vector2( 50, -127 ), Vector2( 50, -127 ), Vector2( 50, -127 ), Vector2( 50, -127 ) ]
 }
 tracks/22/type = "value"
-tracks/22/path = NodePath("base/body/sholder_l:rotation_degrees")
+tracks/22/path = NodePath("base/pelvis/body/sholder_l:rotation_degrees")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
@@ -4235,7 +4236,7 @@ tracks/22/keys = {
 "values": [ 9.17014, 9.17014, 5.32978, -12.8509, -26.2774, -18.2719, 1.91729, 35.0612, 9.17014 ]
 }
 tracks/23/type = "value"
-tracks/23/path = NodePath("base/body/sholder_l/forearm_l:position")
+tracks/23/path = NodePath("base/pelvis/body/sholder_l/forearm_l:position")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false
@@ -4247,7 +4248,7 @@ tracks/23/keys = {
 "values": [ Vector2( -3.90139, 69.7377 ), Vector2( -3.90139, 69.7377 ), Vector2( -3.90139, 69.7377 ), Vector2( 6.27896, 74.2494 ), Vector2( 4.58226, 73.4975 ), Vector2( 2.31995, 72.4949 ), Vector2( 0.0576248, 71.4923 ), Vector2( -1.63909, 70.7405 ), Vector2( -3.90139, 69.7377 ) ]
 }
 tracks/24/type = "value"
-tracks/24/path = NodePath("base/body/sholder_l/forearm_l:rotation_degrees")
+tracks/24/path = NodePath("base/pelvis/body/sholder_l/forearm_l:rotation_degrees")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/imported = false
@@ -4259,7 +4260,7 @@ tracks/24/keys = {
 "values": [ 27.8956, 27.8956, -20.4228, -66.3328, -60.924, -69.5026, -56.9833, -62.9698, 27.8956 ]
 }
 tracks/25/type = "value"
-tracks/25/path = NodePath("base/body/sholder_l/forearm_l/hand_l:rotation_degrees")
+tracks/25/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:rotation_degrees")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/imported = false
@@ -4271,7 +4272,7 @@ tracks/25/keys = {
 "values": [ 0.0, -19.2344, -16.2752, -14.0559, -11.0968, -23.946, -17.4152, -8.7076 ]
 }
 tracks/26/type = "value"
-tracks/26/path = NodePath("base/body/sholder_r/forearm_r/hand_r:position")
+tracks/26/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r:position")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/imported = false
@@ -4283,7 +4284,7 @@ tracks/26/keys = {
 "values": [ Vector2( 2.27896, 82.9565 ), Vector2( 2.97497, 88.3313 ), Vector2( 3.79174, 86.2747 ), Vector2( -1.92431, 73.3598 ), Vector2( -2.47579, 75.4177 ), Vector2( -3.2111, 78.1616 ), Vector2( 0.848061, 76.2846 ), Vector2( 1.65338, 80.104 ), Vector2( -0.0441399, 83.3687 ), Vector2( 2.27898, 82.9565 ) ]
 }
 tracks/27/type = "value"
-tracks/27/path = NodePath("base/body/sholder_r/forearm_r/hand_r:rotation_degrees")
+tracks/27/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r:rotation_degrees")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/imported = false
@@ -4295,7 +4296,7 @@ tracks/27/keys = {
 "values": [ -1.29225, 0.0, 0.0, 0.0, 0.0, 14.1201, 14.1201, -3.5537, -2.58451, -1.29225 ]
 }
 tracks/28/type = "value"
-tracks/28/path = NodePath("base/body/sholder_l/forearm_l/hand_l:position")
+tracks/28/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:position")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/imported = false
@@ -4307,7 +4308,7 @@ tracks/28/keys = {
 "values": [ Vector2( 9.48378, 70.2046 ), Vector2( 13.5787, 66.258 ), Vector2( 7.0888, 58.6012 ), Vector2( 7.41539, 60.1835 ), Vector2( 7.85084, 62.2932 ), Vector2( 8.28629, 64.4029 ), Vector2( 8.61288, 65.9852 ), Vector2( 9.04833, 68.0949 ) ]
 }
 tracks/29/type = "value"
-tracks/29/path = NodePath("base/belt:rotation_degrees")
+tracks/29/path = NodePath("base/pelvis/belt:rotation_degrees")
 tracks/29/interp = 1
 tracks/29/loop_wrap = true
 tracks/29/imported = false
@@ -4319,7 +4320,7 @@ tracks/29/keys = {
 "values": [ 0.0, 5.0, 0.0, 0.0, 6.0, 0.0 ]
 }
 tracks/30/type = "value"
-tracks/30/path = NodePath("base/body/head:rotation_degrees")
+tracks/30/path = NodePath("base/pelvis/body/head:rotation_degrees")
 tracks/30/interp = 1
 tracks/30/loop_wrap = true
 tracks/30/imported = false
@@ -4331,7 +4332,7 @@ tracks/30/keys = {
 "values": [ 7.51002, -3.0, 0.0, 7.51002 ]
 }
 tracks/31/type = "value"
-tracks/31/path = NodePath("base/body/sholder_l/forearm_l/hand_l:z_index")
+tracks/31/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:z_index")
 tracks/31/interp = 1
 tracks/31/loop_wrap = true
 tracks/31/imported = false
@@ -4343,7 +4344,7 @@ tracks/31/keys = {
 "values": [ 0, 0 ]
 }
 tracks/32/type = "value"
-tracks/32/path = NodePath("base/body:rotation_degrees")
+tracks/32/path = NodePath("base/pelvis/body:rotation_degrees")
 tracks/32/interp = 1
 tracks/32/loop_wrap = true
 tracks/32/imported = false
@@ -4355,7 +4356,7 @@ tracks/32/keys = {
 "values": [ 0.750136, 0.750136 ]
 }
 tracks/33/type = "value"
-tracks/33/path = NodePath("base/belt:position")
+tracks/33/path = NodePath("base/pelvis/belt:position")
 tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/imported = false
@@ -4367,7 +4368,7 @@ tracks/33/keys = {
 "values": [ Vector2( 10.7289, -24.3838 ), Vector2( 10.7289, -24.3838 ) ]
 }
 tracks/34/type = "value"
-tracks/34/path = NodePath("base/body:position")
+tracks/34/path = NodePath("base/pelvis/body:position")
 tracks/34/interp = 1
 tracks/34/loop_wrap = true
 tracks/34/imported = false
@@ -4402,7 +4403,7 @@ length = 2.9
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("base/hip_l:position")
+tracks/0/path = NodePath("base/pelvis/hip_l:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -4414,7 +4415,7 @@ tracks/0/keys = {
 "values": [ Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ), Vector2( 26.1218, 1.49841 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("base/hip_l:rotation_degrees")
+tracks/1/path = NodePath("base/pelvis/hip_l:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -4426,7 +4427,7 @@ tracks/1/keys = {
 "values": [ -17.473, -42.9984, -26.6414, -7.08629, 27.0065, 18.2521, 7.97675, 4.55398, 6.60239, -21.2734, -17.473 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("base/hip_l/shin_l:position")
+tracks/2/path = NodePath("base/pelvis/hip_l/shin_l:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -4438,7 +4439,7 @@ tracks/2/keys = {
 "values": [ Vector2( 12.3493, 75.7983 ), Vector2( 12.3493, 75.7983 ), Vector2( 12.3493, 75.7983 ), Vector2( 12.3492, 75.7983 ), Vector2( 12.3492, 75.7983 ), Vector2( 12.3493, 75.7983 ), Vector2( 12.3493, 75.7983 ), Vector2( 12.3493, 75.7983 ), Vector2( 12.3493, 75.7983 ), Vector2( 12.3493, 75.7983 ), Vector2( 12.3493, 75.7983 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("base/hip_l/shin_l:rotation_degrees")
+tracks/3/path = NodePath("base/pelvis/hip_l/shin_l:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -4450,7 +4451,7 @@ tracks/3/keys = {
 "values": [ -2.78035, 81.5474, 114.537, 94.9823, 30.3143, 21.6722, 28.0425, 28.4877, 4.60924, 33.6662, -2.78035 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("base/hip_l/shin_l/foot_l:position")
+tracks/4/path = NodePath("base/pelvis/hip_l/shin_l/foot_l:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -4462,7 +4463,7 @@ tracks/4/keys = {
 "values": [ Vector2( 3.68064, 60.4024 ), Vector2( 3.68054, 60.4029 ), Vector2( 3.68054, 60.4029 ), Vector2( 3.68054, 60.4029 ), Vector2( 3.6806, 60.4027 ), Vector2( 3.68056, 60.4026 ), Vector2( 3.68059, 60.4026 ), Vector2( 3.68057, 60.4026 ), Vector2( 3.68062, 60.4026 ), Vector2( 3.68066, 60.4025 ), Vector2( 3.68064, 60.4024 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("base/hip_l/shin_l/foot_l:rotation_degrees")
+tracks/5/path = NodePath("base/pelvis/hip_l/shin_l/foot_l:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -4474,7 +4475,7 @@ tracks/5/keys = {
 "values": [ 1.65572, -7.56212, -7.56212, 25.9418, 5.67828, 7.43839, -2.89066, -14.7173, -13.2197, -14.8796, 1.65572 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position")
+tracks/6/path = NodePath("base/pelvis/hip_l/shin_l/foot_l/foot_l_toe:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -4486,7 +4487,7 @@ tracks/6/keys = {
 "values": [ Vector2( 28.5516, 28.5174 ), Vector2( 30.4797, 27.6307 ), Vector2( 30.3968, 29.3871 ), Vector2( 30.3968, 29.3871 ), Vector2( 30.3968, 29.3871 ), Vector2( 28.5516, 28.5174 ), Vector2( 28.5516, 28.5174 ), Vector2( 28.5516, 28.5174 ), Vector2( 28.5516, 28.5174 ), Vector2( 28.5516, 28.5174 ), Vector2( 28.5516, 28.5174 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees")
+tracks/7/path = NodePath("base/pelvis/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -4498,7 +4499,7 @@ tracks/7/keys = {
 "values": [ -21.3034, -35.879, -28.4777, 2.49508, -60.6754, -44.7683, -33.468, -15.4493, 4.90004, 2.39646, -21.3034 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("base/hip_r:position")
+tracks/8/path = NodePath("base/pelvis/hip_r:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -4510,7 +4511,7 @@ tracks/8/keys = {
 "values": [ Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 7.10666 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ), Vector2( -21.9143, 10 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("base/hip_r:rotation_degrees")
+tracks/9/path = NodePath("base/pelvis/hip_r:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -4522,7 +4523,7 @@ tracks/9/keys = {
 "values": [ 0.0810957, -14.2818, -19.0759, -49.825, -53.0448, -60.5988, -33.6997, -4.68477, 0.0810957 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("base/hip_r/shin_r:position")
+tracks/10/path = NodePath("base/pelvis/hip_r/shin_r:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -4534,7 +4535,7 @@ tracks/10/keys = {
 "values": [ Vector2( -10.7184, 68.4984 ), Vector2( -10.7185, 68.4987 ), Vector2( -10.7185, 68.4987 ), Vector2( -10.7184, 68.4985 ), Vector2( -10.7184, 68.4985 ), Vector2( -10.7184, 68.4985 ), Vector2( -10.7184, 68.4985 ), Vector2( -10.7184, 68.4984 ), Vector2( -10.7184, 68.4984 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("base/hip_r/shin_r:rotation_degrees")
+tracks/11/path = NodePath("base/pelvis/hip_r/shin_r:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -4546,7 +4547,7 @@ tracks/11/keys = {
 "values": [ 42.7864, 47.8587, 25.1976, 43.4748, 13.1325, 78.3701, 118.407, 89.3925, 42.7864 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("base/hip_r/shin_r/foot_r:position")
+tracks/12/path = NodePath("base/pelvis/hip_r/shin_r/foot_r:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -4558,7 +4559,7 @@ tracks/12/keys = {
 "values": [ Vector2( -7.46899, 63.5546 ), Vector2( -7.46899, 63.555 ), Vector2( -7.469, 63.5547 ), Vector2( -7.469, 63.5547 ), Vector2( -7.469, 63.5547 ), Vector2( -7.469, 63.5547 ), Vector2( -7.46899, 63.5546 ), Vector2( -7.46899, 63.5546 ), Vector2( -7.46899, 63.5546 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("base/hip_r/shin_r/foot_r:rotation_degrees")
+tracks/13/path = NodePath("base/pelvis/hip_r/shin_r/foot_r:rotation_degrees")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -4570,7 +4571,7 @@ tracks/13/keys = {
 "values": [ 30.0, 28.473, -7.30505, 3.95411, -5.08606, 3.26096, 32.5608, 30.0, 30.0 ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position")
+tracks/14/path = NodePath("base/pelvis/hip_r/shin_r/foot_r/foot_r_toe:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -4582,7 +4583,7 @@ tracks/14/keys = {
 "values": [ Vector2( 34.0374, 33.119 ), Vector2( 35.3929, 30.7186 ), Vector2( 31.6653, 31.501 ), Vector2( 31.6653, 31.501 ), Vector2( 34.0374, 33.119 ), Vector2( 34.0374, 33.119 ), Vector2( 34.0374, 33.119 ), Vector2( 34.0374, 33.119 ), Vector2( 34.0374, 33.119 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees")
+tracks/15/path = NodePath("base/pelvis/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -4594,7 +4595,7 @@ tracks/15/keys = {
 "values": [ -68.9912, -62.4505, 2.33035, 2.33035, -40.5979, -40.5979, -2.9768, -2.9768, -68.9912 ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("base:position")
+tracks/16/path = NodePath("base/pelvis:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -4606,7 +4607,7 @@ tracks/16/keys = {
 "values": [ Vector2( 0, 11 ), Vector2( 0, -5 ), Vector2( 0, 1 ), Vector2( 0, 2 ), Vector2( 0, 16 ), Vector2( 0, 16 ), Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 11 ), Vector2( 0, 11 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("base/body/sholder_r/forearm_r:position")
+tracks/17/path = NodePath("base/pelvis/body/sholder_r/forearm_r:position")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -4618,7 +4619,7 @@ tracks/17/keys = {
 "values": [ Vector2( -17.6514, 89.4656 ), Vector2( -16.2918, 90.2714 ), Vector2( -16.0748, 89.4196 ), Vector2( -19.3859, 91.0197 ), Vector2( -14.6458, 92.9758 ), Vector2( -2.24899, 97.4048 ), Vector2( -10.2784, 92.4522 ), Vector2( -16.4688, 92.1731 ), Vector2( -16.8543, 92.1616 ), Vector2( -17.2398, 92.1501 ), Vector2( -18.1145, 88.6963 ), Vector2( -14.6523, 92.783 ) ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("base/body/sholder_r/forearm_r:rotation_degrees")
+tracks/18/path = NodePath("base/pelvis/body/sholder_r/forearm_r:rotation_degrees")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -4630,7 +4631,7 @@ tracks/18/keys = {
 "values": [ -48.5682, -59.4081, -36.6983, -14.9454, -17.9971, -58.828, -58.828, -40.9174, -31.962, -23.0067, -56.0731, -48.5682 ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("base/body/sholder_r:position")
+tracks/19/path = NodePath("base/pelvis/body/sholder_r:position")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -4642,7 +4643,7 @@ tracks/19/keys = {
 "values": [ Vector2( -52.0795, -133.143 ), Vector2( -52.0533, -131.144 ), Vector2( -53.0663, -132.13 ), Vector2( -51.001, -127.157 ), Vector2( -46.9883, -126.21 ), Vector2( -63, -127 ), Vector2( -48.9881, -126.183 ), Vector2( -51.9944, -126.644 ), Vector2( -52.5369, -129.887 ), Vector2( -52.0402, -130.144 ), Vector2( -51.0534, -131.157 ), Vector2( -53.0925, -134.13 ) ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("base/body/sholder_r:rotation_degrees")
+tracks/20/path = NodePath("base/pelvis/body/sholder_r:rotation_degrees")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -4654,7 +4655,7 @@ tracks/20/keys = {
 "values": [ -22.0696, -9.97617, -0.906089, 11.1874, 21.2455, 25.578, 25.578, 11.7683, 4.86347, -2.04136, -7.34311, -22.0696 ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("base/body/sholder_l:position")
+tracks/21/path = NodePath("base/pelvis/body/sholder_l:position")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
@@ -4666,7 +4667,7 @@ tracks/21/keys = {
 "values": [ Vector2( 50, -127 ), Vector2( 50, -127 ), Vector2( 50, -127 ), Vector2( 50, -127 ), Vector2( 50, -127 ), Vector2( 50, -127 ), Vector2( 50, -127 ), Vector2( 50, -127 ), Vector2( 50, -127 ) ]
 }
 tracks/22/type = "value"
-tracks/22/path = NodePath("base/body/sholder_l:rotation_degrees")
+tracks/22/path = NodePath("base/pelvis/body/sholder_l:rotation_degrees")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
@@ -4678,7 +4679,7 @@ tracks/22/keys = {
 "values": [ 9.17014, 35.0612, 1.91729, -18.2719, -26.2774, -12.8509, 5.32978, 9.17014, 9.17014 ]
 }
 tracks/23/type = "value"
-tracks/23/path = NodePath("base/body/sholder_l/forearm_l:position")
+tracks/23/path = NodePath("base/pelvis/body/sholder_l/forearm_l:position")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false
@@ -4690,7 +4691,7 @@ tracks/23/keys = {
 "values": [ Vector2( -3.90139, 69.7377 ), Vector2( -1.63909, 70.7405 ), Vector2( 0.0576248, 71.4923 ), Vector2( 2.31995, 72.4949 ), Vector2( 4.58226, 73.4975 ), Vector2( 6.27896, 74.2494 ), Vector2( -3.90139, 69.7377 ), Vector2( -3.90139, 69.7377 ), Vector2( -3.90139, 69.7377 ) ]
 }
 tracks/24/type = "value"
-tracks/24/path = NodePath("base/body/sholder_l/forearm_l:rotation_degrees")
+tracks/24/path = NodePath("base/pelvis/body/sholder_l/forearm_l:rotation_degrees")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/imported = false
@@ -4702,7 +4703,7 @@ tracks/24/keys = {
 "values": [ 27.8956, -62.9698, -56.9833, -69.5026, -60.924, -66.3328, -20.4228, 27.8956, 27.8956 ]
 }
 tracks/25/type = "value"
-tracks/25/path = NodePath("base/body/sholder_l/forearm_l/hand_l:rotation_degrees")
+tracks/25/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:rotation_degrees")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/imported = false
@@ -4714,7 +4715,7 @@ tracks/25/keys = {
 "values": [ -8.7076, -17.4152, -23.946, -11.0968, -14.0559, -16.2752, -19.2344, 0.0 ]
 }
 tracks/26/type = "value"
-tracks/26/path = NodePath("base/body/sholder_r/forearm_r/hand_r:position")
+tracks/26/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r:position")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/imported = false
@@ -4726,7 +4727,7 @@ tracks/26/keys = {
 "values": [ Vector2( 3.90571, 84.4907 ), Vector2( 5.90782, 82.114 ), Vector2( -3.9464, 80.9055 ), Vector2( -3.2111, 78.1616 ), Vector2( -2.47579, 75.4177 ), Vector2( -1.92431, 73.3598 ), Vector2( 2.82993, 78.8853 ), Vector2( -0.229343, 83.216 ), Vector2( 1.55742, 86.3631 ), Vector2( 2.94497, 86.0954 ), Vector2( 3.90571, 84.4907 ) ]
 }
 tracks/27/type = "value"
-tracks/27/path = NodePath("base/body/sholder_r/forearm_r/hand_r:rotation_degrees")
+tracks/27/path = NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r:rotation_degrees")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/imported = false
@@ -4738,7 +4739,7 @@ tracks/27/keys = {
 "values": [ -1.29225, -2.58451, -3.5537, 14.1201, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.29225 ]
 }
 tracks/28/type = "value"
-tracks/28/path = NodePath("base/body/sholder_l/forearm_l/hand_l:position")
+tracks/28/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:position")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/imported = false
@@ -4750,7 +4751,7 @@ tracks/28/keys = {
 "values": [ Vector2( 9.04833, 68.0949 ), Vector2( 8.61288, 65.9852 ), Vector2( 8.28629, 64.4029 ), Vector2( 7.85084, 62.2932 ), Vector2( 7.41539, 60.1835 ), Vector2( 7.0888, 58.6012 ), Vector2( 13.5787, 66.258 ), Vector2( 9.48378, 70.2046 ) ]
 }
 tracks/29/type = "value"
-tracks/29/path = NodePath("base/belt:rotation_degrees")
+tracks/29/path = NodePath("base/pelvis/belt:rotation_degrees")
 tracks/29/interp = 1
 tracks/29/loop_wrap = true
 tracks/29/imported = false
@@ -4762,7 +4763,7 @@ tracks/29/keys = {
 "values": [ 0.0, 6.0, 0.0, 0.0, 5.0, 0.0 ]
 }
 tracks/30/type = "value"
-tracks/30/path = NodePath("base/body/head:rotation_degrees")
+tracks/30/path = NodePath("base/pelvis/body/head:rotation_degrees")
 tracks/30/interp = 1
 tracks/30/loop_wrap = true
 tracks/30/imported = false
@@ -4774,7 +4775,7 @@ tracks/30/keys = {
 "values": [ 7.51002, 0.0, -3.0, 7.51002 ]
 }
 tracks/31/type = "value"
-tracks/31/path = NodePath("base/body/sholder_l/forearm_l/hand_l:z_index")
+tracks/31/path = NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:z_index")
 tracks/31/interp = 1
 tracks/31/loop_wrap = true
 tracks/31/imported = false
@@ -4786,7 +4787,7 @@ tracks/31/keys = {
 "values": [ 0, 0 ]
 }
 tracks/32/type = "value"
-tracks/32/path = NodePath("base/body:rotation_degrees")
+tracks/32/path = NodePath("base/pelvis/body:rotation_degrees")
 tracks/32/interp = 1
 tracks/32/loop_wrap = true
 tracks/32/imported = false
@@ -4798,7 +4799,7 @@ tracks/32/keys = {
 "values": [ 0.750136, 0.750136 ]
 }
 tracks/33/type = "value"
-tracks/33/path = NodePath("base/belt:position")
+tracks/33/path = NodePath("base/pelvis/belt:position")
 tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/imported = false
@@ -4810,7 +4811,7 @@ tracks/33/keys = {
 "values": [ Vector2( 10.7289, -24.3838 ), Vector2( 10.7289, -24.3838 ) ]
 }
 tracks/34/type = "value"
-tracks/34/path = NodePath("base/body:position")
+tracks/34/path = NodePath("base/pelvis/body:position")
 tracks/34/interp = 1
 tracks/34/loop_wrap = true
 tracks/34/imported = false
@@ -4879,45 +4880,50 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Drag Margin", "Limit", "Offset", "Smoothing" ]
 
-[node name="base" type="Sprite" parent="." index="2"]
+[node name="base" type="Node2D" parent="." index="2"]
 
+[node name="pelvis" type="Sprite" parent="base" index="0"]
+
+editor/display_folded = true
 z_index = -20
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="belt" type="Sprite" parent="base" index="0"]
+[node name="belt" type="Sprite" parent="base/pelvis" index="0"]
 
-position = Vector2( 10.7289, -24.3838 )
+position = Vector2( 9.75356, -33.162 )
+rotation = -0.248249
 texture = ExtResource( 3 )
 offset = Vector2( -9.3825, 0.577845 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="body" type="Sprite" parent="base" index="1"]
+[node name="body" type="Sprite" parent="base/pelvis" index="1"]
 
 position = Vector2( -2, -38 )
-rotation = 0.0130923
+rotation = -0.509961
 z_index = -1
 texture = ExtResource( 4 )
 offset = Vector2( 2.80622, -55.0469 )
 _sections_unfolded = [ "Offset", "Pause", "Transform", "Update", "Visibility", "Z Index" ]
 
-[node name="chest" type="Sprite" parent="base/body" index="0"]
+[node name="chest" type="Sprite" parent="base/pelvis/body" index="0"]
 
 position = Vector2( -0.966393, -104.487 )
 texture = ExtResource( 5 )
 _sections_unfolded = [ "Region", "Transform", "Z Index" ]
 
-[node name="head" type="Sprite" parent="base/body" index="1"]
+[node name="head" type="Sprite" parent="base/pelvis/body" index="1"]
 
 position = Vector2( -7.08409, -192.435 )
+rotation = -0.804351
 texture = ExtResource( 6 )
 offset = Vector2( 5.70396, -44.7243 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="sholder_r" type="Sprite" parent="base/body" index="2"]
+[node name="sholder_r" type="Sprite" parent="base/pelvis/body" index="2"]
 
-position = Vector2( -53.0139, -128.131 )
-rotation = 0.149137
+position = Vector2( -69.8524, -128.861 )
+rotation = -0.709965
 z_index = 4
 texture = ExtResource( 7 )
 offset = Vector2( -21.6014, 34.99 )
@@ -4927,10 +4933,10 @@ __meta__ = {
 "_edit_ik_": true
 }
 
-[node name="forearm_r" type="Sprite" parent="base/body/sholder_r" index="0"]
+[node name="forearm_r" type="Sprite" parent="base/pelvis/body/sholder_r" index="0"]
 
-position = Vector2( -21.042, 86.6691 )
-rotation = -0.0510006
+position = Vector2( -1.95084, 79.4919 )
+rotation = -1.09234
 scale = Vector2( 1.00278, 1 )
 z_index = -1
 texture = ExtResource( 8 )
@@ -4940,14 +4946,14 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="gun_position" type="Position2D" parent="base/body/sholder_r/forearm_r" index="0"]
+[node name="gun_position" type="Position2D" parent="base/pelvis/body/sholder_r/forearm_r" index="0"]
 
 position = Vector2( 5.74614, 110.311 )
-rotation = -0.00595519
+rotation = 0.76425
 z_index = -1
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="hand_r" type="Sprite" parent="base/body/sholder_r/forearm_r" index="1"]
+[node name="hand_r" type="Sprite" parent="base/pelvis/body/sholder_r/forearm_r" index="1"]
 
 position = Vector2( 2.75543, 87.4769 )
 texture = ExtResource( 9 )
@@ -4957,7 +4963,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="hand_r_pistol" type="Sprite" parent="base/body/sholder_r/forearm_r" index="2"]
+[node name="hand_r_pistol" type="Sprite" parent="base/pelvis/body/sholder_r/forearm_r" index="2"]
 
 visible = false
 position = Vector2( 11.4002, 95.349 )
@@ -4969,7 +4975,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="hand_r_minigun" type="Sprite" parent="base/body/sholder_r/forearm_r" index="3"]
+[node name="hand_r_minigun" type="Sprite" parent="base/pelvis/body/sholder_r/forearm_r" index="3"]
 
 visible = false
 position = Vector2( 14.8169, 90.4743 )
@@ -4982,9 +4988,10 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="sholder_l" type="Sprite" parent="base/body" index="3"]
+[node name="sholder_l" type="Sprite" parent="base/pelvis/body" index="3"]
 
 position = Vector2( 60, -127 )
+rotation = -2.63143
 z_index = -1
 texture = ExtResource( 12 )
 offset = Vector2( -4.87677, 35.1127 )
@@ -4994,11 +5001,11 @@ __meta__ = {
 "_edit_ik_": true
 }
 
-[node name="forearm_l" type="Sprite" parent="base/body/sholder_l" index="0"]
+[node name="forearm_l" type="Sprite" parent="base/pelvis/body/sholder_l" index="0"]
 
 show_behind_parent = true
-position = Vector2( -3.9014, 69.7377 )
-rotation = -0.443216
+position = Vector2( -3.90143, 69.7379 )
+rotation = -0.410526
 z_index = -1
 texture = ExtResource( 13 )
 offset = Vector2( -0.00780582, 27.8241 )
@@ -5007,7 +5014,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="hand_l" type="Sprite" parent="base/body/sholder_l/forearm_l" index="0"]
+[node name="hand_l" type="Sprite" parent="base/pelvis/body/sholder_l/forearm_l" index="0"]
 
 position = Vector2( 9.48378, 70.2046 )
 texture = ExtResource( 14 )
@@ -5017,7 +5024,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="hand_l_pistol" type="Sprite" parent="base/body/sholder_l/forearm_l" index="1"]
+[node name="hand_l_pistol" type="Sprite" parent="base/pelvis/body/sholder_l/forearm_l" index="1"]
 
 visible = false
 position = Vector2( 11.9562, 64.3438 )
@@ -5029,7 +5036,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="hand_l_minigun" type="Sprite" parent="base/body/sholder_l/forearm_l" index="2"]
+[node name="hand_l_minigun" type="Sprite" parent="base/pelvis/body/sholder_l/forearm_l" index="2"]
 
 visible = false
 position = Vector2( 4.40468, 74.6619 )
@@ -5041,11 +5048,11 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="hand_l_shotgun" type="Sprite" parent="base/body/sholder_l/forearm_l" index="3"]
+[node name="hand_l_shotgun" type="Sprite" parent="base/pelvis/body/sholder_l/forearm_l" index="3"]
 
 visible = false
 position = Vector2( 6.13538, 74.711 )
-rotation = -2.76708
+rotation = -1.24108
 z_index = 2
 texture = ExtResource( 17 )
 offset = Vector2( -0.403517, -22.8452 )
@@ -5054,14 +5061,14 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="sprite" type="Sprite" parent="base/body/sholder_l/forearm_l/hand_l_shotgun" index="0"]
+[node name="sprite" type="Sprite" parent="base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun" index="0"]
 
 position = Vector2( -3.25821, -33.0584 )
 z_index = 1
 texture = ExtResource( 18 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="rocket" type="Sprite" parent="base/body/sholder_l/forearm_l/hand_l_shotgun" index="1"]
+[node name="rocket" type="Sprite" parent="base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun" index="1"]
 
 visible = false
 position = Vector2( -4.12501, -13.9637 )
@@ -5069,7 +5076,7 @@ rotation = -0.110648
 texture = ExtResource( 19 )
 _sections_unfolded = [ "Visibility", "Z Index" ]
 
-[node name="hip_r" type="Sprite" parent="base" index="2"]
+[node name="hip_r" type="Sprite" parent="base/pelvis" index="2"]
 
 position = Vector2( -22.9143, 12.1067 )
 rotation = -0.00942691
@@ -5081,7 +5088,7 @@ __meta__ = {
 "_edit_ik_": true
 }
 
-[node name="shin_r" type="Sprite" parent="base/hip_r" index="0"]
+[node name="shin_r" type="Sprite" parent="base/pelvis/hip_r" index="0"]
 
 position = Vector2( -10.7184, 68.4986 )
 rotation = 0.0838329
@@ -5092,7 +5099,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="foot_r" type="Sprite" parent="base/hip_r/shin_r" index="0"]
+[node name="foot_r" type="Sprite" parent="base/pelvis/hip_r/shin_r" index="0"]
 
 position = Vector2( -7.46902, 63.5548 )
 rotation = -0.104473
@@ -5103,7 +5110,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="foot_r_toe" type="Sprite" parent="base/hip_r/shin_r/foot_r" index="0"]
+[node name="foot_r_toe" type="Sprite" parent="base/pelvis/hip_r/shin_r/foot_r" index="0"]
 
 position = Vector2( 27.7717, 29.9662 )
 rotation = 0.00406978
@@ -5114,7 +5121,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="hip_l" type="Sprite" parent="base" index="3"]
+[node name="hip_l" type="Sprite" parent="base/pelvis" index="3"]
 
 position = Vector2( 26.1218, 1.49841 )
 rotation = 0.0723669
@@ -5127,7 +5134,7 @@ __meta__ = {
 "_edit_ik_": true
 }
 
-[node name="shin_l" type="Sprite" parent="base/hip_l" index="0"]
+[node name="shin_l" type="Sprite" parent="base/pelvis/hip_l" index="0"]
 
 position = Vector2( 12.3492, 75.7984 )
 rotation = 0.0439018
@@ -5138,7 +5145,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="foot_l" type="Sprite" parent="base/hip_l/shin_l" index="0"]
+[node name="foot_l" type="Sprite" parent="base/pelvis/hip_l/shin_l" index="0"]
 
 position = Vector2( 3.51446, 61.0185 )
 rotation = -0.132318
@@ -5148,7 +5155,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="foot_l_toe" type="Sprite" parent="base/hip_l/shin_l/foot_l" index="0"]
+[node name="foot_l_toe" type="Sprite" parent="base/pelvis/hip_l/shin_l/foot_l" index="0"]
 
 position = Vector2( 28.5516, 28.5174 )
 texture = ExtResource( 27 )
@@ -5210,7 +5217,7 @@ base_path = NodePath("..")
 active = false
 data = {
 "active": false,
-"connections": [ "aim_blend", "out", 0, "ground_air_transition", "aim_blend", 0, "bazooka_reload", "aim_blend", 1, "anim_idle", "ground_blend", 0, "ground_scale", "ground_blend", 1, "gun_angle", "bazooka_reload", 0, "anim_bazooka_reload", "bazooka_reload", 1, "aim_transition", "gun_angle", 0, "anim_walk", "walk_direction", 0, "anim_walk_reverse", "walk_direction", 1, "anim_run", "run_direction", 0, "anim_run_reverse", "run_direction", 1, "ground_blend", "blend2", 0, "anim_chest", "blend2", 1, "walk_direction", "walk_blend", 0, "run_direction", "walk_blend", 1, "anim_shotgun", "shotgun_reload", 0, "anim_shotgun_reload", "shotgun_reload", 1, "anim_pistol", "aim_transition", 0, "anim_ak47", "aim_transition", 1, "shotgun_reload", "aim_transition", 2, "anim_minigun", "aim_transition", 3, "anim", "aim_transition", 4, "walk_blend", "ground_scale", 0, "blend2", "ground_air_transition", 0, "jump_up_anim", "ground_air_transition", 1, "jump_down_anim", "ground_air_transition", 2 ],
+"connections": [ "aim_blend", "out", 0, "anim_idle", "ground_blend", 0, "ground_scale", "ground_blend", 1, "ground_air_transition", "aim_blend", 0, "bazooka_reload", "aim_blend", 1, "gun_angle", "bazooka_reload", 0, "anim_bazooka_reload", "bazooka_reload", 1, "ground_blend", "blend2", 0, "anim_chest", "blend2", 1, "aim_transition", "gun_angle", 0, "anim_walk", "walk_direction", 0, "anim_walk_reverse", "walk_direction", 1, "anim_run", "run_direction", 0, "anim_run_reverse", "run_direction", 1, "blend2", "ground_air_transition", 0, "jump_up_anim", "ground_air_transition", 1, "jump_down_anim", "ground_air_transition", 2, "walk_direction", "walk_blend", 0, "run_direction", "walk_blend", 1, "anim_shotgun", "shotgun_reload", 0, "anim_shotgun_reload", "shotgun_reload", 1, "anim_pistol", "aim_transition", 0, "anim_ak47", "aim_transition", 1, "shotgun_reload", "aim_transition", 2, "anim_minigun", "aim_transition", 3, "anim", "aim_transition", 4, "walk_blend", "ground_scale", 0 ],
 "master": NodePath("../animation_player"),
 "nodes": [ {
 "filter": [  ],
@@ -5223,22 +5230,28 @@ data = {
 "position": Vector2( 1850, 84 ),
 "type": "output"
 }, {
-"blend": 1.0,
-"filter": [ NodePath("base/hip_l/shin_l/foot_l:position"), NodePath("base/hip_r:position"), NodePath("base:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position"), NodePath("base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position"), NodePath("base/hip_r:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/hip_l:position"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:position"), NodePath("base/hip_r/shin_r:position"), NodePath("."), NodePath("base/hip_l:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/hip_r/shin_r:rotation_degrees"), NodePath("base/body:position"), NodePath("base/body/chest:scale"), NodePath("base/belt:position"), NodePath("base/belt:rotation_degrees"), NodePath("base/hip_l/shin_l:position"), NodePath("base/hip_l/shin_l:rotation_degrees"), NodePath("base:position") ],
-"id": "aim_blend",
-"position": Vector2( 1703, 99 ),
-"type": "blend2"
-}, {
 "blend": 0.68,
 "filter": [  ],
 "id": "ground_blend",
 "position": Vector2( 939, 25 ),
 "type": "blend2"
 }, {
+"blend": 1.0,
+"filter": [ NodePath("base/pelvis/hip_l/shin_l:position"), NodePath("base:rotation_degrees"), NodePath("base/hip_r:position"), NodePath("base/hip_l/shin_l/foot_l:position"), NodePath("base/pelvis:position"), NodePath("base/pelvis/hip_l/shin_l:rotation_degrees"), NodePath("base/hip_r:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position"), NodePath("base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position"), NodePath("base/pelvis:rotation_degrees"), NodePath("base/pelvis/hip_r:position"), NodePath("base/pelvis/hip_l/shin_l/foot_l:position"), NodePath("base/hip_r/shin_r:position"), NodePath("base/hip_r/shin_r/foot_r:position"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/hip_l:position"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/pelvis/hip_r:rotation_degrees"), NodePath("base/pelvis/hip_r/shin_r/foot_r/foot_r_toe:position"), NodePath("base/pelvis/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/pelvis/hip_l/shin_l/foot_l/foot_l_toe:position"), NodePath("base/hip_r/shin_r:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/hip_l:rotation_degrees"), NodePath("."), NodePath("base/pelvis/hip_r/shin_r:position"), NodePath("base/pelvis/hip_r/shin_r/foot_r:position"), NodePath("base/pelvis/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/pelvis/hip_l:position"), NodePath("base/pelvis/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/body:position"), NodePath("base/pelvis/hip_r/shin_r:rotation_degrees"), NodePath("base/pelvis/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/pelvis/hip_l:rotation_degrees"), NodePath("base/belt:position"), NodePath("base/body/chest:scale"), NodePath("base/pelvis/body:position"), NodePath("base/hip_l/shin_l:position"), NodePath("base/belt:rotation_degrees"), NodePath("base/pelvis/body/chest:scale"), NodePath("base:position"), NodePath("base/hip_l/shin_l:rotation_degrees") ],
+"id": "aim_blend",
+"position": Vector2( 1703, 99 ),
+"type": "blend2"
+}, {
 "filter": [  ],
 "from": "idle",
 "id": "anim_idle",
 "position": Vector2( 734, 5 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "walk",
+"id": "anim_walk",
+"position": Vector2( 49, 20 ),
 "type": "animation"
 }, {
 "autorestart": false,
@@ -5252,35 +5265,11 @@ data = {
 "position": Vector2( 1512, 226 ),
 "type": "oneshot"
 }, {
-"filter": [  ],
-"from": "jump_up",
-"id": "jump_up_anim",
-"position": Vector2( 1111, 194 ),
-"type": "animation"
-}, {
-"filter": [  ],
-"from": "walk",
-"id": "anim_walk",
-"position": Vector2( 49, 20 ),
-"type": "animation"
-}, {
-"filter": [  ],
-"from": "aim_ak47",
-"id": "anim_ak47",
-"position": Vector2( 954, 451 ),
-"type": "animation"
-}, {
-"filter": [  ],
-"from": "aim_minigun",
-"id": "anim_minigun",
-"position": Vector2( 809, 666 ),
-"type": "animation"
-}, {
-"filter": [  ],
-"from": "aim_shotgun_reload",
-"id": "anim_shotgun_reload",
-"position": Vector2( 553, 499 ),
-"type": "animation"
+"blend": 1.0,
+"filter": [ NodePath("base/body/sholder_l:rotation_degrees"), NodePath("base/hip_r:position"), NodePath("base/pelvis/belt:rotation_degrees"), NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:z_index"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position"), NodePath("base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/pelvis:position"), NodePath("base/pelvis/hip_l/shin_l:rotation_degrees"), NodePath("base/pelvis/body/sholder_l:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l/hand_l:position"), NodePath("base/body/sholder_r/forearm_r:rotation_degrees"), NodePath("base/hip_r/shin_r:position"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/pelvis/hip_r:position"), NodePath("."), NodePath("base/hip_l:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/pelvis/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/pelvis/hip_l/shin_l/foot_l/foot_l_toe:position"), NodePath("base/pelvis/body/sholder_r/forearm_r:rotation_degrees"), NodePath("base/body/sholder_r/forearm_r/hand_r:position"), NodePath("base/pelvis/hip_r/shin_r:position"), NodePath("base/pelvis/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:position"), NodePath("base/belt:position"), NodePath("base/body:rotation_degrees"), NodePath("base/pelvis/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/pelvis/hip_l:rotation_degrees"), NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r:position"), NodePath("base/body/head:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l:rotation_degrees"), NodePath("base/body/sholder_r:rotation_degrees"), NodePath("base/hip_l/shin_l:position"), NodePath("base/body/sholder_l:position"), NodePath("base/pelvis/body:rotation_degrees"), NodePath("base/pelvis/belt:position"), NodePath("base/hip_l/shin_l/foot_l:position"), NodePath("base/pelvis/hip_l/shin_l:position"), NodePath("base/pelvis/body/sholder_r:rotation_degrees"), NodePath("base/pelvis/body/head:rotation_degrees"), NodePath("base/pelvis/body/sholder_l/forearm_l:rotation_degrees"), NodePath("base/pelvis/body/sholder_l:position"), NodePath("base/body/sholder_r/forearm_r:position"), NodePath("base/hip_r:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/hip_l:position"), NodePath("base/hip_r/shin_r/foot_r:position"), NodePath("base/pelvis/hip_l/shin_l/foot_l:position"), NodePath("base/pelvis/body/sholder_r/forearm_r:position"), NodePath("base/body/sholder_l/forearm_l/hand_l:rotation_degrees"), NodePath("base/hip_r/shin_r:rotation_degrees"), NodePath("base/pelvis/hip_r:rotation_degrees"), NodePath("base/pelvis/hip_r/shin_r/foot_r/foot_r_toe:position"), NodePath("base/body:position"), NodePath("base/pelvis/hip_r/shin_r/foot_r:position"), NodePath("base/pelvis/hip_l:position"), NodePath("base/pelvis/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l:position"), NodePath("base/body/sholder_r/forearm_r/hand_r:rotation_degrees"), NodePath("base/body/sholder_r:position"), NodePath("base/pelvis/hip_r/shin_r:rotation_degrees"), NodePath("base/pelvis/body/sholder_l/forearm_l/hand_l:rotation_degrees"), NodePath("base/belt:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l/hand_l:z_index"), NodePath("base/pelvis/body:position"), NodePath("base/pelvis/body/sholder_r/forearm_r/hand_r:rotation_degrees"), NodePath("base/hip_l/shin_l:rotation_degrees"), NodePath("base:position"), NodePath("base/pelvis/body/sholder_r:position"), NodePath("base/pelvis/body/sholder_l/forearm_l:position") ],
+"id": "blend2",
+"position": Vector2( 1158, 23 ),
+"type": "blend2"
 }, {
 "filter": [  ],
 "from": "aim_shotgun",
@@ -5316,11 +5305,23 @@ data = {
 "position": Vector2( 953, 193 ),
 "type": "animation"
 }, {
-"blend": 1.0,
-"filter": [ NodePath("base/body/sholder_l:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l:position"), NodePath("base/hip_r:position"), NodePath("base/body/sholder_r/forearm_r:position"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position"), NodePath("base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/hip_r:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position"), NodePath("base/body/sholder_l/forearm_l/hand_l:position"), NodePath("base/body/sholder_r/forearm_r:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/hip_l:position"), NodePath("base/hip_r/shin_r:position"), NodePath("base/hip_r/shin_r/foot_r:position"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("."), NodePath("base/body/sholder_l/forearm_l/hand_l:rotation_degrees"), NodePath("base/hip_l:rotation_degrees"), NodePath("base/hip_r/shin_r:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/body/sholder_r/forearm_r/hand_r:position"), NodePath("base/body:position"), NodePath("base/belt:position"), NodePath("base/body/sholder_l/forearm_l:position"), NodePath("base/body/sholder_r/forearm_r/hand_r:rotation_degrees"), NodePath("base/body/sholder_r:position"), NodePath("base/body:rotation_degrees"), NodePath("base/belt:rotation_degrees"), NodePath("base/body/head:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l/hand_l:z_index"), NodePath("base/body/sholder_l/forearm_l:rotation_degrees"), NodePath("base/body/sholder_r:rotation_degrees"), NodePath("base/hip_l/shin_l:position"), NodePath("base/body/sholder_l:position"), NodePath("base/hip_l/shin_l:rotation_degrees"), NodePath("base:position") ],
-"id": "blend2",
-"position": Vector2( 1158, 23 ),
-"type": "blend2"
+"filter": [  ],
+"from": "run_reverse",
+"id": "anim_run_reverse",
+"position": Vector2( 39, 370 ),
+"type": "animation"
+}, {
+"id": "ground_air_transition",
+"position": Vector2( 1275, 23 ),
+"transitions": [ {
+"auto_advance": false
+}, {
+"auto_advance": false
+}, {
+"auto_advance": false
+} ],
+"type": "transition",
+"xfade": 0.1
 }, {
 "filter": [  ],
 "from": "jump_down",
@@ -5380,24 +5381,31 @@ data = {
 "type": "timescale"
 }, {
 "filter": [  ],
-"from": "run_reverse",
-"id": "anim_run_reverse",
-"position": Vector2( 39, 370 ),
+"from": "aim_ak47",
+"id": "anim_ak47",
+"position": Vector2( 954, 451 ),
 "type": "animation"
 }, {
-"id": "ground_air_transition",
-"position": Vector2( 1275, 23 ),
-"transitions": [ {
-"auto_advance": false
+"filter": [  ],
+"from": "aim_minigun",
+"id": "anim_minigun",
+"position": Vector2( 809, 666 ),
+"type": "animation"
 }, {
-"auto_advance": false
+"filter": [  ],
+"from": "aim_shotgun_reload",
+"id": "anim_shotgun_reload",
+"position": Vector2( 553, 499 ),
+"type": "animation"
 }, {
-"auto_advance": false
-} ],
-"type": "transition",
-"xfade": 0.1
+"filter": [  ],
+"from": "jump_up",
+"id": "jump_up_anim",
+"position": Vector2( 1111, 194 ),
+"type": "animation"
 } ]
 }
+script = ExtResource( 29 )
 _sections_unfolded = [ "Playback" ]
 
 

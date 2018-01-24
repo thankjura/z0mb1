@@ -21,7 +21,6 @@ func _ready():
     movement = load("res://scripts/player/movement.gd").new(self, $animation_tree_player)
     gui = get_tree().get_root().get_node("world/gui")
     _update_health(INIT_HEALTH)
-    movement.look_default()
     camera_offset = $camera.get_offset()
 
 func set_gun(gun_class):
@@ -29,7 +28,7 @@ func set_gun(gun_class):
         return false
     gun = load(gun_class).instance()
 
-    get_node("base/body/sholder_r/forearm_r/gun_position").add_child(gun)
+    get_node("base/pelvis/body/sholder_r/forearm_r/gun_position").add_child(gun)
     movement.set_gun()
     return true
 
@@ -40,7 +39,7 @@ func drop_gun():
     movement.drop_gun()
 
 func gun_reload():
-    movement.gun_reload()
+    $anim.gun_reload()
 
 func gun_recoil(recoil_vector):
     movement.gun_recoil(recoil_vector)

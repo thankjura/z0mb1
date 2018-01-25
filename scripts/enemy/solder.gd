@@ -130,9 +130,5 @@ func _physics_process(delta):
 
     if abs(velocity.x) > 5:
         $anim.walk(abs(velocity.x)*delta*1.2)
-        if velocity.x > 0:
-            _set_direction(DIRECTION_RIGHT)
-        elif velocity.x < 0:
-            _set_direction(DIRECTION_LEFT)
     else:
         $anim.idle()

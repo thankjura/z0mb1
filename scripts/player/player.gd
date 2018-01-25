@@ -17,6 +17,10 @@ var camera_offset = Vector2()
 func _ready():
     set_collision_layer(constants.PLAYER_LAYER)
     set_collision_mask(constants.PLAYER_MASK)
+    $base/pelvis/body/head/head_area.set_collision_layer(constants.PLAYER_LETHAL_LAYER)
+    $base/pelvis/body/head/head_area.set_collision_mask(constants.PLAYER_LETHAL_MASK)
+    $base/pelvis/body/body_area.set_collision_layer(constants.PLAYER_LETHAL_LAYER)
+    $base/pelvis/body/body_area.set_collision_mask(constants.PLAYER_LETHAL_MASK)
 
     movement = load("res://scripts/player/movement.gd").new(self, $animation_tree_player)
     gui = get_tree().get_root().get_node("world/gui")

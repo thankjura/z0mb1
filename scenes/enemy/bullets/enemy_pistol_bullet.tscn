@@ -129,7 +129,8 @@ shape = SubResource( 2 )
 
 [node name="decal" type="Sprite" parent="." index="3"]
 
-visible = false
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
 
 

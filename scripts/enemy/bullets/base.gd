@@ -30,8 +30,10 @@ func _process(delta):
         queue_free()
 
 func _collision(body):
-    if body.has_method("hit"):
-        body.hit(DAMAGE)
+    print(body)
+    var own = body.get_owner()
+    if own.has_method("hit"):
+        own.hit(DAMAGE)
         _deactivate()
     else:
         decal = body.is_in_group("decals")
@@ -40,6 +42,8 @@ func _collision(body):
 func _deactivate():
     active = false
     $sprite.set_visible(false)
+    set_collision_layer(0)
+    set_collision_mask(0)
     set_applied_force(Vector2())
     set_mode(MODE_STATIC)
     disconnect("body_entered", self, "_collision")

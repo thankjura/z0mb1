@@ -36,6 +36,7 @@ func fire(delta, velocity):
     var gun_angle = Vector2(1, 0).angle_to(bullet_velocity)
     f.rotate(gun_angle)
     f.set_axis_velocity(bullet_velocity*SPEED + velocity)
+    f.local_dump(velocity)
     f.set_applied_force(bullet_velocity*ACCELERATION)
     f.set_global_position(_get_bullet_position(gun_angle))
     var world = get_tree().get_root().get_node("world")

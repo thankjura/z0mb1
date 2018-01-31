@@ -3,9 +3,14 @@ extends "res://scripts/guns/bullets/base.gd"
 const DAMAGE = 1000
 const HEALTH = 10
 const LIFE_TIME = 60
+const LOCAL_DAMP_TIME = 0.8
 
 const SHOCK_WAVE_FORCE = 40000
 var SHOCK_WAVE_DISTANCE_SQUARED = 1
+
+var local_dump_timeout = 0
+var local_dump_vector = Vector2()
+var local_dump_length = 0
 
 func _ready():
     $boom.connect("animation_finished", self, "_animation_finish")
@@ -13,6 +18,7 @@ func _ready():
     $dead_zone.set_collision_layer(constants.GRENADE_LAYER)
     $dead_zone.set_collision_mask(constants.GRENADE_MASK)
     SHOCK_WAVE_DISTANCE_SQUARED = pow($dead_zone/collision.shape.radius, 2)
+    local_dump_timeout = LOCAL_DAMP_TIME
 
 func _animation_finish():
     $boom.set_visible(false)
@@ -47,3 +53,14 @@ func _deactivate():
         _damage(body)
     timer = 4
     get_node("/root/world/player").shuffle_camera(20, 1)
+
+func local_dump(v):
+    local_dump_vector = v
+    local_dump_length = local_dump_vector.length()
+
+func _integrate_forces(state):
+    if local_dump_timeout > 0:
+        local_dump_timeout -= state.step
+        var v = local_dump_vector.clamped(local_dump_length*(local_dump_timeout/LOCAL_DAMP_TIME))
+        state.linear_velocity -= v
+        local_dump_vector -= v

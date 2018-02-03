@@ -17,6 +17,9 @@ var camera_offset = Vector2()
 func _ready():
     set_collision_layer(constants.PLAYER_LAYER)
     set_collision_mask(constants.PLAYER_MASK)
+    $audio_footstep.set_area_mask(constants.AUDIO_AREA_MASK)
+    $audio_footstep_metal.set_area_mask(constants.AUDIO_AREA_MASK)
+
     $base/pelvis/body/head/head_area.set_collision_layer(constants.PLAYER_LETHAL_LAYER)
     $base/pelvis/body/head/head_area.set_collision_mask(constants.PLAYER_LETHAL_MASK)
     $base/pelvis/body/body_area.set_collision_layer(constants.PLAYER_LETHAL_LAYER)

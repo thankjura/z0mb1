@@ -8,15 +8,15 @@
 [ext_resource path="res://textures/levels/intro/bg1/l5_ground.png" type="Texture" id=6]
 [ext_resource path="res://textures/levels/intro/bg1/l6_houses.png" type="Texture" id=7]
 [ext_resource path="res://scenes/gui.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/enemy/jetpacker.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/player/henry.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/entities/minigun_entity.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/entities/ak47_entity.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/entities/pistol_entity.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/entities/bazooka_entity.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/entities/shotgun_entity.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/enemy/solder.tscn" type="PackedScene" id=16]
-[ext_resource path="res://scenes/enemy/markers/change_direction.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/player/henry.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/entities/minigun_entity.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/entities/ak47_entity.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/entities/pistol_entity.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/entities/bazooka_entity.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/entities/shotgun_entity.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/enemy/solder.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/enemy/markers/change_direction.tscn" type="PackedScene" id=16]
+[ext_resource path="res://levels/intro/truck.tscn" type="PackedScene" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -95,6 +95,7 @@ polygon = PoolVector2Array( 88.513, 90.284, 128.013, 84.284, 184.013, 87.784, 20
 
 [node name="parallax_background" type="ParallaxBackground" parent="." index="1"]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -256,46 +257,42 @@ _sections_unfolded = [ "Margin", "Offset", "Transform" ]
 
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="jetpacker" parent="." index="3" instance=ExtResource( 9 )]
+[node name="player" parent="." index="3" instance=ExtResource( 9 )]
 
-position = Vector2( 3139.97, 272.646 )
-
-[node name="player" parent="." index="4" instance=ExtResource( 10 )]
-
-position = Vector2( 1455.29, 890.002 )
+position = Vector2( 467.29, 902.002 )
 scale = Vector2( 0.3, 0.3 )
 _sections_unfolded = [ "Transform", "collision" ]
 
-[node name="minigun_entity" parent="." index="5" instance=ExtResource( 11 )]
+[node name="minigun_entity" parent="." index="4" instance=ExtResource( 10 )]
 
 position = Vector2( 1075.83, 832.267 )
 
-[node name="ak47_entity" parent="." index="6" instance=ExtResource( 12 )]
+[node name="ak47_entity" parent="." index="5" instance=ExtResource( 11 )]
 
 position = Vector2( 705.483, 921.451 )
 
-[node name="pistol_entity" parent="." index="7" instance=ExtResource( 13 )]
+[node name="pistol_entity" parent="." index="6" instance=ExtResource( 12 )]
 
-position = Vector2( 1550.68, 925.267 )
+position = Vector2( 552.68, 763.267 )
 
-[node name="top_left_limit" type="Position2D" parent="." index="8"]
+[node name="top_left_limit" type="Position2D" parent="." index="7"]
 
 _sections_unfolded = [ "Transform" ]
 
-[node name="bottom_right_limit" type="Position2D" parent="." index="9"]
+[node name="bottom_right_limit" type="Position2D" parent="." index="8"]
 
 position = Vector2( 7782.89, 1176.35 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="bazooka_entity" parent="." index="10" instance=ExtResource( 14 )]
+[node name="bazooka_entity" parent="." index="9" instance=ExtResource( 13 )]
 
-position = Vector2( 920, 931 )
+position = Vector2( 1994, 915 )
 
-[node name="shortgun" parent="." index="11" instance=ExtResource( 15 )]
+[node name="shortgun" parent="." index="10" instance=ExtResource( 14 )]
 
 position = Vector2( 127, 933.5 )
 
-[node name="light_occluder_2d" type="LightOccluder2D" parent="." index="12"]
+[node name="light_occluder_2d" type="LightOccluder2D" parent="." index="11"]
 
 light_mask = 32
 position = Vector2( 2195.5, 940 )
@@ -304,7 +301,7 @@ occluder = SubResource( 2 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="light_occluder_2d6" type="LightOccluder2D" parent="." index="13"]
+[node name="light_occluder_2d6" type="LightOccluder2D" parent="." index="12"]
 
 light_mask = 32
 position = Vector2( 4115.5, 940.5 )
@@ -313,7 +310,7 @@ occluder = SubResource( 2 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="light_occluder_2d7" type="LightOccluder2D" parent="." index="14"]
+[node name="light_occluder_2d7" type="LightOccluder2D" parent="." index="13"]
 
 light_mask = 32
 position = Vector2( 6035, 939 )
@@ -322,7 +319,7 @@ occluder = SubResource( 2 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="light_occluder_2d8" type="LightOccluder2D" parent="." index="15"]
+[node name="light_occluder_2d8" type="LightOccluder2D" parent="." index="14"]
 
 light_mask = 32
 position = Vector2( 7956, 940 )
@@ -331,7 +328,7 @@ occluder = SubResource( 2 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="light_occluder_2d2" type="LightOccluder2D" parent="." index="16"]
+[node name="light_occluder_2d2" type="LightOccluder2D" parent="." index="15"]
 
 light_mask = 32
 position = Vector2( 1651.5, 913.5 )
@@ -340,7 +337,7 @@ occluder = SubResource( 3 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="light_occluder_2d3" type="LightOccluder2D" parent="." index="17"]
+[node name="light_occluder_2d3" type="LightOccluder2D" parent="." index="16"]
 
 light_mask = 32
 position = Vector2( 3572, 913 )
@@ -349,7 +346,7 @@ occluder = SubResource( 3 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="light_occluder_2d4" type="LightOccluder2D" parent="." index="18"]
+[node name="light_occluder_2d4" type="LightOccluder2D" parent="." index="17"]
 
 light_mask = 32
 position = Vector2( 5491, 913 )
@@ -358,7 +355,7 @@ occluder = SubResource( 3 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="light_occluder_2d5" type="LightOccluder2D" parent="." index="19"]
+[node name="light_occluder_2d5" type="LightOccluder2D" parent="." index="18"]
 
 light_mask = 32
 position = Vector2( 7411.5, 914 )
@@ -367,7 +364,7 @@ occluder = SubResource( 3 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="decal_poligon" type="Polygon2D" parent="." index="20"]
+[node name="decal_poligon" type="Polygon2D" parent="." index="19"]
 
 light_mask = 32
 material = SubResource( 4 )
@@ -391,7 +388,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="solder" parent="." index="21" instance=ExtResource( 16 )]
+[node name="solder" parent="." index="20" instance=ExtResource( 15 )]
 
 position = Vector2( 1674.83, 903.824 )
 scale = Vector2( 0.3, 0.3 )
@@ -400,18 +397,22 @@ _sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
 health = 500
 direction = 2
 
-[node name="change_direction" parent="." index="22" instance=ExtResource( 17 )]
+[node name="change_direction" parent="." index="21" instance=ExtResource( 16 )]
 
-position = Vector2( 2112, 876.25 )
+position = Vector2( 1214, 872.25 )
 scale = Vector2( 1, 2.74219 )
 direction = 1
 timeout = 1.0
 
-[node name="change_direction2" parent="." index="23" instance=ExtResource( 17 )]
+[node name="change_direction2" parent="." index="22" instance=ExtResource( 16 )]
 
-position = Vector2( 2899, 878.25 )
+position = Vector2( 2113, 880.25 )
 scale = Vector2( 1, 2.74219 )
 direction = 0
 timeout = 1.0
+
+[node name="truck" parent="." index="23" instance=ExtResource( 17 )]
+
+position = Vector2( 2916, 766 )
 
 

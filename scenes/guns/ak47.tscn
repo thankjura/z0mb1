@@ -278,7 +278,7 @@ autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
 bus = "Master"
-area_mask = 1
+area_mask = 256
 
 [node name="animation_player" type="AnimationPlayer" parent="." index="5"]
 
@@ -292,7 +292,6 @@ anims/fire2 = SubResource( 5 )
 anims/fire3 = SubResource( 6 )
 anims/fire4 = SubResource( 7 )
 blend_times = [  ]
-autoplay = ""
 _sections_unfolded = [ "Playback Options", "playback" ]
 
 [node name="pos" type="Position2D" parent="." index="6"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scripts/guns/bullets/bazooka_rocket.gd" type="Script" id=1]
 [ext_resource path="res://textures/guns/bazooka/smoke.png" type="Texture" id=2]
@@ -18,9 +18,10 @@
 [ext_resource path="res://textures/guns/bazooka/boom/009.png" type="Texture" id=16]
 [ext_resource path="res://textures/guns/bazooka/boom/010.png" type="Texture" id=17]
 [ext_resource path="res://textures/guns/bazooka/boom/011.png" type="Texture" id=18]
-[ext_resource path="res://sounds/guns/bazooka_roket_explosion.wav" type="AudioStream" id=19]
-[ext_resource path="res://sounds/guns/bazooka_shot.wav" type="AudioStream" id=20]
-[ext_resource path="res://textures/guns/bazooka/decal.png" type="Texture" id=21]
+[ext_resource path="res://textures/white.png" type="Texture" id=19]
+[ext_resource path="res://sounds/guns/bazooka_roket_explosion.wav" type="AudioStream" id=20]
+[ext_resource path="res://sounds/guns/bazooka_shot.wav" type="AudioStream" id=21]
+[ext_resource path="res://textures/guns/bazooka/decal.png" type="Texture" id=22]
 
 [sub_resource type="ParticlesMaterial" id=1]
 
@@ -75,7 +76,13 @@ animations = [ {
 custom_solver_bias = 0.0
 extents = Vector2( 16.7054, 5.40363 )
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="CanvasItemMaterial" id=4]
+
+render_priority = 0
+blend_mode = 0
+light_mode = 2
+
+[sub_resource type="SpriteFrames" id=5]
 
 animations = [ {
 "frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
@@ -84,7 +91,7 @@ animations = [ {
 "speed": 30.0
 } ]
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=6]
 
 custom_solver_bias = 0.0
 radius = 229.965
@@ -138,7 +145,6 @@ _sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Trans
 
 [node name="sprite" type="Sprite" parent="." index="1"]
 
-editor/display_folded = true
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Animation", "Transform" ]
@@ -151,6 +157,7 @@ scale = Vector2( 3.33333, 3.33333 )
 z_index = -1
 frames = SubResource( 2 )
 animation = "default"
+frame = 3
 playing = true
 _sections_unfolded = [ "Transform", "Z Index" ]
 
@@ -162,23 +169,44 @@ shape = SubResource( 3 )
 [node name="boom" type="AnimatedSprite" parent="." index="3"]
 
 visible = false
+light_mask = 1024
+material = SubResource( 4 )
 position = Vector2( 5.82211, -1.27803 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 4 )
+frames = SubResource( 5 )
 animation = "default"
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
-[node name="audio_boom" type="AudioStreamPlayer2D" parent="." index="4"]
+[node name="boom_light" type="Light2D" parent="." index="4"]
 
-stream = ExtResource( 19 )
-volume_db = -10.0
-autoplay = false
-max_distance = 2000.0
-attenuation = 1.0
-bus = "Master"
-area_mask = 1
+light_mask = 0
+position = Vector2( 12, 7.62939e-06 )
+scale = Vector2( 7.90625, 7.75 )
+z_index = -1000
+enabled = true
+editor_only = false
+texture = ExtResource( 19 )
+offset = Vector2( 0, 0 )
+texture_scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 2
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 1024
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1024
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1024
+_sections_unfolded = [ "Material", "Range", "Shadow", "Visibility", "Z Index" ]
 
-[node name="audio_fire" type="AudioStreamPlayer2D" parent="." index="5"]
+[node name="audio_boom" type="AudioStreamPlayer2D" parent="." index="5"]
 
 stream = ExtResource( 20 )
 volume_db = -10.0
@@ -186,16 +214,27 @@ autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
 bus = "Master"
-area_mask = 1
+area_mask = 256
+
+[node name="audio_fire" type="AudioStreamPlayer2D" parent="." index="6"]
+
+position = Vector2( 16, 0 )
+stream = ExtResource( 21 )
+volume_db = -10.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 256
 _sections_unfolded = [ "Transform" ]
 
-[node name="decal" type="Light2D" parent="." index="6"]
+[node name="decal" type="Light2D" parent="." index="7"]
 
 visible = false
 light_mask = 32
 enabled = true
 editor_only = false
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 offset = Vector2( 0, 0 )
 texture_scale = 0.5
 color = Color( 0.9375, 0.9375, 0.9375, 1 )
@@ -216,7 +255,7 @@ shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 32
 _sections_unfolded = [ "Range", "Shadow", "Visibility" ]
 
-[node name="dead_zone" type="Area2D" parent="." index="7"]
+[node name="dead_zone" type="Area2D" parent="." index="8"]
 
 position = Vector2( 26, 0 )
 input_pickable = true
@@ -231,6 +270,6 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="collision" type="CollisionShape2D" parent="dead_zone" index="0"]
 
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 

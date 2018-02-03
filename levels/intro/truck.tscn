@@ -1,0 +1,172 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scripts/levels/intro/truck.gd" type="Script" id=1]
+[ext_resource path="res://textures/levels/intro/truck1/base.png" type="Texture" id=2]
+[ext_resource path="res://textures/levels/intro/truck1/back.png" type="Texture" id=3]
+[ext_resource path="res://textures/levels/intro/truck1/front.png" type="Texture" id=4]
+[ext_resource path="res://textures/levels/intro/truck1/light.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 534, 119 )
+
+[sub_resource type="CanvasItemMaterial" id=2]
+
+render_priority = 0
+blend_mode = 0
+light_mode = 2
+
+[sub_resource type="OccluderPolygon2D" id=3]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( 230.75, 26.75, 227.75, -34.5, 240.75, -66, 258, -64.75, 258.5, 27.25 )
+
+[sub_resource type="OccluderPolygon2D" id=4]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( -285.5, -96.5, -284.5, 26.5, 257, 28, 256, -95 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 408, 10 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 115.75, 9 )
+
+[node name="truck" type="Node2D"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="inner_area" type="Area2D" parent="." index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = true
+audio_bus_name = "in_truck"
+_sections_unfolded = [ "Audio Bus", "Collision" ]
+
+[node name="collision" type="CollisionShape2D" parent="inner_area" index="0"]
+
+position = Vector2( -25, -65 )
+shape = SubResource( 1 )
+
+[node name="sprite" type="Sprite" parent="." index="1"]
+
+light_mask = 0
+position = Vector2( 17, 2 )
+scale = Vector2( 2, 2 )
+z_index = 100
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+
+[node name="back" type="Sprite" parent="sprite" index="0"]
+
+light_mask = 2048
+position = Vector2( -13, -34.5 )
+z_index = -200
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Material", "Visibility", "Z Index" ]
+
+[node name="decal_polygon" type="Polygon2D" parent="sprite" index="1"]
+
+light_mask = 32
+material = SubResource( 2 )
+z_index = -199
+polygon = PoolVector2Array( -285, -96.5, -284.5, 27.5, 256.5, 27.5, 255.5, -95.5 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Material", "Visibility", "Z Index" ]
+
+[node name="light_occluder_2d3" type="LightOccluder2D" parent="sprite" index="2"]
+
+light_mask = 1056
+occluder = SubResource( 3 )
+light_mask = 1056
+
+[node name="front" type="Sprite" parent="sprite" index="3"]
+
+light_mask = 0
+position = Vector2( -13.75, -29.75 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Visibility", "Z Index" ]
+
+[node name="dark_light" type="Light2D" parent="sprite" index="4"]
+
+light_mask = 2048
+position = Vector2( -13.5, -31.5 )
+enabled = true
+editor_only = false
+texture = ExtResource( 5 )
+offset = Vector2( 0, 0 )
+texture_scale = 1.0
+color = Color( 0, 0, 0, 0.823216 )
+energy = 1.0
+mode = 2
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 1024
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 2048
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 2048
+_sections_unfolded = [ "Material", "Range", "Shadow", "Visibility", "Z Index" ]
+
+[node name="light_occluder_2d" type="LightOccluder2D" parent="sprite" index="5"]
+
+light_mask = 1024
+occluder = SubResource( 4 )
+light_mask = 1024
+
+[node name="static_truck" type="StaticBody2D" parent="." index="2"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="collision" type="CollisionPolygon2D" parent="static_truck" index="0"]
+
+position = Vector2( 10, 0 )
+build_mode = 0
+polygon = PoolVector2Array( -795, 217, -563, 56.5, 439, 55.5, 465, -66.5, 485, -122.5, 512, -126, 516, -186.5, 480.5, -187.5, 480, -197.5, 530, -196, 534, -96, 602, -100, 716, -96, 738, -74, 749, -65, 768, -6.5, 776, 92.5, 777, 153.5, 653.5, 216.5 )
+
+[node name="collision_top" type="CollisionShape2D" parent="static_truck" index="1"]
+
+position = Vector2( -151, -189.25 )
+shape = SubResource( 5 )
+
+[node name="collision2" type="CollisionShape2D" parent="static_truck" index="2"]
+
+position = Vector2( 371.75, -190.25 )
+shape = SubResource( 6 )
+one_way_collision = true
+
+

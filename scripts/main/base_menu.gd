@@ -4,6 +4,7 @@ const MENU_SPEED = 20
 const MARGIN_H = 40
 const MARGIN_V = 20
 const INIT_ITEM = null
+const PARENT_MENU = "main"
 
 var selected_item
 var global

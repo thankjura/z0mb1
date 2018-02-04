@@ -104,6 +104,7 @@ light_mask = 1056
 
 [node name="front" type="Sprite" parent="sprite" index="3"]
 
+visible = false
 light_mask = 0
 position = Vector2( -13.75, -29.75 )
 texture = ExtResource( 4 )
@@ -156,7 +157,7 @@ bounce = 0.0
 
 position = Vector2( 10, 0 )
 build_mode = 0
-polygon = PoolVector2Array( -795, 217, -563, 56.5, 439, 55.5, 465, -66.5, 485, -122.5, 512, -126, 516, -186.5, 480.5, -187.5, 480, -197.5, 530, -196, 534, -96, 602, -100, 716, -96, 738, -74, 749, -65, 768, -6.5, 776, 92.5, 777, 153.5, 653.5, 216.5 )
+polygon = PoolVector2Array( -795, 217, -563, 56.5, 456.4, 56, 465, -66.5, 485, -122.5, 512, -126, 516, -186.5, 480.5, -187.5, 480, -197.5, 530, -196, 534, -96, 602, -100, 716, -96, 738, -74, 749, -65, 768, -6.5, 776, 92.5, 777, 153.5, 653.5, 216.5 )
 
 [node name="collision_top" type="CollisionShape2D" parent="static_truck" index="1"]
 

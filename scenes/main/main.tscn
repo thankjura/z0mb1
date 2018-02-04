@@ -7,14 +7,14 @@
 [ext_resource path="res://sounds/menu/toggle.wav" type="AudioStream" id=5]
 [ext_resource path="res://sounds/menu/enter.wav" type="AudioStream" id=6]
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxEmpty" id=1]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[sub_resource type="StyleBoxEmpty" id=1]
+[sub_resource type="StyleBoxEmpty" id=2]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -22,7 +22,7 @@ content_margin_top = -1.0
 content_margin_bottom = -1.0
 _sections_unfolded = [ "Content Margin", "Resource" ]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 
 size = 54
 use_mipmaps = false
@@ -30,9 +30,9 @@ use_filter = false
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="Theme" id=3]
+[sub_resource type="Theme" id=4]
 
-default_font = SubResource( 2 )
+default_font = SubResource( 3 )
 Button/colors/font_color = Color( 0.175781, 0.140762, 0.140762, 1 )
 Button/colors/font_color_disabled = Color( 0.613281, 0.613281, 0.613281, 1 )
 Button/colors/font_color_hover = Color( 0.378906, 0.0473633, 0.0473633, 1 )
@@ -40,8 +40,8 @@ Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = null
 Button/styles/disabled = null
-Button/styles/focus = SubResource( 4 )
-Button/styles/hover = SubResource( 1 )
+Button/styles/focus = SubResource( 1 )
+Button/styles/hover = SubResource( 2 )
 Button/styles/normal = null
 Button/styles/pressed = null
 ButtonGroup/styles/panel = null
@@ -469,7 +469,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = SubResource( 3 )
+theme = SubResource( 4 )
 _sections_unfolded = [ "Focus", "Mouse", "Theme" ]
 
 [node name="continue" type="Button" parent="menu_items" index="0"]

@@ -1,9 +1,16 @@
 extends Node
 
-var MAIN_SCENE = "res://scenes/main/main.tscn"
+var MAIN_SCENE = preload("res://scenes/main/main.tscn")
 
 var GAME_MENU = preload("res://scenes/main/game_menu.tscn")
+var SETTINGS_MENU = preload("res://scenes/main/settings_menu.tscn")
 var QUIT_CONFIRM = preload("res://scenes/main/quit_confirm.tscn")
+
+var MENU_SCENES = {
+    "main": GAME_MENU,
+    "settings": SETTINGS_MENU,
+    "quit": QUIT_CONFIRM
+}
 
 var current_menu
 
@@ -14,38 +21,42 @@ const LEVELS = {
 func _ready():
     set_pause_mode(PAUSE_MODE_PROCESS)
 
-func resume():
-    get_tree().set_pause(false)
-    current_menu = null
-
-func main_menu():
-    get_tree().set_pause(false)
-    current_menu = null
-    scene_switch.simple(MAIN_SCENE)
-
 func new_game():
     scene_switch.simple(LEVELS.intro)
 
-func settings():
-    pass
+func resume():
+    if current_menu:
+        current_menu.queue_free()
+        current_menu = null
+    get_tree().set_pause(false)
 
-func quit_confirm():
-    current_menu = QUIT_CONFIRM.instance()
+func save_and_exit():
+    if current_menu:
+        current_menu.queue_free()
+        current_menu = null
+    scene_switch.simple(MAIN_SCENE)
+
+func show_menu(menu_name):
+    if current_menu:
+        current_menu.queue_free()
+    current_menu = MENU_SCENES[menu_name].instance()
     get_tree().get_root().add_child(current_menu)
+
+func go_back():
+    if current_menu:
+        var parent_name = current_menu.PARENT_MENU
+        if parent_name:
+            show_menu(current_menu.PARENT_MENU)
+        else:
+            resume()
 
 func _input(event):
     if event.is_action_released("ui_esc"):
         if current_menu:
-            if current_menu.get_filename() == GAME_MENU.get_path():
-                current_menu.queue_free()
-                resume()
-            elif current_menu.get_filename() == QUIT_CONFIRM.get_path():
-                current_menu.queue_free()
-                current_menu = null
+            go_back()
         else:
             if get_tree().get_current_scene().get_filename() in LEVELS.values():
                 get_tree().set_pause(true)
-                current_menu = GAME_MENU.instance()
-                get_tree().get_root().add_child(current_menu)
+                show_menu("main")
             elif get_tree().get_current_scene().get_filename() == MAIN_SCENE:
-                quit_confirm()
+                show_menu("quit")

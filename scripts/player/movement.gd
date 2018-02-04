@@ -1,5 +1,3 @@
-extends Node
-
 const MAX_JUMP_COUNT = 2
 const MAX_FALL_SPEED = 800
 const MAX_JUMP_SPEED = 800
@@ -10,7 +8,9 @@ const JUMP_FORCE = 800
 const ACCELERATION = 20
 const AIR_ACCELERATION = 10
 const FLOOR_NORMAL = Vector2(0, -1)
-const SLOPE_FRICTION = 20
+const SLOPE_FRICTION = 5
+const MAX_BOUNCES = 4
+const FLOOR_MAX_ANGLE = 0.8
 const DEFAULT_VECTOR = Vector2(0, -1)
 
 var MOVEMENT_MODE = 1
@@ -103,6 +103,9 @@ func gun_recoil(recoil_vector):
 func is_back():
     return player.get_node("base").scale.x != 1
 
+func get_ratio_x():
+    return abs(velocity.x)/MAX_SPEED
+
 func process(delta):
     velocity += GRAVITY * delta
 
@@ -147,7 +150,7 @@ func process(delta):
     if velocity.y > MAX_FALL_SPEED:
         velocity.y = MAX_FALL_SPEED
 
-    velocity = player.move_and_slide(velocity + recoil, FLOOR_NORMAL, SLOPE_FRICTION)
+    velocity = player.move_and_slide(velocity + recoil, FLOOR_NORMAL, SLOPE_FRICTION, MAX_BOUNCES, FLOOR_MAX_ANGLE)
     velocity -= recoil
     var new_recoil = recoil.linear_interpolate(Vector2(), RECOIL_DEACCELERATION*delta)
     if sign(recoil.x) != sign(new_recoil.x):

@@ -13,6 +13,8 @@ func _ready():
         i.connect("mouse_entered", self, "_mouse_item", [i])
         i.set_default_cursor_shape(Control.CURSOR_POINTING_HAND)
 
+    print("ready")
+
 func _focus_item(i):
     $menu_tap.play()
 
@@ -23,11 +25,14 @@ func _on_continue_pressed():
     print("continue")
 
 func _on_new_game_pressed():
+    print("new game")
     $menu_enter.play()
     global.new_game()
 
 func _on_quit_pressed():
-    global.quit_confirm()
+    global.show_menu("quit")
 
 func _on_settings_pressed():
-    global.settings()
+    global.show_menu("settings")
+
+

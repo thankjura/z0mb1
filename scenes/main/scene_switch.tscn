@@ -1,12 +1,78 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/main/scene_switch.gd" type="Script" id=1]
-[ext_resource path="res://sounds/menu/enter.wav" type="AudioStream" id=2]
+[ext_resource path="res://fonts/hud.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://sounds/menu/enter.wav" type="AudioStream" id=3]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="StyleBoxFlat" id=1]
 
-resource_name = "simple"
-length = 1.0
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.300781, 0.0187988, 0.0187988, 1 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width", "Corner Radius" ]
+
+[sub_resource type="StyleBoxFlat" id=2]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.113281, 0.113281, 0.113281, 1 )
+draw_center = true
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width", "Corner Radius" ]
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 60
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="Animation" id=6]
+
+length = 0.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -16,33 +82,53 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 0, 0, 0, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.5, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "_change_scene"
-}, {
-"args": [  ],
-"method": "_end"
-} ]
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="scene_switch" type="CanvasLayer"]
+[sub_resource type="Animation" id=7]
+
+length = 0.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("color_rect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="DynamicFontData" id=8]
+
+font_path = "res://fonts/hud.otf"
+
+[sub_resource type="DynamicFont" id=9]
+
+size = 50
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 8 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="scene_switch" type="CanvasLayer" index="0"]
 
 pause_mode = 2
-layer = -1
+layer = 0
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
@@ -52,7 +138,7 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="color_rect" type="ColorRect" parent="." index="0"]
 
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 0, 0, 0, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -67,23 +153,83 @@ size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="anim" type="AnimationPlayer" parent="." index="1"]
+[node name="progress" type="ProgressBar" parent="." index="1"]
+
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -754.0
+margin_top = -199.0
+margin_right = 786.0
+margin_bottom = -100.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+percent_visible = true
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_styles" ]
+
+[node name="anim" type="AnimationPlayer" parent="." index="2"]
 
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/simple = SubResource( 1 )
+anims/fade_in = SubResource( 6 )
+anims/fade_out = SubResource( 7 )
 blend_times = [  ]
-autoplay = ""
 
-[node name="audio" type="AudioStreamPlayer" parent="." index="2"]
+[node name="audio" type="AudioStreamPlayer" parent="." index="3"]
 
-stream = ExtResource( 2 )
+stream = ExtResource( 3 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+
+[node name="button" type="Button" parent="." index="4"]
+
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -226.0
+margin_top = -120.0
+margin_right = 226.0
+margin_bottom = -50.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/focus = SubResource( 10 )
+custom_fonts/font = SubResource( 9 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "PRESS ENTER"
+flat = true
+align = 1
+_sections_unfolded = [ "Margin", "custom_fonts", "custom_styles" ]
+
+[connection signal="pressed" from="button" to="." method="_on_button_pressed"]
 
 

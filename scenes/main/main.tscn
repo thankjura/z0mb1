@@ -423,11 +423,10 @@ WindowDialog/icons/close_highlight = null
 WindowDialog/styles/panel = null
 _sections_unfolded = [ "Button", "Button/colors", "Button/fonts", "Button/styles", "ButtonGroup", "ButtonGroup/styles" ]
 
-[node name="main" type="Node2D"]
+[node name="main" type="Node2D" index="0"]
 
-z_index = 1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Pause", "Transform", "Z Index" ]
+_sections_unfolded = [ "Material", "Pause", "Transform", "Z Index" ]
 
 [node name="background" type="TextureRect" parent="." index="0"]
 
@@ -509,7 +508,7 @@ margin_bottom = 479.0
 rect_pivot_offset = Vector2( 0, 0 )
 focus_mode = 2
 mouse_filter = 0
-mouse_default_cursor_shape = 0
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = false
@@ -519,6 +518,7 @@ group = null
 text = "NEW GAME"
 flat = true
 align = 1
+_sections_unfolded = [ "Mouse", "Pause" ]
 
 [node name="settings" type="Button" parent="menu_items" index="2"]
 
@@ -573,6 +573,7 @@ _sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
 stream = ExtResource( 5 )
 volume_db = -20.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -581,6 +582,7 @@ bus = "Master"
 
 stream = ExtResource( 6 )
 volume_db = -20.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"

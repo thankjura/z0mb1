@@ -1,6 +1,6 @@
 extends Node
 
-var MAIN_SCENE = preload("res://scenes/main/main.tscn")
+var MAIN_SCENE = "res://scenes/main/main.tscn"
 
 var GAME_MENU = preload("res://scenes/main/game_menu.tscn")
 var SETTINGS_MENU = preload("res://scenes/main/settings_menu.tscn")
@@ -22,7 +22,7 @@ func _ready():
     set_pause_mode(PAUSE_MODE_PROCESS)
 
 func new_game():
-    scene_switch.simple(LEVELS.intro)
+    scene_switch.change_scene(LEVELS.intro)
 
 func resume():
     if current_menu:
@@ -34,7 +34,7 @@ func save_and_exit():
     if current_menu:
         current_menu.queue_free()
         current_menu = null
-    scene_switch.simple(MAIN_SCENE)
+    scene_switch.change_scene(MAIN_SCENE, false)
 
 func show_menu(menu_name):
     if current_menu:
@@ -55,8 +55,11 @@ func _input(event):
         if current_menu:
             go_back()
         else:
-            if get_tree().get_current_scene().get_filename() in LEVELS.values():
-                get_tree().set_pause(true)
-                show_menu("main")
-            elif get_tree().get_current_scene().get_filename() == MAIN_SCENE:
-                show_menu("quit")
+            var wr = weakref(get_tree().get_current_scene())
+            if wr.get_ref() != null:
+                var scene = wr.get_ref()
+                if scene.get_filename() in LEVELS.values():
+                    get_tree().set_pause(true)
+                    show_menu("main")
+                elif scene.get_filename() == MAIN_SCENE:
+                    show_menu("quit")

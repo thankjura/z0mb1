@@ -16,6 +16,7 @@ var shuffle_timeout = 0
 var camera_offset = Vector2()
 
 func _ready():
+    print("start player")
     set_collision_layer(constants.PLAYER_LAYER)
     set_collision_mask(constants.PLAYER_MASK)
     $base/pelvis/body/head/head_area.set_collision_layer(constants.PLAYER_LETHAL_LAYER)

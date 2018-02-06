@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scripts/levels/intro.gd" type="Script" id=1]
 [ext_resource path="res://textures/levels/intro/bg1/l1_background.png" type="Texture" id=2]
@@ -16,7 +16,6 @@
 [ext_resource path="res://scenes/entities/shotgun_entity.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/enemy/solder.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/enemy/markers/change_direction.tscn" type="PackedScene" id=16]
-[ext_resource path="res://levels/intro/truck.tscn" type="PackedScene" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -410,9 +409,5 @@ position = Vector2( 2113, 880.25 )
 scale = Vector2( 1, 2.74219 )
 direction = 0
 timeout = 1.0
-
-[node name="truck" parent="." index="23" instance=ExtResource( 17 )]
-
-position = Vector2( 2916, 766 )
 
 

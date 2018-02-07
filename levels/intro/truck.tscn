@@ -104,7 +104,6 @@ light_mask = 1056
 
 [node name="front" type="Sprite" parent="sprite" index="3"]
 
-visible = false
 light_mask = 0
 position = Vector2( -13.75, -29.75 )
 texture = ExtResource( 4 )

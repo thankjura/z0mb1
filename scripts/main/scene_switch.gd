@@ -51,6 +51,7 @@ func _process(delta):
                 stages_count = 0
                 $progress.hide()
                 if confirm:
+                    get_tree().set_pause(true)
                     $button.show()
                     $button.grab_focus()
                 else:
@@ -58,4 +59,5 @@ func _process(delta):
 
 func _on_button_pressed():
     $button.hide()
+    get_tree().set_pause(false)
     $anim.play(ANIM_FADE_OUT)

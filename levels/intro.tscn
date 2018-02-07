@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scripts/levels/intro.gd" type="Script" id=1]
 [ext_resource path="res://textures/levels/intro/bg1/l1_background.png" type="Texture" id=2]
@@ -16,11 +16,17 @@
 [ext_resource path="res://scenes/entities/shotgun_entity.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/enemy/solder.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/enemy/markers/change_direction.tscn" type="PackedScene" id=16]
+[ext_resource path="res://levels/intro/truck.tscn" type="PackedScene" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 14.8284, 10 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 13.9698 )
 
 [sub_resource type="OccluderPolygon2D" id=2]
 
@@ -40,7 +46,7 @@ render_priority = 0
 blend_mode = 0
 light_mode = 2
 
-[node name="world" type="Node2D"]
+[node name="world" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
@@ -49,7 +55,6 @@ _sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
 "decals",
 ]]
 
-editor/display_folded = true
 position = Vector2( 8, 0 )
 input_pickable = false
 collision_layer = 1
@@ -92,9 +97,20 @@ position = Vector2( 6713.49, 794.216 )
 build_mode = 0
 polygon = PoolVector2Array( 88.513, 90.284, 128.013, 84.284, 184.013, 87.784, 207.513, 109.784, 191.513, 139.784, 189.013, 168.784, 93.513, 175.284 )
 
+[node name="collision_shape_2d2" type="CollisionShape2D" parent="bg" index="5"]
+
+position = Vector2( 0, 550 )
+scale = Vector2( 1, 43.3077 )
+shape = SubResource( 5 )
+
+[node name="collision_shape_2d3" type="CollisionShape2D" parent="bg" index="6"]
+
+position = Vector2( 7780, 500 )
+scale = Vector2( 1, 43.3077 )
+shape = SubResource( 5 )
+
 [node name="parallax_background" type="ParallaxBackground" parent="." index="1"]
 
-editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -409,5 +425,9 @@ position = Vector2( 2113, 880.25 )
 scale = Vector2( 1, 2.74219 )
 direction = 0
 timeout = 1.0
+
+[node name="truck" parent="." index="23" instance=ExtResource( 17 )]
+
+position = Vector2( 2912, 766 )
 
 

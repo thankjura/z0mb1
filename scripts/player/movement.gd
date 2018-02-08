@@ -3,6 +3,7 @@ const MAX_FALL_SPEED = 800
 const MAX_JUMP_SPEED = 800
 const INIT_GRAVITY = Vector2(0, 2000)
 const INIT_MAX_SPEED = 400
+const INIT_MAX_CLIMB_SPEED = 400
 
 const JUMP_FORCE = 800
 const ACCELERATION = 20
@@ -14,7 +15,8 @@ const FLOOR_MAX_ANGLE = 0.8
 const DEFAULT_VECTOR = Vector2(0, -1)
 
 var MOVEMENT_MODE = 1
-var MAX_SPEED = 600
+var MAX_SPEED = INIT_MAX_SPEED
+var MAX_CLIMB_SPEED = INIT_MAX_CLIMB_SPEED
 var GRAVITY = INIT_GRAVITY
 const RECOIL_DEACCELERATION = 20
 
@@ -28,6 +30,7 @@ var velocity = Vector2()
 var recoil = Vector2(0, 0)
 
 var air_state = false
+var climb_state = false
 
 func _init(var player, var anim):
     self.player = player
@@ -37,9 +40,11 @@ func _init(var player, var anim):
 func _recalc_mass():
     if player.gun:
         MAX_SPEED = INIT_MAX_SPEED - INIT_MAX_SPEED * player.gun.HEAVINES
+        MAX_CLIMB_SPEED = INIT_MAX_CLIMB_SPEED - INIT_MAX_CLIMB_SPEED * player.gun.HEAVINES
         GRAVITY = INIT_GRAVITY + INIT_GRAVITY * player.gun.HEAVINES
     else:
         MAX_SPEED = INIT_MAX_SPEED
+        MAX_CLIMB_SPEED = INIT_MAX_CLIMB_SPEED
         GRAVITY = INIT_GRAVITY
 
 func _ground_state(delta, m = Vector2(), direction = 1):
@@ -51,6 +56,22 @@ func _ground_state(delta, m = Vector2(), direction = 1):
         movement = 1
     velocity.x = lerp(velocity.x, movement * MAX_SPEED, ACCELERATION*delta)
     anim.walk(velocity.x, delta, direction, MAX_SPEED)
+
+func _climb_state(delta, m = Vector2()):
+    air_state = false
+    var movement = 0
+    if m.y < 0:
+        movement = -1
+    elif m.y > 0:
+        movement = 1
+    velocity.y = lerp(velocity.x, movement * MAX_CLIMB_SPEED, ACCELERATION*delta)
+    # TODO: velocity.x to velocity.y
+    if velocity.x > 0:
+        player.get_node("base").set_scale(Vector2(1,1))
+    elif velocity.x < 0:
+        player.get_node("base").set_scale(Vector2(-1,1))
+    velocity.x = 0
+    anim.climb(velocity, delta, movement, MAX_CLIMB_SPEED)
 
 func _air_state(delta, m = Vector2()):
     var movement = 0
@@ -107,7 +128,8 @@ func get_ratio_x():
     return abs(velocity.x)/MAX_SPEED
 
 func process(delta):
-    velocity += GRAVITY * delta
+    if not climb_state:
+        velocity += GRAVITY * delta
 
     var move_vector = input.get_move_vector()
     var direction = move_vector
@@ -124,31 +146,34 @@ func process(delta):
         else:
             direction = input.get_direction(player)
 
-    if player.is_on_floor():
-        jump_count = 0
-        var d = 0
-        if direction.x > 0:
-            d = 1
-        elif direction.x < 0:
-            d = -1
-        _ground_state(delta, move_vector, d)
-        if abs(velocity.x) > MAX_SPEED:
-            velocity.x = sign(velocity.x) * MAX_SPEED
+    if climb_state:
+        _climb_state(delta, move_vector)
     else:
-        _air_state(delta, move_vector)
-        if abs(velocity.x) > MAX_SPEED:
-            velocity.x = sign(velocity.x) * MAX_SPEED
+        if player.is_on_floor():
+            jump_count = 0
+            var d = 0
+            if direction.x > 0:
+                d = 1
+            elif direction.x < 0:
+                d = -1
+            _ground_state(delta, move_vector, d)
+            if abs(velocity.x) > MAX_SPEED:
+                velocity.x = sign(velocity.x) * MAX_SPEED
+        else:
+            _air_state(delta, move_vector)
+            if abs(velocity.x) > MAX_SPEED:
+                velocity.x = sign(velocity.x) * MAX_SPEED
 
-    if direction:
-        _look(DEFAULT_VECTOR.angle_to(direction), delta)
-    else:
-        look_default(delta)
+        if direction:
+            _look(DEFAULT_VECTOR.angle_to(direction), delta)
+        else:
+            look_default(delta)
 
-    if -velocity.y > MAX_JUMP_SPEED:
-        velocity.y = -MAX_JUMP_SPEED
+        if -velocity.y > MAX_JUMP_SPEED:
+            velocity.y = -MAX_JUMP_SPEED
 
-    if velocity.y > MAX_FALL_SPEED:
-        velocity.y = MAX_FALL_SPEED
+        if velocity.y > MAX_FALL_SPEED:
+            velocity.y = MAX_FALL_SPEED
 
     velocity = player.move_and_slide(velocity + recoil, FLOOR_NORMAL, SLOPE_FRICTION, MAX_BOUNCES, FLOOR_MAX_ANGLE)
     velocity -= recoil

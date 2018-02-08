@@ -1300,6 +1300,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="base" type="Node2D" parent="." index="1"]
 
+editor/display_folded = true
 _sections_unfolded = [ "Transform" ]
 
 [node name="base" type="Sprite" parent="base" index="0"]

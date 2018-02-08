@@ -18,8 +18,9 @@ var camera_offset = Vector2()
 
 onready var mouth_node = $base/pelvis/body/head/mouth
 
+var areas = []
+
 func _ready():
-    print("start player")
     set_collision_layer(constants.PLAYER_LAYER)
     set_collision_mask(constants.PLAYER_MASK)
     $base/pelvis/body/head/head_area.set_collision_layer(constants.PLAYER_LETHAL_LAYER)
@@ -30,9 +31,25 @@ func _ready():
     movement = load("res://scripts/player/movement.gd").new(self, $animation_tree_player)
     audio = load("res://scripts/player/audio.gd").new(self)
 
+    $body_area.connect("area_entered", self, "_area_entered")
+    $body_area.connect("area_exited", self, "_area_exited")
+
     gui = get_tree().get_root().get_node("world/gui")
     _update_health(INIT_HEALTH)
     camera_offset = $camera.get_offset()
+
+func _area_entered(area):
+    if not area in areas:
+        areas.append(area)
+
+    if area.is_in_group("ladder"):
+        movement.climb_state = true
+
+func _area_exited(area):
+    if area in areas:
+        areas.erase(area)
+    if area.is_in_group("ladder"):
+        movement.climb_state = false
 
 func set_gun(gun_class):
     if gun:

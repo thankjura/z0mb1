@@ -2,6 +2,7 @@ extends AnimationTreePlayer
 
 const RUN_SPEED = 300
 const GROUND_SCALE_RATE = 1.2
+const CLIMB_SCALE_RATE = 3
 const AIM_SPEED = 5
 
 const GROUND_BLEND_NODE = "ground_blend"
@@ -16,6 +17,8 @@ const SHOTGUN_RELOAD_NODE = "shotgun_reload"
 const ANIMATION_WALK_NODE = "anim_walk"
 const BAZOOKA_RELOAD_NODE = "bazooka_reload"
 const AIM_SEEK_NODE = "gun_angle"
+const CLIMB_TRANSITION_NODE = "climb_transition"
+const CLIMB_SCALE_NODE = "climb_scale"
 
 const SHOTGUN_RELOAD_IN = 0.1
 const SHOTGUN_RELOAD_OUT = 0.1
@@ -25,7 +28,18 @@ const AIM_SHOTGUN_NAME = "aim_shotgun"
 enum STATE {
     GROUND,
     JUMP_UP,
-    JUMP_DOWN
+    JUMP_DOWN,
+    CLIMB
+}
+
+enum HAND_TYPE {
+    DEFAULT,
+    CLIMB,
+    PISTOL,
+    SHOTGUN,
+    AK47,
+    MINIGUN,
+    BAZOOKA
 }
 
 var current_state = STATE.GROUND
@@ -38,6 +52,11 @@ enum AIM {
     aim_bazooka,
 }
 
+enum CLIMB_DIRECTION {
+    UP,
+    DOWN
+}
+
 var current_aim_anim = null
 
 var current_aim_angle = 90
@@ -48,6 +67,10 @@ var reload_out_timeout = 0
 var reload_out_time = 1
 
 var player
+
+onready var player_hands = get_tree().get_nodes_in_group("player_hand")
+
+var current_hand_type
 
 func _ready():
     player = get_parent()
@@ -75,43 +98,69 @@ func walk(velocity, delta, direction, MAX_SPEED):
     timescale_node_set_scale(GROUND_SCALE_NODE, abs(velocity)*delta*GROUND_SCALE_RATE)
     if _set_state(STATE.GROUND):
         transition_node_set_current(STATE_NODE, STATE.GROUND)
+    if not player.gun:
+        set_hand()
 
 func jump(velocity):
-    print(velocity)
     if velocity.y > 0 and _set_state(STATE.JUMP_DOWN):
         transition_node_set_current(STATE_NODE, STATE.JUMP_DOWN)
     elif velocity.y < 0 and _set_state(STATE.JUMP_UP):
         transition_node_set_current(STATE_NODE, STATE.JUMP_UP)
+    if not player.gun:
+        set_hand()
 
 func aim(angle, delta):
     current_aim_angle = lerp(current_aim_angle, abs(angle), AIM_SPEED*delta)
     timeseek_node_seek(AIM_SEEK_NODE, abs(angle))
 
+func climb(velocity, delta, direction, MAX_CLIMB_SPEED):
+    if _set_state(STATE.CLIMB):
+        transition_node_set_current(STATE_NODE, STATE.CLIMB)
+    timescale_node_set_scale(CLIMB_SCALE_NODE, abs(velocity.y) / MAX_CLIMB_SPEED * CLIMB_SCALE_RATE )
+    if velocity.y > 0:
+        transition_node_set_current(CLIMB_TRANSITION_NODE, CLIMB_DIRECTION.DOWN)
+    elif velocity.y < 0:
+        transition_node_set_current(CLIMB_TRANSITION_NODE, CLIMB_DIRECTION.UP)
+    set_hand(HAND_TYPE.CLIMB)
+
+func set_hand(hand_type = null):
+    if current_hand_type == hand_type:
+        return
+
+    for h in player_hands:
+        h.hide()
+
+    if hand_type == HAND_TYPE.CLIMB:
+        player.get_node("base/pelvis/body/sholder_l/forearm_l/hand_l").show()
+        player.get_node("base/pelvis/body/sholder_r/forearm_r/hand_r_minigun").show()
+    elif hand_type == HAND_TYPE.PISTOL:
+        player.get_node("base/pelvis/body/sholder_r/forearm_r/hand_r_pistol").show()
+        player.get_node("base/pelvis/body/sholder_l/forearm_l/hand_l_pistol").show()
+    elif hand_type == HAND_TYPE.MINIGUN:
+        player.get_node("base/pelvis/body/sholder_r/forearm_r/hand_r_minigun").show()
+        player.get_node("base/pelvis/body/sholder_l/forearm_l/hand_l_minigun").show()
+    elif hand_type in [HAND_TYPE.SHOTGUN, HAND_TYPE.AK47, HAND_TYPE.BAZOOKA]:
+        player.get_node("base/pelvis/body/sholder_r/forearm_r/hand_r_pistol").show()
+        player.get_node("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun").show()
+    else:
+        player.get_node("base/pelvis/body/sholder_r/forearm_r/hand_r").show()
+        player.get_node("base/pelvis/body/sholder_l/forearm_l/hand_l").show()
+
 func set_gun():
-    player.get_node("base/pelvis/body/sholder_r/forearm_r/hand_r").set_visible(false)
-    player.get_node("base/pelvis/body/sholder_l/forearm_l/hand_l").set_visible(false)
     if player.gun.AIM_NAME == "aim_pistol":
-        player.get_node("base/pelvis/body/sholder_r/forearm_r/hand_r_pistol").set_visible(true)
-        player.get_node("base/pelvis/body/sholder_l/forearm_l/hand_l_pistol").set_visible(true)
+        set_hand(HAND_TYPE.PISTOL)
     elif player.gun.AIM_NAME == "aim_minigun":
-        player.get_node("base/pelvis/body/sholder_r/forearm_r/hand_r_minigun").set_visible(true)
-        player.get_node("base/pelvis/body/sholder_l/forearm_l/hand_l_minigun").set_visible(true)
-    elif player.gun.AIM_NAME in ["aim_shotgun", "aim_ak47", "aim_bazooka"]:
-        player.get_node("base/pelvis/body/sholder_r/forearm_r/hand_r_pistol").set_visible(true)
-        player.get_node("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun").set_visible(true)
+        set_hand(HAND_TYPE.MINIGUN)
+    elif player.gun.AIM_NAME == "aim_shotgun":
+        set_hand(HAND_TYPE.SHOTGUN)
+    elif player.gun.AIM_NAME == "aim_ak47":
+        set_hand(HAND_TYPE.AK47)
+    elif player.gun.AIM_NAME == "aim_bazooka":
+        set_hand(HAND_TYPE.BAZOOKA)
     transition_node_set_current(AIM_SWITCH_NODE, AIM[player.gun.AIM_NAME])
 
 func drop_gun():
-    player.get_node("base/pelvis/body/sholder_r/forearm_r/hand_r").set_visible(true)
-    player.get_node("base/pelvis/body/sholder_l/forearm_l/hand_l").set_visible(true)
-    #  For pistol
-    player.get_node("base/pelvis/body/sholder_r/forearm_r/hand_r_pistol").set_visible(false)
-    player.get_node("base/pelvis/body/sholder_l/forearm_l/hand_l_pistol").set_visible(false)
-    #  For minigun
-    player.get_node("base/pelvis/body/sholder_r/forearm_r/hand_r_minigun").set_visible(false)
-    player.get_node("base/pelvis/body/sholder_l/forearm_l/hand_l_minigun").set_visible(false)
-    #  For shotgun / ak47 / bazooka
-    player.get_node("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun").set_visible(false)
+    set_hand(HAND_TYPE.DEFAULT)
 
     # Reset animations
     oneshot_node_stop(BAZOOKA_RELOAD_NODE)
@@ -146,7 +195,7 @@ func _process(delta):
         if reload_out_timeout <= 0:
             blend2_node_set_amount(SHOTGUN_RELOAD_NODE, 0)
 
-    if not player.gun:
-        blend2_node_set_amount(AIM_BLEND_NODE, 0)
-    else:
+    if player.gun and current_state != STATE.CLIMB:
         blend2_node_set_amount(AIM_BLEND_NODE, 1)
+    else:
+        blend2_node_set_amount(AIM_BLEND_NODE, 0)

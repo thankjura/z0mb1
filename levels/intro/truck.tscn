@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/levels/intro/truck.gd" type="Script" id=1]
 [ext_resource path="res://textures/levels/intro/truck1/base.png" type="Texture" id=2]
@@ -38,6 +38,11 @@ extents = Vector2( 408, 10 )
 
 custom_solver_bias = 0.0
 extents = Vector2( 115.75, 9 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 126 )
 
 [node name="truck" type="Node2D"]
 
@@ -168,5 +173,22 @@ shape = SubResource( 5 )
 position = Vector2( 371.75, -190.25 )
 shape = SubResource( 6 )
 one_way_collision = true
+
+[node name="area_2d" type="Area2D" parent="." index="3" groups=[
+"ladder",
+]]
+
+position = Vector2( 461, -71 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="area_2d" index="0"]
+
+shape = SubResource( 7 )
 
 

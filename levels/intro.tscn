@@ -23,30 +23,30 @@
 custom_solver_bias = 0.0
 extents = Vector2( 14.8284, 10 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 13.9698 )
 
-[sub_resource type="OccluderPolygon2D" id=2]
+[sub_resource type="OccluderPolygon2D" id=3]
 
 closed = false
 cull_mode = 0
 polygon = PoolVector2Array( -2096.78, -57, -2120.78, -39.5, -2122.78, -14, -2143.78, -3.5, -2148.78, 26.5 )
 
-[sub_resource type="OccluderPolygon2D" id=3]
+[sub_resource type="OccluderPolygon2D" id=4]
 
 closed = true
 cull_mode = 0
 polygon = PoolVector2Array( -2847, 11, -2805, 11.5, -2767, 7.5, -2827, 24, -2812, 33, -2765, 27.5, -2722, 26.5, -2692, 23, -2541, 16, -2534, 12.5, -2567, 9.5, -2568, 5, -2585, 2, -2594, -2, -2693, -5.5, -2790, -9.5, -2816, -10, -2869, -2, -2828, 5.5 )
 
-[sub_resource type="CanvasItemMaterial" id=4]
+[sub_resource type="CanvasItemMaterial" id=5]
 
 render_priority = 0
 blend_mode = 0
 light_mode = 2
 
-[node name="world" type="Node2D" index="0"]
+[node name="world" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
@@ -101,13 +101,13 @@ polygon = PoolVector2Array( 88.513, 90.284, 128.013, 84.284, 184.013, 87.784, 20
 
 position = Vector2( 0, 550 )
 scale = Vector2( 1, 43.3077 )
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 
 [node name="collision_shape_2d3" type="CollisionShape2D" parent="bg" index="6"]
 
 position = Vector2( 7780, 500 )
 scale = Vector2( 1, 43.3077 )
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 
 [node name="parallax_background" type="ParallaxBackground" parent="." index="1"]
 
@@ -312,7 +312,7 @@ position = Vector2( 127, 933.5 )
 light_mask = 32
 position = Vector2( 2195.5, 940 )
 scale = Vector2( 0.5, 1 )
-occluder = SubResource( 2 )
+occluder = SubResource( 3 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
@@ -321,7 +321,7 @@ _sections_unfolded = [ "Material", "Visibility" ]
 light_mask = 32
 position = Vector2( 4115.5, 940.5 )
 scale = Vector2( 0.5, 1 )
-occluder = SubResource( 2 )
+occluder = SubResource( 3 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
@@ -330,7 +330,7 @@ _sections_unfolded = [ "Material", "Visibility" ]
 light_mask = 32
 position = Vector2( 6035, 939 )
 scale = Vector2( 0.5, 1 )
-occluder = SubResource( 2 )
+occluder = SubResource( 3 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
@@ -339,7 +339,7 @@ _sections_unfolded = [ "Material", "Visibility" ]
 light_mask = 32
 position = Vector2( 7956, 940 )
 scale = Vector2( 0.5, 1 )
-occluder = SubResource( 2 )
+occluder = SubResource( 3 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
@@ -348,7 +348,7 @@ _sections_unfolded = [ "Material", "Visibility" ]
 light_mask = 32
 position = Vector2( 1651.5, 913.5 )
 scale = Vector2( 0.5, 1 )
-occluder = SubResource( 3 )
+occluder = SubResource( 4 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
@@ -357,7 +357,7 @@ _sections_unfolded = [ "Material", "Visibility" ]
 light_mask = 32
 position = Vector2( 3572, 913 )
 scale = Vector2( 0.5, 1 )
-occluder = SubResource( 3 )
+occluder = SubResource( 4 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
@@ -366,7 +366,7 @@ _sections_unfolded = [ "Material", "Visibility" ]
 light_mask = 32
 position = Vector2( 5491, 913 )
 scale = Vector2( 0.5, 1 )
-occluder = SubResource( 3 )
+occluder = SubResource( 4 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
@@ -375,14 +375,14 @@ _sections_unfolded = [ "Material", "Visibility" ]
 light_mask = 32
 position = Vector2( 7411.5, 914 )
 scale = Vector2( 0.5, 1 )
-occluder = SubResource( 3 )
+occluder = SubResource( 4 )
 light_mask = 32
 _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="decal_poligon" type="Polygon2D" parent="." index="19"]
 
 light_mask = 32
-material = SubResource( 4 )
+material = SubResource( 5 )
 position = Vector2( 523.5, 0.5 )
 scale = Vector2( 0.5, 1 )
 z_index = -30

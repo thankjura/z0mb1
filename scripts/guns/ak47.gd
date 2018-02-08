@@ -24,6 +24,13 @@ func _muzzle_flash():
     $animation_player.play("fire%d" % (randi()%4+1), -1, 2)
     _eject_shell()
 
+func _fire_start():
+    player.set_mouth(player.MOUTH_AGGRESIVE)
+
+func _fire_stop():
+    ._fire_stop()
+    player.set_mouth()
+
 func _process(delta):
     if fired:
         if overheat_time < OVERHEAD_TIMEOUT:

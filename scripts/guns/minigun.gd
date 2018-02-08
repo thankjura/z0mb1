@@ -31,6 +31,7 @@ func _reset_view():
 
 func _fire_start():
     $animation_player.play("fire", -1, 3)
+    player.set_mouth(player.MOUTH_AGGRESIVE)
 
 func _eject_shell():
     var v = EJECT_SHELL_VECTOR * rand_range(0.8, 1.2)
@@ -52,6 +53,7 @@ func _muzzle_flash():
 func _fire_stop():
     ._fire_stop()
     $animation_player.stop()
+    player.set_mouth()
     _reset_view()
 
 func _process(delta):

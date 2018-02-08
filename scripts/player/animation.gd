@@ -77,9 +77,10 @@ func walk(velocity, delta, direction, MAX_SPEED):
         transition_node_set_current(STATE_NODE, STATE.GROUND)
 
 func jump(velocity):
+    print(velocity)
     if velocity.y > 0 and _set_state(STATE.JUMP_DOWN):
         transition_node_set_current(STATE_NODE, STATE.JUMP_DOWN)
-    elif velocity.y and _set_state(STATE.JUMP_UP):
+    elif velocity.y < 0 and _set_state(STATE.JUMP_UP):
         transition_node_set_current(STATE_NODE, STATE.JUMP_UP)
 
 func aim(angle, delta):

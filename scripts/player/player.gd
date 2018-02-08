@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 const constants = preload("res://scripts/constants.gd")
 const INIT_HEALTH = 100
+const MOUTH_AGGRESIVE = "mouth_aggresive"
 
 var dead
 var health = INIT_HEALTH
@@ -14,6 +15,8 @@ var shuffle = 0
 var shuffle_time = 0
 var shuffle_timeout = 0
 var camera_offset = Vector2()
+
+onready var mouth_node = $base/pelvis/body/head/mouth
 
 func _ready():
     print("start player")
@@ -85,6 +88,14 @@ func _input(event):
     if event is InputEventMouseButton:
         if event.button_index == BUTTON_RIGHT and event.pressed:
             movement.jump()
+
+func set_mouth(m = null):
+    for n in mouth_node.get_children():
+        n.set_visible(false)
+    if m == MOUTH_AGGRESIVE:
+        mouth_node.get_node("mouth_a").set_visible(true)
+    else:
+        mouth_node.get_node("mouth_default").set_visible(true)
 
 func shuffle_camera(force, fade_out_time=0.1):
     shuffle = force*[-1,1][randi()%2]

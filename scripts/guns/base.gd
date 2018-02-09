@@ -6,6 +6,7 @@ const SHELL = null
 const SPEED = 500
 const TIMEOUT = 0.2
 const OFFSET = Vector2(40, -10)
+const CLIMB_OFFSET = Vector2(40, -10)
 const AIM_NAME = "aim_pistol"
 const VIEWPORT_SHUTTER = 0
 const DROP_VELOCITY = Vector2(400,-400)
@@ -26,10 +27,29 @@ var camera_offset
 var world
 var player
 
+enum OFFSET_TYPE {
+    DEFAULT,
+    CLIMB
+}
+
+var current_offset_type
+
 func _ready():
     set_position(OFFSET)
     world = get_tree().get_root().get_node("world")
     player = get_parent().get_owner()
+
+func default_offset():
+    if current_offset_type != OFFSET_TYPE.DEFAULT:
+        set_position(OFFSET)
+        set_z_index(0)
+        current_offset_type = OFFSET_TYPE.DEFAULT
+
+func climb_offset():
+    if current_offset_type != OFFSET_TYPE.CLIMB:
+        set_position(CLIMB_OFFSET)
+        set_z_index(-4)
+        current_offset_type = OFFSET_TYPE.CLIMB
 
 func _get_bullet_vector():
     var out = ($bullet_spawn.global_position - global_position).normalized()

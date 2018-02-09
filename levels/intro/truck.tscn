@@ -5,11 +5,7 @@
 [ext_resource path="res://textures/levels/intro/truck1/back.png" type="Texture" id=3]
 [ext_resource path="res://textures/levels/intro/truck1/front.png" type="Texture" id=4]
 [ext_resource path="res://textures/levels/intro/truck1/light.png" type="Texture" id=5]
-
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 534, 119 )
+[ext_resource path="res://textures/levels/intro/truck1/ladder.png" type="Texture" id=6]
 
 [sub_resource type="CanvasItemMaterial" id=2]
 
@@ -17,17 +13,16 @@ render_priority = 0
 blend_mode = 0
 light_mode = 2
 
-[sub_resource type="OccluderPolygon2D" id=3]
-
-closed = true
-cull_mode = 0
-polygon = PoolVector2Array( 230.75, 26.75, 227.75, -34.5, 240.75, -66, 258, -64.75, 258.5, 27.25 )
-
 [sub_resource type="OccluderPolygon2D" id=4]
 
 closed = true
 cull_mode = 0
 polygon = PoolVector2Array( -285.5, -96.5, -284.5, 26.5, 257, 28, 256, -95 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 3, 114 )
 
 [sub_resource type="RectangleShape2D" id=5]
 
@@ -39,33 +34,17 @@ extents = Vector2( 408, 10 )
 custom_solver_bias = 0.0
 extents = Vector2( 115.75, 9 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 126 )
+extents = Vector2( 534, 119 )
 
 [node name="truck" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="inner_area" type="Area2D" parent="." index="0"]
-
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = true
-audio_bus_name = "in_truck"
-_sections_unfolded = [ "Audio Bus", "Collision" ]
-
-[node name="collision" type="CollisionShape2D" parent="inner_area" index="0"]
-
-position = Vector2( -25, -65 )
-shape = SubResource( 1 )
-
-[node name="sprite" type="Sprite" parent="." index="1"]
+[node name="sprite" type="Sprite" parent="." index="0"]
 
 light_mask = 0
 position = Vector2( 17, 2 )
@@ -101,20 +80,14 @@ invert_enable = false
 invert_border = 100.0
 _sections_unfolded = [ "Material", "Visibility", "Z Index" ]
 
-[node name="light_occluder_2d3" type="LightOccluder2D" parent="sprite" index="2"]
-
-light_mask = 1056
-occluder = SubResource( 3 )
-light_mask = 1056
-
-[node name="front" type="Sprite" parent="sprite" index="3"]
+[node name="front" type="Sprite" parent="sprite" index="2"]
 
 light_mask = 0
 position = Vector2( -13.75, -29.75 )
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Visibility", "Z Index" ]
 
-[node name="dark_light" type="Light2D" parent="sprite" index="4"]
+[node name="dark_light" type="Light2D" parent="sprite" index="3"]
 
 light_mask = 2048
 position = Vector2( -13.5, -31.5 )
@@ -141,13 +114,41 @@ shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 2048
 _sections_unfolded = [ "Material", "Range", "Shadow", "Visibility", "Z Index" ]
 
-[node name="light_occluder_2d" type="LightOccluder2D" parent="sprite" index="5"]
+[node name="light_occluder_2d" type="LightOccluder2D" parent="sprite" index="4"]
 
 light_mask = 1024
 occluder = SubResource( 4 )
 light_mask = 1024
 
-[node name="static_truck" type="StaticBody2D" parent="." index="2"]
+[node name="ladder" type="Sprite" parent="sprite" index="5"]
+
+show_behind_parent = true
+position = Vector2( 221, -32.5 )
+z_index = 100
+z_as_relative = false
+texture = ExtResource( 6 )
+_sections_unfolded = [ "Visibility", "Z Index" ]
+
+[node name="area_2d" type="Area2D" parent="sprite/ladder" index="0" groups=[
+"ladder",
+]]
+
+position = Vector2( -5.75, -67 )
+scale = Vector2( 0.5, 0.5 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="sprite/ladder/area_2d" index="0"]
+
+position = Vector2( 6, 132 )
+shape = SubResource( 7 )
+
+[node name="static_truck" type="StaticBody2D" parent="." index="1"]
 
 input_pickable = false
 collision_layer = 1
@@ -161,7 +162,7 @@ bounce = 0.0
 
 position = Vector2( 10, 0 )
 build_mode = 0
-polygon = PoolVector2Array( -795, 217, -563, 56.5, 456.4, 56, 465, -66.5, 485, -122.5, 512, -126, 516, -186.5, 480.5, -187.5, 480, -197.5, 530, -196, 534, -96, 602, -100, 716, -96, 738, -74, 749, -65, 768, -6.5, 776, 92.5, 777, 153.5, 653.5, 216.5 )
+polygon = PoolVector2Array( -795, 217, -563, 56.5, 458, 58, 458.5, -197, 530, -196, 534, -96, 602, -100, 716, -96, 738, -74, 749, -65, 768, -6.5, 776, 92.5, 777, 153.5, 653.5, 216.5 )
 
 [node name="collision_top" type="CollisionShape2D" parent="static_truck" index="1"]
 
@@ -174,21 +175,20 @@ position = Vector2( 371.75, -190.25 )
 shape = SubResource( 6 )
 one_way_collision = true
 
-[node name="area_2d" type="Area2D" parent="." index="3" groups=[
-"ladder",
-]]
+[node name="inner_area" type="Area2D" parent="." index="2"]
 
-position = Vector2( 461, -71 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
+audio_bus_override = true
+audio_bus_name = "in_truck"
+_sections_unfolded = [ "Audio Bus", "Collision" ]
 
-[node name="collision_shape_2d" type="CollisionShape2D" parent="area_2d" index="0"]
+[node name="collision" type="CollisionShape2D" parent="inner_area" index="0"]
 
-shape = SubResource( 7 )
+position = Vector2( -25, -65 )
+shape = SubResource( 1 )
 
 

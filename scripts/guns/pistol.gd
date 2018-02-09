@@ -6,6 +6,7 @@ const ENTITY = preload("res://scenes/entities/pistol_entity.tscn")
 const SPEED = 1200
 const TIMEOUT = 0.4
 const OFFSET = Vector2(45, -39)
+const CLIMB_OFFSET = Vector2(7, 64)
 const AIM_NAME = "aim_pistol"
 const VIEWPORT_SHUTTER = 0
 const DROP_VELOCITY = Vector2(300,-300)

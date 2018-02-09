@@ -31,16 +31,21 @@ var recoil = Vector2(0, 0)
 
 var air_state = false
 var climb_state = false
-var climb_direction = 0
+var climb_ladder = null
+var climb_ladder_direction = 0
 
 func _init(var player, var anim):
     self.player = player
     self.input = load("res://scripts/input.gd").new()
     self.anim = anim
 
-func set_climb(val = true):
-    climb_state = val
-    climb_direction = sign(velocity.x)
+func set_ladder(ladder):
+    if ladder:
+        climb_state = true
+        climb_ladder_direction = 1 if player.global_position.x < ladder.global_position.x else -1
+    else:
+        climb_state = false
+    climb_ladder = ladder
 
 func _recalc_mass():
     if player.gun:
@@ -52,31 +57,43 @@ func _recalc_mass():
         MAX_CLIMB_SPEED = INIT_MAX_CLIMB_SPEED
         GRAVITY = INIT_GRAVITY
 
-func _ground_state(delta, m = Vector2(), direction = 1):
+func _ground_state(delta, m = Vector2()):
     air_state = false
+    jump_count = 0
     velocity.x = lerp(velocity.x, m.x * MAX_SPEED, ACCELERATION*delta)
+    var direction = -1 if is_back() else 1
     anim.walk(velocity.x, delta, direction, MAX_SPEED)
 
 func _climb_state(delta, m = Vector2()):
     air_state = false
     var movement = 0
-    prints(m, climb_direction)
     if m.y > 0: # press down
-        movement = -max(m.x*climb_direction, m.y)
+        movement = -max(m.x*climb_ladder_direction, m.y)
     elif m.y < 0: # press up
-        movement = -min(m.x*climb_direction, m.y)
+        movement = -min(m.x*climb_ladder_direction, m.y)
     else:
-        movement = m.x * climb_direction
+        movement = m.x * climb_ladder_direction
 
-    if climb_direction > 0:
+    if movement < 0 and player.is_on_floor():
+        climb_state = false
+        _ground_state(delta, Vector2(-movement*climb_ladder_direction, 0))
+        return
+
+    var distance = player.get_node("climb_center").global_position.y - climb_ladder.global_position.y
+    if distance < 0 and abs(distance) > anim.CLIMB_LADDER_BOT_DISTANCE:
+        climb_state = false
+        jump()
+        return
+
+    if climb_ladder_direction > 0:
         player.get_node("base").set_scale(Vector2(1,1))
 
-    elif climb_direction < 0:
+    elif climb_ladder_direction < 0:
         player.get_node("base").set_scale(Vector2(-1,1))
 
     velocity.y = lerp(velocity.y, -movement * MAX_CLIMB_SPEED, ACCELERATION*delta)
     velocity.x = 0
-    anim.climb(velocity, delta, MAX_CLIMB_SPEED)
+    anim.climb(velocity, delta, MAX_CLIMB_SPEED, distance)
 
 func _air_state(delta, m = Vector2()):
     var movement = m.x * MAX_SPEED
@@ -103,8 +120,8 @@ func look_default(delta):
 
 func jump():
     if climb_state:
-        velocity.y -= JUMP_FORCE / 2
-        velocity.x += JUMP_FORCE / 2 * -climb_direction
+        velocity.y -= JUMP_FORCE * 0.7
+        velocity.x += JUMP_FORCE * 0.7 * -climb_ladder_direction
         climb_state = false
     elif jump_count < MAX_JUMP_COUNT:
         jump_count += 1
@@ -131,6 +148,9 @@ func is_back():
 func get_ratio_x():
     return abs(velocity.x)/MAX_SPEED
 
+func get_ratio_y():
+    return abs(velocity.y)/MAX_CLIMB_SPEED
+
 func process(delta):
     if not climb_state:
         velocity += GRAVITY * delta
@@ -154,13 +174,7 @@ func process(delta):
         _climb_state(delta, move_vector)
     else:
         if player.is_on_floor():
-            jump_count = 0
-            var d = 0
-            if direction.x > 0:
-                d = 1
-            elif direction.x < 0:
-                d = -1
-            _ground_state(delta, move_vector, d)
+            _ground_state(delta, move_vector)
             if abs(velocity.x) > MAX_SPEED:
                 velocity.x = sign(velocity.x) * MAX_SPEED
         else:

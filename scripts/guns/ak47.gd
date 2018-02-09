@@ -6,6 +6,7 @@ const ENTITY = preload("res://scenes/entities/ak47_entity.tscn")
 const SPEED = 1000
 const TIMEOUT = 0.1
 const OFFSET = Vector2(87, -48)
+const CLIMB_OFFSET = Vector2(10, -18)
 const AIM_NAME = "aim_ak47"
 const VIEWPORT_SHUTTER = 2
 const DROP_VELOCITY = Vector2(400,-400)

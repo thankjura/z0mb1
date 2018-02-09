@@ -6,6 +6,7 @@ const SHELL = preload("res://scenes/guns/shells/shotgun_shell.tscn")
 const SPEED = 2000
 const TIMEOUT = 1
 const OFFSET = Vector2(104, -22)
+const CLIMB_OFFSET = Vector2(3, -25)
 const AIM_NAME = "aim_shotgun"
 const DROP_VELOCITY = Vector2(400,-400)
 const DROP_ANGULAR = 1

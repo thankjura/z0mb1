@@ -43,13 +43,13 @@ func _area_entered(area):
         areas.append(area)
 
     if area.is_in_group("ladder"):
-        movement.set_climb(true)
+        movement.set_ladder(area)
 
 func _area_exited(area):
     if area in areas:
         areas.erase(area)
     if area.is_in_group("ladder"):
-        movement.set_climb(false)
+        movement.set_ladder(null)
 
 func set_gun(gun_class):
     if gun:
@@ -92,8 +92,12 @@ func _fire(delta):
     gun.fire(delta, movement.velocity)
 
 func _footstep_sound():
-    var ratio = movement.get_ratio_x()
-    audio.footstep(ratio)
+    if movement.climb_state:
+        var ratio = movement.get_ratio_y()
+        audio.footstep(ratio)
+    else:
+        var ratio = movement.get_ratio_x()
+        audio.footstep(ratio)
 
 func _input(event):
     if event.is_action_pressed("ui_jump"):

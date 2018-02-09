@@ -6,6 +6,7 @@ const ENTITY = preload("res://scenes/entities/minigun_entity.tscn")
 const SPEED = 1000
 const TIMEOUT = 0.1
 const OFFSET = Vector2(125, 55)
+const CLIMB_OFFSET = Vector2(-50, -40)
 const AIM_NAME = "aim_minigun"
 const VIEWPORT_SHUTTER = 10
 const DROP_VELOCITY = Vector2(400,-400)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scripts/levels/intro.gd" type="Script" id=1]
 [ext_resource path="res://textures/levels/intro/bg1/l1_background.png" type="Texture" id=2]
@@ -46,11 +46,6 @@ render_priority = 0
 blend_mode = 0
 light_mode = 2
 
-[sub_resource type="RectangleShape2D" id=6]
-
-custom_solver_bias = 0.0
-extents = Vector2( 10, 180 )
-
 [node name="world" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
@@ -60,6 +55,7 @@ _sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
 "decals",
 ]]
 
+editor/display_folded = true
 position = Vector2( 8, 0 )
 input_pickable = false
 collision_layer = 1
@@ -280,21 +276,21 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="player" parent="." index="3" instance=ExtResource( 9 )]
 
-position = Vector2( 467.29, 902.002 )
+position = Vector2( 2013.29, 883.002 )
 scale = Vector2( 0.3, 0.3 )
 _sections_unfolded = [ "Transform", "collision" ]
 
 [node name="minigun_entity" parent="." index="4" instance=ExtResource( 10 )]
 
-position = Vector2( 1075.83, 832.267 )
+position = Vector2( 2889.83, 520.267 )
 
 [node name="ak47_entity" parent="." index="5" instance=ExtResource( 11 )]
 
-position = Vector2( 705.483, 921.451 )
+position = Vector2( 2691.48, 529.451 )
 
 [node name="pistol_entity" parent="." index="6" instance=ExtResource( 12 )]
 
-position = Vector2( 338.68, 861.267 )
+position = Vector2( 2824.68, 763.267 )
 
 [node name="top_left_limit" type="Position2D" parent="." index="7"]
 
@@ -307,11 +303,11 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="bazooka_entity" parent="." index="9" instance=ExtResource( 13 )]
 
-position = Vector2( 1994, 915 )
+position = Vector2( 2614, 767 )
 
 [node name="shortgun" parent="." index="10" instance=ExtResource( 14 )]
 
-position = Vector2( 127, 933.5 )
+position = Vector2( 2487, 531.5 )
 
 [node name="light_occluder_2d" type="LightOccluder2D" parent="." index="11"]
 
@@ -411,7 +407,7 @@ __meta__ = {
 
 [node name="solder" parent="." index="20" instance=ExtResource( 15 )]
 
-position = Vector2( 1674.83, 903.824 )
+position = Vector2( 1308.83, 903.824 )
 scale = Vector2( 0.3, 0.3 )
 collision_mask = 9
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
@@ -435,41 +431,5 @@ timeout = 1.0
 [node name="truck" parent="." index="23" instance=ExtResource( 17 )]
 
 position = Vector2( 2912, 766 )
-
-[node name="area_2d" type="Area2D" parent="." index="24" groups=[
-"ladder",
-]]
-
-position = Vector2( 592, 890 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-
-[node name="collision_shape_2d" type="CollisionShape2D" parent="area_2d" index="0"]
-
-position = Vector2( -9, -55 )
-shape = SubResource( 6 )
-
-[node name="area_2d2" type="Area2D" parent="." index="25" groups=[
-"ladder",
-]]
-
-position = Vector2( 390, 886 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-
-[node name="collision_shape_2d" type="CollisionShape2D" parent="area_2d2" index="0"]
-
-position = Vector2( -9, -55 )
-shape = SubResource( 6 )
 
 

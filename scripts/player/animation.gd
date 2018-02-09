@@ -2,7 +2,7 @@ extends AnimationTreePlayer
 
 const RUN_SPEED = 300
 const GROUND_SCALE_RATE = 1.2
-const CLIMB_SCALE_RATE = 3
+const CLIMB_SCALE_RATE = 2
 const AIM_SPEED = 5
 
 const GROUND_BLEND_NODE = "ground_blend"
@@ -19,6 +19,11 @@ const BAZOOKA_RELOAD_NODE = "bazooka_reload"
 const AIM_SEEK_NODE = "gun_angle"
 const CLIMB_TRANSITION_NODE = "climb_transition"
 const CLIMB_SCALE_NODE = "climb_scale"
+const CLIMB_TOP_SEEK = "climb_top_seek"
+const CLIMB_TOP_BLEND = "climb_top_blend"
+
+const CLIMB_LADDER_TOP_DISTANCE = 80
+const CLIMB_LADDER_BOT_DISTANCE = 50
 
 const SHOTGUN_RELOAD_IN = 0.1
 const SHOTGUN_RELOAD_OUT = 0.1
@@ -66,14 +71,11 @@ var reload_in_time = 1
 var reload_out_timeout = 0
 var reload_out_time = 1
 
-var player
-
-onready var player_hands = get_tree().get_nodes_in_group("player_hand")
+onready var player = get_parent()
 
 var current_hand_type
 
 func _ready():
-    player = get_parent()
     set_active(true)
 
 func _set_state(state):
@@ -111,9 +113,22 @@ func aim(angle, delta):
     current_aim_angle = lerp(current_aim_angle, abs(angle), AIM_SPEED*delta)
     timeseek_node_seek(AIM_SEEK_NODE, abs(angle))
 
-func climb(velocity, delta, MAX_CLIMB_SPEED):
+func climb(velocity, delta, MAX_CLIMB_SPEED, distance):
     if _set_state(STATE.CLIMB):
         transition_node_set_current(STATE_NODE, STATE.CLIMB)
+
+    var seek = null
+    if distance > 0 and abs(distance) < CLIMB_LADDER_TOP_DISTANCE:
+        seek = 50 - abs(distance)/CLIMB_LADDER_TOP_DISTANCE * 50
+    elif distance < 0:
+        distance = clamp(abs(distance), 0, CLIMB_LADDER_BOT_DISTANCE)
+        seek = 50 + distance/CLIMB_LADDER_BOT_DISTANCE * 50
+    if seek:
+        blend2_node_set_amount(CLIMB_TOP_BLEND, 1)
+        timeseek_node_seek(CLIMB_TOP_SEEK, seek)
+    else:
+        blend2_node_set_amount(CLIMB_TOP_BLEND, 0)
+
     timescale_node_set_scale(CLIMB_SCALE_NODE, abs(velocity.y) / MAX_CLIMB_SPEED * CLIMB_SCALE_RATE )
     if velocity.y > 0:
         transition_node_set_current(CLIMB_TRANSITION_NODE, CLIMB_DIRECTION.DOWN)
@@ -127,26 +142,28 @@ func _set_hand_type(hand_type):
 
     current_hand_type = hand_type
 
-    for h in player_hands:
-        h.hide()
+    get_tree().call_group("player_hand", "hide")
 
     if hand_type == HAND_TYPE.CLIMB:
-        player.get_node("base/pelvis/body/sholder_l/forearm_l/hand_l").show()
-        player.get_node("base/pelvis/body/sholder_r/forearm_r/hand_r_minigun").show()
+        get_tree().call_group("player_hand_climb", "show")
     elif hand_type == HAND_TYPE.PISTOL:
-        player.get_node("base/pelvis/body/sholder_r/forearm_r/hand_r_pistol").show()
-        player.get_node("base/pelvis/body/sholder_l/forearm_l/hand_l_pistol").show()
+        get_tree().call_group("player_hand_pistol", "show")
     elif hand_type == HAND_TYPE.MINIGUN:
-        player.get_node("base/pelvis/body/sholder_r/forearm_r/hand_r_minigun").show()
-        player.get_node("base/pelvis/body/sholder_l/forearm_l/hand_l_minigun").show()
+        get_tree().call_group("player_hand_minigun", "show")
     elif hand_type in [HAND_TYPE.SHOTGUN, HAND_TYPE.AK47, HAND_TYPE.BAZOOKA]:
-        player.get_node("base/pelvis/body/sholder_r/forearm_r/hand_r_pistol").show()
-        player.get_node("base/pelvis/body/sholder_l/forearm_l/hand_l_shotgun").show()
+        get_tree().call_group("player_hand_shotgun", "show")
     else:
-        player.get_node("base/pelvis/body/sholder_r/forearm_r/hand_r").show()
-        player.get_node("base/pelvis/body/sholder_l/forearm_l/hand_l").show()
+        get_tree().call_group("player_hand_default", "show")
+
+func _set_gun_position():
+    if player.gun:
+        if current_state == STATE.CLIMB:
+            player.gun.climb_offset()
+        else:
+            player.gun.default_offset()
 
 func _set_hand():
+    _set_gun_position()
     if current_state == STATE.CLIMB:
         _set_hand_type(HAND_TYPE.CLIMB)
     elif player.gun:

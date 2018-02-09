@@ -5,6 +5,7 @@ const SHELL = preload("res://scenes/guns/shells/minigun_shell.tscn")
 const ENTITY = preload("res://scenes/entities/bazooka_entity.tscn")
 const TIMEOUT = 2.5
 const OFFSET = Vector2(-24, -40)
+const CLIMB_OFFSET = Vector2(-24, -40)
 const AIM_NAME = "aim_bazooka"
 const DROP_VELOCITY = Vector2(300,-300)
 const DROP_ANGULAR = 1

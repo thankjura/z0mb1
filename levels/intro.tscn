@@ -51,7 +51,7 @@ light_mode = 2
 custom_solver_bias = 0.0
 extents = Vector2( 10, 180 )
 
-[node name="world" type="Node2D"]
+[node name="world" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
@@ -450,6 +450,24 @@ audio_bus_override = false
 audio_bus_name = "Master"
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="area_2d" index="0"]
+
+position = Vector2( -9, -55 )
+shape = SubResource( 6 )
+
+[node name="area_2d2" type="Area2D" parent="." index="25" groups=[
+"ladder",
+]]
+
+position = Vector2( 390, 886 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="area_2d2" index="0"]
 
 position = Vector2( -9, -55 )
 shape = SubResource( 6 )

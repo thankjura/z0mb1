@@ -98,22 +98,20 @@ func walk(velocity, delta, direction, MAX_SPEED):
     timescale_node_set_scale(GROUND_SCALE_NODE, abs(velocity)*delta*GROUND_SCALE_RATE)
     if _set_state(STATE.GROUND):
         transition_node_set_current(STATE_NODE, STATE.GROUND)
-    if not player.gun:
-        set_hand()
+    _set_hand()
 
 func jump(velocity):
     if velocity.y > 0 and _set_state(STATE.JUMP_DOWN):
         transition_node_set_current(STATE_NODE, STATE.JUMP_DOWN)
     elif velocity.y < 0 and _set_state(STATE.JUMP_UP):
         transition_node_set_current(STATE_NODE, STATE.JUMP_UP)
-    if not player.gun:
-        set_hand()
+    _set_hand()
 
 func aim(angle, delta):
     current_aim_angle = lerp(current_aim_angle, abs(angle), AIM_SPEED*delta)
     timeseek_node_seek(AIM_SEEK_NODE, abs(angle))
 
-func climb(velocity, delta, direction, MAX_CLIMB_SPEED):
+func climb(velocity, delta, MAX_CLIMB_SPEED):
     if _set_state(STATE.CLIMB):
         transition_node_set_current(STATE_NODE, STATE.CLIMB)
     timescale_node_set_scale(CLIMB_SCALE_NODE, abs(velocity.y) / MAX_CLIMB_SPEED * CLIMB_SCALE_RATE )
@@ -121,11 +119,13 @@ func climb(velocity, delta, direction, MAX_CLIMB_SPEED):
         transition_node_set_current(CLIMB_TRANSITION_NODE, CLIMB_DIRECTION.DOWN)
     elif velocity.y < 0:
         transition_node_set_current(CLIMB_TRANSITION_NODE, CLIMB_DIRECTION.UP)
-    set_hand(HAND_TYPE.CLIMB)
+    _set_hand()
 
-func set_hand(hand_type = null):
+func _set_hand_type(hand_type):
     if current_hand_type == hand_type:
         return
+
+    current_hand_type = hand_type
 
     for h in player_hands:
         h.hide()
@@ -146,21 +146,24 @@ func set_hand(hand_type = null):
         player.get_node("base/pelvis/body/sholder_r/forearm_r/hand_r").show()
         player.get_node("base/pelvis/body/sholder_l/forearm_l/hand_l").show()
 
+func _set_hand():
+    if current_state == STATE.CLIMB:
+        _set_hand_type(HAND_TYPE.CLIMB)
+    elif player.gun:
+        if player.gun.AIM_NAME == "aim_pistol":
+            _set_hand_type(HAND_TYPE.PISTOL)
+        elif player.gun.AIM_NAME == "aim_minigun":
+            _set_hand_type(HAND_TYPE.MINIGUN)
+        else:
+            _set_hand_type(HAND_TYPE.SHOTGUN)
+    else:
+        _set_hand_type(HAND_TYPE.DEFAULT)
+
 func set_gun():
-    if player.gun.AIM_NAME == "aim_pistol":
-        set_hand(HAND_TYPE.PISTOL)
-    elif player.gun.AIM_NAME == "aim_minigun":
-        set_hand(HAND_TYPE.MINIGUN)
-    elif player.gun.AIM_NAME == "aim_shotgun":
-        set_hand(HAND_TYPE.SHOTGUN)
-    elif player.gun.AIM_NAME == "aim_ak47":
-        set_hand(HAND_TYPE.AK47)
-    elif player.gun.AIM_NAME == "aim_bazooka":
-        set_hand(HAND_TYPE.BAZOOKA)
     transition_node_set_current(AIM_SWITCH_NODE, AIM[player.gun.AIM_NAME])
 
 func drop_gun():
-    set_hand(HAND_TYPE.DEFAULT)
+    _set_hand()
 
     # Reset animations
     oneshot_node_stop(BAZOOKA_RELOAD_NODE)

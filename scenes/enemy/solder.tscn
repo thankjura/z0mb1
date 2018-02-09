@@ -1616,7 +1616,7 @@ base_path = NodePath("..")
 active = false
 data = {
 "active": false,
-"connections": [ "die_head_on_back", "scale", 0, "die_transition", "out", 0, "aim_anim", "aim", 0, "hit_oneshot", "die_transition", 0, "scale", "die_transition", 1, "scale 2", "die_transition", 2, "ground_blend", "aim_blend", 0, "aim", "aim_blend", 1, "walk", "walk_scale", 0, "head_back", "hit_transition", 0, "hit_head_face", "hit_transition", 1, "anim", "ground_blend", 0, "walk_scale", "ground_blend", 1, "hit_transition", "hit_scale", 0, "aim_blend", "hit_oneshot", 0, "hit_scale", "hit_oneshot", 1, "die_head_on_face", "scale 2", 0 ],
+"connections": [ "die_head_on_back", "scale", 0, "die_transition", "out", 0, "aim_anim", "aim", 0, "head_back", "hit_transition", 0, "hit_head_face", "hit_transition", 1, "anim", "ground_blend", 0, "walk_scale", "ground_blend", 1, "hit_oneshot", "die_transition", 0, "scale", "die_transition", 1, "scale 2", "die_transition", 2, "ground_blend", "aim_blend", 0, "aim", "aim_blend", 1, "walk", "walk_scale", 0, "die_head_on_face", "scale 2", 0, "hit_transition", "hit_scale", 0, "aim_blend", "hit_oneshot", 0, "hit_scale", "hit_oneshot", 1 ],
 "master": NodePath("../animation_player"),
 "nodes": [ {
 "id": "scale",
@@ -1650,28 +1650,11 @@ data = {
 "position": Vector2( 71, 141 ),
 "type": "animation"
 }, {
-"id": "die_transition",
-"position": Vector2( 1375, 11 ),
-"transitions": [ {
-"auto_advance": false
-}, {
-"auto_advance": false
-}, {
-"auto_advance": false
-} ],
-"type": "transition",
-"xfade": 0.0
-}, {
-"blend": 0.0,
-"filter": [ NodePath("base/base/belt:rotation_degrees"), NodePath("collision:position"), NodePath("base:rotation_degrees"), NodePath("base/hip_r:position"), NodePath("base/hip_l/shin_l/foot_l:position"), NodePath("base/base:position"), NodePath("base/base/hip_l/shin_l:rotation_degrees"), NodePath("collision:shape:extents"), NodePath("base/hip_r:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position"), NodePath("base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position"), NodePath("base/base:rotation_degrees"), NodePath("base/hip_r/shin_r:position"), NodePath("base/hip_r/shin_r/foot_r:position"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/hip_l:position"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/base/hip_r:rotation_degrees"), NodePath("base/base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("collision:shape:position"), NodePath("base/hip_r/shin_r:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/hip_l:rotation_degrees"), NodePath("base/base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/body:position"), NodePath("base/base/hip_r/shin_r:rotation_degrees"), NodePath("base/base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/base/hip_l:rotation_degrees"), NodePath("base/body/head:position"), NodePath("base/hip_l/shin_l:position"), NodePath("base:position"), NodePath("base/hip_l/shin_l:rotation_degrees") ],
-"id": "aim_blend",
-"position": Vector2( 804, 5 ),
-"type": "blend2"
-}, {
-"id": "walk_scale",
-"position": Vector2( 374, 96 ),
-"scale": 1.0,
-"type": "timescale"
+"filter": [  ],
+"from": "hit_head_back",
+"id": "head_back",
+"position": Vector2( 527, 273 ),
+"type": "animation"
 }, {
 "id": "hit_transition",
 "position": Vector2( 714, 230 ),
@@ -1689,6 +1672,40 @@ data = {
 "position": Vector2( 567, 5 ),
 "type": "blend2"
 }, {
+"id": "die_transition",
+"position": Vector2( 1375, 11 ),
+"transitions": [ {
+"auto_advance": false
+}, {
+"auto_advance": false
+}, {
+"auto_advance": false
+} ],
+"type": "transition",
+"xfade": 0.0
+}, {
+"blend": 0.0,
+"filter": [ NodePath("base/hip_l/shin_l/foot_l:position"), NodePath("base/hip_r:position"), NodePath("base:rotation_degrees"), NodePath("collision:position"), NodePath("base/base/belt:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position"), NodePath("base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position"), NodePath("base/hip_r:rotation_degrees"), NodePath("collision:shape:extents"), NodePath("base/base/hip_l/shin_l:rotation_degrees"), NodePath("base/base:position"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/hip_l:position"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:position"), NodePath("base/hip_r/shin_r:position"), NodePath("base/base:rotation_degrees"), NodePath("base/hip_l:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/hip_r/shin_r:rotation_degrees"), NodePath("collision:shape:position"), NodePath("base/base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/base/hip_r:rotation_degrees"), NodePath("base/body:position"), NodePath("base/base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/body/head:position"), NodePath("base/base/hip_l:rotation_degrees"), NodePath("base/base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/base/hip_r/shin_r:rotation_degrees"), NodePath("base/hip_l/shin_l:position"), NodePath("base/hip_l/shin_l:rotation_degrees"), NodePath("base:position") ],
+"id": "aim_blend",
+"position": Vector2( 804, 5 ),
+"type": "blend2"
+}, {
+"filter": [  ],
+"from": "hit_head_face",
+"id": "hit_head_face",
+"position": Vector2( 491, 382 ),
+"type": "animation"
+}, {
+"id": "walk_scale",
+"position": Vector2( 374, 96 ),
+"scale": 1.0,
+"type": "timescale"
+}, {
+"id": "scale 2",
+"position": Vector2( 1198, 318 ),
+"scale": 3.0,
+"type": "timescale"
+}, {
 "filter": [  ],
 "from": "aim",
 "id": "aim_anim",
@@ -1705,28 +1722,11 @@ data = {
 "autorestart_random_delay": 0.807843,
 "fade_in": 0.0,
 "fade_out": 0.2,
-"filter": [ NodePath("base/base/body/sholder_r:rotation_degrees"), NodePath("base/base/body/sholder_l/forearm_l:rotation_degrees"), NodePath("base/base/belt:rotation_degrees"), NodePath("collision:position"), NodePath("base:rotation_degrees"), NodePath("base/body/sholder_l:rotation_degrees"), NodePath("base/base:position"), NodePath("base/base/hip_l/shin_l:rotation_degrees"), NodePath("collision:shape:extents"), NodePath("base/hip_r:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/base:rotation_degrees"), NodePath("base/base/body/sholder_l:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/body/sholder_r/forearm_r:rotation_degrees"), NodePath("base/base/hip_r:rotation_degrees"), NodePath("base/base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("collision:shape:position"), NodePath("base/hip_r/shin_r:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/hip_l:rotation_degrees"), NodePath("base/base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/base/body/sholder_r/forearm_r:rotation_degrees"), NodePath("base/base/hip_r/shin_r:rotation_degrees"), NodePath("base/base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/base/hip_l:rotation_degrees"), NodePath("base/body:rotation_degrees"), NodePath("base/body/sholder_r/forearm_r/hand_r:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l/hand_l_pistol:rotation_degrees"), NodePath("base/body/sholder_r:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l:rotation_degrees"), NodePath("base/belt:rotation_degrees"), NodePath("base/base/body:rotation_degrees"), NodePath("base/base/body/sholder_r/forearm_r/hand_r:rotation_degrees"), NodePath("base/base/body/sholder_l/forearm_l/hand_l_pistol:rotation_degrees"), NodePath("base:position"), NodePath("base/hip_l/shin_l:rotation_degrees") ],
+"filter": [ NodePath("base/body/sholder_l:rotation_degrees"), NodePath("base:rotation_degrees"), NodePath("collision:position"), NodePath("base/base/belt:rotation_degrees"), NodePath("base/base/body/sholder_l/forearm_l:rotation_degrees"), NodePath("base/base/body/sholder_r:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/hip_r:rotation_degrees"), NodePath("collision:shape:extents"), NodePath("base/base/hip_l/shin_l:rotation_degrees"), NodePath("base/base:position"), NodePath("base/body/sholder_r/forearm_r:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/base/body/sholder_l:rotation_degrees"), NodePath("base/base:rotation_degrees"), NodePath("base/hip_l:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/hip_r/shin_r:rotation_degrees"), NodePath("collision:shape:position"), NodePath("base/base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/base/hip_r:rotation_degrees"), NodePath("base/base/body/sholder_r/forearm_r:rotation_degrees"), NodePath("base/base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l/hand_l_pistol:rotation_degrees"), NodePath("base/body/sholder_r/forearm_r/hand_r:rotation_degrees"), NodePath("base/body:rotation_degrees"), NodePath("base/base/hip_l:rotation_degrees"), NodePath("base/base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/base/hip_r/shin_r:rotation_degrees"), NodePath("base/belt:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l:rotation_degrees"), NodePath("base/body/sholder_r:rotation_degrees"), NodePath("base/hip_l/shin_l:rotation_degrees"), NodePath("base:position"), NodePath("base/base/body/sholder_l/forearm_l/hand_l_pistol:rotation_degrees"), NodePath("base/base/body/sholder_r/forearm_r/hand_r:rotation_degrees"), NodePath("base/base/body:rotation_degrees") ],
 "id": "hit_oneshot",
 "mix": false,
 "position": Vector2( 1194, 9 ),
 "type": "oneshot"
-}, {
-"id": "scale 2",
-"position": Vector2( 1198, 318 ),
-"scale": 3.0,
-"type": "timescale"
-}, {
-"filter": [  ],
-"from": "hit_head_back",
-"id": "head_back",
-"position": Vector2( 527, 273 ),
-"type": "animation"
-}, {
-"filter": [  ],
-"from": "hit_head_face",
-"id": "hit_head_face",
-"position": Vector2( 491, 382 ),
-"type": "animation"
 }, {
 "filter": [  ],
 "from": "die_head_on_face",

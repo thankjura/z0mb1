@@ -3,7 +3,7 @@ const MAX_FALL_SPEED = 800
 const MAX_JUMP_SPEED = 800
 const INIT_GRAVITY = Vector2(0, 2000)
 const INIT_MAX_SPEED = 400
-const INIT_MAX_CLIMB_SPEED = 400
+const INIT_MAX_CLIMB_SPEED = 200
 
 const JUMP_FORCE = 800
 const ACCELERATION = 20
@@ -31,11 +31,16 @@ var recoil = Vector2(0, 0)
 
 var air_state = false
 var climb_state = false
+var climb_direction = 0
 
 func _init(var player, var anim):
     self.player = player
     self.input = load("res://scripts/input.gd").new()
     self.anim = anim
+
+func set_climb(val = true):
+    climb_state = val
+    climb_direction = sign(velocity.x)
 
 func _recalc_mass():
     if player.gun:
@@ -49,37 +54,32 @@ func _recalc_mass():
 
 func _ground_state(delta, m = Vector2(), direction = 1):
     air_state = false
-    var movement = 0
-    if m.x < 0:
-        movement = -1
-    elif m.x > 0:
-        movement = 1
-    velocity.x = lerp(velocity.x, movement * MAX_SPEED, ACCELERATION*delta)
+    velocity.x = lerp(velocity.x, m.x * MAX_SPEED, ACCELERATION*delta)
     anim.walk(velocity.x, delta, direction, MAX_SPEED)
 
 func _climb_state(delta, m = Vector2()):
     air_state = false
     var movement = 0
-    if m.y < 0:
-        movement = -1
-    elif m.y > 0:
-        movement = 1
-    velocity.y = lerp(velocity.x, movement * MAX_CLIMB_SPEED, ACCELERATION*delta)
-    # TODO: velocity.x to velocity.y
-    if velocity.x > 0:
+    prints(m, climb_direction)
+    if m.y > 0: # press down
+        movement = -max(m.x*climb_direction, m.y)
+    elif m.y < 0: # press up
+        movement = -min(m.x*climb_direction, m.y)
+    else:
+        movement = m.x * climb_direction
+
+    if climb_direction > 0:
         player.get_node("base").set_scale(Vector2(1,1))
-    elif velocity.x < 0:
+
+    elif climb_direction < 0:
         player.get_node("base").set_scale(Vector2(-1,1))
+
+    velocity.y = lerp(velocity.y, -movement * MAX_CLIMB_SPEED, ACCELERATION*delta)
     velocity.x = 0
-    anim.climb(velocity, delta, movement, MAX_CLIMB_SPEED)
+    anim.climb(velocity, delta, MAX_CLIMB_SPEED)
 
 func _air_state(delta, m = Vector2()):
-    var movement = 0
-    if m.x < 0:
-        movement = -1
-    elif m.x > 0:
-        movement = 1
-    movement *= MAX_SPEED
+    var movement = m.x * MAX_SPEED
     velocity.x = lerp(velocity.x + recoil.x, movement, AIR_ACCELERATION*delta)
 
     if velocity.y and air_state:
@@ -102,7 +102,11 @@ func look_default(delta):
         anim.aim(90, delta)
 
 func jump():
-    if jump_count < MAX_JUMP_COUNT:
+    if climb_state:
+        velocity.y -= JUMP_FORCE / 2
+        velocity.x += JUMP_FORCE / 2 * -climb_direction
+        climb_state = false
+    elif jump_count < MAX_JUMP_COUNT:
         jump_count += 1
         velocity.y = -JUMP_FORCE
 

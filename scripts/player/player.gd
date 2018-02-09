@@ -43,13 +43,13 @@ func _area_entered(area):
         areas.append(area)
 
     if area.is_in_group("ladder"):
-        movement.climb_state = true
+        movement.set_climb(true)
 
 func _area_exited(area):
     if area in areas:
         areas.erase(area)
     if area.is_in_group("ladder"):
-        movement.climb_state = false
+        movement.set_climb(false)
 
 func set_gun(gun_class):
     if gun:

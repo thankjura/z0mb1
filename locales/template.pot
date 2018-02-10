@@ -18,3 +18,24 @@ msgstr ""
 
 msgid "CANCEL"
 msgstr ""
+
+msgid "CONTROL"
+msgstr ""
+
+msgid "SOUND"
+msgstr ""
+
+msgid "DISPLAY"
+msgstr ""
+
+msgid "BACK"
+msgstr ""
+
+msgid "MUSIC"
+msgstr ""
+
+msgid "EFFECTS"
+msgstr ""
+
+msgid "SAVE"
+msgstr ""

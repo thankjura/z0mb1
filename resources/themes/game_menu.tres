@@ -80,9 +80,9 @@ _sections_unfolded = [ "Border", "Border Width", "Corner Radius", "Expand Margin
 
 size = 100
 use_mipmaps = false
-use_filter = false
+use_filter = true
 font_data = ExtResource( 3 )
-_sections_unfolded = [ "Font", "Settings" ]
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [resource]
 

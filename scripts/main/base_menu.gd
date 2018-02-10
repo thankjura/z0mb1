@@ -7,7 +7,6 @@ const INIT_ITEM = null
 const PARENT_MENU = "main"
 
 var selected_item
-var global
 var cursor
 
 var old_transform = Rect2()
@@ -19,7 +18,6 @@ var item_velocity = 0
 
 func _ready():
     set_pause_mode(PAUSE_MODE_PROCESS)
-    global = get_node("/root/global")
     ITEMS = get_node("panel/items").get_children()
     for i in ITEMS:
         i.connect("focus_entered", self, "_focus_item", [i])
@@ -39,14 +37,37 @@ func _ready():
 
 func _get_transform():
     var t = selected_item.get_rect()
-    var s = selected_item.get_minimum_size()
-    var begin = Vector2(t.position.x + (t.size.x - s.x) / 2 - MARGIN_H, t.position.y + (t.size.y - s.y) / 2 - MARGIN_V)
+    var s
+    if selected_item is Slider:
+        s = selected_item.get_size()
+    else:
+        s = selected_item.get_minimum_size()
+    var begin
+    var align = "center"
+    if selected_item.has_method("get_align"):
+        if selected_item.get_align() == selected_item.ALIGN_LEFT:
+            align = "left"
+        elif selected_item.get_align() == selected_item.ALIGN_RIGHT:
+            align = "right"
+    elif selected_item.has_method("get_text_align"):
+        if selected_item.get_text_align() == HALIGN_LEFT:
+            align = "left"
+        elif selected_item.get_text_align() == HALIGN_RIGHT:
+            align = "right"
+
+    if align == "left":
+        begin = Vector2(t.position.x - MARGIN_H, t.position.y + (t.size.y - s.y) / 2 - MARGIN_V)
+    elif align == "right":
+        begin = Vector2(t.position.x + t.size.x - s.x - MARGIN_H, t.position.y + (t.size.y - s.y) / 2 - MARGIN_V)
+    else:
+        begin = Vector2(t.position.x + (t.size.x - s.x) / 2 - MARGIN_H, t.position.y + (t.size.y - s.y) / 2 - MARGIN_V)
+
     t.position = begin
     t.size = begin + Vector2(s.x + MARGIN_H*2, s.y + MARGIN_V*2)
     return t
 
 func _focus_item(item):
-    if selected_item != item or true:
+    if selected_item != item:
         selected_item = item
         new_transform = _get_transform()
 

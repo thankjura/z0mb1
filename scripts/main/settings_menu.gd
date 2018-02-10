@@ -5,7 +5,7 @@ func _on_control_pressed():
 
 
 func _on_sound_pressed():
-    pass # replace with function body
+    global.show_menu("sound_settings")
 
 
 func _on_display_pressed():

@@ -14,7 +14,6 @@ const MAX_BOUNCES = 4
 const FLOOR_MAX_ANGLE = 0.8
 const DEFAULT_VECTOR = Vector2(0, -1)
 
-var MOVEMENT_MODE = 1
 var MAX_SPEED = INIT_MAX_SPEED
 var MAX_CLIMB_SPEED = INIT_MAX_CLIMB_SPEED
 var GRAVITY = INIT_GRAVITY
@@ -156,19 +155,7 @@ func process(delta):
         velocity += GRAVITY * delta
 
     var move_vector = input.get_move_vector()
-    var direction = move_vector
-    if MOVEMENT_MODE == 1:
-        if player.gun:
-            direction = (player.get_global_mouse_position() - player.gun.get_node("pos").global_position).normalized()
-            var dist = abs((player.global_position.x - player.get_global_mouse_position().x))
-            if player.get_global_mouse_position().y > player.gun.get_node("pos").global_position.y:
-                if dist < player.gun.ANIM_DEAD_ZONE_BOTTOM:
-                    direction.x = 0
-            else:
-                if dist < player.gun.ANIM_DEAD_ZONE_TOP:
-                    direction.x = 0
-        else:
-            direction = input.get_direction(player)
+    var direction = input.get_direction(player)
 
     if climb_state:
         _climb_state(delta, move_vector)

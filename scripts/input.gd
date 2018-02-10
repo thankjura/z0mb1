@@ -2,6 +2,9 @@ const GAMEPAD_ID = 0
 const DEAD_ZONE_X = 0.1
 const DEAD_ZONE_Y = 0.1
 
+var MOVEMENT_MODE = 1
+#var
+
 func get_move_vector():
     var up = -1 if Input.is_action_pressed("ui_up") else 0
     var down = 1 if Input.is_action_pressed("ui_down") else 0
@@ -20,8 +23,20 @@ func get_move_vector():
 
     return out.normalized()
 
-func get_direction(node):
-    return (node.get_global_mouse_position() - node.global_position)
+func get_direction(player):
+    var direction = Vector2()
+    if player.gun:
+        direction = (player.get_global_mouse_position() - player.gun.get_node("pos").global_position).normalized()
+        var dist = abs((player.global_position.x - player.get_global_mouse_position().x))
+        if player.get_global_mouse_position().y > player.gun.get_node("pos").global_position.y:
+            if dist < player.gun.ANIM_DEAD_ZONE_BOTTOM:
+                direction.x = 0
+        else:
+            if dist < player.gun.ANIM_DEAD_ZONE_TOP:
+                direction.x = 0
+    else:
+        direction = player.get_global_mouse_position() - player.global_position
+    return direction
 
 func vibrate(time, weak=1, strong=1, duration=0.3):
     if Input.is_joy_known(GAMEPAD_ID):

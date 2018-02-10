@@ -1,4 +1,5 @@
 extends "res://scripts/main/base_menu.gd"
+
 const PARENT_MENU = null
 
 func _on_resume_pressed():

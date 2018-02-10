@@ -1,14 +1,18 @@
 extends Node
 
+onready var SETTINGS = preload("res://scripts/settings.gd").new()
+
 var MAIN_SCENE = "res://scenes/main/main.tscn"
 
 var GAME_MENU = preload("res://scenes/main/game_menu.tscn")
 var SETTINGS_MENU = preload("res://scenes/main/settings_menu.tscn")
+var SOUND_SETTINGS = preload("res://scenes/main/sound_settings.tscn")
 var QUIT_CONFIRM = preload("res://scenes/main/quit_confirm.tscn")
 
 var MENU_SCENES = {
     "main": GAME_MENU,
     "settings": SETTINGS_MENU,
+    "sound_settings": SOUND_SETTINGS,
     "quit": QUIT_CONFIRM
 }
 

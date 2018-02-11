@@ -196,7 +196,7 @@ script = ExtResource( 1 )
 
 [node name="shell_gate" type="Position2D" parent="." index="0"]
 
-position = Vector2( -3.97607, -11.9282 )
+position = Vector2( -14.4843, -12.4962 )
 
 [node name="body" type="Sprite" parent="." index="1"]
 
@@ -274,6 +274,7 @@ _sections_unfolded = [ "Transform" ]
 
 stream = ExtResource( 4 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0

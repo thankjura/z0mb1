@@ -6,12 +6,14 @@ const player = preload("res://scripts/player/player.gd")
 
 var show = false
 var fade_timeout = 0
+export var camera_zoom = Vector2(1,1)
 
 func _ready():
     $inner_area.set_collision_layer(constants.AUDIO_AREA_MASK)
     $inner_area.set_collision_mask(constants.PLAYER_LAYER)
     $inner_area.connect("body_entered", self, "_show")
     $inner_area.connect("body_exited", self, "_hide")
+    $inner_area.set_meta("camera_zoom", camera_zoom)
     $static_truck.set_collision_mask(0)
     $static_truck.set_collision_layer(constants.GROUND_LAYER)
 

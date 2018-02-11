@@ -18,8 +18,6 @@ var camera_offset = Vector2()
 
 onready var mouth_node = $base/pelvis/body/head/mouth
 
-var areas = []
-
 func _ready():
     set_collision_layer(constants.PLAYER_LAYER)
     set_collision_mask(constants.PLAYER_MASK)
@@ -39,17 +37,19 @@ func _ready():
     camera_offset = $camera.get_offset()
 
 func _area_entered(area):
-    if not area in areas:
-        areas.append(area)
-
+    print(area)
     if area.is_in_group("ladder"):
         movement.set_ladder(area)
 
+    if area.is_in_group("camera_zoom"):
+        $camera.area_zoom(area)
+
 func _area_exited(area):
-    if area in areas:
-        areas.erase(area)
     if area.is_in_group("ladder"):
         movement.set_ladder(null)
+
+    if area.is_in_group("camera_zoom"):
+        $camera.reset_zoom()
 
 func set_gun(gun_class):
     if gun:

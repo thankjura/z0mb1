@@ -5,7 +5,7 @@
 [ext_resource path="res://resources/themes/game_menu.tres" type="Theme" id=3]
 [ext_resource path="res://resources/themes/game_menu_cursor.tres" type="StyleBox" id=4]
 
-[node name="sound_settings" type="CanvasLayer" index="0"]
+[node name="sound_settings" type="CanvasLayer"]
 
 layer = 1
 offset = Vector2( 0, 0 )

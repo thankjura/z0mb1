@@ -7,42 +7,43 @@
 [ext_resource path="res://textures/levels/intro/truck1/light.png" type="Texture" id=5]
 [ext_resource path="res://textures/levels/intro/truck1/ladder.png" type="Texture" id=6]
 
-[sub_resource type="CanvasItemMaterial" id=2]
+[sub_resource type="CanvasItemMaterial" id=1]
 
 render_priority = 0
 blend_mode = 0
 light_mode = 2
 
-[sub_resource type="OccluderPolygon2D" id=4]
+[sub_resource type="OccluderPolygon2D" id=2]
 
 closed = true
 cull_mode = 0
 polygon = PoolVector2Array( -285.5, -96.5, -284.5, 26.5, 257, 28, 256, -95 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 3, 114 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 408, 10 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 115.75, 9 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 534, 119 )
 
-[node name="truck" type="Node2D"]
+[node name="truck" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
+camera_zoom = Vector2( 0.5, 0.5 )
 
 [node name="sprite" type="Sprite" parent="." index="0"]
 
@@ -64,7 +65,7 @@ _sections_unfolded = [ "Material", "Visibility", "Z Index" ]
 [node name="decal_polygon" type="Polygon2D" parent="sprite" index="1"]
 
 light_mask = 32
-material = SubResource( 2 )
+material = SubResource( 1 )
 z_index = -199
 polygon = PoolVector2Array( -285, -96.5, -284.5, 27.5, 256.5, 27.5, 255.5, -95.5 )
 uv = PoolVector2Array(  )
@@ -117,7 +118,7 @@ _sections_unfolded = [ "Material", "Range", "Shadow", "Visibility", "Z Index" ]
 [node name="light_occluder_2d" type="LightOccluder2D" parent="sprite" index="4"]
 
 light_mask = 1024
-occluder = SubResource( 4 )
+occluder = SubResource( 2 )
 light_mask = 1024
 
 [node name="ladder" type="Sprite" parent="sprite" index="5"]
@@ -146,7 +147,7 @@ audio_bus_name = "Master"
 [node name="collision_shape_2d" type="CollisionShape2D" parent="sprite/ladder/area_2d" index="0"]
 
 position = Vector2( 6, 132 )
-shape = SubResource( 7 )
+shape = SubResource( 3 )
 
 [node name="static_truck" type="StaticBody2D" parent="." index="1"]
 
@@ -167,15 +168,17 @@ polygon = PoolVector2Array( -795, 217, -563, 56.5, 458, 58, 458.5, -197, 530, -1
 [node name="collision_top" type="CollisionShape2D" parent="static_truck" index="1"]
 
 position = Vector2( -151, -189.25 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="collision2" type="CollisionShape2D" parent="static_truck" index="2"]
 
 position = Vector2( 371.75, -190.25 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 one_way_collision = true
 
-[node name="inner_area" type="Area2D" parent="." index="2"]
+[node name="inner_area" type="Area2D" parent="." index="2" groups=[
+"camera_zoom",
+]]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -184,11 +187,11 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = true
 audio_bus_name = "in_truck"
-_sections_unfolded = [ "Audio Bus", "Collision" ]
+_sections_unfolded = [ "Audio Bus", "Collision", "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 
 [node name="collision" type="CollisionShape2D" parent="inner_area" index="0"]
 
 position = Vector2( -25, -65 )
-shape = SubResource( 1 )
+shape = SubResource( 6 )
 
 

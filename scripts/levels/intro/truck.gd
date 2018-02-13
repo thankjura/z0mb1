@@ -6,7 +6,7 @@ const player = preload("res://scripts/player/player.gd")
 
 var show = false
 var fade_timeout = 0
-export(float, 0.1, 2, 0.1) var camera_zoom = 0.7
+export(float, 0.1, 2, 0.1) var camera_zoom = 1.0
 
 func _ready():
     $inner_area.set_collision_layer(constants.AUDIO_AREA_MASK)

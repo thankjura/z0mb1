@@ -46,7 +46,7 @@ render_priority = 0
 blend_mode = 0
 light_mode = 2
 
-[node name="world" type="Node2D"]
+[node name="world" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
@@ -430,7 +430,7 @@ timeout = 1.0
 
 [node name="truck" parent="." index="23" instance=ExtResource( 17 )]
 
-position = Vector2( 2912, 766 )
+position = Vector2( 2910, 761 )
 camera_zoom = 0.7
 
 

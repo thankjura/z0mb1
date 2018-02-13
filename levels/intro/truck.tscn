@@ -39,11 +39,11 @@ extents = Vector2( 115.75, 9 )
 custom_solver_bias = 0.0
 extents = Vector2( 534, 119 )
 
-[node name="truck" type="Node2D" index="0"]
+[node name="truck" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-camera_zoom = 0.7
+camera_zoom = 1.0
 
 [node name="sprite" type="Sprite" parent="." index="0"]
 

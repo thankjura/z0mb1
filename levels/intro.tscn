@@ -431,5 +431,6 @@ timeout = 1.0
 [node name="truck" parent="." index="23" instance=ExtResource( 17 )]
 
 position = Vector2( 2912, 766 )
+camera_zoom = 0.7
 
 

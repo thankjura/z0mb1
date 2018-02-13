@@ -6,7 +6,7 @@ const player = preload("res://scripts/player/player.gd")
 
 var show = false
 var fade_timeout = 0
-export var camera_zoom = Vector2(1,1)
+export(float, 0.1, 2, 0.1) var camera_zoom = 0.7
 
 func _ready():
     $inner_area.set_collision_layer(constants.AUDIO_AREA_MASK)
@@ -16,6 +16,7 @@ func _ready():
     $inner_area.set_meta("camera_zoom", camera_zoom)
     $static_truck.set_collision_mask(0)
     $static_truck.set_collision_layer(constants.GROUND_LAYER)
+    print(camera_zoom)
 
 func _show(body):
     if body is player:

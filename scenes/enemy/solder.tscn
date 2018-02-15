@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scripts/enemy/solder.gd" type="Script" id=1]
 [ext_resource path="res://textures/enemy/solder/base.png" type="Texture" id=2]
@@ -22,8 +22,9 @@
 [ext_resource path="res://textures/enemy/solder/shin_l.png" type="Texture" id=20]
 [ext_resource path="res://textures/enemy/solder/foot_l.png" type="Texture" id=21]
 [ext_resource path="res://textures/enemy/solder/foot_l_toe.png" type="Texture" id=22]
-[ext_resource path="res://sounds/guns/pistol_silenced.wav" type="AudioStream" id=23]
-[ext_resource path="res://scripts/enemy/solder_anim.gd" type="Script" id=24]
+[ext_resource path="res://icon.png" type="Texture" id=23]
+[ext_resource path="res://sounds/guns/pistol_silenced.wav" type="AudioStream" id=24]
+[ext_resource path="res://scripts/enemy/solder_anim.gd" type="Script" id=25]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -886,6 +887,234 @@ tracks/18/keys = {
 "values": [ 0.0, -3.33174, 0.0 ]
 }
 
+[sub_resource type="Animation" id=10]
+
+resource_name = "jump"
+length = 2.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("base/base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -30.7655, -6.77491, -16.8732, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("base/base/hip_l/shin_l/foot_l:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -23.106, -13.2828, -25.4318, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("base/base/hip_l/shin_l:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 107.665, 46.0287, 82.5671, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("base/base/hip_l:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -52.49, -28.2127, -41.7547, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("base/base/body/head:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.22506, -13.5717, -5.08776, 10.8374, 0.870024 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("base/base/hip_r:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 1.7, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0109072, -58.7822, -7.93742, -64.0934, -57.062, 0.0109072 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("base/base/body/sholder_l:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 22.071, 48.9664, 48.9664, 6.40158, 22.071 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("base/base:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("base/base/body/sholder_r:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 6.20583, 31.5005, 31.5005, -41.3392, 6.20583 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("base/base/hip_r/shin_r:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 1.7, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 124.076, 39.8599, 104.82, 92.14, 0.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("base/base/hip_r/shin_r/foot_r:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 1.7, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -10.6028, 22.7681, 22.7681, 13.6609, 0.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("base/base/body:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("base/base/body/sholder_l/forearm_l:rotation_degrees")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -30.4549, -77.1881, -44.6002, -73.0675, -30.4549 ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("base/base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 1.7, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -0.142681, -53.4291, -53.9848, -53.9848, -49.5717, -0.142681 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("base/base/body/sholder_r/forearm_r:rotation_degrees")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -15.844, -106.865, -41.8606, -45.4252, -15.844 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("base/base:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 12 ), Vector2( 0, 46 ), Vector2( 0, 0 ), Vector2( 0, 28 ), Vector2( 0, 0 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("base/base/belt:rotation_degrees")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -8.77356, -8.77356 ]
+}
+tracks/17/type = "method"
+tracks/17/path = NodePath(".")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_start_jump"
+}, {
+"args": [  ],
+"method": "_end_jump"
+} ]
+}
+
 [sub_resource type="Animation" id=8]
 
 length = 2.9
@@ -1292,6 +1521,8 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pickable", "collision" ]
 health = 100
 direction = 0
+current_state = null
+block_behavior = 3
 
 [node name="visibility_notifier" type="VisibilityNotifier2D" parent="." index="0"]
 
@@ -1300,7 +1531,6 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="base" type="Node2D" parent="." index="1"]
 
-editor/display_folded = true
 _sections_unfolded = [ "Transform" ]
 
 [node name="base" type="Sprite" parent="base" index="0"]
@@ -1311,12 +1541,14 @@ _sections_unfolded = [ "Transform" ]
 [node name="belt" type="Sprite" parent="base/base" index="0"]
 
 position = Vector2( 4, -31 )
+rotation = -0.153127
 z_index = 1
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Z Index" ]
 
 [node name="body" type="Sprite" parent="base/base" index="1"]
 
+editor/display_folded = true
 position = Vector2( 4, -32 )
 z_index = -1
 texture = ExtResource( 4 )
@@ -1326,7 +1558,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 [node name="head" type="Sprite" parent="base/base/body" index="0"]
 
 position = Vector2( -22, -177 )
-rotation = 0.0213813
+rotation = 0.0151848
 z_index = 1
 texture = ExtResource( 5 )
 offset = Vector2( 1.858, -60.0824 )
@@ -1370,8 +1602,9 @@ __meta__ = {
 [node name="forearm_l" type="Sprite" parent="base/base/body/sholder_l" index="0"]
 
 show_behind_parent = true
-position = Vector2( 0.625366, 65.8533 )
+position = Vector2( 0.62537, 65.8536 )
 rotation = -0.531538
+scale = Vector2( 1, 1 )
 z_index = -1
 texture = ExtResource( 8 )
 offset = Vector2( 5.01377, 30.6572 )
@@ -1457,7 +1690,7 @@ __meta__ = {
 [node name="forearm_r" type="Sprite" parent="base/base/body/sholder_r" index="0"]
 
 show_behind_parent = true
-position = Vector2( -16.6333, 92.5689 )
+position = Vector2( -16.6333, 92.569 )
 rotation = -0.27653
 texture = ExtResource( 13 )
 offset = Vector2( -1.84066, 39.5057 )
@@ -1492,6 +1725,7 @@ polygon = PoolVector2Array( -38.3316, 20.7048, 32.1015, 13.2096, 39.6661, -27.21
 
 [node name="hip_r" type="Sprite" parent="base/base" index="2"]
 
+editor/display_folded = true
 position = Vector2( -22.002, 6.50195 )
 rotation = 0.000190367
 z_index = 1
@@ -1505,7 +1739,8 @@ __meta__ = {
 
 [node name="shin_r" type="Sprite" parent="base/base/hip_r" index="0"]
 
-position = Vector2( -23.4557, 67.8172 )
+position = Vector2( -23.4559, 67.8178 )
+scale = Vector2( 1, 1 )
 texture = ExtResource( 16 )
 offset = Vector2( -7.99448, 29.0015 )
 _sections_unfolded = [ "Transform" ]
@@ -1515,7 +1750,7 @@ __meta__ = {
 
 [node name="foot_r" type="Sprite" parent="base/base/hip_r/shin_r" index="0"]
 
-position = Vector2( -9.98901, 58.002 )
+position = Vector2( -9.98907, 58.002 )
 texture = ExtResource( 17 )
 offset = Vector2( 11.003, 15.9979 )
 __meta__ = {
@@ -1534,6 +1769,7 @@ __meta__ = {
 
 [node name="hip_l" type="Sprite" parent="base/base" index="3"]
 
+editor/display_folded = true
 position = Vector2( 30, 4 )
 z_index = -1
 texture = ExtResource( 19 )
@@ -1546,7 +1782,8 @@ __meta__ = {
 
 [node name="shin_l" type="Sprite" parent="base/base/hip_l" index="0"]
 
-position = Vector2( 11, 74.0003 )
+position = Vector2( 11, 74.0004 )
+scale = Vector2( 1, 1 )
 texture = ExtResource( 20 )
 offset = Vector2( 1, 28 )
 _sections_unfolded = [ "Transform" ]
@@ -1556,7 +1793,8 @@ __meta__ = {
 
 [node name="foot_l" type="Sprite" parent="base/base/hip_l/shin_l" index="0"]
 
-position = Vector2( 2.99994, 57 )
+position = Vector2( 2.99995, 57 )
+scale = Vector2( 1, 1 )
 texture = ExtResource( 21 )
 offset = Vector2( 9.75, 16 )
 __meta__ = {
@@ -1573,6 +1811,30 @@ __meta__ = {
 "_edit_bone_": true
 }
 
+[node name="ray_cast_bottom" type="RayCast2D" parent="base/base" index="4"]
+
+position = Vector2( 0, 143 )
+rotation = -1.5708
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, 500 )
+collision_mask = 1
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="sprite" type="Sprite" parent="base/base/ray_cast_bottom" index="0"]
+
+position = Vector2( 3.99998, 470 )
+texture = ExtResource( 23 )
+
+[node name="ray_cast_height" type="RayCast2D" parent="base/base" index="5"]
+
+position = Vector2( 500, -300 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, 443 )
+collision_mask = 1
+_sections_unfolded = [ "Transform" ]
+
 [node name="collision" type="CollisionShape2D" parent="." index="2"]
 
 position = Vector2( 10, 106 )
@@ -1582,7 +1844,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="audio_fire" type="AudioStreamPlayer2D" parent="." index="3"]
 
-stream = ExtResource( 23 )
+stream = ExtResource( 24 )
 volume_db = -20.0
 pitch_scale = 1.0
 autoplay = false
@@ -1604,6 +1866,7 @@ anims/die_head_on_face = SubResource( 4 )
 anims/hit_head_back = SubResource( 5 )
 anims/hit_head_face = SubResource( 6 )
 anims/idle = SubResource( 7 )
+anims/jump = SubResource( 10 )
 anims/walk = SubResource( 8 )
 anims/walk_reverse = SubResource( 9 )
 blend_times = [  ]
@@ -1616,11 +1879,11 @@ base_path = NodePath("..")
 active = false
 data = {
 "active": false,
-"connections": [ "die_head_on_back", "scale", 0, "die_transition", "out", 0, "aim_anim", "aim", 0, "ground_blend", "aim_blend", 0, "aim", "aim_blend", 1, "anim", "ground_blend", 0, "walk_scale", "ground_blend", 1, "hit_transition", "hit_scale", 0, "aim_blend", "hit_oneshot", 0, "hit_scale", "hit_oneshot", 1, "walk", "walk_scale", 0, "die_head_on_face", "scale 2", 0, "head_back", "hit_transition", 0, "hit_head_face", "hit_transition", 1, "hit_oneshot", "die_transition", 0, "scale", "die_transition", 1, "scale 2", "die_transition", 2 ],
+"connections": [ "die_head_on_back", "scale", 0, "die_transition", "out", 0, "aim_anim", "aim", 0, "ground_blend", "aim_blend", 0, "aim", "aim_blend", 1, "anim", "ground_blend", 0, "walk_scale", "ground_blend", 1, "jump_oneshot", "hit_oneshot", 0, "hit_scale", "hit_oneshot", 1, "walk", "walk_scale", 0, "hit_oneshot", "die_transition", 0, "scale", "die_transition", 1, "scale 2", "die_transition", 2, "head_back", "hit_transition", 0, "hit_head_face", "hit_transition", 1, "die_head_on_face", "scale 2", 0, "hit_transition", "hit_scale", 0, "aim_blend", "jump_oneshot", 0, "jump_scale", "jump_oneshot", 1, "anim_jump", "jump_scale", 0 ],
 "master": NodePath("../animation_player"),
 "nodes": [ {
 "id": "scale",
-"position": Vector2( 1199, 169 ),
+"position": Vector2( 1473, 187 ),
 "scale": 3.0,
 "type": "timescale"
 }, {
@@ -1631,7 +1894,7 @@ data = {
 "type": "animation"
 }, {
 "id": "out",
-"position": Vector2( 1540, 5 ),
+"position": Vector2( 1813, 5 ),
 "type": "output"
 }, {
 "filter": [  ],
@@ -1656,10 +1919,11 @@ data = {
 "position": Vector2( 567, 5 ),
 "type": "blend2"
 }, {
-"id": "hit_scale",
-"position": Vector2( 885, 145 ),
-"scale": 3.0,
-"type": "timescale"
+"filter": [  ],
+"from": "hit_head_back",
+"id": "head_back",
+"position": Vector2( 857, 287 ),
+"type": "animation"
 }, {
 "autorestart": false,
 "autorestart_delay": 0.0,
@@ -1669,40 +1933,19 @@ data = {
 "filter": [ NodePath("base/body/sholder_l:rotation_degrees"), NodePath("base:rotation_degrees"), NodePath("collision:position"), NodePath("base/base/belt:rotation_degrees"), NodePath("base/base/body/sholder_l/forearm_l:rotation_degrees"), NodePath("base/base/body/sholder_r:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/hip_r:rotation_degrees"), NodePath("collision:shape:extents"), NodePath("base/base/hip_l/shin_l:rotation_degrees"), NodePath("base/base:position"), NodePath("base/body/sholder_r/forearm_r:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/base/body/sholder_l:rotation_degrees"), NodePath("base/base:rotation_degrees"), NodePath("base/hip_l:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/hip_r/shin_r:rotation_degrees"), NodePath("collision:shape:position"), NodePath("base/base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/base/hip_r:rotation_degrees"), NodePath("base/base/body/sholder_r/forearm_r:rotation_degrees"), NodePath("base/base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l/hand_l_pistol:rotation_degrees"), NodePath("base/body/sholder_r/forearm_r/hand_r:rotation_degrees"), NodePath("base/body:rotation_degrees"), NodePath("base/base/hip_l:rotation_degrees"), NodePath("base/base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/base/hip_r/shin_r:rotation_degrees"), NodePath("base/belt:rotation_degrees"), NodePath("base/body/sholder_l/forearm_l:rotation_degrees"), NodePath("base/body/sholder_r:rotation_degrees"), NodePath("base/hip_l/shin_l:rotation_degrees"), NodePath("base:position"), NodePath("base/base/body/sholder_l/forearm_l/hand_l_pistol:rotation_degrees"), NodePath("base/base/body/sholder_r/forearm_r/hand_r:rotation_degrees"), NodePath("base/base/body:rotation_degrees") ],
 "id": "hit_oneshot",
 "mix": false,
-"position": Vector2( 1194, 9 ),
+"position": Vector2( 1431, 5 ),
 "type": "oneshot"
+}, {
+"filter": [  ],
+"from": "die_head_on_face",
+"id": "die_head_on_face",
+"position": Vector2( 1275, 440 ),
+"type": "animation"
 }, {
 "id": "walk_scale",
 "position": Vector2( 374, 96 ),
 "scale": 1.0,
 "type": "timescale"
-}, {
-"id": "scale 2",
-"position": Vector2( 1198, 318 ),
-"scale": 3.0,
-"type": "timescale"
-}, {
-"filter": [  ],
-"from": "die_head_on_back",
-"id": "die_head_on_back",
-"position": Vector2( 996, 239 ),
-"type": "animation"
-}, {
-"filter": [  ],
-"from": "hit_head_back",
-"id": "head_back",
-"position": Vector2( 527, 273 ),
-"type": "animation"
-}, {
-"id": "hit_transition",
-"position": Vector2( 714, 230 ),
-"transitions": [ {
-"auto_advance": false
-}, {
-"auto_advance": false
-} ],
-"type": "transition",
-"xfade": 0.0
 }, {
 "filter": [  ],
 "from": "aim",
@@ -1711,7 +1954,7 @@ data = {
 "type": "animation"
 }, {
 "id": "die_transition",
-"position": Vector2( 1375, 11 ),
+"position": Vector2( 1643, 5 ),
 "transitions": [ {
 "auto_advance": false
 }, {
@@ -1722,20 +1965,62 @@ data = {
 "type": "transition",
 "xfade": 0.0
 }, {
+"id": "hit_transition",
+"position": Vector2( 1068, 219 ),
+"transitions": [ {
+"auto_advance": false
+}, {
+"auto_advance": false
+} ],
+"type": "transition",
+"xfade": 0.0
+}, {
 "filter": [  ],
-"from": "die_head_on_face",
-"id": "die_head_on_face",
-"position": Vector2( 1002, 360 ),
+"from": "die_head_on_back",
+"id": "die_head_on_back",
+"position": Vector2( 1268, 303 ),
 "type": "animation"
+}, {
+"id": "scale 2",
+"position": Vector2( 1495, 368 ),
+"scale": 3.0,
+"type": "timescale"
+}, {
+"id": "hit_scale",
+"position": Vector2( 1266, 167 ),
+"scale": 3.0,
+"type": "timescale"
 }, {
 "filter": [  ],
 "from": "hit_head_face",
 "id": "hit_head_face",
-"position": Vector2( 491, 382 ),
+"position": Vector2( 851, 417 ),
 "type": "animation"
+}, {
+"autorestart": false,
+"autorestart_delay": 0.0,
+"autorestart_random_delay": 0.0,
+"fade_in": 0.1,
+"fade_out": 0.1,
+"filter": [  ],
+"id": "jump_oneshot",
+"mix": false,
+"position": Vector2( 1072, 6 ),
+"type": "oneshot"
+}, {
+"filter": [  ],
+"from": "jump",
+"id": "anim_jump",
+"position": Vector2( 688, 285 ),
+"type": "animation"
+}, {
+"id": "jump_scale",
+"position": Vector2( 855, 158 ),
+"scale": 3.0,
+"type": "timescale"
 } ]
 }
-script = ExtResource( 24 )
+script = ExtResource( 25 )
 _sections_unfolded = [ "Pause", "Playback" ]
 
 

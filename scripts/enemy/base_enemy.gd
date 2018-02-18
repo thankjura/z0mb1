@@ -17,12 +17,6 @@ func _ready():
     set_collision_mask(constants.ENEMY_MASK)
     set_collision_layer(constants.ENEMY_LAYER)
 
-func _get_player_direction():
-    if player.global_position.x > global_position.x:
-        return 1
-    else:
-        return -1
-
 func is_back():
     return $base.scale.x == -1
 
@@ -52,7 +46,7 @@ func _physics_process(delta):
 
     velocity = move_and_slide(velocity + recoil, FLOOR_NORMAL)
     velocity -= recoil
-    var new_recoil = recoil.linear_interpolate(Vector2(), 20*delta)
+    var new_recoil = recoil.linear_interpolate(Vector2(), 10*delta)
     if sign(recoil.x) != sign(new_recoil.x):
         new_recoil.x = 0
     if sign(recoil.y) != sign(new_recoil.y):

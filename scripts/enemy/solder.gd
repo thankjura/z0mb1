@@ -1,13 +1,13 @@
 extends "res://scripts/enemy/base_enemy.gd"
 
-const ATTACK_DISTANCE = 1000
+const ATTACK_DISTANCE = 800
 const ATTACK_DAMAGE = 30
 const BACKSLIDE_DISTANCE = 50
 
 const MAX_SPEED = 100
 const MAX_RUN_SPEED = 150
 const MAX_JUMP = 600
-const ACCELERATION = 20
+const ACCELERATION = 10
 const AIM_TIME = 3
 
 const DEFAULT_VECTOR = Vector2(0, -1)
@@ -41,6 +41,7 @@ var next_state
 var next_direction
 var switch_state_timeout = 0
 var jump_vector = Vector2()
+var aim_timeout = 0
 
 func _ready():
     $base/base/body/body_area.set_collision_layer(constants.ENEMY_DAMAGE_LAYER)
@@ -83,6 +84,9 @@ func _set_direction(new_direction):
             $base.set_scale(Vector2(-1,1))
         elif direction == 1:
             $base.set_scale(Vector2(1,1))
+
+func _get_direction():
+    return $base.scale.x
 
 func _set_init_direction(new_direction):
     direction = new_direction - 1
@@ -146,13 +150,36 @@ func _process(delta):
             current_state = next_state
             _set_direction(next_direction)
 
+    var d
+    if player.global_position.x > global_position.x:
+        if $base.scale.x == 1:
+            d = player.global_position.x - global_position.x
+    else:
+        if $base.scale.x == -1:
+            d = global_position.x - player.global_position.x
+
+    if d and abs(d) < ATTACK_DISTANCE:
+        if current_state != STATE.AIM:
+            current_state = STATE.AIM
+            next_state = STATE.WALK
+            aim_timeout = AIM_TIME
+            $anim.idle()
+        switch_state_timeout = AIM_TIME
+
+    if current_state == STATE.AIM:
+        if aim_timeout <= 0:
+            _fire()
+            aim_timeout = AIM_TIME
+        else:
+            aim_timeout -= delta
+
     if current_state == STATE.JUMP and is_on_floor() and velocity.y == 0:
         current_state = STATE.IDLE
         next_state = STATE.WALK
         switch_state_timeout = 0.2
         $anim.play_jump()
 
-    if is_on_floor() and (ray_bottom.is_colliding() or ray_middle.is_colliding()) and current_state == STATE.WALK:
+    if current_state == STATE.WALK and is_on_floor() and (ray_bottom.is_colliding() or ray_middle.is_colliding()):
         var p = ray_height.get_collision_point()
         var h = ray_height.cast_to.y - (p.y - ray_height.global_position.y)
         if h < MAX_JUMP:
@@ -164,17 +191,18 @@ func _physics_process(delta):
     if dead:
         return
 
-    if current_state == STATE.IDLE:
-        velocity.x = lerp(velocity.x, 0, ACCELERATION*delta)
-    elif current_state == STATE.WALK:
+    if current_state == STATE.WALK:
         velocity.x = lerp(velocity.x, MAX_SPEED * direction, ACCELERATION*delta)
-    elif current_state == STATE.PRE_JUMP:
-        velocity.x = lerp(velocity.x, 0, ACCELERATION*delta)
     elif current_state == STATE.JUMP:
         velocity.x = lerp(velocity.x, jump_vector.x, ACCELERATION*delta)
+    else:
+        velocity.x = lerp(velocity.x, 0, ACCELERATION*delta)
 
-    if is_on_floor():
-        if velocity.x:
-            $anim.walk(abs(velocity.x)*delta*1.2)
-        else:
-            $anim.idle()
+    if current_state == STATE.AIM:
+        _aim(delta)
+    else:
+        if is_on_floor():
+            if velocity.x:
+                $anim.walk(abs(velocity.x)*delta*1.2)
+            else:
+                $anim.idle()

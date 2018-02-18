@@ -280,7 +280,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="player" parent="." index="3" instance=ExtResource( 9 )]
 
-position = Vector2( 1587.29, 901.002 )
+position = Vector2( 1101.29, 806.002 )
 scale = Vector2( 0.3, 0.3 )
 _sections_unfolded = [ "Transform", "collision" ]
 
@@ -416,6 +416,7 @@ scale = Vector2( 0.3, 0.3 )
 collision_mask = 9
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
 health = 500
+direction = 2
 current_state = 1
 
 [node name="change_direction" parent="." index="21" instance=ExtResource( 16 )]

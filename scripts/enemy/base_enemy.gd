@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const constants = preload("res://scripts/constants.gd")
-const GRAVITY = Vector2(0, 2000)
+const GRAVITY = 2000
 const MAX_FALL_SPEED = 800
 const FLOOR_NORMAL = Vector2(0, -1)
 
@@ -43,7 +43,10 @@ func _process(delta):
         die()
 
 func _physics_process(delta):
-    velocity += GRAVITY * delta
+    if dead:
+        velocity.x = lerp(velocity.x, 0, delta*20)
+
+    velocity.y += GRAVITY * delta
     if velocity.y > MAX_FALL_SPEED:
         velocity.y = MAX_FALL_SPEED
 

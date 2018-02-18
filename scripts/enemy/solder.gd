@@ -6,7 +6,7 @@ const BACKSLIDE_DISTANCE = 50
 
 const MAX_SPEED = 100
 const MAX_RUN_SPEED = 150
-const MAX_JUMP = 400
+const MAX_JUMP = 600
 const ACCELERATION = 20
 const AIM_TIME = 3
 
@@ -21,21 +21,26 @@ const HEAD_STRENGTH = 100
 enum STATE {
     IDLE,
     WALK,
+    AIM,
     RELOCATE,
+    PRE_JUMP,
     JUMP
 }
 
 onready var bullet_spawn = get_node("base/base/body/sholder_l/forearm_l/hand_l_pistol/pistol/bullet_spawn")
 onready var world = get_tree().get_root().get_node("world")
 onready var ray_bottom = get_node("base/base/ray_cast_bottom")
+onready var ray_middle = get_node("base/base/ray_cast_middle")
 onready var ray_height = get_node("base/base/ray_cast_height")
 
 export(int, "left", "stay", "right") var direction = 0 setget _set_init_direction
 
-export(STATE) var current_state
+export(STATE) var current_state = STATE.WALK
+
 var next_state
+var next_direction
 var switch_state_timeout = 0
-export(STATE) var block_behavior = STATE.IDLE
+var jump_vector = Vector2()
 
 func _ready():
     $base/base/body/body_area.set_collision_layer(constants.ENEMY_DAMAGE_LAYER)
@@ -49,8 +54,9 @@ func _ready():
     if direction != $base.scale.x:
         direction = -direction
         _set_direction(-direction)
-        
-    next_state = STATE.WALK
+        next_direction = direction
+
+    next_state = current_state
 
 func _body_hit(obj):
     if obj.has_method("damage"):
@@ -95,7 +101,7 @@ func _fire():
     $audio_fire.play()
 
 func _aim(delta):
-    var v = (player.get_node("aim").global_position -  bullet_spawn.global_position).normalized()
+    var v = (player.get_node("aim").global_position - bullet_spawn.global_position).normalized()
     var a = $anim.aim(rad2deg(DEFAULT_VECTOR.angle_to(v)), delta)
     if a > 0 and a < 180:
         _set_direction(1)
@@ -105,7 +111,7 @@ func _aim(delta):
 func change_direction(t, new_direction):
     current_state = STATE.IDLE
     switch_state_timeout = t
-    _set_direction(new_direction)
+    next_direction = new_direction
 
 func die():
     .die()
@@ -113,40 +119,62 @@ func die():
     $base/base/body/head/head_area.disconnect("body_entered", self, "_head_hit")
     $anim.die()
 
+func _init_jump(height):
+    switch_state_timeout = 10
+    current_state = STATE.PRE_JUMP
+    next_state = STATE.PRE_JUMP
+    jump_vector = Vector2(200*direction, -height * 1.8)
+    $anim.init_jump()
+
+func _start_jump():
+    $anim.pause_jump()
+    velocity += jump_vector
+    current_state = STATE.JUMP
+    next_state = STATE.WALK
+
+func _end_jump():
+    switch_state_timeout = 0
+    next_state = STATE.WALK
+
 func _process(delta):
     if dead:
         return
-        
+
     if current_state != next_state:
         switch_state_timeout -= delta
         if switch_state_timeout < 0:
             current_state = next_state
-        
+            _set_direction(next_direction)
+
+    if current_state == STATE.JUMP and is_on_floor() and velocity.y == 0:
+        current_state = STATE.IDLE
+        next_state = STATE.WALK
+        switch_state_timeout = 0.2
+        $anim.play_jump()
+
+    if is_on_floor() and (ray_bottom.is_colliding() or ray_middle.is_colliding()) and current_state == STATE.WALK:
+        var p = ray_height.get_collision_point()
+        var h = ray_height.cast_to.y - (p.y - ray_height.global_position.y)
+        if h < MAX_JUMP:
+            _init_jump(h)
+        else:
+            change_direction(1, -direction)
 
 func _physics_process(delta):
     if dead:
         return
 
-    if ray_bottom.is_colliding():        
-        if block_behavior == STATE.IDLE:
-            next_state = STATE.IDLE            
-        elif block_behavior == STATE.JUMP:
-            var p = ray_height.get_collision_point()
-            var h = ray_height.cast_to.y - (p.y - ray_height.global_position.y)
-            if h < MAX_JUMP:
-                switch_state_timeout = 2
-                current_state = STATE.IDLE
-                next_state = STATE.JUMP
-            else:
-                change_direction(1, -direction)
-        
-
     if current_state == STATE.IDLE:
         velocity.x = lerp(velocity.x, 0, ACCELERATION*delta)
     elif current_state == STATE.WALK:
         velocity.x = lerp(velocity.x, MAX_SPEED * direction, ACCELERATION*delta)
+    elif current_state == STATE.PRE_JUMP:
+        velocity.x = lerp(velocity.x, 0, ACCELERATION*delta)
+    elif current_state == STATE.JUMP:
+        velocity.x = lerp(velocity.x, jump_vector.x, ACCELERATION*delta)
 
-    if velocity.x:
-        $anim.walk(abs(velocity.x)*delta*1.2)
-    else:
-        $anim.idle()
+    if is_on_floor():
+        if velocity.x:
+            $anim.walk(abs(velocity.x)*delta*1.2)
+        else:
+            $anim.idle()

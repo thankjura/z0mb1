@@ -59,6 +59,7 @@ __meta__ = {
 "decals",
 ]]
 
+editor/display_folded = true
 position = Vector2( 8, 0 )
 input_pickable = false
 collision_layer = 1
@@ -115,6 +116,7 @@ shape = SubResource( 2 )
 
 [node name="parallax_background" type="ParallaxBackground" parent="." index="1"]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -278,7 +280,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="player" parent="." index="3" instance=ExtResource( 9 )]
 
-position = Vector2( 2013.29, 883.002 )
+position = Vector2( 1587.29, 901.002 )
 scale = Vector2( 0.3, 0.3 )
 _sections_unfolded = [ "Transform", "collision" ]
 
@@ -409,7 +411,7 @@ __meta__ = {
 
 [node name="solder" parent="." index="20" instance=ExtResource( 15 )]
 
-position = Vector2( 1394.83, 902.824 )
+position = Vector2( 1428.83, 906.824 )
 scale = Vector2( 0.3, 0.3 )
 collision_mask = 9
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
@@ -418,14 +420,14 @@ current_state = 1
 
 [node name="change_direction" parent="." index="21" instance=ExtResource( 16 )]
 
-position = Vector2( 784, 874.25 )
+position = Vector2( 823, 869.25 )
 scale = Vector2( 1, 2.74219 )
 direction = 1
 timeout = 1.0
 
 [node name="change_direction2" parent="." index="22" instance=ExtResource( 16 )]
 
-position = Vector2( 2113, 880.25 )
+position = Vector2( 1986, 880.25 )
 scale = Vector2( 1, 2.74219 )
 direction = 0
 timeout = 1.0

@@ -7,6 +7,8 @@ const AIM_BLEND_NODE = "aim_blend"
 const DIE_TRANSITION_NODE = "die_transition"
 const HIT_ONESHOT_NODE = "hit_oneshot"
 const HIT_TRANSITION_NODE = "hit_transition"
+const JUMP_ONESHOT = "jump_oneshot"
+const JUMP_SCALE = "jump_scale"
 
 const AIM_SPEED = 6
 const DEFAULT_VECTOR = Vector2(0, -1)
@@ -91,6 +93,16 @@ func hit_head(vector):
 
 func hit_body(vector):
     last_hit_vector = vector
+
+func init_jump():
+    timescale_node_set_scale(JUMP_SCALE, 2)
+    oneshot_node_start(JUMP_ONESHOT)
+
+func pause_jump():
+    timescale_node_set_scale(JUMP_SCALE, 0)
+
+func play_jump():
+    timescale_node_set_scale(JUMP_SCALE, 3)
 
 func _process(delta):
     if set_aim_timeout > 0:

@@ -16,7 +16,6 @@ func _ready():
     $inner_area.set_meta("camera_zoom", camera_zoom)
     $static_truck.set_collision_mask(0)
     $static_truck.set_collision_layer(constants.GROUND_LAYER)
-    print(camera_zoom)
 
 func _show(body):
     if body is player:

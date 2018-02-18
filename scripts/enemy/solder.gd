@@ -106,11 +106,7 @@ func _fire():
 
 func _aim(delta):
     var v = (player.get_node("aim").global_position - bullet_spawn.global_position).normalized()
-    var a = $anim.aim(rad2deg(DEFAULT_VECTOR.angle_to(v)), delta)
-    if a > 0 and a < 180:
-        _set_direction(1)
-    elif a > -180 and a < 0:
-        _set_direction(-1)
+    var a = $anim.aim(rad2deg(DEFAULT_VECTOR.angle_to(v)), delta)    
 
 func change_direction(t, new_direction):
     current_state = STATE.IDLE
@@ -199,6 +195,10 @@ func _physics_process(delta):
         velocity.x = lerp(velocity.x, 0, ACCELERATION*delta)
 
     if current_state == STATE.AIM:
+        if player.global_position.x > global_position.x:
+            _set_direction(1)
+        else:
+            _set_direction(0)        
         _aim(delta)
     else:
         if is_on_floor():

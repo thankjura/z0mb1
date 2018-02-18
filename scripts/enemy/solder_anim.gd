@@ -13,10 +13,7 @@ const JUMP_SCALE = "jump_scale"
 const AIM_SPEED = 6
 const DEFAULT_VECTOR = Vector2(0, -1)
 
-# timeouts consts
-const SET_AIM_TIME = 0.3
-
-enum ACTIONS {
+enum STATE {
     IDLE,
     WALK,
     DIE,
@@ -33,20 +30,17 @@ enum HIT_ANIMS {
     HEAD_BACK,
     HEAD_FACE
 }
-var current_aim_angle = 90
-var current_action = ACTIONS.IDLE
+var current_aim_angle = -90
+var current_state = STATE.IDLE
 var last_hit_vector = Vector2()
 var aim_enabled = false
-
-# timeouts
-var set_aim_timeout = 0
 
 func _ready():
     set_active(true)
 
-func _set_action(action_id):
-    if current_action != action_id:
-        current_action = action_id
+func _set_state(state_id):
+    if current_state != state_id:
+        current_state = state_id
         return true
     return false
 
@@ -55,26 +49,21 @@ func walk(scale = 1):
         idle()
     else:
         _set_aim(false)
-        if _set_action(ACTIONS.WALK):
+        if _set_state(STATE.WALK):
             blend2_node_set_amount(GROUND_BLEND_NODE, 1)
         timescale_node_set_scale(WALK_SCALE_NODE, scale)
 
 func idle():
     _set_aim(false)
-    if _set_action(ACTIONS.IDLE):
+    if _set_state(STATE.IDLE):
         blend2_node_set_amount(GROUND_BLEND_NODE, 0)
 
 func aim(aim_angle, delta):
     _set_aim(true)
     current_aim_angle = lerp(current_aim_angle, aim_angle, AIM_SPEED*delta)
     timeseek_node_seek(AIM_SEEK_NODE, abs(current_aim_angle))
-    return current_aim_angle
 
 func _set_aim(state):
-    if state and not aim_enabled:
-        set_aim_timeout = SET_AIM_TIME
-    elif not state and aim_enabled:
-        set_aim_timeout = SET_AIM_TIME - set_aim_timeout
     aim_enabled = state
 
 func die():
@@ -105,16 +94,7 @@ func play_jump():
     timescale_node_set_scale(JUMP_SCALE, 3)
 
 func _process(delta):
-    if set_aim_timeout > 0:
-        set_aim_timeout -= delta
-        if set_aim_timeout < 0:
-            set_aim_timeout = 0
-        if aim_enabled:
-            blend2_node_set_amount(AIM_BLEND_NODE, (set_aim_timeout/SET_AIM_TIME))
-        else:
-            blend2_node_set_amount(AIM_BLEND_NODE, (1 - set_aim_timeout/SET_AIM_TIME))
+    if aim_enabled:
+        blend2_node_set_amount(AIM_BLEND_NODE, 1)
     else:
-        if aim_enabled:
-            blend2_node_set_amount(AIM_BLEND_NODE, 1)
-        else:
-            blend2_node_set_amount(AIM_BLEND_NODE, 0)
+        blend2_node_set_amount(AIM_BLEND_NODE, 0)

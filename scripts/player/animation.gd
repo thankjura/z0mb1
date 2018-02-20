@@ -4,11 +4,14 @@ const RUN_SPEED = 300
 const GROUND_SCALE_RATE = 1.2
 const CLIMB_SCALE_RATE = 2
 const AIM_SPEED = 5
+const FLOOR_RATIO_TIME = 0.1
 
 const GROUND_BLEND_NODE = "ground_blend"
 const WALK_BLEND_NODE = "walk_blend"
 const GROUND_SCALE_NODE = "ground_scale"
 const WALK_DIRECTION_NODE = "walk_direction"
+const WALK_ANGLE_BLEND = "walk_angle"
+const RUN_ANGLE_BLEND = "run_angle"
 const RUN_DIRECTION_NODE = "run_direction"
 const STATE_NODE = "ground_air_transition"
 const AIM_BLEND_NODE = "aim_blend"
@@ -21,6 +24,7 @@ const CLIMB_TRANSITION_NODE = "climb_transition"
 const CLIMB_SCALE_NODE = "climb_scale"
 const CLIMB_TOP_SEEK = "climb_top_seek"
 const CLIMB_TOP_BLEND = "climb_top_blend"
+const IDLE_CLIMB_BLEND = "blend_idle_floor_angle"
 
 const CLIMB_LADDER_TOP_DISTANCE = 80
 const CLIMB_LADDER_BOT_DISTANCE = 50
@@ -74,15 +78,27 @@ var reload_out_time = 1
 onready var player = get_parent()
 
 var current_hand_type
+var floor_ratio = 0
+var new_floor_ratio = floor_ratio
+var floor_ratio_timeout = 0
+var player_direction = 1
 
 func _ready():
     set_active(true)
+    blend3_node_set_amount(IDLE_CLIMB_BLEND, 0)
+    blend3_node_set_amount(WALK_ANGLE_BLEND, 0)
+    blend3_node_set_amount(RUN_ANGLE_BLEND, 0)
 
 func _set_state(state):
     if current_state != state:
         current_state = state
         return true
     return false
+
+func set_floor_ratio(ratio):
+    if new_floor_ratio != ratio:
+        new_floor_ratio = ratio
+        floor_ratio_timeout = FLOOR_RATIO_TIME
 
 func walk(velocity, delta, direction, MAX_SPEED):
     if sign(velocity) * direction > 0:
@@ -95,8 +111,8 @@ func walk(velocity, delta, direction, MAX_SPEED):
         blend2_node_set_amount(WALK_BLEND_NODE, 1)
     else:
         blend2_node_set_amount(WALK_BLEND_NODE, 0)
-
-    blend2_node_set_amount(GROUND_BLEND_NODE, abs(velocity / MAX_SPEED))
+    
+    blend2_node_set_amount(GROUND_BLEND_NODE, clamp(abs(velocity / MAX_SPEED), 0, 1))
     timescale_node_set_scale(GROUND_SCALE_NODE, abs(velocity)*delta*GROUND_SCALE_RATE)
     if _set_state(STATE.GROUND):
         transition_node_set_current(STATE_NODE, STATE.GROUND)
@@ -135,6 +151,14 @@ func climb(velocity, delta, MAX_CLIMB_SPEED, distance):
     elif velocity.y < 0:
         transition_node_set_current(CLIMB_TRANSITION_NODE, CLIMB_DIRECTION.UP)
     _set_hand()
+
+func set_player_direction(d):
+    if player_direction != d:
+        player_direction = d
+        var v = blend3_node_get_amount(IDLE_CLIMB_BLEND);
+        prints(d, v)
+        blend3_node_set_amount(IDLE_CLIMB_BLEND, -v)
+        print("set ", -v)
 
 func _set_hand_type(hand_type):
     if current_hand_type == hand_type:
@@ -214,6 +238,17 @@ func _process(delta):
         reload_out_timeout -= delta
         if reload_out_timeout <= 0:
             blend2_node_set_amount(SHOTGUN_RELOAD_NODE, 0)
+
+    if floor_ratio != new_floor_ratio:
+        floor_ratio_timeout -= delta
+        if floor_ratio_timeout <= 0:
+            floor_ratio = new_floor_ratio
+        else:
+            floor_ratio += ((new_floor_ratio - floor_ratio)/FLOOR_RATIO_TIME)*delta
+            floor_ratio = clamp(floor_ratio, -1, 1)
+        blend3_node_set_amount(WALK_ANGLE_BLEND, floor_ratio)
+        blend3_node_set_amount(RUN_ANGLE_BLEND, floor_ratio)        
+        blend3_node_set_amount(IDLE_CLIMB_BLEND, floor_ratio)
 
     if player.gun and current_state != STATE.CLIMB:
         blend2_node_set_amount(AIM_BLEND_NODE, 1)

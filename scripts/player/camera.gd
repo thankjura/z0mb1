@@ -24,7 +24,7 @@ func reset_zoom():
     new_zoom = INIT_ZOOM
     
 func shuffle_camera(force, fade_out_time=0.1):
-    shuffle = force*[-1,1][randi()%2]
+    shuffle = force*pow((new_zoom.y/INIT_ZOOM.y), 2)
     set_offset(Vector2(camera_offset.x, camera_offset.y + shuffle))
     shuffle_timeout = fade_out_time
 
@@ -39,6 +39,6 @@ func _process(delta):
         else:
             shuffle_time += delta
             if shuffle_time > 0.1:
-                shuffle *= SHUFFLE_FORCE * (new_zoom.y/INIT_ZOOM.y)
+                shuffle *= SHUFFLE_FORCE
                 set_offset(Vector2(camera_offset.x, camera_offset.y + shuffle))
                 shuffle_time = 0

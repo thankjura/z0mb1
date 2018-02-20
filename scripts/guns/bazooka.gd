@@ -1,7 +1,6 @@
 extends "res://scripts/guns/base.gd"
 
 const BULLET = preload("res://scenes/guns/bullets/bazooka_rocket.tscn")
-const SHELL = preload("res://scenes/guns/shells/minigun_shell.tscn")
 const ENTITY = preload("res://scenes/entities/bazooka_entity.tscn")
 const TIMEOUT = 2.5
 const OFFSET = Vector2(-24, -40)

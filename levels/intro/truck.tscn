@@ -163,7 +163,7 @@ bounce = 0.0
 
 position = Vector2( 10, 0 )
 build_mode = 0
-polygon = PoolVector2Array( -795, 217, -563, 56.5, 458, 58, 458.5, -197, 530, -196, 534, -96, 602, -100, 716, -96, 738, -74, 749, -65, 768, -6.5, 776, 92.5, 777, 153.5, 653.5, 216.5 )
+polygon = PoolVector2Array( -796, 219, -565, 58, 458, 58, 458.5, -197, 530, -196, 534, -96, 602, -100, 716, -96, 738, -74, 749, -65, 768, -6.5, 776, 92.5, 777, 153.5, 653.5, 216.5 )
 
 [node name="collision_top" type="CollisionShape2D" parent="static_truck" index="1"]
 

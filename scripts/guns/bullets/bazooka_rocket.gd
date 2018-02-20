@@ -52,7 +52,7 @@ func _deactivate():
     for body in $dead_zone.get_overlapping_bodies():
         _damage(body)
     timer = 4
-    get_node("/root/world/player").shuffle_camera(20, 1)
+    get_node("/root/world/player").shuffle_camera(30, 1)
 
 func local_dump(v):
     local_dump_vector = v

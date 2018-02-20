@@ -1,22 +1,23 @@
 const MAX_JUMP_COUNT = 2
 const MAX_FALL_SPEED = 800
+const GRAVITY = Vector2(0, 2000)
 const MAX_JUMP_SPEED = 800
-const INIT_GRAVITY = Vector2(0, 2000)
+const INIT_JUMP_FORCE = 800
 const INIT_MAX_SPEED = 400
 const INIT_MAX_CLIMB_SPEED = 200
 
-const JUMP_FORCE = 800
 const ACCELERATION = 10
 const AIR_ACCELERATION = 10
 const FLOOR_NORMAL = Vector2(0, -1)
-const SLOPE_FRICTION = 5
+const SLOPE_FRICTION = 3
 const MAX_BOUNCES = 4
 const FLOOR_MAX_ANGLE = 0.8
 const DEFAULT_VECTOR = Vector2(0, -1)
 
 var MAX_SPEED = INIT_MAX_SPEED
 var MAX_CLIMB_SPEED = INIT_MAX_CLIMB_SPEED
-var GRAVITY = INIT_GRAVITY
+var JUMP_FORCE = INIT_JUMP_FORCE
+
 const RECOIL_DEACCELERATION = 20
 
 var input
@@ -50,18 +51,23 @@ func _recalc_mass():
     if player.gun:
         MAX_SPEED = INIT_MAX_SPEED - INIT_MAX_SPEED * player.gun.HEAVINES
         MAX_CLIMB_SPEED = INIT_MAX_CLIMB_SPEED - INIT_MAX_CLIMB_SPEED * player.gun.HEAVINES
-        GRAVITY = INIT_GRAVITY + INIT_GRAVITY * player.gun.HEAVINES
+        JUMP_FORCE = INIT_JUMP_FORCE - INIT_JUMP_FORCE * pow(player.gun.HEAVINES, 2)
     else:
         MAX_SPEED = INIT_MAX_SPEED
         MAX_CLIMB_SPEED = INIT_MAX_CLIMB_SPEED
-        GRAVITY = INIT_GRAVITY
+        JUMP_FORCE = INIT_JUMP_FORCE
 
-func _ground_state(delta, m = Vector2()):
+func _ground_state(delta, m = Vector2(), floor_ratio = null):
     air_state = false
-    jump_count = 0
+    jump_count = 0    
     velocity.x = lerp(velocity.x, m.x * MAX_SPEED, ACCELERATION*delta)
+    print(velocity.length())
+    var v = velocity.length() * sign(velocity.x)
+    
     var direction = -1 if is_back() else 1
-    anim.walk(velocity.x, delta, direction, MAX_SPEED)
+    if floor_ratio != null:
+        anim.set_floor_ratio(-floor_ratio*2*direction)
+    anim.walk(v, delta, direction, MAX_SPEED)
 
 func _climb_state(delta, m = Vector2()):
     air_state = false
@@ -85,10 +91,10 @@ func _climb_state(delta, m = Vector2()):
         return
 
     if climb_ladder_direction > 0:
-        player.get_node("base").set_scale(Vector2(1,1))
+        _set_player_direction(1)
 
     elif climb_ladder_direction < 0:
-        player.get_node("base").set_scale(Vector2(-1,1))
+        _set_player_direction(-1)
 
     velocity.y = lerp(velocity.y, -movement * MAX_CLIMB_SPEED, ACCELERATION*delta)
     velocity.x = 0
@@ -109,9 +115,13 @@ func _look(rad, delta):
         anim.aim(deg, delta)
 
     if deg > 0 and deg < 180:
-        player.get_node("base").set_scale(Vector2(1,1))
+        _set_player_direction(1)
     elif deg > -180 and deg < 0:
-        player.get_node("base").set_scale(Vector2(-1, 1))
+        _set_player_direction(-1)
+
+func _set_player_direction(d):
+    player.get_node("base").set_scale(Vector2(d,1))
+    anim.set_player_direction(d)
 
 func look_default(delta):
     if player.gun:
@@ -150,10 +160,18 @@ func get_ratio_x():
 func get_ratio_y():
     return abs(velocity.y)/MAX_CLIMB_SPEED
 
-func process(delta):
-    if not climb_state:
-        velocity += GRAVITY * delta
-
+func process(delta):   
+    var ratio = null
+    if not climb_state:        
+        if player.get_slide_count() > 0:
+            var c = player.get_slide_collision(0)
+            var a = FLOOR_NORMAL.angle_to(c.normal)
+            if abs(a) < FLOOR_MAX_ANGLE:
+                ratio = a/(PI/2)
+        if ratio != null and ratio < 0:
+            velocity += GRAVITY * delta * (1 + ratio)
+        else:
+            velocity += GRAVITY * delta
     var move_vector = input.get_move_vector()
     var direction = input.get_direction(player)
 
@@ -161,7 +179,7 @@ func process(delta):
         _climb_state(delta, move_vector)
     else:
         if player.is_on_floor():
-            _ground_state(delta, move_vector)
+            _ground_state(delta, move_vector, ratio)
             if abs(velocity.x) > MAX_SPEED:
                 velocity.x = sign(velocity.x) * MAX_SPEED
         else:
@@ -180,7 +198,7 @@ func process(delta):
         if velocity.y > MAX_FALL_SPEED:
             velocity.y = MAX_FALL_SPEED
 
-    velocity = player.move_and_slide(velocity + recoil, FLOOR_NORMAL, SLOPE_FRICTION, MAX_BOUNCES, FLOOR_MAX_ANGLE)
+    velocity = player.move_and_slide(velocity + recoil, FLOOR_NORMAL, true, SLOPE_FRICTION, MAX_BOUNCES, FLOOR_MAX_ANGLE)    
     velocity -= recoil
     var new_recoil = recoil.linear_interpolate(Vector2(), RECOIL_DEACCELERATION*delta)
     if sign(recoil.x) != sign(new_recoil.x):

@@ -55,8 +55,8 @@ func _ready():
     if direction != $base.scale.x:
         direction = -direction
         _set_direction(-direction)
-        next_direction = direction
-
+    
+    next_direction = direction
     next_state = current_state
 
 func _body_hit(obj):
@@ -198,7 +198,7 @@ func _physics_process(delta):
         if player.global_position.x > global_position.x:
             _set_direction(1)
         else:
-            _set_direction(0)        
+            _set_direction(-1)
         _aim(delta)
     else:
         if is_on_floor():

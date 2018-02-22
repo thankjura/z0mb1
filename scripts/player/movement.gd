@@ -61,12 +61,13 @@ func _ground_state(delta, m = Vector2(), floor_ratio = null):
     air_state = false
     jump_count = 0    
     velocity.x = lerp(velocity.x, m.x * MAX_SPEED, ACCELERATION*delta)
-    print(velocity.length())
-    var v = velocity.length() * sign(velocity.x)
+    var v = 0
+    if abs(velocity.x) > 0.1:
+        v = velocity.length() * sign(velocity.x)
     
     var direction = -1 if is_back() else 1
     if floor_ratio != null:
-        anim.set_floor_ratio(-floor_ratio*2*direction)
+        anim.set_floor_ratio(floor_ratio*2, direction)
     anim.walk(v, delta, direction, MAX_SPEED)
 
 func _climb_state(delta, m = Vector2()):
@@ -166,8 +167,8 @@ func process(delta):
         if player.get_slide_count() > 0:
             var c = player.get_slide_collision(0)
             var a = FLOOR_NORMAL.angle_to(c.normal)
-            if abs(a) < FLOOR_MAX_ANGLE:
-                ratio = a/(PI/2)
+            if abs(a) < FLOOR_MAX_ANGLE:                
+                ratio = a/anim.ANIM_CLIMB_ANGLE
         if ratio != null and ratio < 0:
             velocity += GRAVITY * delta * (1 + ratio)
         else:

@@ -5,13 +5,17 @@ const GROUND_SCALE_RATE = 1.2
 const CLIMB_SCALE_RATE = 2
 const AIM_SPEED = 5
 const FLOOR_RATIO_TIME = 0.1
+const ANIM_CLIMB_ANGLE = 0.68
+
 
 const GROUND_BLEND_NODE = "ground_blend"
 const WALK_BLEND_NODE = "walk_blend"
 const GROUND_SCALE_NODE = "ground_scale"
 const WALK_DIRECTION_NODE = "walk_direction"
 const WALK_ANGLE_BLEND = "walk_angle"
+const WALK_ANGLE_REVERSE_BLEND = "walk_angle_reverse"
 const RUN_ANGLE_BLEND = "run_angle"
+const RUN_ANGLE_REVERSE_BLEND = "run_angle_reverse"
 const RUN_DIRECTION_NODE = "run_direction"
 const STATE_NODE = "ground_air_transition"
 const AIM_BLEND_NODE = "aim_blend"
@@ -87,7 +91,9 @@ func _ready():
     set_active(true)
     blend3_node_set_amount(IDLE_CLIMB_BLEND, 0)
     blend3_node_set_amount(WALK_ANGLE_BLEND, 0)
+    blend3_node_set_amount(WALK_ANGLE_REVERSE_BLEND, 0)
     blend3_node_set_amount(RUN_ANGLE_BLEND, 0)
+    blend3_node_set_amount(RUN_ANGLE_REVERSE_BLEND, 0)
 
 func _set_state(state):
     if current_state != state:
@@ -95,10 +101,12 @@ func _set_state(state):
         return true
     return false
 
-func set_floor_ratio(ratio):
+func set_floor_ratio(ratio, direction):       
+    if player_direction != direction:
+        player_direction = direction
+    
     if new_floor_ratio != ratio:
-        new_floor_ratio = ratio
-        floor_ratio_timeout = FLOOR_RATIO_TIME
+        new_floor_ratio = ratio    
 
 func walk(velocity, delta, direction, MAX_SPEED):
     if sign(velocity) * direction > 0:
@@ -152,13 +160,10 @@ func climb(velocity, delta, MAX_CLIMB_SPEED, distance):
         transition_node_set_current(CLIMB_TRANSITION_NODE, CLIMB_DIRECTION.UP)
     _set_hand()
 
-func set_player_direction(d):
+func set_player_direction(d):    
     if player_direction != d:
         player_direction = d
-        var v = blend3_node_get_amount(IDLE_CLIMB_BLEND);
-        prints(d, v)
-        blend3_node_set_amount(IDLE_CLIMB_BLEND, -v)
-        print("set ", -v)
+        floor_ratio = 0
 
 func _set_hand_type(hand_type):
     if current_hand_type == hand_type:
@@ -245,10 +250,14 @@ func _process(delta):
             floor_ratio = new_floor_ratio
         else:
             floor_ratio += ((new_floor_ratio - floor_ratio)/FLOOR_RATIO_TIME)*delta
-            floor_ratio = clamp(floor_ratio, -1, 1)
-        blend3_node_set_amount(WALK_ANGLE_BLEND, floor_ratio)
-        blend3_node_set_amount(RUN_ANGLE_BLEND, floor_ratio)        
-        blend3_node_set_amount(IDLE_CLIMB_BLEND, floor_ratio)
+        
+        floor_ratio = clamp(floor_ratio, -1, 1)
+        var r = -floor_ratio * player_direction
+        blend3_node_set_amount(WALK_ANGLE_BLEND, r)
+        blend3_node_set_amount(WALK_ANGLE_REVERSE_BLEND, r)
+        blend3_node_set_amount(RUN_ANGLE_BLEND, r)
+        blend3_node_set_amount(RUN_ANGLE_REVERSE_BLEND, r)
+        blend3_node_set_amount(IDLE_CLIMB_BLEND, r)
 
     if player.gun and current_state != STATE.CLIMB:
         blend2_node_set_amount(AIM_BLEND_NODE, 1)

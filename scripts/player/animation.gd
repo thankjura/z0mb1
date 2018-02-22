@@ -101,7 +101,10 @@ func _set_state(state):
         return true
     return false
 
-func set_floor_ratio(ratio, direction):       
+func set_floor_ratio(ratio, direction):  
+    if abs(ratio) < 0.2:
+        ratio = 0
+         
     if player_direction != direction:
         player_direction = direction
     
@@ -110,11 +113,12 @@ func set_floor_ratio(ratio, direction):
 
 func walk(velocity, delta, direction, MAX_SPEED):
     if sign(velocity) * direction > 0:
-        blend2_node_set_amount(WALK_DIRECTION_NODE, 0)
-        blend2_node_set_amount(RUN_DIRECTION_NODE, 0)
+        transition_node_set_current(WALK_DIRECTION_NODE, 0)
+        transition_node_set_current(RUN_DIRECTION_NODE, 0)
     else:
-        blend2_node_set_amount(WALK_DIRECTION_NODE, 1)
-        blend2_node_set_amount(RUN_DIRECTION_NODE, 1)
+        transition_node_set_current(WALK_DIRECTION_NODE, 1)
+        transition_node_set_current(RUN_DIRECTION_NODE, 1)
+        
     if abs(velocity) >= RUN_SPEED:
         blend2_node_set_amount(WALK_BLEND_NODE, 1)
     else:

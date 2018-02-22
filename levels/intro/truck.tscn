@@ -158,21 +158,22 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="collision" type="CollisionPolygon2D" parent="static_truck" index="0"]
 
 position = Vector2( 10, 0 )
 build_mode = 0
-polygon = PoolVector2Array( -796, 219, -565, 58, 458, 58, 458.5, -197, 530, -196, 534, -96, 602, -100, 716, -96, 738, -74, 749, -65, 768, -6.5, 776, 92.5, 777, 153.5, 653.5, 216.5 )
+polygon = PoolVector2Array( -787, 216, -562, 57.5, -403, 57.5, 458, 58, 460, -193, 529.5, -193, 534, -96, 602, -100, 716, -96, 738, -74, 749, -65, 768, -6.5, 776, 92.5, 777, 153.5, 653.5, 216.5 )
 
 [node name="collision_top" type="CollisionShape2D" parent="static_truck" index="1"]
 
-position = Vector2( -151, -189.25 )
+position = Vector2( -150.5, -182.75 )
 shape = SubResource( 4 )
 
 [node name="collision2" type="CollisionShape2D" parent="static_truck" index="2"]
 
-position = Vector2( 371.75, -190.25 )
+position = Vector2( 371.25, -185.25 )
 shape = SubResource( 5 )
 one_way_collision = true
 
@@ -188,10 +189,17 @@ angular_damp = 1.0
 audio_bus_override = true
 audio_bus_name = "in_truck"
 _sections_unfolded = [ "Audio Bus", "Collision", "Material", "Pause", "Transform", "Visibility", "Z Index" ]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="collision" type="CollisionShape2D" parent="inner_area" index="0"]
 
 position = Vector2( -25, -65 )
 shape = SubResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 

@@ -31,7 +31,6 @@ func _ready():
     _update_health(INIT_HEALTH)
 
 func _area_entered(area):
-    print(area)
     if area.is_in_group("ladder"):
         movement.set_ladder(area)
 

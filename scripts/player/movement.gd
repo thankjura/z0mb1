@@ -1,15 +1,16 @@
 const MAX_JUMP_COUNT = 2
 const MAX_FALL_SPEED = 800
-const GRAVITY = Vector2(0, 2000)
+const GRAVITY = 2000
 const MAX_JUMP_SPEED = 800
 const INIT_JUMP_FORCE = 800
 const INIT_MAX_SPEED = 400
 const INIT_MAX_CLIMB_SPEED = 200
+const INIT_ACCELERATION = 10
 
-const ACCELERATION = 10
+var ACCELERATION = INIT_ACCELERATION
 const AIR_ACCELERATION = 10
 const FLOOR_NORMAL = Vector2(0, -1)
-const SLOPE_FRICTION = 3
+const SLOPE_FRICTION = 5
 const MAX_BOUNCES = 4
 const FLOOR_MAX_ANGLE = 0.8
 const DEFAULT_VECTOR = Vector2(0, -1)
@@ -52,10 +53,12 @@ func _recalc_mass():
         MAX_SPEED = INIT_MAX_SPEED - INIT_MAX_SPEED * player.gun.HEAVINES
         MAX_CLIMB_SPEED = INIT_MAX_CLIMB_SPEED - INIT_MAX_CLIMB_SPEED * player.gun.HEAVINES
         JUMP_FORCE = INIT_JUMP_FORCE - INIT_JUMP_FORCE * pow(player.gun.HEAVINES, 2)
+        ACCELERATION = INIT_ACCELERATION + ACCELERATION * player.gun.HEAVINES
     else:
         MAX_SPEED = INIT_MAX_SPEED
         MAX_CLIMB_SPEED = INIT_MAX_CLIMB_SPEED
         JUMP_FORCE = INIT_JUMP_FORCE
+        ACCELERATION = INIT_ACCELERATION
 
 func _ground_state(delta, m = Vector2(), floor_ratio = null):
     air_state = false
@@ -148,7 +151,7 @@ func drop_gun():
 func gun_recoil(recoil_vector):
     var new_recoil = recoil_vector
 
-    if -new_recoil.y < GRAVITY.y:
+    if -new_recoil.y < GRAVITY:
         new_recoil.y = 0
     recoil += new_recoil
 
@@ -161,7 +164,7 @@ func get_ratio_x():
 func get_ratio_y():
     return abs(velocity.y)/MAX_CLIMB_SPEED
 
-func process(delta):   
+func process(delta):
     var ratio = null
     if not climb_state:        
         if player.get_slide_count() > 0:
@@ -169,10 +172,10 @@ func process(delta):
             var a = FLOOR_NORMAL.angle_to(c.normal)
             if abs(a) < FLOOR_MAX_ANGLE:                
                 ratio = a/anim.ANIM_CLIMB_ANGLE
-        if ratio != null and ratio < 0:
-            velocity += GRAVITY * delta * (1 + ratio)
+        if ratio != null and ratio < 0 and velocity.x > 0.001:
+            velocity.y += (GRAVITY + (GRAVITY * ratio)) * delta
         else:
-            velocity += GRAVITY * delta
+            velocity.y += GRAVITY * delta
     var move_vector = input.get_move_vector()
     var direction = input.get_direction(player)
 
@@ -193,13 +196,9 @@ func process(delta):
         else:
             look_default(delta)
 
-        if -velocity.y > MAX_JUMP_SPEED:
-            velocity.y = -MAX_JUMP_SPEED
+        velocity.y = clamp(velocity.y, -MAX_JUMP_SPEED, MAX_FALL_SPEED)        
 
-        if velocity.y > MAX_FALL_SPEED:
-            velocity.y = MAX_FALL_SPEED
-
-    velocity = player.move_and_slide(velocity + recoil, FLOOR_NORMAL, true, SLOPE_FRICTION, MAX_BOUNCES, FLOOR_MAX_ANGLE)    
+    velocity = player.move_and_slide(velocity + recoil, FLOOR_NORMAL, true, SLOPE_FRICTION, MAX_BOUNCES, FLOOR_MAX_ANGLE)
     velocity -= recoil
     var new_recoil = recoil.linear_interpolate(Vector2(), RECOIL_DEACCELERATION*delta)
     if sign(recoil.x) != sign(new_recoil.x):

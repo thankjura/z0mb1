@@ -14,8 +14,6 @@ const GROUND_SCALE_NODE = "ground_scale"
 const WALK_DIRECTION_NODE = "walk_direction"
 const WALK_ANGLE_BLEND = "walk_angle"
 const WALK_ANGLE_REVERSE_BLEND = "walk_angle_reverse"
-const RUN_ANGLE_BLEND = "run_angle"
-const RUN_ANGLE_REVERSE_BLEND = "run_angle_reverse"
 const RUN_DIRECTION_NODE = "run_direction"
 const STATE_NODE = "ground_air_transition"
 const AIM_BLEND_NODE = "aim_blend"
@@ -92,8 +90,6 @@ func _ready():
     blend3_node_set_amount(IDLE_CLIMB_BLEND, 0)
     blend3_node_set_amount(WALK_ANGLE_BLEND, 0)
     blend3_node_set_amount(WALK_ANGLE_REVERSE_BLEND, 0)
-    blend3_node_set_amount(RUN_ANGLE_BLEND, 0)
-    blend3_node_set_amount(RUN_ANGLE_REVERSE_BLEND, 0)
 
 func _set_state(state):
     if current_state != state:
@@ -119,10 +115,10 @@ func walk(velocity, delta, direction, MAX_SPEED):
         transition_node_set_current(WALK_DIRECTION_NODE, 1)
         transition_node_set_current(RUN_DIRECTION_NODE, 1)
         
-    if abs(velocity) >= RUN_SPEED:
-        blend2_node_set_amount(WALK_BLEND_NODE, 1)
+    if abs(velocity) >= RUN_SPEED and abs(floor_ratio) < 0.1:
+        transition_node_set_current(WALK_BLEND_NODE, 1)
     else:
-        blend2_node_set_amount(WALK_BLEND_NODE, 0)
+        transition_node_set_current(WALK_BLEND_NODE, 0)
     
     blend2_node_set_amount(GROUND_BLEND_NODE, clamp(abs(velocity / MAX_SPEED), 0, 1))
     timescale_node_set_scale(GROUND_SCALE_NODE, abs(velocity)*delta*GROUND_SCALE_RATE)
@@ -259,8 +255,6 @@ func _process(delta):
         var r = -floor_ratio * player_direction
         blend3_node_set_amount(WALK_ANGLE_BLEND, r)
         blend3_node_set_amount(WALK_ANGLE_REVERSE_BLEND, r)
-        blend3_node_set_amount(RUN_ANGLE_BLEND, r)
-        blend3_node_set_amount(RUN_ANGLE_REVERSE_BLEND, r)
         blend3_node_set_amount(IDLE_CLIMB_BLEND, r)
 
     if player.gun and current_state != STATE.CLIMB:

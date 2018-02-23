@@ -7,6 +7,7 @@ var loader = null
 var stages_count = 0
 var confirm = true
 var scene_unloading = false
+var scene_reload = false
 
 func _ready():
     $color_rect.hide()
@@ -15,29 +16,44 @@ func _ready():
     $progress.hide()
 
 func change_scene(path, confirm=true):
-    self.confirm = confirm
-    scene_unloading = true
+    self.confirm = confirm  
+    _start()  
+    if get_tree().get_current_scene().get_filename() != path:
+        loader = ResourceLoader.load_interactive(path)
+        stages_count = loader.get_stage_count()
+
+func _start():
     $color_rect.show()
-    loader = ResourceLoader.load_interactive(path)
-    stages_count = loader.get_stage_count() # WTF
     set_layer(128)
     $anim.play(ANIM_FADE_IN)
 
+func _end():
+    get_tree().set_pause(false)
+    $anim.play(ANIM_FADE_OUT)
+
 func _end_animation(anim_name):
-    if anim_name == ANIM_FADE_IN and loader:
-        $progress.show()
-        get_tree().queue_delete(get_tree().get_current_scene())
-        scene_unloading = true
+    if anim_name == ANIM_FADE_IN:
+        if loader:
+            $progress.show()
+            get_tree().queue_delete(get_tree().get_current_scene())
+            scene_unloading = true
+        else:
+            var z = get_tree().reload_current_scene()
+            _after_scene_loading()
 
     elif anim_name == ANIM_FADE_OUT:
-        _finish()
+        set_layer(-1)
+        $color_rect.hide()
+        $button.hide()        
 
-func _finish():
-    set_layer(-1)
-    $color_rect.hide()
-    $button.hide()
-    get_tree().set_pause(false)
-
+func _after_scene_loading():
+    if confirm:
+        get_tree().set_pause(true)
+        $button.show()
+        $button.grab_focus()
+    else:
+        _end()
+    
 func _process(delta):
     if loader:
         if stages_count and $progress.is_visible():
@@ -50,14 +66,7 @@ func _process(delta):
                 loader = null
                 stages_count = 0
                 $progress.hide()
-                if confirm:
-                    get_tree().set_pause(true)
-                    $button.show()
-                    $button.grab_focus()
-                else:
-                    _finish()
+                _after_scene_loading()
 
 func _on_button_pressed():
-    $button.hide()
-    get_tree().set_pause(false)
-    $anim.play(ANIM_FADE_OUT)
+    _end()

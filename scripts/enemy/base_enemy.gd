@@ -4,6 +4,7 @@ const constants = preload("res://scripts/constants.gd")
 const GRAVITY = 2000
 const MAX_FALL_SPEED = 800
 const FLOOR_NORMAL = Vector2(0, -1)
+const SLOPE_FRICTION = 10
 
 onready var player = get_parent().get_node("player")
 
@@ -44,7 +45,7 @@ func _physics_process(delta):
     if velocity.y > MAX_FALL_SPEED:
         velocity.y = MAX_FALL_SPEED
 
-    velocity = move_and_slide(velocity + recoil, FLOOR_NORMAL)
+    velocity = move_and_slide(velocity + recoil, FLOOR_NORMAL, false, SLOPE_FRICTION)
     velocity -= recoil
     var new_recoil = recoil.linear_interpolate(Vector2(), 10*delta)
     if sign(recoil.x) != sign(new_recoil.x):

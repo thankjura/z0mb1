@@ -32,7 +32,7 @@ extents = Vector2( 408, 10 )
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
-extents = Vector2( 115.75, 9 )
+extents = Vector2( 105.5, 10.25 )
 
 [sub_resource type="RectangleShape2D" id=6]
 
@@ -83,6 +83,7 @@ _sections_unfolded = [ "Material", "Visibility", "Z Index" ]
 
 [node name="front" type="Sprite" parent="sprite" index="2"]
 
+visible = false
 light_mask = 0
 position = Vector2( -13.75, -29.75 )
 texture = ExtResource( 4 )
@@ -158,7 +159,7 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-_sections_unfolded = [ "Transform", "Z Index" ]
+_sections_unfolded = [ "Collision", "Transform", "Z Index" ]
 
 [node name="collision" type="CollisionPolygon2D" parent="static_truck" index="0"]
 
@@ -173,9 +174,10 @@ shape = SubResource( 4 )
 
 [node name="collision2" type="CollisionShape2D" parent="static_truck" index="2"]
 
-position = Vector2( 371.25, -185.25 )
+position = Vector2( 363.25, -182.5 )
 shape = SubResource( 5 )
 one_way_collision = true
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="inner_area" type="Area2D" parent="." index="2" groups=[
 "camera_zoom",

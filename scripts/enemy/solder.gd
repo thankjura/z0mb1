@@ -28,10 +28,11 @@ enum STATE {
 }
 
 onready var bullet_spawn = get_node("base/base/body/sholder_l/forearm_l/hand_l_pistol/pistol/bullet_spawn")
-onready var world = get_tree().get_root().get_node("world")
+onready var world = get_tree().get_current_scene()
 onready var ray_bottom = get_node("base/base/ray_cast_bottom")
 onready var ray_middle = get_node("base/base/ray_cast_middle")
 onready var ray_height = get_node("base/base/ray_cast_height")
+onready var eyes = get_node("base/base/ray_cast_eyes")
 
 export(int, "left", "stay", "right") var direction = 0 setget _set_init_direction
 
@@ -48,7 +49,8 @@ func _ready():
     $base/base/body/body_area.set_collision_mask(constants.ENEMY_DAMAGE_MASK)
     $base/base/body/head/head_area.set_collision_layer(constants.ENEMY_DAMAGE_LAYER)
     $base/base/body/head/head_area.set_collision_mask(constants.ENEMY_DAMAGE_MASK)
-
+    eyes.set_collision_mask(constants.ENEMY_SEE_MASK)
+    eyes.set_cast_to(Vector2(ATTACK_DISTANCE / scale.x, 0))
     $base/base/body/body_area.connect("body_entered", self, "_body_hit")
     $base/base/body/head/head_area.connect("body_entered", self, "_head_hit")
 
@@ -136,6 +138,14 @@ func _end_jump():
     switch_state_timeout = 0
     next_state = STATE.WALK
 
+func _is_player_visible():
+    eyes.look_at(player.get_node("aim").global_position)
+    if eyes.is_colliding():
+        var o = eyes.get_collider()
+        if o == player or o.get_owner() == player:
+            return true
+    return false
+
 func _process(delta):
     if dead:
         return
@@ -146,15 +156,16 @@ func _process(delta):
             current_state = next_state
             _set_direction(next_direction)
 
-    var d
+    var check_attacking = false
+    
     if player.global_position.x > global_position.x:
         if $base.scale.x == 1:
-            d = player.global_position.x - global_position.x
+            check_attacking = true
     else:
         if $base.scale.x == -1:
-            d = global_position.x - player.global_position.x
-
-    if d and abs(d) < ATTACK_DISTANCE:
+            check_attacking = true
+            
+    if check_attacking and _is_player_visible():        
         if current_state != STATE.AIM:
             current_state = STATE.AIM
             next_state = STATE.WALK
@@ -202,7 +213,4 @@ func _physics_process(delta):
         _aim(delta)
     else:
         if is_on_floor():
-            if velocity.x:
-                $anim.walk(abs(velocity.x)*delta*1.2)
-            else:
-                $anim.idle()
+            $anim.walk(abs(velocity.x)*delta)

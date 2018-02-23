@@ -45,13 +45,14 @@ func _set_state(state_id):
     return false
 
 func walk(scale = 1):
-    if not scale:
+    print(scale)
+    if scale < 0.1:
         idle()
     else:
         _set_aim(false)
         if _set_state(STATE.WALK):
             blend2_node_set_amount(GROUND_BLEND_NODE, 1)
-        timescale_node_set_scale(WALK_SCALE_NODE, scale)
+        timescale_node_set_scale(WALK_SCALE_NODE, scale * 1.2)
 
 func idle():
     _set_aim(false)

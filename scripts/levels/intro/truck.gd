@@ -14,6 +14,7 @@ func _ready():
     $inner_area.connect("body_entered", self, "_show")
     $inner_area.connect("body_exited", self, "_hide")
     $inner_area.set_meta("camera_zoom", camera_zoom)
+    $sprite/front.set_visible(true)
     $static_truck.set_collision_mask(0)
     $static_truck.set_collision_layer(constants.GROUND_LAYER)
 

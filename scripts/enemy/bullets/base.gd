@@ -30,6 +30,7 @@ func _process(delta):
         queue_free()
 
 func _collision(body):
+    print(body)
     var own = body.get_owner()
     if own.has_method("hit"):
         own.hit(DAMAGE)

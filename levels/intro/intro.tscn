@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scripts/levels/intro.gd" type="Script" id=1]
 [ext_resource path="res://textures/levels/intro/bg1/l1_background.png" type="Texture" id=2]
@@ -13,8 +13,11 @@
 [ext_resource path="res://scenes/entities/shotgun_entity.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/enemy/solder.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/enemy/markers/change_direction.tscn" type="PackedScene" id=13]
-[ext_resource path="res://levels/intro/truck.tscn" type="PackedScene" id=14]
+[ext_resource path="res://levels/intro/objects/truck.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scripts/levels/next_level_area.gd" type="Script" id=15]
+[ext_resource path="res://scenes/entities/ak47_entity.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/entities/bazooka_entity.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/entities/minigun_entity.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -54,7 +57,7 @@ extents = Vector2( 10, 31.453 )
 custom_solver_bias = 0.0
 extents = Vector2( 20.2178, 507.5 )
 
-[node name="world" type="Node2D"]
+[node name="world" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
@@ -525,12 +528,28 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 15 )
-next_scene = "res://levels/intro.tscn"
+next_scene = "res://levels/intro/intro.tscn"
 confirm = null
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="area_2d" index="0"]
 
 position = Vector2( 6, -422 )
 shape = SubResource( 7 )
+
+[node name="ak47_entity" parent="." index="29" instance=ExtResource( 16 )]
+
+position = Vector2( 643, 905 )
+
+[node name="bazooka_entity" parent="." index="30" instance=ExtResource( 17 )]
+
+position = Vector2( 458, 910 )
+
+[node name="minigun_entity" parent="." index="31" instance=ExtResource( 18 )]
+
+position = Vector2( 759, 834 )
+
+[node name="shortgun2" parent="." index="32" instance=ExtResource( 11 )]
+
+position = Vector2( 532, 818 )
 
 

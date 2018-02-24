@@ -158,12 +158,13 @@ func _process(delta):
 
     var check_attacking = false
     
-    if player.global_position.x > global_position.x:
-        if $base.scale.x == 1:
-            check_attacking = true
-    else:
-        if $base.scale.x == -1:
-            check_attacking = true
+    if current_state != STATE.JUMP:        
+        if player.global_position.x > global_position.x:
+            if $base.scale.x == 1:
+                check_attacking = true
+        else:
+            if $base.scale.x == -1:
+                check_attacking = true
             
     if check_attacking and _is_player_visible():        
         if current_state != STATE.AIM:

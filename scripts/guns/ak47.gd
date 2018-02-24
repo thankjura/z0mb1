@@ -32,6 +32,9 @@ func _fire_stop():
     ._fire_stop()
     player.set_mouth()
 
+func _get_bullet_velocity(bullet_velocity, player_velocity):
+    return bullet_velocity*SPEED+player_velocity
+
 func _process(delta):
     if fired:
         if overheat_time < OVERHEAD_TIMEOUT:

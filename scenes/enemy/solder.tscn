@@ -1921,6 +1921,12 @@ data = {
 "position": Vector2( 582, 161 ),
 "type": "timeseek"
 }, {
+"filter": [  ],
+"from": "die_head_on_back",
+"id": "die_head_on_back",
+"position": Vector2( 1268, 303 ),
+"type": "animation"
+}, {
 "blend": 0.0,
 "filter": [ NodePath("base/base/belt:rotation_degrees"), NodePath("collision:position"), NodePath("base:rotation_degrees"), NodePath("base/hip_r:position"), NodePath("base/hip_l/shin_l/foot_l:position"), NodePath("base/base:position"), NodePath("base/base/hip_l/shin_l:rotation_degrees"), NodePath("collision:shape:extents"), NodePath("base/hip_r:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:position"), NodePath("base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:position"), NodePath("base/base:rotation_degrees"), NodePath("base/hip_r/shin_r:position"), NodePath("base/hip_r/shin_r/foot_r:position"), NodePath("base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/hip_l:position"), NodePath("base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/base/hip_r:rotation_degrees"), NodePath("base/base/hip_l/shin_l/foot_l:rotation_degrees"), NodePath("collision:shape:position"), NodePath("base/hip_r/shin_r:rotation_degrees"), NodePath("base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/hip_l:rotation_degrees"), NodePath("base/base/hip_r/shin_r/foot_r/foot_r_toe:rotation_degrees"), NodePath("base/base/hip_l/shin_l/foot_l/foot_l_toe:rotation_degrees"), NodePath("base/body:position"), NodePath("base/base/hip_r/shin_r:rotation_degrees"), NodePath("base/base/hip_r/shin_r/foot_r:rotation_degrees"), NodePath("base/base/hip_l:rotation_degrees"), NodePath("base/body/head:position"), NodePath("base/hip_l/shin_l:position"), NodePath("base:position"), NodePath("base/hip_l/shin_l:rotation_degrees") ],
 "id": "aim_blend",
@@ -1934,15 +1940,10 @@ data = {
 "type": "blend2"
 }, {
 "filter": [  ],
-"from": "die_head_on_back",
-"id": "die_head_on_back",
-"position": Vector2( 1268, 303 ),
+"from": "hit_head_face",
+"id": "hit_head_face",
+"position": Vector2( 851, 417 ),
 "type": "animation"
-}, {
-"id": "walk_scale",
-"position": Vector2( 374, 96 ),
-"scale": 1.0,
-"type": "timescale"
 }, {
 "filter": [  ],
 "from": "hit_head_back",
@@ -1950,17 +1951,10 @@ data = {
 "position": Vector2( 857, 287 ),
 "type": "animation"
 }, {
-"filter": [  ],
-"from": "die_head_on_face",
-"id": "die_head_on_face",
-"position": Vector2( 1275, 440 ),
-"type": "animation"
-}, {
-"filter": [  ],
-"from": "aim",
-"id": "aim_anim",
-"position": Vector2( 378, 226 ),
-"type": "animation"
+"id": "walk_scale",
+"position": Vector2( 374, 96 ),
+"scale": 1.0,
+"type": "timescale"
 }, {
 "id": "die_transition",
 "position": Vector2( 1643, 5 ),
@@ -2016,12 +2010,6 @@ data = {
 "scale": 3.0,
 "type": "timescale"
 }, {
-"filter": [  ],
-"from": "hit_head_face",
-"id": "hit_head_face",
-"position": Vector2( 851, 417 ),
-"type": "animation"
-}, {
 "autorestart": false,
 "autorestart_delay": 0.0,
 "autorestart_random_delay": 0.807843,
@@ -2032,6 +2020,18 @@ data = {
 "mix": false,
 "position": Vector2( 1431, 5 ),
 "type": "oneshot"
+}, {
+"filter": [  ],
+"from": "aim",
+"id": "aim_anim",
+"position": Vector2( 378, 226 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "die_head_on_face",
+"id": "die_head_on_face",
+"position": Vector2( 1275, 440 ),
+"type": "animation"
 } ]
 }
 script = ExtResource( 24 )

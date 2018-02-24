@@ -78,6 +78,9 @@ func _eject_shell():
         var impulse = v.rotated(global_rot + ext_rotate)
         s.apply_impulse(Vector2(0,0), impulse + player.movement.velocity)
 
+func _get_bullet_velocity(bullet_velocity, player_velocity):
+    return bullet_velocity*SPEED
+
 func fire(delta, velocity):
     if wait_ready > 0:
         return
@@ -94,8 +97,8 @@ func fire(delta, velocity):
     var gun_angle = Vector2(1, 0).angle_to(bullet_velocity)
     _recoil(RECOIL.rotated(bullet_velocity.angle()))
     f.rotate(gun_angle)
-    f.set_axis_velocity(bullet_velocity*SPEED+velocity)
-    f.set_global_position(_get_bullet_position(gun_angle))
+    f.set_axis_velocity(_get_bullet_velocity(bullet_velocity, velocity))
+    f.set_global_position(_get_bullet_position(gun_angle))    
     world.add_child(f)
 
 func _fire_start():

@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="z0mb1"
-run/main_scene="res://levels/intro.tscn"
+run/main_scene="res://levels/intro/intro.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="z0mb1"
 config/icon="res://icon.png"

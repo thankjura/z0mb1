@@ -29,12 +29,12 @@ func _end_animation(anim_name):
         $audio_reload.play()
         _fire_stop()
 
-func _create_pellet(spawn_point, bullet_velocity, velocity):
+func _create_pellet(spawn_point, bullet_velocity):
     var p = BULLET.instance()
     var v = bullet_velocity.rotated(deg2rad(randf()*6-3))
     v.normalized()
     p.rotate(Vector2(1, 0).angle_to(v))
-    p.set_axis_velocity(v*SPEED*(1.2 - (randf()*0.4)) + velocity)
+    p.set_axis_velocity(v*SPEED*(1.2 - (randf()*0.4)))
     p.set_global_position(spawn_point)
     world.add_child(p)
 
@@ -50,7 +50,7 @@ func fire(delta, velocity):
     _recoil(RECOIL.rotated(bullet_velocity.angle()))
     _shutter_camera()
     for i in range(0, PELLETS_PER_SHOOT):
-        _create_pellet(spawn_point, bullet_velocity, velocity)
+        _create_pellet(spawn_point, bullet_velocity)
 
 func _reset_view():
     $anim.set_current_animation("reload")

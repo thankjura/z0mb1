@@ -7,10 +7,13 @@ const DAMAGE = 30
 const HEALTH = 100
 const GRAVITY = 0
 
+var remove_vel
+
 var health = HEALTH
 var active = true
 var decal = false
 var timer = 0
+var correct_timer = 0
 
 func _ready():
     set_collision_layer(constants.BULLET_LAYER)
@@ -25,13 +28,7 @@ func _ready():
         $particles.set_visibility_rect(Rect2(-s, s*2))
 
     timer = LIFE_TIME
-
-
-func _process(delta):
-    timer -= delta
-    if timer <= 0:
-        queue_free()
-
+        
 func _collision(body):
     if body.has_method("hit"):
         body.hit(self)
@@ -60,3 +57,8 @@ func damage(d):
     health -= d
     if health <= 0:
         _deactivate()
+        
+func _process(delta):
+    timer -= delta
+    if timer <= 0:
+        queue_free()        

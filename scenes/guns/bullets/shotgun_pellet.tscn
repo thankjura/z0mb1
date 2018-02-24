@@ -10,7 +10,7 @@
 custom_solver_bias = 0.0
 radius = 1.79191
 
-[node name="shotgun_pellet" type="RigidBody2D"]
+[node name="shotgun_pellet" type="RigidBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1

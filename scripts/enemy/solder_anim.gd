@@ -45,7 +45,6 @@ func _set_state(state_id):
     return false
 
 func walk(scale = 1):
-    print(scale)
     if scale < 0.1:
         idle()
     else:

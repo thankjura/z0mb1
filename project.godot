@@ -91,6 +91,7 @@ name_casing=2
 2d/physics_engine="GodotPhysics"
 3d/physics_engine="Bullet"
 2d/thread_model=0
+common/enable_object_picking=false
 
 [rendering]
 

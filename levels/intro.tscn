@@ -54,7 +54,7 @@ extents = Vector2( 10, 31.453 )
 custom_solver_bias = 0.0
 extents = Vector2( 20.2178, 507.5 )
 
-[node name="world" type="Node2D" index="0"]
+[node name="world" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
@@ -515,6 +515,7 @@ camera_zoom = 0.7
 
 [node name="area_2d" type="Area2D" parent="." index="28"]
 
+editor/display_folded = true
 position = Vector2( 7410, 912 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -525,7 +526,7 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 15 )
 next_scene = "res://levels/intro.tscn"
-confirm = true
+confirm = null
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="area_2d" index="0"]
 

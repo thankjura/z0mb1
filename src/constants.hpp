@@ -1,0 +1,44 @@
+#ifndef GAME_CONST_H
+#define GAME_CONST_H
+
+namespace z_index {
+const int GUN_ENTITY_Z = 20;
+}
+
+namespace layers {
+const int GROUND_LAYER = 1;
+
+const int GRENADE_LAYER = 64;
+const int GRENADE_MASK = 0;
+
+const int GUN_ENTITY_LAYER = 0;
+const int GUN_ENTITY_MASK = GROUND_LAYER + GRENADE_LAYER;
+const int GUN_ENTITY_AREA_LAYER = 16;
+const int GUN_ENTITY_AREA_MASK = 0;
+
+const int BULLET_LAYER = 8;
+const int BULLET_MASK = GROUND_LAYER;
+
+const int BULLET_SHELL_LAYER = 0;
+const int BULLET_SHELL_MASK = GROUND_LAYER + BULLET_SHELL_LAYER;
+
+const int ENEMY_DAMAGE_LAYER = 0;
+const int ENEMY_DAMAGE_MASK = BULLET_LAYER + GRENADE_LAYER;
+
+const int ENEMY_LAYER = 32;
+const int ENEMY_MASK = GROUND_LAYER;
+
+const int ENEMY_BULLET_LAYER = 4;
+const int ENEMY_BULLET_MASK = GROUND_LAYER;
+
+const int PLAYER_LAYER = 128;
+const int PLAYER_MASK = GROUND_LAYER + GUN_ENTITY_AREA_LAYER;
+
+const int PLAYER_LETHAL_LAYER = 0;
+const int PLAYER_LETHAL_MASK = ENEMY_BULLET_LAYER + GRENADE_LAYER;
+
+const int ENEMY_SEE_MASK = GROUND_LAYER + PLAYER_LAYER;
+
+const int AUDIO_AREA_MASK = 256;
+}
+#endif

@@ -1,15 +1,22 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scripts/guns/bullets/ak47_bullet.gd" type="Script" id=1]
+[ext_resource path="res://gdnlib/bullet.gdnlib" type="GDNativeLibrary" id=1]
 [ext_resource path="res://textures/guns/minigun/minigun_bullet.png" type="Texture" id=2]
 [ext_resource path="res://textures/guns/ak47/decal.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="NativeScript" id=1]
+
+resource_name = "AK47Bullet"
+class_name = "AK47Bullet"
+library = ExtResource( 1 )
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 9.58545, 2.34877 )
 
-[node name="ak47_bullet" type="RigidBody2D"]
+[node name="ak47_bullet" type="RigidBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -29,7 +36,7 @@ linear_velocity = Vector2( 0, 0 )
 linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
-script = ExtResource( 1 )
+script = SubResource( 1 )
 
 [node name="sprite" type="Sprite" parent="." index="0"]
 
@@ -64,7 +71,7 @@ shadow_item_cull_mask = 1
 [node name="collision" type="CollisionShape2D" parent="." index="2"]
 
 position = Vector2( 0, -0.0238037 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="decal" type="Sprite" parent="." index="3"]

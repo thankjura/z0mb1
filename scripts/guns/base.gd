@@ -98,7 +98,7 @@ func fire(delta, velocity):
     _recoil(RECOIL.rotated(bullet_velocity.angle()))
     f.rotate(gun_angle)
     f.set_axis_velocity(_get_bullet_velocity(bullet_velocity, velocity))
-    f.set_global_position(_get_bullet_position(gun_angle))    
+    f.set_global_position(_get_bullet_position(gun_angle))
     world.add_child(f)
 
 func _fire_start():

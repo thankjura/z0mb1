@@ -57,15 +57,15 @@ func _ready():
     if direction != $base.scale.x:
         direction = -direction
         _set_direction(-direction)
-    
+
     next_direction = direction
     next_state = current_state
 
 func _body_hit(obj):
     if obj.has_method("damage"):
         obj.damage(BODY_STRENGTH)
-    if obj.DAMAGE:
-        health -= obj.DAMAGE
+    if obj.has_method("get_damage"):
+        health -= obj.get_damage()
         if health > 0:
             if obj is RigidBody2D:
                 $anim.hit_body(obj.get_linear_velocity())
@@ -73,8 +73,8 @@ func _body_hit(obj):
 func _head_hit(obj):
     if obj.has_method("damage"):
         obj.damage(HEAD_STRENGTH)
-    if obj.DAMAGE:
-        health -= obj.DAMAGE * 2
+    if obj.has_method("get_damage"):
+        health -= obj.get_damage() * 2
     if health > 0:
         if obj is RigidBody2D:
             $anim.hit_head(obj.get_linear_velocity())
@@ -108,7 +108,7 @@ func _fire():
 
 func _aim(delta):
     var v = (player.get_node("aim").global_position - bullet_spawn.global_position).normalized()
-    var a = $anim.aim(rad2deg(DEFAULT_VECTOR.angle_to(v)), delta)    
+    var a = $anim.aim(rad2deg(DEFAULT_VECTOR.angle_to(v)), delta)
 
 func change_direction(t, new_direction):
     current_state = STATE.IDLE
@@ -157,16 +157,16 @@ func _process(delta):
             _set_direction(next_direction)
 
     var check_attacking = false
-    
-    if current_state != STATE.JUMP:        
+
+    if current_state != STATE.JUMP:
         if player.global_position.x > global_position.x:
             if $base.scale.x == 1:
                 check_attacking = true
         else:
             if $base.scale.x == -1:
                 check_attacking = true
-            
-    if check_attacking and _is_player_visible():        
+
+    if check_attacking and _is_player_visible():
         if current_state != STATE.AIM:
             current_state = STATE.AIM
             next_state = STATE.WALK

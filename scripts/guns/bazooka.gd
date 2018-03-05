@@ -39,7 +39,6 @@ func fire(delta, velocity):
     f.local_dump(velocity)
     f.set_applied_force(bullet_velocity*ACCELERATION)
     f.set_global_position(_get_bullet_position(gun_angle))
-    var world = get_tree().get_root().get_node("world")
     world.add_child(f)
     wait_for_reload = RELOAD_TIMEOUT
 

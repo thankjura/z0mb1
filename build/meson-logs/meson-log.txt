@@ -1,0 +1,25 @@
+Build started at 2018-03-04T03:33:19.807729
+Main binary: /usr/bin/python3.6
+Python system: Linux
+The Meson build system
+Version: 0.44.1
+Source dir: /home/GrandMaster/Development/games/godot/z0mb1
+Build dir: /home/GrandMaster/Development/games/godot/z0mb1/build
+Build type: native build
+Project name: z0mb1
+Sanity testing C++ compiler: /usr/lib/llvm/5/bin/clang++
+Is cross compiler: False.
+Sanity check compiler command line: /usr/lib/llvm/5/bin/clang++ /home/GrandMaster/Development/games/godot/z0mb1/build/meson-private/sanitycheckcpp.cc -o /home/GrandMaster/Development/games/godot/z0mb1/build/meson-private/sanitycheckcpp.exe
+Sanity check compile stdout:
+
+-----
+Sanity check compile stderr:
+
+-----
+Running test binary command: /home/GrandMaster/Development/games/godot/z0mb1/build/meson-private/sanitycheckcpp.exe
+Native C++ compiler: /usr/lib/llvm/5/bin/clang++ (clang 5.0.1)
+Build machine cpu family: x86_64
+Build machine cpu: x86_64
+Configuring test-config.h using configuration
+Build targets in project: 2
+Found ninja-1.8.2 at /usr/bin/ninja

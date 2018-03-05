@@ -1,6 +1,6 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
-[ext_resource path="res://scripts/guns/bullets/bazooka_rocket.gd" type="Script" id=1]
+[ext_resource path="res://gdnlib/bullet.gdnlib" type="GDNativeLibrary" id=1]
 [ext_resource path="res://textures/guns/bazooka/smoke.png" type="Texture" id=2]
 [ext_resource path="res://textures/guns/bazooka/rocket.png" type="Texture" id=3]
 [ext_resource path="res://textures/guns/bazooka/fire/001.png" type="Texture" id=4]
@@ -23,7 +23,13 @@
 [ext_resource path="res://sounds/guns/bazooka_shot.wav" type="AudioStream" id=21]
 [ext_resource path="res://textures/guns/bazooka/decal.png" type="Texture" id=22]
 
-[sub_resource type="ParticlesMaterial" id=1]
+[sub_resource type="NativeScript" id=1]
+
+resource_name = "BazookaRocket"
+class_name = "BazookaRocket"
+library = ExtResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=2]
 
 render_priority = 0
 trail_divisor = 1
@@ -62,7 +68,7 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angular Velocity", "Damping", "Emission Shape", "Flags", "Gravity", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Scale", "Spread" ]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=3]
 
 animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
@@ -71,18 +77,18 @@ animations = [ {
 "speed": 24.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16.7054, 5.40363 )
 
-[sub_resource type="CanvasItemMaterial" id=4]
+[sub_resource type="CanvasItemMaterial" id=5]
 
 render_priority = 0
 blend_mode = 0
 light_mode = 2
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=6]
 
 animations = [ {
 "frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
@@ -91,7 +97,7 @@ animations = [ {
 "speed": 30.0
 } ]
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=7]
 
 custom_solver_bias = 0.0
 radius = 229.965
@@ -117,7 +123,7 @@ linear_velocity = Vector2( 0, 0 )
 linear_damp = 0.0
 angular_velocity = 0.0
 angular_damp = 0.0
-script = ExtResource( 1 )
+script = SubResource( 1 )
 _sections_unfolded = [ "Angular", "Applied Forces", "Linear", "Transform", "Z Index" ]
 
 [node name="particles" type="Particles2D" parent="." index="0"]
@@ -136,7 +142,7 @@ fract_delta = true
 visibility_rect = Rect2( -1200, -700, 2400, 1400 )
 local_coords = false
 draw_order = 0
-process_material = SubResource( 1 )
+process_material = SubResource( 2 )
 texture = ExtResource( 2 )
 normal_map = null
 h_frames = 2
@@ -155,7 +161,7 @@ position = Vector2( -93.3333, 0 )
 rotation = -1.5708
 scale = Vector2( 3.33333, 3.33333 )
 z_index = -1
-frames = SubResource( 2 )
+frames = SubResource( 3 )
 animation = "default"
 frame = 3
 playing = true
@@ -164,16 +170,16 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 [node name="collision" type="CollisionShape2D" parent="." index="2"]
 
 position = Vector2( 6.39012, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="boom" type="AnimatedSprite" parent="." index="3"]
 
 visible = false
 light_mask = 1024
-material = SubResource( 4 )
+material = SubResource( 5 )
 position = Vector2( 5.82211, -1.27803 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 5 )
+frames = SubResource( 6 )
 animation = "default"
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
@@ -210,6 +216,7 @@ _sections_unfolded = [ "Material", "Range", "Shadow", "Visibility", "Z Index" ]
 
 stream = ExtResource( 20 )
 volume_db = -10.0
+pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
@@ -221,6 +228,7 @@ area_mask = 256
 position = Vector2( 16, 0 )
 stream = ExtResource( 21 )
 volume_db = -10.0
+pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
@@ -270,6 +278,6 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="collision" type="CollisionShape2D" parent="dead_zone" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 

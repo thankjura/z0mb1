@@ -114,6 +114,14 @@ func set_mouth(m = null):
 func shuffle_camera(force, fade_out_time=0.1):
     $camera.shuffle_camera(force, fade_out_time)
 
+func _process(delta):
+    if movement.is_back():
+        $camera.drag_margin_left = 0.1
+        $camera.drag_margin_right = 0.3
+    else:
+        $camera.drag_margin_left = 0.3
+        $camera.drag_margin_right = 0.1
+
 func _physics_process(delta):
     if Input.is_action_pressed("ui_fire"):
         _fire(delta)
@@ -122,10 +130,3 @@ func _physics_process(delta):
         _fire(delta)
 
     movement.process(delta)
-
-    if movement.is_back():
-        $camera.drag_margin_left = 0.1
-        $camera.drag_margin_right = 0.3
-    else:
-        $camera.drag_margin_left = 0.3
-        $camera.drag_margin_right = 0.1

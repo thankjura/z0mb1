@@ -10,7 +10,7 @@ func _ready():
     set_collision_mask(constants.PLAYER_LAYER)
     set_collision_layer(0)
     connect("body_entered", self, "_collision")
-    
+
 func _collision(body):
     if body is player:
         get_tree().set_pause(true)

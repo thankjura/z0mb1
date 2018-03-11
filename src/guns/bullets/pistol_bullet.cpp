@@ -5,7 +5,6 @@ PistolBullet::~PistolBullet() {}
 
 void PistolBullet::_init() {
     Bullet::_init();
-    DAMAGE = 100;
 }
 
 void PistolBullet::_ready() {
@@ -24,15 +23,15 @@ void PistolBullet::_process (const float delta) {
     Bullet::_process (delta);
 }
 
-int PistolBullet::get_damage() {
-    return Bullet::get_damage();
-}
-
 void PistolBullet::_register_methods() {
     register_method ((char *) "_init", &PistolBullet::_init);
     register_method ((char *) "_ready", &PistolBullet::_ready);
     register_method ((char *) "_process", &PistolBullet::_process);
     register_method ((char *) "damage", &PistolBullet::damage);
     register_method ((char *) "_collision", &PistolBullet::_collision);
-    register_method ((char *) "get_damage", &PistolBullet::get_damage);
+
+    register_property<PistolBullet, int>      ("main/health", &PistolBullet::_HEALTH, int(100));
+    register_property<PistolBullet, int>      ("main/damage", &PistolBullet::_DAMAGE, int(100));
+    register_property<PistolBullet, float>    ("main/lifetime", &PistolBullet::_LIFE_TIME, float(4));
+    register_property<PistolBullet, float>    ("main/gravity", &PistolBullet::_GRAVITY, float(0));
 }

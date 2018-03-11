@@ -125,6 +125,12 @@ angular_velocity = 0.0
 angular_damp = 0.0
 script = SubResource( 1 )
 _sections_unfolded = [ "Angular", "Applied Forces", "Linear", "Transform", "Z Index" ]
+main/health = 10
+main/damage = 1000
+main/lifetime = 60.0
+main/gravity = 0.0
+main/dumptime = 0.0
+main/shockwave = 40000.0
 
 [node name="particles" type="Particles2D" parent="." index="0"]
 
@@ -163,7 +169,6 @@ scale = Vector2( 3.33333, 3.33333 )
 z_index = -1
 frames = SubResource( 3 )
 animation = "default"
-frame = 3
 playing = true
 _sections_unfolded = [ "Transform", "Z Index" ]
 

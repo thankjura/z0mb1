@@ -1,17 +1,40 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scripts/guns/bazooka.gd" type="Script" id=1]
-[ext_resource path="res://textures/guns/bazooka/base.png" type="Texture" id=2]
+[ext_resource path="res://gdnlib/gun.gdnlib" type="GDNativeLibrary" id=1]
+[ext_resource path="res://scenes/guns/bullets/bazooka_rocket.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/entities/bazooka_entity.tscn" type="PackedScene" id=3]
+[ext_resource path="res://textures/guns/bazooka/base.png" type="Texture" id=4]
 
-[node name="bazooka" type="Node2D"]
+[sub_resource type="NativeScript" id=1]
 
-script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+resource_name = "Bazooka"
+class_name = "Bazooka"
+library = ExtResource( 1 )
+
+[node name="bazooka" type="Node2D" index="0"]
+
+script = SubResource( 1 )
+_sections_unfolded = [ "Transform", "main", "player", "scenes" ]
+scenes/bullet = ExtResource( 2 )
+scenes/entity = ExtResource( 3 )
+main/speed = 30000
+main/timeout = 2.5
+main/spreading = 0.0
+main/recoil = Vector2( 0, 0 )
+main/drop_velocity = Vector2( 300, -300 )
+main/drop_angular = 1
+player/anim_name = "aim_bazooka"
+player/view_port_shutter = 0
+player/heavines = 0.4
+dead_zone/top = 0
+dead_zone/bottom = 36
+position/offset = Vector2( -24, -40 )
+position/climb_offset = Vector2( -24, -40 )
 
 [node name="base" type="Sprite" parent="." index="0"]
 
 position = Vector2( 0, 26 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="bullet_spawn" type="Position2D" parent="." index="1"]

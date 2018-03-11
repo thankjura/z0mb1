@@ -9,14 +9,13 @@
 resource_name = "AK47Bullet"
 class_name = "AK47Bullet"
 library = ExtResource( 1 )
-_sections_unfolded = [ "Resource" ]
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 9.58545, 2.34877 )
 
-[node name="ak47_bullet" type="RigidBody2D" index="0"]
+[node name="ak47_bullet" type="RigidBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -37,6 +36,11 @@ linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
 script = SubResource( 1 )
+_sections_unfolded = [ "Pause" ]
+main/health = 80
+main/damage = 100
+main/lifetime = 4.0
+main/gravity = 0.0
 
 [node name="sprite" type="Sprite" parent="." index="0"]
 

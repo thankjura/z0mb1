@@ -50,10 +50,10 @@ func set_ladder(ladder):
 
 func _recalc_mass():
     if player.gun:
-        MAX_SPEED = INIT_MAX_SPEED - INIT_MAX_SPEED * player.gun.HEAVINES
-        MAX_CLIMB_SPEED = INIT_MAX_CLIMB_SPEED - INIT_MAX_CLIMB_SPEED * player.gun.HEAVINES
-        JUMP_FORCE = INIT_JUMP_FORCE - INIT_JUMP_FORCE * pow(player.gun.HEAVINES, 2)
-        ACCELERATION = INIT_ACCELERATION + ACCELERATION * player.gun.HEAVINES
+        MAX_SPEED = INIT_MAX_SPEED - INIT_MAX_SPEED * player.gun.get("player/heavines")
+        MAX_CLIMB_SPEED = INIT_MAX_CLIMB_SPEED - INIT_MAX_CLIMB_SPEED * player.gun.get("player/heavines")
+        JUMP_FORCE = INIT_JUMP_FORCE - INIT_JUMP_FORCE * pow(player.gun.get("player/heavines"), 2)
+        ACCELERATION = INIT_ACCELERATION + ACCELERATION * player.gun.get("player/heavines")
     else:
         MAX_SPEED = INIT_MAX_SPEED
         MAX_CLIMB_SPEED = INIT_MAX_CLIMB_SPEED

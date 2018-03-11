@@ -48,7 +48,6 @@ func set_gun(gun_class):
     if gun:
         return false
     gun = load(gun_class).instance()
-
     get_node("base/pelvis/body/sholder_r/forearm_r/gun_position").add_child(gun)
     movement.set_gun()
     return true
@@ -58,6 +57,9 @@ func drop_gun():
         gun.drop()
         gun = null
     movement.drop_gun()
+
+func get_velocity():
+    return movement.velocity
 
 func gun_reload():
     $animation_tree_player.gun_reload()

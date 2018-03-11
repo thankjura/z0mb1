@@ -1,15 +1,10 @@
-subdir('bullets')
-subdir('shells')
-
 sources = [
-          'gun.cpp',
-          'ak47.cpp',
-          'bazooka.cpp',
+          'shell.cpp',
           'main.cpp'
 ]
 
 bullet = shared_library(
-                'gun',
+                'shell',
                 sources,
                 install: true,
                 include_directories: inc,

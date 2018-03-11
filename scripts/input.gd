@@ -29,10 +29,10 @@ func get_direction(player):
         direction = (player.get_global_mouse_position() - player.gun.get_node("pos").global_position).normalized()
         var dist = abs((player.global_position.x - player.get_global_mouse_position().x))
         if player.get_global_mouse_position().y > player.gun.get_node("pos").global_position.y:
-            if dist < player.gun.ANIM_DEAD_ZONE_BOTTOM:
+            if dist < player.gun.get("dead_zone/bottom"):
                 direction.x = 0
         else:
-            if dist < player.gun.ANIM_DEAD_ZONE_TOP:
+            if dist < player.gun.get("dead_zone/top"):
                 direction.x = 0
     else:
         direction = player.get_global_mouse_position() - player.global_position

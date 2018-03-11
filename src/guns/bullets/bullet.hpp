@@ -15,17 +15,17 @@ class Bullet: public GodotScript<RigidBody2D> {
     GODOT_CLASS (Bullet);
 
 protected:
-    int DAMAGE = 30;
-    int HEALTH = 100;
-    float LIFE_TIME = 4;
-    float GRAVITY = 0;
+    int _DAMAGE;
+    int _HEALTH;
+    float _LIFE_TIME;
+    float _GRAVITY;
 
-    Sprite* sprite;
+    Sprite* _sprite;
 
-    int health;
-    bool active;
-    bool decal;
-    float rocket_timeout;
+    int _health;
+    bool _active;
+    bool _decal;
+    float _rocket_timeout;
 
     virtual void _collision(Variant body);
     virtual void _deactivate();
@@ -37,7 +37,6 @@ public:
     void _ready();
     void _process(const float delta);
     virtual void damage(Variant d);
-    virtual int get_damage();
 };
 
 #endif

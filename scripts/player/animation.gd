@@ -196,9 +196,9 @@ func _set_hand():
     if current_state == STATE.CLIMB:
         _set_hand_type(HAND_TYPE.CLIMB)
     elif player.gun:
-        if player.gun.AIM_NAME == "aim_pistol":
+        if player.gun.get("player/anim_name") == "aim_pistol":
             _set_hand_type(HAND_TYPE.PISTOL)
-        elif player.gun.AIM_NAME == "aim_minigun":
+        elif player.gun.get("player/anim_name") == "aim_minigun":
             _set_hand_type(HAND_TYPE.MINIGUN)
         else:
             _set_hand_type(HAND_TYPE.SHOTGUN)
@@ -206,7 +206,7 @@ func _set_hand():
         _set_hand_type(HAND_TYPE.DEFAULT)
 
 func set_gun():
-    transition_node_set_current(AIM_SWITCH_NODE, AIM[player.gun.AIM_NAME])
+    transition_node_set_current(AIM_SWITCH_NODE, AIM[player.gun.get("player/anim_name")])
 
 func drop_gun():
     _set_hand()
@@ -215,18 +215,18 @@ func drop_gun():
     oneshot_node_stop(BAZOOKA_RELOAD_NODE)
 
 func gun_reload():
-    if player.gun and player.gun.AIM_NAME == AIM_SHOTGUN_NAME:
+    if player.gun and player.gun.get("player/anim_name") == AIM_SHOTGUN_NAME:
         _start_gun_reload()
-    if player.gun and player.gun.AIM_NAME == "aim_bazooka":
+    if player.gun and player.gun.get("player/anim_name") == "aim_bazooka":
         oneshot_node_start(BAZOOKA_RELOAD_NODE)
 
 func _start_gun_reload():
-    if player.gun and player.gun.AIM_NAME == AIM_SHOTGUN_NAME:
+    if player.gun and player.gun.get("player/anim_name") == AIM_SHOTGUN_NAME:
         reload_in_timeout = SHOTGUN_RELOAD_IN
         reload_in_time = SHOTGUN_RELOAD_IN
 
 func _stop_gun_reload():
-    if player.gun and player.gun.AIM_NAME == AIM_SHOTGUN_NAME:
+    if player.gun and player.gun.get("player/anim_name") == AIM_SHOTGUN_NAME:
         reload_out_timeout = SHOTGUN_RELOAD_OUT
         reload_out_time = SHOTGUN_RELOAD_OUT
 

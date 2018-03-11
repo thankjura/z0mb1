@@ -18,14 +18,14 @@ inc = include_directories(
 
 add_project_arguments([
   '-I' + meson.build_root(),
-  '-std=c++17',
+  '-std=c++14',
   '-fpermissive',
   '-O3',
   '-g',
 ], language: 'cpp')
 
 add_project_link_arguments([
-  '-std=c++17',
+  '-std=c++14',
   '-fpermissive',
   '-L/home/GrandMaster/Development/games/godot-cpp/bin/',
   '-lgodot-cpp'

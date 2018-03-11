@@ -10,20 +10,20 @@
 
 class BazookaRocket: public Bullet {
     GODOT_CLASS (BazookaRocket);
-    static constexpr const float LOCAL_DAMP_TIME = 0.8;
-    static const int SHOCK_WAVE_FORCE = 40000;
 
 private:
-    double SHOCK_WAVE_DISTANCE_SQUARED;
-    float local_dump_timeout;
-    Vector2 local_dump_vector;
-    float local_dump_length;
-    AnimatedSprite* boom;
-    Area2D* dead_zone;
-    AudioStreamPlayer2D* audio_fire;
+    double _SHOCK_WAVE_FORCE;
+    double _SHOCK_WAVE_DISTANCE_SQUARED;
+    float _LOCAL_DAMP_TIME;
+    float _local_dump_timeout;
+    float _local_dump_length;
+
+    Vector2 _local_dump_vector;
+    AnimatedSprite* _boom;
+    Area2D* _dead_zone;
+    AudioStreamPlayer2D* _audio_fire;
 
     void _animation_finish();
-    void local_dump(Vector2 v);
     void _damage(Variant d);
 
 protected:
@@ -38,9 +38,10 @@ public:
     void _ready();
     void _process(const float delta);
     void damage(Variant d);
-    int get_damage();
 
-    void _integrate_forces(const Physics2DDirectBodyState *state);
+    void local_dump(Vector2 v);
+
+    void _integrate_forces(Physics2DDirectBodyState *state);
     static void _register_methods();
 };
 

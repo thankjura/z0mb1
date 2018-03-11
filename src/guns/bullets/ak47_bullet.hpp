@@ -16,7 +16,6 @@ public:
     void _ready();
     void _process(const float delta);
     void damage(Variant d);
-    int get_damage();
 
     static void _register_methods();
 };

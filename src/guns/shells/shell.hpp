@@ -7,21 +7,21 @@
 
 using namespace godot;
 
-class Shell: public GodotScript<RigidBody2D> {
-    GODOT_CLASS (Shell);
+class Shell: public RigidBody2D {
+    GODOT_CLASS (Shell, RigidBody2D);
 
 private:
-    float _timer;
+    double _timer;
 
 public:
-    float _TIMEOUT;
+    double _TIMEOUT;
 
     Shell();
     ~Shell();
 
     void _init();
     void _ready();
-    void _process(const float delta);
+    void _process(const double delta);
 
     static void _register_methods();
 };

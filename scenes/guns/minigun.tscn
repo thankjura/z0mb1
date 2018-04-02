@@ -1,30 +1,36 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://scripts/guns/minigun.gd" type="Script" id=1]
+[ext_resource path="res://gdnlib/gun.gdnlib" type="GDNativeLibrary" id=1]
 [ext_resource path="res://textures/guns/minigun/body.png" type="Texture" id=2]
 [ext_resource path="res://textures/guns/minigun/barrel1.png" type="Texture" id=3]
 [ext_resource path="res://textures/guns/minigun/barrel2.png" type="Texture" id=4]
 [ext_resource path="res://textures/guns/muzzle_flashes/flash1.png" type="Texture" id=5]
 [ext_resource path="res://sounds/guns/minigun.wav" type="AudioStream" id=6]
 
-[sub_resource type="CanvasItemMaterial" id=1]
+[sub_resource type="NativeScript" id=1]
+
+resource_name = "Minigun"
+class_name = "Minigun"
+library = ExtResource( 1 )
+
+[sub_resource type="CanvasItemMaterial" id=2]
 
 render_priority = 0
 blend_mode = 1
 light_mode = 0
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=3]
 
 offsets = PoolRealArray( 0, 0.479167, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 1, 0.0195312, 0.0195312, 1, 0, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=3]
+[sub_resource type="GradientTexture" id=4]
 
 flags = 4
-gradient = SubResource( 2 )
+gradient = SubResource( 3 )
 width = 2048
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 
 length = 0.5
 loop = true
@@ -114,13 +120,28 @@ tracks/6/keys = {
 "values": [ Vector2( 236, 17 ), Vector2( 236, 19 ), Vector2( 236, 16 ), Vector2( 236, 19 ), Vector2( 236, 17 ), Vector2( 236, 18 ) ]
 }
 
-[node name="minigun" type="Node2D"]
+[node name="minigun" type="Node2D" index="0"]
 
-script = ExtResource( 1 )
-_sections_unfolded = [ "Material", "Transform" ]
+script = SubResource( 1 )
+_sections_unfolded = [ "Material", "Transform", "main", "scenes" ]
 __meta__ = {
 "_edit_horizontal_guides_": [ -4.646, 33.2074 ]
 }
+main/speed = 60000
+main/timeout = 0.1
+main/spreading = 0.05
+main/recoil = Vector2( -200, 0 )
+main/drop_velocity = Vector2( 400, -400 )
+main/drop_angular = 1
+main/eject_shell_vector = Vector2( 0, 300 )
+main/overheat_time = 4.0
+player/anim_name = "aim_minigun"
+player/view_port_shutter = 10
+player/heavines = 0.6
+dead_zone/top = 16
+dead_zone/bottom = 0
+position/offset = Vector2( 125, 55 )
+position/climb_offset = Vector2( -50, -40 )
 
 [node name="shell_gate" type="Position2D" parent="." index="0"]
 
@@ -144,7 +165,7 @@ _sections_unfolded = [ "Material", "Transform", "Visibility", "Z", "Z Index" ]
 
 [node name="barrel_run" type="Sprite" parent="body" index="1"]
 
-position = Vector2( 236, 18 )
+position = Vector2( 236, 17 )
 z_index = -1
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z", "Z Index" ]
@@ -152,7 +173,7 @@ _sections_unfolded = [ "Material", "Transform", "Visibility", "Z", "Z Index" ]
 [node name="overheat" type="TextureRect" parent="body" index="2"]
 
 modulate = Color( 0, 0, 0, 1 )
-material = SubResource( 1 )
+material = SubResource( 2 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -162,21 +183,21 @@ margin_top = -6.0
 margin_right = 368.0
 margin_bottom = 42.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = SubResource( 3 )
+texture = SubResource( 4 )
 expand = true
 stretch_mode = 0
-_sections_unfolded = [ "Hint", "Material", "Rect", "Visibility" ]
+_sections_unfolded = [ "Hint", "Material", "Visibility" ]
 
 [node name="flash" type="Sprite" parent="." index="2"]
 
 editor/display_folded = true
 visible = false
-position = Vector2( 374, -12 )
-scale = Vector2( 0.956865, -0.594313 )
+position = Vector2( 374, 4 )
 texture = ExtResource( 5 )
 offset = Vector2( 52.9424, 0.120224 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "Z" ]
@@ -187,7 +208,7 @@ __meta__ = {
 [node name="light" type="Light2D" parent="flash" index="0"]
 
 position = Vector2( 52.9424, 0.120224 )
-enabled = false
+enabled = true
 editor_only = false
 texture = ExtResource( 5 )
 offset = Vector2( 0, 0 )
@@ -219,6 +240,7 @@ _sections_unfolded = [ "Transform" ]
 
 stream = ExtResource( 6 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
@@ -232,7 +254,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/fire = SubResource( 4 )
+anims/fire = SubResource( 5 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options", "playback" ]
 

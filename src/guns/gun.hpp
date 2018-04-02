@@ -10,12 +10,17 @@
 #include <core/String.hpp>
 #include <Resource.hpp>
 #include <SceneTree.hpp>
+#include <RigidBody2D.hpp>
 #include <AudioStreamPlayer2D.hpp>
+
+//class PlayerHenry;
+
+#include "../player/player.hpp"
 
 using namespace godot;
 
-class Gun: public GodotScript<Node2D> {
-    GODOT_CLASS (Gun);
+class Gun: public Node2D {
+    //GODOT_CLASS (Gun, Node2D);
     enum OFFSET_TYPE {
         DEFAULT = 1,
         CLIMB
@@ -33,16 +38,16 @@ protected:
     int _DROP_ANGULAR;
     int _ANIM_DEAD_ZONE_TOP;
     int _ANIM_DEAD_ZONE_BOTTOM;
-    float _SPREADING;
-    float _HEAVINES;
-    float _TIMEOUT;
+    double _SPREADING;
+    double _HEAVINES;
+    double _TIMEOUT;
     Vector2 _OFFSET;
     Vector2 _CLIMB_OFFSET;
     Vector2 _DROP_VELOCITY;
     Vector2 _RECOIL;
     Vector2 _EJECT_SHELL_VECTOR;
 
-    float _wait_ready;
+    double _wait_ready;
     bool _fired;
     OFFSET_TYPE _current_offset_type;
 
@@ -57,21 +62,26 @@ protected:
     virtual Vector2 _get_bullet_velocity(Vector2 bullet_velocity, Vector2 player_velocity);
     virtual Vector2 _get_bullet_position(const double gun_angle);
 
-    Node* world;
-    KinematicBody2D* player;
+    Node* _world;
+    PlayerHenry* _player;
 
 public:
     Gun();
     virtual ~Gun();
 
-    virtual void fire(const float delta, const Vector2 velocity);
+    virtual void fire(const double delta, const Vector2 velocity);
     virtual void drop();
+
+    double get_heavines();
+    double get_dead_zone_top();
+    double get_dead_zone_bottom();
+    std::string get_anim_name();
 
     void _init();
     void _ready();
     void default_offset();
     void climb_offset();
-    void _process(const float delta);
+    void _process(const double delta);
 };
 
 #endif

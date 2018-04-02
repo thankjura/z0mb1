@@ -11,31 +11,32 @@
 
 using namespace godot;
 
-class Bullet: public GodotScript<RigidBody2D> {
-    GODOT_CLASS (Bullet);
+class Bullet: public RigidBody2D {
+    //GODOT_CLASS (Bullet, RigidBody2D);
 
 protected:
     int _DAMAGE;
     int _HEALTH;
-    float _LIFE_TIME;
-    float _GRAVITY;
+    double _LIFE_TIME;
+    double _GRAVITY;
 
     Sprite* _sprite;
 
     int _health;
     bool _active;
     bool _decal;
-    float _rocket_timeout;
+    double _rocket_timeout;
 
     virtual void _collision(Variant body);
     virtual void _deactivate();
 
 public:
+    Bullet();
     virtual ~Bullet();
 
     void _init();
     void _ready();
-    void _process(const float delta);
+    void _process(const double delta);
     virtual void damage(Variant d);
 };
 

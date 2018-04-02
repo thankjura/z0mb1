@@ -3,7 +3,7 @@
 #include "bullet.hpp"
 
 class AK47Bullet: public Bullet {
-    GODOT_CLASS (AK47Bullet);
+    GODOT_CLASS (AK47Bullet, RigidBody2D);
 
 protected:
     void _collision(Variant body);
@@ -14,7 +14,7 @@ public:
 
     void _init();
     void _ready();
-    void _process(const float delta);
+    void _process(const double delta);
     void damage(Variant d);
 
     static void _register_methods();

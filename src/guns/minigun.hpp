@@ -1,28 +1,32 @@
-#ifndef AK47_H
-#define AK47_H
+#ifndef MINIGUN_H
+#define MINIGUN_H
 #include "gun.hpp"
 #include <AnimationPlayer.hpp>
 #include <TextureRect.hpp>
 #include <core/Color.hpp>
 
-class AK47Gun: public Gun {
-    GODOT_CLASS (AK47Gun, Node2D);
+class Minigun: public Gun {
+    GODOT_CLASS (Minigun, Node2D);
 
 private:
     double _OVERHEAD_TIMEOUT;
     double _overheat_time;
     TextureRect* _overheat;
 
+    AnimationPlayer* _anim;
+
+    void _reset_view();
+
 protected:
     void _muzzle_flash();
     void _fire_start();
     void _fire_stop();
-    Vector2 _get_bullet_velocity(Vector2 bullet_velocity, Vector2 player_velocity);
+    void _eject_shell();
 
 public:
-    AK47Gun();
-    ~AK47Gun();
-    
+    Minigun();
+    ~Minigun();
+
     void _init();
     void _ready();
     void _process(const double delta);

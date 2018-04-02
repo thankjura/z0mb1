@@ -1,5 +1,18 @@
-#install_headers('player.hpp')
-player = shared_library('player', 'player.cpp', include_directories: inc, install: true, install_dir: target_dir + '/player')
+sources = [
+          'animation.cpp',
+          'camera.cpp',
+          'audio.cpp',
+          'movement.cpp',
+          'input.cpp',
+          'player.cpp'
+]
 
-#pkg_mod = import('pkgconfig')
-#pkg_mod.generate(libraries: player, name: 'player', version: '1.0', description: 'Player main lib')
+player = shared_library(
+                'player',
+                sources,
+                install: true,
+                include_directories: inc,
+                install_dir: target_dir,
+                link_with: [utils, gun],
+                install_rpath: lib_dir
+)

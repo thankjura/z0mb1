@@ -1,10 +1,9 @@
 #include "bullet.hpp"
 
+Bullet::Bullet() {}
 Bullet::~Bullet() {}
 
-void Bullet::_init() {
-
-}
+void Bullet::_init() {}
 
 void Bullet::_ready() {
     _rocket_timeout = _LIFE_TIME;
@@ -12,27 +11,25 @@ void Bullet::_ready() {
     _active = true;
     _decal = false;
 
-    owner->set_collision_layer(layers::BULLET_LAYER);
-    owner->set_collision_mask(layers::BULLET_MASK);
-    owner->set_contact_monitor(true);
-    owner->set_max_contacts_reported(3);
-    owner->set_gravity_scale(_GRAVITY);
-    owner->connect("body_entered", owner, "_collision");
+    set_collision_layer(layers::BULLET_LAYER);
+    set_collision_mask(layers::BULLET_MASK);
+    set_contact_monitor(true);
+    set_max_contacts_reported(3);
+    set_gravity_scale(_GRAVITY);
+    connect("body_entered", this, "_collision");
 
-    _sprite = (Sprite*) owner->get_node("sprite");
+    _sprite = (Sprite*) get_node("sprite");
 
-    if (owner->has_node("particles")) {
-        Vector2 s = owner->get_viewport_rect().get_size();
-        ((Particles2D *)owner->get_node("particles"))->set_visibility_rect(Rect2(-s, s*2));
+    if (has_node("particles")) {
+        Vector2 s = get_viewport_rect().get_size();
+        ((Particles2D *) get_node("particles"))->set_visibility_rect(Rect2(-s, s*2));
     }
 }
 
 void Bullet::_collision(Variant v) {
-    Node2D* body = (Node2D*) (Object*) v;
+    Node* body = (Node*) get_wrapper<Object>(v.operator godot_object*());
     if (body->has_method("hit")) {
-        Array params = Array();
-        params.append(owner);
-        body->call("hit", params);
+        body->call("hit", Array::make(this));
     } else {
         _decal = body->is_in_group("decals");
         _deactivate();
@@ -42,22 +39,22 @@ void Bullet::_collision(Variant v) {
 void Bullet::_deactivate() {
     _active = false;
     _sprite->set_visible(false);
-    owner->set_applied_force(Vector2());
-    owner->set_mode(RigidBody2D::Mode::MODE_STATIC);
-    owner->disconnect("body_entered", owner, "_collision");
+    set_applied_force(Vector2());
+    set_mode(RigidBody2D::Mode::MODE_STATIC);
+    disconnect("body_entered", this, "_collision");
 
-    if (owner->has_node("light")) {
-        ((Light2D*) owner->get_node("light"))->queue_free();
+    if (has_node("light")) {
+        ((Light2D*) get_node("light"))->queue_free();
     }
 
-    if (owner->has_node("particles")) {
-        ((Particles2D*) owner->get_node("particles"))->set_emitting(false);
+    if (has_node("particles")) {
+        ((Particles2D*) get_node("particles"))->set_emitting(false);
     }
 
-    if (_decal and owner->has_node("decal")) {
-        ((CanvasItem*) owner->get_node("decal"))->set_visible(true);
+    if (_decal and has_node("decal")) {
+        ((CanvasItem*) get_node("decal"))->set_visible(true);
     } else {
-        owner->queue_free();
+        queue_free();
     }
 }
 
@@ -68,9 +65,9 @@ void Bullet::damage(Variant d) {
     }
 }
 
-void Bullet::_process(const float delta) {
+void Bullet::_process(const double delta) {
     _rocket_timeout -= delta;
     if (_rocket_timeout <= 0) {
-        owner->queue_free();
+        queue_free();
     }
 }

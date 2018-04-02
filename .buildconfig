@@ -1,0 +1,13 @@
+[default-2]
+name=Default (debug)
+runtime=host
+config-opts=--buildtype debug
+run-opts=
+prefix=/home/GrandMaster/.cache/gnome-builder/install/z0mb1/host
+app-id=
+postbuild=
+prebuild=
+
+[default-2.environment]
+CXX=/usr/lib/llvm/6/bin/clang++
+CC=/usr/lib/llvm/6/bin/clang

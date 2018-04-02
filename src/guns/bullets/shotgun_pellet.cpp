@@ -19,7 +19,7 @@ void ShotgunPellet::_collision(Variant body) {
     Bullet::_collision(body);
 }
 
-void ShotgunPellet::_process (const float delta) {
+void ShotgunPellet::_process (const double delta) {
     Bullet::_process (delta);
 }
 
@@ -32,6 +32,6 @@ void ShotgunPellet::_register_methods() {
 
     register_property<ShotgunPellet, int>      ("main/health", &ShotgunPellet::_HEALTH, int(80));
     register_property<ShotgunPellet, int>      ("main/damage", &ShotgunPellet::_DAMAGE, int(100));
-    register_property<ShotgunPellet, float>    ("main/lifetime", &ShotgunPellet::_LIFE_TIME, float(4));
-    register_property<ShotgunPellet, float>    ("main/gravity", &ShotgunPellet::_GRAVITY, float(0));
+    register_property<ShotgunPellet, double>    ("main/lifetime", &ShotgunPellet::_LIFE_TIME, double(4));
+    register_property<ShotgunPellet, double>    ("main/gravity", &ShotgunPellet::_GRAVITY, double(0));
 }

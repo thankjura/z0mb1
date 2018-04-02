@@ -3,7 +3,7 @@
 #include "bullet.hpp"
 
 class MinigunBullet: public Bullet {
-    GODOT_CLASS (MinigunBullet);
+    GODOT_CLASS (MinigunBullet, RigidBody2D);
 
 protected:
     void _collision(Variant body);
@@ -14,9 +14,8 @@ public:
 
     void _init();
     void _ready();
-    void _process(const float delta);
+    void _process(const double delta);
     void damage(Variant d);
-    int get_damage();
 
     static void _register_methods();
 };

@@ -3,24 +3,19 @@
 #include "gun.hpp"
 
 class Bazooka: public Gun {
-    GODOT_CLASS (Bazooka);
+    GODOT_CLASS (Bazooka, Node2D);
 
 private:
-    float _wait_for_reload;
+    double _wait_for_reload;
     void _reload();
 
 public:
     Bazooka();
     ~Bazooka();
 
-    void default_offset();
-    void climb_offset();
-    void drop();
-    void fire(const float delta, const Vector2 velocity);
-
     void _init();
     void _ready();
-    void _process(const float delta);
+    void _process(const double delta);
     static void _register_methods();
 };
 

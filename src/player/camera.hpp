@@ -2,30 +2,38 @@
 #define PLAYER_CAMERA_H
 #include <core/Godot.hpp>
 #include <Camera2D.hpp>
-
-#include "../../constants.hpp"
+#include <Area2D.hpp>
+#include "../constants.hpp"
 
 using namespace godot;
 
-class PlayerCamera: public GodotScript<Camera2D> {
-    GODOT_CLASS (PlayerCamera);
-    static int ZOOM_SPEED = 5;
+class PlayerCamera: public Camera2D {
+    GODOT_CLASS (PlayerCamera, Camera2D);
 
 private:
-    Vector2 _init_zoom;
-    float _shuffle_force;
+    double _ZOOM_SPEED;
+    double _SHUFFLE_FORCE;
+
+    Vector2 _init_zoom;    
     Vector2 _new_zoom;
-    float _shuffle;
-    float _shuffle_time;
-    float _shuffle_timeout;
+    double _shuffle;
+    double _shuffle_time;
+    double _shuffle_timeout;
     Vector2 _camera_offset;
 
-public:
-    void _ready();
-    void area_zoom(Variant area);
+public:    
+    void area_zoom(Area2D* area);
     void reset_zoom();
-    void shuffle_camera(const float force, const fade_out_time = 0.1);
-    void _process(const float delta);
+    void shuffle_camera(const double force, const double fade_out_time = 0.1);
+    
+    PlayerCamera();
+    ~PlayerCamera();
+    
+    void _init();
+    void _ready();
+    void _process(const double delta);
+    
+    static void _register_methods();
 };
 
 #endif

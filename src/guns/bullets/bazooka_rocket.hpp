@@ -9,14 +9,14 @@
 #include <Physics2DDirectBodyState.hpp>
 
 class BazookaRocket: public Bullet {
-    GODOT_CLASS (BazookaRocket);
+    GODOT_CLASS (BazookaRocket, RigidBody2D);
 
 private:
     double _SHOCK_WAVE_FORCE;
     double _SHOCK_WAVE_DISTANCE_SQUARED;
-    float _LOCAL_DAMP_TIME;
-    float _local_dump_timeout;
-    float _local_dump_length;
+    double _LOCAL_DAMP_TIME;
+    double _local_dump_timeout;
+    double _local_dump_length;
 
     Vector2 _local_dump_vector;
     AnimatedSprite* _boom;
@@ -36,7 +36,7 @@ public:
 
     void _init();
     void _ready();
-    void _process(const float delta);
+    void _process(const double delta);
     void damage(Variant d);
 
     void local_dump(Vector2 v);

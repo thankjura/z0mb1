@@ -13,7 +13,8 @@ configure_file(
 
 inc = include_directories(
   '/home/GrandMaster/Development/games/godot_headers',
-  '/home/GrandMaster/Development/games/godot-cpp/include'
+  '/home/GrandMaster/Development/games/godot-cpp/include',
+  '/home/GrandMaster/Development/games/godot-cpp/include/gen'
 )
 
 add_project_arguments([
@@ -31,6 +32,7 @@ add_project_link_arguments([
   '-lgodot-cpp'
 ], language : 'cpp')
 
-target_dir = meson.source_root() + '/lib64'
+lib_dir = 'lib64'
+target_dir = meson.source_root() + '/' + lib_dir
 
 subdir('src')

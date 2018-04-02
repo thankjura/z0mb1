@@ -9,10 +9,9 @@ sources = [
           'main.cpp'
 ]
 
-gun = shared_library(
+gun = static_library(
                 'gun',
                 sources,
-                install: true,
-                include_directories: inc,
-                install_dir: target_dir
+                install: false,
+                include_directories: inc
 )

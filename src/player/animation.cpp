@@ -1,6 +1,12 @@
 #include "animation.hpp"
 
 PlayerAnim::PlayerAnim() {
+    _AIM[L"aim_pistol"] = 0;
+    _AIM[L"aim_ak47"] = 1;
+    _AIM[L"aim_shotgun"] = 2;
+    _AIM[L"aim_minigun"] = 3;
+    _AIM[L"aim_bazooka"] = 4;
+
     _RUN_SPEED = 300;
     _GROUND_SCALE_RATE = 1.2;
     _CLIMB_SCALE_RATE = 2;
@@ -181,9 +187,11 @@ void PlayerAnim::_set_hand() {
 }
 
 void PlayerAnim::set_gun(Gun* gun) {
+    Godot::print("xxxx0");
     _gun = gun;
-    std::string name = _gun->get_anim_name();
+    std::wstring name = _gun->get_anim_name();
     Godot::print("xxxx");
+    std::wcout << name;
     int x = _AIM[name];
     Godot::print("xxxx1");
     Godot::print(x);

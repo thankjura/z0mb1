@@ -2,6 +2,7 @@
 
 AK47Gun::AK47Gun() {
     _overheat_time = 0.0;
+    _AIM_NAME = "aim_ak47";
 }
 
 AK47Gun::~AK47Gun() {};

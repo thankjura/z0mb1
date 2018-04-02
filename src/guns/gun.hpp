@@ -13,11 +13,10 @@
 #include <RigidBody2D.hpp>
 #include <AudioStreamPlayer2D.hpp>
 
-//class PlayerHenry;
-
-#include "../player/player.hpp"
-
 using namespace godot;
+
+class PlayerHenry;
+#include "../player/player.hpp"
 
 class Gun: public Node2D {
     //GODOT_CLASS (Gun, Node2D);
@@ -75,7 +74,7 @@ public:
     double get_heavines();
     double get_dead_zone_top();
     double get_dead_zone_bottom();
-    std::string get_anim_name();
+    std::wstring get_anim_name();
 
     void _init();
     void _ready();

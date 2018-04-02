@@ -154,8 +154,8 @@ double Gun::get_dead_zone_bottom() {
     return _ANIM_DEAD_ZONE_BOTTOM;
 }
 
-std::string Gun::get_anim_name() {
-    return _AIM_NAME.alloc_c_string();
+std::wstring Gun::get_anim_name() {
+    return _AIM_NAME.unicode_str();
 }
 
 void Gun::_process(const double delta) {

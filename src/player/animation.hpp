@@ -5,14 +5,15 @@
 #include <Node2D.hpp>
 #include <SceneTree.hpp>
 #include "../utils/utils.hpp"
-class Gun;
 #include "../guns/gun.hpp"
 #include <map>
 
 using namespace godot;
 
+class Gun;
+
 class PlayerAnim: public AnimationTreePlayer {
-    GODOT_CLASS (PlayerAnim, AnimationTreePlayer);    
+    GODOT_CLASS (PlayerAnim, AnimationTreePlayer);
     
     static constexpr const char* _GROUND_BLEND_NODE = "ground_blend";
     static constexpr const char* _WALK_BLEND_NODE = "walk_blend";
@@ -70,13 +71,7 @@ private:
         CD_DOWN
     };
     
-    std::map<std::string, int> _AIM = {
-        {"aim_pistol", 0},
-        {"aim_ak47", 1},
-        {"aim_shotgun", 2},
-        {"aim_minigun", 3},
-        {"aim_bazooka", 4}            
-    };
+    std::map<std::wstring, int> _AIM;
     
     State _current_state;
     double _current_aim_angle;

@@ -12,12 +12,14 @@
 #include <SceneTree.hpp>
 #include <ResourceLoader.hpp>
 #include "camera.hpp"
-class PlayerAnim;
 #include "animation.hpp"
 #include "../constants.hpp"
 #include "../utils/utils.hpp"
 
 using namespace godot;
+
+class Gun;
+class PlayerAnim;
 
 class PlayerHenry: public KinematicBody2D {
     GODOT_CLASS (PlayerHenry, KinematicBody2D);

@@ -1,22 +1,20 @@
 #include "gun.hpp"
 
-Gun::Gun() {
-    _wait_ready = 0;
-    _fired = false;
-
-    //_current_offset_type = NULL;
-}
+Gun::Gun() {}
 
 Gun::~Gun() {};
 
-void Gun::_init() {}
+void Gun::_init() {
+    _wait_ready = 0;
+    _fired = false;
+}
 
 void Gun::_ready() {
     set_position(_OFFSET);
     SceneTree* scene = get_tree();
     _world = scene->get_current_scene();
     Node* parent = get_parent();
-    _player = (PlayerHenry*) parent->get_owner();
+    _player = as<PlayerHenry>(parent->get_owner());
 }
 
 void Gun::default_offset() {
@@ -52,7 +50,7 @@ Vector2 Gun::_get_bullet_position(const double gun_angle) {
 void Gun::_eject_shell() {
     if (_SHELL != NULL) {
         Vector2 v = _EJECT_SHELL_VECTOR * (1 + ((rand() / (static_cast<double> (RAND_MAX)) * 0.1)));
-        RigidBody2D* s = (RigidBody2D*) _SHELL.ptr()->instance();
+        RigidBody2D* s = (RigidBody2D*) _SHELL->instance();
         Node2D* shell_gate = (Node2D*) get_node("shell_gate");
         s->set_global_position(shell_gate->get_global_position());
         double global_rot = shell_gate->get_global_rotation();
@@ -90,7 +88,7 @@ void Gun::fire(const double delta, const Vector2 velocity) {
     _muzzle_flash();
     _play_sound();
 
-    RigidBody2D* bullet = (RigidBody2D*) _BULLET.ptr()->instance();
+    RigidBody2D* bullet = (RigidBody2D*) _BULLET->instance();
     Vector2 bullet_velocity = _get_bullet_vector();
     double gun_angle = Vector2(1,0).angle_to(bullet_velocity);
     _recoil(_RECOIL.rotated(bullet_velocity.angle()));
@@ -154,8 +152,8 @@ double Gun::get_dead_zone_bottom() {
     return _ANIM_DEAD_ZONE_BOTTOM;
 }
 
-std::wstring Gun::get_anim_name() {
-    return _AIM_NAME.unicode_str();
+const char* Gun::get_anim_name() {
+    return _AIM_NAME.c_str();
 }
 
 void Gun::_process(const double delta) {

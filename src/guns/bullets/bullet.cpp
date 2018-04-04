@@ -7,7 +7,6 @@ void Bullet::_init() {}
 
 void Bullet::_ready() {
     _rocket_timeout = _LIFE_TIME;
-    _health = _HEALTH;
     _active = true;
     _decal = false;
 

@@ -43,7 +43,7 @@ void PlayerHenry::_ground_state(const double delta, const Vector2 m, const doubl
     }
     
     int direction = is_back() ? -1 : 1;
-    if (floor_ratio != NAN) {
+    if (floor_ratio == floor_ratio) {
         _anim->set_floor_ratio(floor_ratio*2, direction);
     }
     _anim->walk(v, delta, direction, _MAX_SPEED);
@@ -119,6 +119,7 @@ void PlayerHenry::_look_default(const double delta) {
 }
 
 void PlayerHenry::_jump() {
+    Godot::print("jump");
     if (_is_climb_state) {
         _velocity.y -= _JUMP_FORCE * 0.7;
         _velocity.x += _JUMP_FORCE * 0.7 * -_climb_ladder_direction;

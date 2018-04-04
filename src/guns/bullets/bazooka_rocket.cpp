@@ -110,8 +110,8 @@ void BazookaRocket::_register_methods() {
     register_method ("_integrate_forces", &BazookaRocket::_integrate_forces);
     register_method ("local_dump", &BazookaRocket::local_dump);
 
-    register_property<BazookaRocket, int>   ("main/health", &BazookaRocket::_HEALTH, int(10));
-    register_property<BazookaRocket, int>   ("main/damage", &BazookaRocket::_DAMAGE, int(1000));
+    register_property<BazookaRocket, double>   ("main/health", &BazookaRocket::_health, int(10));
+    register_property<BazookaRocket, double>   ("main/damage", &BazookaRocket::_DAMAGE, int(1000));
     register_property<BazookaRocket, double> ("main/lifetime", &BazookaRocket::_LIFE_TIME, double(60));
     register_property<BazookaRocket, double> ("main/gravity", &BazookaRocket::_GRAVITY, double(0));
     register_property<BazookaRocket, double> ("main/dumptime", &BazookaRocket::_LOCAL_DAMP_TIME, double(0.8));

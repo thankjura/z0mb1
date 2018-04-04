@@ -65,7 +65,7 @@ void PlayerHenry::_ready() {
     _update_health(_health);
     
     _camera = (PlayerCamera*) get_node("camera");
-    _anim = (PlayerAnim*) get_node("animation_tree_player");
+    _anim = as<PlayerAnim>(get_node("animation_tree_player"));
     _mouth = (Node2D*) get_node("base/pelvis/body/head/mouth");
     _step = (AudioStreamPlayer2D*) get_node("audio_footstep");
     _step_metal = (AudioStreamPlayer2D*) get_node("audio_footstep_metal");
@@ -101,7 +101,7 @@ bool PlayerHenry::set_gun(Variant gun_class) {
     }
     
     Ref<PackedScene> gun = ResourceLoader::get_singleton()->load(gun_class);
-    _gun = (Gun*) gun.ptr()->instance();
+    _gun = as<Gun>(gun->instance());
     get_node("base/pelvis/body/sholder_r/forearm_r/gun_position")->add_child(_gun);
     _recalc_mass();
     _anim->set_gun(_gun);
@@ -185,15 +185,15 @@ void PlayerHenry::_physics_process(const double delta) {
     }
     
     double ratio = NAN;
-    if (not !_is_climb_state) {        
+    if (not _is_climb_state) {        
         if (get_slide_count() > 0) {
-            KinematicCollision2D* c = get_slide_collision(0).ptr();
+            Ref<KinematicCollision2D> c = get_slide_collision(0);
             double a = _FLOOR_NORMAL.angle_to(c->get_normal());
             if (std::abs(a) < _FLOOR_MAX_ANGLE) {
                 ratio = a/_ANIM_CLIMB_ANGLE;
             }
         }
-        if (ratio != NAN and ratio < 0 and _velocity.x > 0.001) {
+        if (ratio == ratio and ratio < 0 and _velocity.x > 0.001) {
             _velocity.y += (_GRAVITY + (_GRAVITY * ratio)) * delta;
         } else {
             _velocity.y += _GRAVITY * delta;
@@ -242,14 +242,12 @@ void PlayerHenry::_physics_process(const double delta) {
 void PlayerHenry::_register_methods() {
     register_method ("_init",                   &PlayerHenry::_init);
     register_method ("_ready",                  &PlayerHenry::_ready);
+    register_method ("_input",                  &PlayerHenry::_input);
     register_method ("_process",                &PlayerHenry::_process);
     register_method ("_physics_process",        &PlayerHenry::_physics_process);
     
-    register_method ("shuffle_camera",          &PlayerHenry::shuffle_camera);
-    register_method ("set_mouth",               &PlayerHenry::set_mouth);
     register_method ("damage",                  &PlayerHenry::damage);
     register_method ("hit",                     &PlayerHenry::hit);
-    register_method ("gun_reload",              &PlayerHenry::gun_reload);
     register_method ("_area_entered",           &PlayerHenry::_area_entered);
     register_method ("_area_exited",            &PlayerHenry::_area_exited);
     register_method ("set_gun",                 &PlayerHenry::set_gun);

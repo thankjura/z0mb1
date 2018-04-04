@@ -26,17 +26,17 @@ class Gun: public Node2D {
     };
 
 protected:
+    std::string _AIM_NAME;
+
     Ref<PackedScene> _BULLET = NULL;
     Ref<PackedScene> _ENTITY = NULL;
     Ref<PackedScene> _SHELL = NULL;
 
-    String _AIM_NAME;
-
-    int _SPEED;
-    int _VIEWPORT_SHUTTER;
-    int _DROP_ANGULAR;
-    int _ANIM_DEAD_ZONE_TOP;
-    int _ANIM_DEAD_ZONE_BOTTOM;
+    double _SPEED;
+    double _VIEWPORT_SHUTTER;
+    double _DROP_ANGULAR;
+    double _ANIM_DEAD_ZONE_TOP;
+    double _ANIM_DEAD_ZONE_BOTTOM;
     double _SPREADING;
     double _HEAVINES;
     double _TIMEOUT;
@@ -64,7 +64,7 @@ protected:
     Node* _world;
     PlayerHenry* _player;
 
-public:
+public:    
     Gun();
     virtual ~Gun();
 
@@ -74,7 +74,7 @@ public:
     double get_heavines();
     double get_dead_zone_top();
     double get_dead_zone_bottom();
-    std::wstring get_anim_name();
+    const char* get_anim_name();
 
     void _init();
     void _ready();

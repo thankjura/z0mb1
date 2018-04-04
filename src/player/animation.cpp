@@ -1,11 +1,11 @@
 #include "animation.hpp"
 
 PlayerAnim::PlayerAnim() {
-    _AIM[L"aim_pistol"] = 0;
-    _AIM[L"aim_ak47"] = 1;
-    _AIM[L"aim_shotgun"] = 2;
-    _AIM[L"aim_minigun"] = 3;
-    _AIM[L"aim_bazooka"] = 4;
+    _AIM["aim_pistol"] = 0;
+    _AIM["aim_ak47"] = 1;
+    _AIM["aim_shotgun"] = 2;
+    _AIM["aim_minigun"] = 3;
+    _AIM["aim_bazooka"] = 4;
 
     _RUN_SPEED = 300;
     _GROUND_SCALE_RATE = 1.2;
@@ -26,7 +26,7 @@ PlayerAnim::PlayerAnim() {
     _new_floor_ratio = _floor_ratio;
     _floor_ratio_timeout = 0;
     _player_direction = 1;
-    _gun = NULL;    
+    _gun = NULL;
 }
 
 PlayerAnim::~PlayerAnim() {}
@@ -112,7 +112,7 @@ void PlayerAnim::climb(const Vector2 velocity, const double delta, const double 
         seek = 50 + distance/CLIMB_LADDER_BOTTOM_DISTANCE*50;
     }
     
-    if (seek) {
+    if (seek == seek) {
         blend2_node_set_amount(_CLIMB_TOP_BLEND, 1);
         timeseek_node_seek(_CLIMB_TOP_SEEK, seek);            
     } else {
@@ -128,7 +128,7 @@ void PlayerAnim::climb(const Vector2 velocity, const double delta, const double 
     _set_hand();
 }
 
-void PlayerAnim::set_player_direction(const int direction) {    
+void PlayerAnim::set_player_direction(const int direction) {
     if (_player_direction != direction) {
         _player_direction = direction;
         _floor_ratio = 0;
@@ -174,9 +174,10 @@ void PlayerAnim::_set_hand() {
     if (_current_state == State::STATE_CLIMB) {
         _set_hand_type(HandType::HT_CLIMB);
     } else if (_gun) {
-        if (_gun->get("player/anim_name") == _AIM_PISTOL_NAME) {
+        const char* anim_name = _gun->get_anim_name();
+        if (anim_name == _AIM_PISTOL_NAME) {
             _set_hand_type(HandType::HT_PISTOL);
-        } else if (_gun->get("player/anim_name") == _AIM_MINIGUN_NAME) {
+        } else if (anim_name == _AIM_MINIGUN_NAME) {
             _set_hand_type(HandType::HT_MINIGUN);
         } else {
             _set_hand_type(HandType::HT_SHOTGUN);
@@ -187,19 +188,14 @@ void PlayerAnim::_set_hand() {
 }
 
 void PlayerAnim::set_gun(Gun* gun) {
-    Godot::print("xxxx0");
     _gun = gun;
-    std::wstring name = _gun->get_anim_name();
-    Godot::print("xxxx");
-    std::wcout << name;
+    std::string name = _gun->get_anim_name();    
     int x = _AIM[name];
-    Godot::print("xxxx1");
-    Godot::print(x);
-    Godot::print("xxxx2");
     transition_node_set_current(_AIM_SWITCH_NODE, x);
 }
 
 void PlayerAnim::drop_gun() {
+    return;
     _set_hand();
 
     // Reset animations
@@ -207,23 +203,25 @@ void PlayerAnim::drop_gun() {
 }
 
 void PlayerAnim::gun_reload() {
-    if (_gun && _gun->get("player/anim_name") == _AIM_SHOTGUN_NAME) {
-        _start_gun_reload();
-    }
-    if (_gun && _gun->get("player/anim_name") == _AIM_BAZOOKA_NAME) {
-        oneshot_node_start(_BAZOOKA_RELOAD_NODE);
+    if (_gun) {
+        const char* anim_name = _gun->get_anim_name();
+        if (anim_name == _AIM_SHOTGUN_NAME) {
+            _start_gun_reload();
+        } else if (anim_name == _AIM_BAZOOKA_NAME) {
+            oneshot_node_start(_BAZOOKA_RELOAD_NODE);
+        }
     }
 }
 
 void PlayerAnim::_start_gun_reload() {
-    if (_gun && _gun->get("player/anim_name") == _AIM_SHOTGUN_NAME) {
+    if (_gun && _gun->get_anim_name() == _AIM_SHOTGUN_NAME) {
         _reload_in_timeout = _SHOTGUN_RELOAD_IN;
         _reload_in_time = _SHOTGUN_RELOAD_IN;
     }
 }
 
 void PlayerAnim::_stop_gun_reload() {
-    if (_gun && _gun->get("player/anim_name") == _AIM_SHOTGUN_NAME) {
+    if (_gun && _gun->get_anim_name() == _AIM_SHOTGUN_NAME) {
         _reload_out_timeout = _SHOTGUN_RELOAD_OUT;
         _reload_out_time = _SHOTGUN_RELOAD_OUT;
     }
@@ -273,13 +271,4 @@ void PlayerAnim::_register_methods() {
     register_method ("_init",                   &PlayerAnim::_init);
     register_method ("_ready",                  &PlayerAnim::_ready);
     register_method ("_process",                &PlayerAnim::_process);
-    
-    register_method ("set_floor_ratio",         &PlayerAnim::set_floor_ratio);
-    register_method ("walk",                    &PlayerAnim::walk);
-    register_method ("jump",                    &PlayerAnim::jump);
-    register_method ("aim",                     &PlayerAnim::aim);
-    register_method ("climb",                   &PlayerAnim::climb);
-    register_method ("set_player_direction",    &PlayerAnim::set_player_direction);
-    register_method ("drop_gun",                &PlayerAnim::drop_gun);
-    register_method ("gun_reload",              &PlayerAnim::gun_reload);
 }

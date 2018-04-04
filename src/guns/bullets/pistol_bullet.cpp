@@ -30,8 +30,8 @@ void PistolBullet::_register_methods() {
     register_method ("damage", &PistolBullet::damage);
     register_method ("_collision", &PistolBullet::_collision);
 
-    register_property<PistolBullet, int>      ("main/health", &PistolBullet::_HEALTH, int(100));
-    register_property<PistolBullet, int>      ("main/damage", &PistolBullet::_DAMAGE, int(100));
+    register_property<PistolBullet, double>      ("main/health", &PistolBullet::_health, double(100));
+    register_property<PistolBullet, double>      ("main/damage", &PistolBullet::_DAMAGE, double(100));
     register_property<PistolBullet, double>    ("main/lifetime", &PistolBullet::_LIFE_TIME, double(4));
     register_property<PistolBullet, double>    ("main/gravity", &PistolBullet::_GRAVITY, double(0));
 }

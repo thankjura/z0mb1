@@ -6,6 +6,7 @@ sources = [
           'ak47.cpp',
           'bazooka.cpp',
           'minigun.cpp',
+          'pistol.cpp',
           'main.cpp'
 ]
 

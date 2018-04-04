@@ -2,6 +2,8 @@
 #include "ak47.hpp"
 #include "bazooka.hpp"
 #include "minigun.hpp"
+#include "pistol.hpp"
+#include "shotgun.hpp"
 
 using namespace godot;
 
@@ -21,4 +23,6 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle) {
     register_class<AK47Gun>();
     register_class<Bazooka>();
     register_class<Minigun>();
+    register_class<Pistol>();
+    register_class<Shotgun>();
 }

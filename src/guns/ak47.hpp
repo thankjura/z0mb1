@@ -12,6 +12,7 @@ private:
     double _OVERHEAD_TIMEOUT;
     double _overheat_time;
     TextureRect* _overheat;
+    AnimationPlayer* _animation;
 
 protected:
     void _muzzle_flash();

@@ -1,10 +1,11 @@
 #include "minigun.hpp"
 
-Minigun::Minigun() {
+Minigun::Minigun():Gun() {
+    _AIM_NAME = "aim_minigun";
     _overheat_time = 0.0;
 }
 
-Minigun::~Minigun() {};
+Minigun::~Minigun() {}
 
 void Minigun::_init() {
     Gun::_init();
@@ -87,25 +88,20 @@ void Minigun::_register_methods() {
     register_method ("_ready", &Minigun::_ready);
     register_method ("_process", &Minigun::_process);
 
-    //register_property<Minigun, Ref<PackedScene>> ("scenes/bullet", &Minigun::_BULLET, ResourceLoader::get_singleton()->load("res://scenes/guns/bullets/minigun_bullet.tscn"));
-    //register_property<Minigun, Ref<PackedScene>> ("scenes/entity", &Minigun::_ENTITY, ResourceLoader::get_singleton()->load("res://scenes/entities/minigun_entity.tscn"));
-    //register_property<Minigun, Ref<PackedScene>> ("scenes/shell", &Minigun::_SHELL, ResourceLoader::get_singleton()->load("res://scenes/guns/shells/minigun_shell.tscn"));
-
-    register_property<Minigun, int>     ("main/speed", &Minigun::_SPEED, int(60000));
+    register_property<Minigun, double>     ("main/speed", &Minigun::_SPEED, double(60000));
     register_property<Minigun, double>   ("main/timeout", &Minigun::_TIMEOUT, double(0.1));
     register_property<Minigun, double>   ("main/spreading", &Minigun::_SPREADING, double(0.05));
     register_property<Minigun, Vector2> ("main/recoil", &Minigun::_RECOIL, Vector2(-200,0));
     register_property<Minigun, Vector2> ("main/drop_velocity", &Minigun::_DROP_VELOCITY, Vector2(400, -400));
-    register_property<Minigun, int>     ("main/drop_angular", &Minigun::_DROP_ANGULAR, int(1));
+    register_property<Minigun, double>     ("main/drop_angular", &Minigun::_DROP_ANGULAR, double(1));
     register_property<Minigun, Vector2> ("main/eject_shell_vector", &Minigun::_EJECT_SHELL_VECTOR, Vector2(0, 300));
     register_property<Minigun, double>   ("main/overheat_time", &Minigun::_OVERHEAD_TIMEOUT, double(4));
 
-    register_property<Minigun, String>  ("player/anim_name", &Minigun::_AIM_NAME, String("aim_minigun"));
-    register_property<Minigun, int>     ("player/view_port_shutter", &Minigun::_VIEWPORT_SHUTTER, int(10));
+    register_property<Minigun, double>     ("player/view_port_shutter", &Minigun::_VIEWPORT_SHUTTER, double(10));
     register_property<Minigun, double>   ("player/heavines", &Minigun::_HEAVINES, double(0.6));
 
-    register_property<Minigun, int>     ("dead_zone/top", &Minigun::_ANIM_DEAD_ZONE_TOP, int(16));
-    register_property<Minigun, int>     ("dead_zone/bottom", &Minigun::_ANIM_DEAD_ZONE_BOTTOM, int(0));
+    register_property<Minigun, double>     ("dead_zone/top", &Minigun::_ANIM_DEAD_ZONE_TOP, double(16));
+    register_property<Minigun, double>     ("dead_zone/bottom", &Minigun::_ANIM_DEAD_ZONE_BOTTOM, double(0));
 
     register_property<Minigun, Vector2> ("position/offset", &Minigun::_OFFSET, Vector2(125, 55));
     register_property<Minigun, Vector2> ("position/climb_offset", &Minigun::_CLIMB_OFFSET, Vector2(-50, -40));

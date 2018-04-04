@@ -11,30 +11,24 @@ configure_file(
   configuration: config_h,
 )
 
-#inc = include_directories(
-#  '/home/GrandMaster/Development/games/godot_headers',
-#  '/home/GrandMaster/Development/games/godot-cpp/include',
-#  '/home/GrandMaster/Development/games/godot-cpp/include/gen'
-#)
-
 inc = include_directories(
-  '/home/GrandMaster/Documents/Games/godot_headers',
-  '/home/GrandMaster/Documents/Games/godot-cpp/include',
-  '/home/GrandMaster/Documents/Games/godot-cpp/include/gen'
+  '/home/GrandMaster/Development/games/godot_headers',
+  '/home/GrandMaster/Development/games/godot-cpp/include',
+  '/home/GrandMaster/Development/games/godot-cpp/include/gen'
 )
 
 add_project_arguments([
   '-I' + meson.build_root(),
   '-std=c++14',
   '-fpermissive',
-  '-O3',
-  '-g',
+  '-O2',
+  '-ggdb',
 ], language: 'cpp')
 
 add_project_link_arguments([
   '-std=c++14',
   '-fpermissive',
-  '-L/home/GrandMaster/Documents/Games/godot-cpp/bin/',
+  '-L/home/GrandMaster/Development/games/godot-cpp/bin/',
   '-lgodot-cpp'
 ], language : 'cpp')
 

@@ -2,20 +2,22 @@
 #include <InputEventMouseButton.hpp>
 
 void PlayerHenry::_input(const Ref<InputEvent> event) {
-    const InputEvent* e = event.ptr();
-    
-    if (e->is_action_pressed("ui_jump")) {
+    if (event->is_action_pressed("ui_jump")) {
         _jump();
     }
-    if (e->is_action_released("ui_drop")) {
+    if (event->is_action_released("ui_drop")) {
         _drop_gun();
     }
-
-    if (InputEventMouseButton* em = (InputEventMouseButton*) e) {
-        if (em->get_button_index() == GlobalConstants::BUTTON_RIGHT && em->is_pressed()) {
-            _jump();
-        }
-    }
+    //Ref<InputEventMouseButton> mb = event;
+    //Godot::print(mb.is_valid());
+    //if (mb.is_valid()) {
+    //    const int64_t idx = mb->get_button_index();
+    //    printf("%" PRId64 "\n", idx);
+    //    
+    //    if (mb.is_valid() and idx == GlobalConstants::BUTTON_RIGHT and mb->is_pressed()) {
+    //        _jump();
+    //    }
+    //}
 }
 
 Vector2 PlayerHenry::_get_move_vector() {

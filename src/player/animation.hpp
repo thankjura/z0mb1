@@ -35,10 +35,10 @@ class PlayerAnim: public AnimationTreePlayer {
     static constexpr const char* _CLIMB_TOP_BLEND = "climb_top_blend";
     static constexpr const char* _IDLE_CLIMB_BLEND = "blend_idle_floor_angle";
     
-    const String _AIM_SHOTGUN_NAME = "aim_shotgun5";
-    const String _AIM_BAZOOKA_NAME = "aim_bazooka";
-    const String _AIM_MINIGUN_NAME = "aim_minigun";
-    const String _AIM_PISTOL_NAME = "aim_pistol";
+    const std::string _AIM_SHOTGUN_NAME = "aim_shotgun5";
+    const std::string _AIM_BAZOOKA_NAME = "aim_bazooka";
+    const std::string _AIM_MINIGUN_NAME = "aim_minigun";
+    const std::string _AIM_PISTOL_NAME = "aim_pistol";
         
 private:
     double _RUN_SPEED;
@@ -71,7 +71,7 @@ private:
         CD_DOWN
     };
     
-    std::map<std::wstring, int> _AIM;
+    std::map<std::string, int> _AIM;
     
     State _current_state;
     double _current_aim_angle;

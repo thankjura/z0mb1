@@ -15,13 +15,13 @@ class Bullet: public RigidBody2D {
     GODOT_CLASS (Bullet, RigidBody2D);
 
 protected:
-    int _DAMAGE;
+    double _DAMAGE;
     double _LIFE_TIME;
     double _GRAVITY;
 
     Sprite* _sprite;
 
-    int _health;
+    double _health;
     double _active;
     double _decal;
     double _rocket_timeout;
@@ -33,7 +33,7 @@ public:
     Bullet();
     virtual ~Bullet();
 
-    virtual void damage(Variant d);
+    virtual void damage(double d);
 
     void _init();
     void _ready();

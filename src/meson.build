@@ -22,3 +22,5 @@ gun = shared_library(
                 link_whole: [gun, bullet, bullet_shell],
                 link_with: [player]
 )
+
+subdir('enemy')

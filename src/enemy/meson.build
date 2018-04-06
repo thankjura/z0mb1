@@ -1,12 +1,12 @@
-sources = [
-          'enemy.cpp',
-          'main.cpp'
+enemy_sources = [
+          'enemy.cpp'
 ]
 
-enemy = shared_library(
+enemy = static_library(
                 'enemy',
-                sources,
-                install: true,
-                include_directories: inc,
-                install_dir: target_dir
+                enemy_sources,
+                install: false,
+                include_directories: inc
 )
+
+subdir('solder')

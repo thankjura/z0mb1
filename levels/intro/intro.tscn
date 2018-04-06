@@ -11,13 +11,13 @@
 [ext_resource path="res://scenes/player/henry.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/entities/pistol_entity.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/entities/shotgun_entity.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/enemy/solder.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/enemy/markers/change_direction.tscn" type="PackedScene" id=13]
-[ext_resource path="res://levels/intro/objects/truck.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scripts/levels/next_level_area.gd" type="Script" id=15]
-[ext_resource path="res://scenes/entities/bazooka_entity.tscn" type="PackedScene" id=16]
-[ext_resource path="res://scenes/entities/minigun_entity.tscn" type="PackedScene" id=17]
-[ext_resource path="res://scenes/entities/ak47_entity.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenes/enemy/markers/change_direction.tscn" type="PackedScene" id=12]
+[ext_resource path="res://levels/intro/objects/truck.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scripts/levels/next_level_area.gd" type="Script" id=14]
+[ext_resource path="res://scenes/entities/bazooka_entity.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/entities/minigun_entity.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/entities/ak47_entity.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/enemy/solder.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -128,7 +128,6 @@ shape = SubResource( 2 )
 
 [node name="parallax_background" type="ParallaxBackground" parent="." index="1"]
 
-editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -416,72 +415,35 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="solder" parent="." index="17" instance=ExtResource( 12 )]
-
-position = Vector2( 2730.83, 906.824 )
-scale = Vector2( 0.3, 0.3 )
-collision_mask = 9
-_sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
-health = 300
-direction = 2
-current_state = 1
-
-[node name="solder2" parent="." index="18" instance=ExtResource( 12 )]
-
-position = Vector2( 3427.83, 905.824 )
-scale = Vector2( 0.3, 0.3 )
-collision_mask = 9
-_sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
-health = 300
-current_state = 1
-
-[node name="solder3" parent="." index="19" instance=ExtResource( 12 )]
-
-position = Vector2( 6264.83, 504.824 )
-scale = Vector2( 0.3, 0.3 )
-collision_mask = 9
-_sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
-health = 300
-current_state = 1
-
-[node name="solder4" parent="." index="20" instance=ExtResource( 12 )]
-
-position = Vector2( 6411.83, 733.824 )
-scale = Vector2( 0.3, 0.3 )
-collision_mask = 9
-_sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
-health = 300
-current_state = 0
-
-[node name="change_direction" parent="." index="21" instance=ExtResource( 13 )]
+[node name="change_direction" parent="." index="17" instance=ExtResource( 12 )]
 
 position = Vector2( 2249, 881.25 )
 scale = Vector2( 1, 2.74219 )
 direction = 1
 timeout = 1.0
 
-[node name="change_direction5" parent="." index="22" instance=ExtResource( 13 )]
+[node name="change_direction5" parent="." index="18" instance=ExtResource( 12 )]
 
 position = Vector2( 5045, 878.25 )
 scale = Vector2( 1, 2.74219 )
 direction = 1
 timeout = 1.0
 
-[node name="change_direction6" parent="." index="23" instance=ExtResource( 13 )]
+[node name="change_direction6" parent="." index="19" instance=ExtResource( 12 )]
 
 position = Vector2( 5426, 880.25 )
 scale = Vector2( 1, 2.74219 )
 direction = 0
 timeout = 1.0
 
-[node name="change_direction3" parent="." index="24" instance=ExtResource( 13 )]
+[node name="change_direction3" parent="." index="20" instance=ExtResource( 12 )]
 
 position = Vector2( 5673, 474.25 )
 scale = Vector2( 1, 2.74219 )
 direction = 1
 timeout = 1.0
 
-[node name="change_direction4" parent="." index="25" instance=ExtResource( 13 )]
+[node name="change_direction4" parent="." index="21" instance=ExtResource( 12 )]
 
 position = Vector2( 6923, 572.25 )
 scale = Vector2( 1, 2.74219 )
@@ -505,20 +467,20 @@ _sections_unfolded = [ "Collision" ]
 shape = SubResource( 6 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="change_direction2" parent="." index="26" instance=ExtResource( 13 )]
+[node name="change_direction2" parent="." index="22" instance=ExtResource( 12 )]
 
 position = Vector2( 3533, 879.25 )
 scale = Vector2( 1, 2.74219 )
 direction = 0
 timeout = 1.0
 
-[node name="truck" parent="." index="27" instance=ExtResource( 14 )]
+[node name="truck" parent="." index="23" instance=ExtResource( 13 )]
 
 position = Vector2( 6219, 760 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 camera_zoom = 0.7
 
-[node name="area_2d" type="Area2D" parent="." index="28"]
+[node name="area_2d" type="Area2D" parent="." index="24"]
 
 editor/display_folded = true
 position = Vector2( 7410, 912 )
@@ -529,7 +491,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 15 )
+script = ExtResource( 14 )
 next_scene = "res://levels/intro/intro.tscn"
 confirm = null
 
@@ -538,20 +500,27 @@ confirm = null
 position = Vector2( 6, -422 )
 shape = SubResource( 7 )
 
-[node name="bazooka_entity" parent="." index="29" instance=ExtResource( 16 )]
+[node name="bazooka_entity" parent="." index="25" instance=ExtResource( 15 )]
 
 position = Vector2( 1403, 698 )
 
-[node name="minigun_entity" parent="." index="30" instance=ExtResource( 17 )]
+[node name="minigun_entity" parent="." index="26" instance=ExtResource( 16 )]
 
 position = Vector2( 759, 834 )
 
-[node name="shortgun2" parent="." index="31" instance=ExtResource( 11 )]
+[node name="shortgun2" parent="." index="27" instance=ExtResource( 11 )]
 
 position = Vector2( 532, 818 )
 
-[node name="ak47_entity" parent="." index="32" instance=ExtResource( 18 )]
+[node name="ak47_entity" parent="." index="28" instance=ExtResource( 17 )]
 
 position = Vector2( 1588, 696 )
+
+[node name="solder" parent="." index="29" instance=ExtResource( 18 )]
+
+position = Vector2( 102, 878 )
+scale = Vector2( 0.3, 0.3 )
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "collision", "main" ]
+main/init_direction = 1
 
 

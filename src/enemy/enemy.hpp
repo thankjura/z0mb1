@@ -4,6 +4,8 @@
 #include <core/Vector2.hpp>
 #include <KinematicBody2D.hpp>
 
+#include "../player/player.hpp"
+
 using namespace godot;
 
 class Enemy: public KinematicBody2D {
@@ -12,15 +14,16 @@ protected:
     double _GRAVITY;
     double _MAX_FALL_SPEED;
     double _SLOPE_FRICTION;
+    int _INIT_HEALTH;
     Vector2 _FLOOR_NORMAL;
 
     bool _dead;
-    int _health;
+    double _health;
 
     Vector2 _velocity;
     Vector2 _recoil;
 
-    KinematicBody2D* _player;
+    PlayerHenry* _player;
 
 public:
     Enemy();
@@ -28,7 +31,7 @@ public:
 
     bool is_back();
     virtual void die();
-    virtual void damage(const double d, const Vector2 v);
+    virtual void hit(const double d, const Vector2 v);
 
     void _init();
     void _ready();

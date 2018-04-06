@@ -57,7 +57,7 @@ void BazookaRocket::_damage(Variant b) {
     }
 }
 
-void BazookaRocket::damage(Variant d) {
+void BazookaRocket::damage(double d) {
     Bullet::damage(d);
 }
 
@@ -65,7 +65,6 @@ void BazookaRocket::_deactivate() {
     _active = false;
     _audio_fire->stop();
     _sprite->set_visible(false);
-    Godot::print("dd");
     ((Light2D*) get_node("decal"))->set_visible(true);
     set_applied_force(Vector2());
     set_mode(RigidBody2D::Mode::MODE_STATIC);
@@ -78,11 +77,11 @@ void BazookaRocket::_deactivate() {
     AudioStreamPlayer2D* audio_boom = (AudioStreamPlayer2D*) get_node("audio_boom");
     audio_boom->play();
     Array bodies = _dead_zone->get_overlapping_bodies();
-    //while (!bodies.empty()) {
-    //    _damage(bodies.pop_front());
-    //}
+    while (!bodies.empty()) {
+        _damage(bodies.pop_front());
+    }
     _rocket_timeout = 4;
-    //_player->shuffle_camera(30, 1);
+    _player->shuffle_camera(30, 1);
 }
 
 void BazookaRocket::local_dump(Vector2 v) {
@@ -115,8 +114,8 @@ void BazookaRocket::_register_methods() {
     register_method ("_integrate_forces",                           &BazookaRocket::_integrate_forces);
     register_method ("local_dump",                                  &BazookaRocket::local_dump);
 
-    register_property<BazookaRocket, int>   ("main/health",         &BazookaRocket::_health,            int(10));
-    register_property<BazookaRocket, int>   ("main/damage",         &BazookaRocket::_DAMAGE,            int(1000));
+    register_property<BazookaRocket, double>("main/health",         &BazookaRocket::_health,            double(10));
+    register_property<BazookaRocket, double>("main/damage",         &BazookaRocket::_DAMAGE,            double(1000));
     register_property<BazookaRocket, double>("main/lifetime",       &BazookaRocket::_LIFE_TIME,         double(60));
     register_property<BazookaRocket, double>("main/gravity",        &BazookaRocket::_GRAVITY,           double(0));
     register_property<BazookaRocket, double>("main/dumptime",       &BazookaRocket::_LOCAL_DAMP_TIME,   double(0.8));

@@ -42,7 +42,7 @@ public:
     void _init();
     void _ready();
     void _process(const double delta);
-    void damage(Variant d);
+    void damage(double d);
 
     void local_dump(Vector2 v);
 

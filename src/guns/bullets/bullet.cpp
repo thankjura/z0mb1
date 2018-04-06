@@ -56,8 +56,8 @@ void Bullet::_deactivate() {
     }
 }
 
-void Bullet::damage(Variant d) {
-    _health -= (int) d;
+void Bullet::damage(double d) {
+    _health -= (double) d;
     if (_health <= 0) {
         _deactivate();
     }

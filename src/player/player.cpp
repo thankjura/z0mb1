@@ -130,8 +130,8 @@ void PlayerHenry::damage(Variant d, Variant v) {
     _update_health(_health - int(d));
 }
 
-void PlayerHenry::_update_health(int new_health) {
-    int power = std::min(new_health / _health, 1);
+void PlayerHenry::_update_health(double new_health) {
+    double power = std::min<double>(new_health / _health, 1);
     if (power < 1) {
         _vibrate(0.1, power);
     }
@@ -251,7 +251,7 @@ void PlayerHenry::_register_methods() {
     register_method("_area_exited",             &PlayerHenry::_area_exited);
     register_method("set_gun",                  &PlayerHenry::set_gun);
     
-    register_property("main/health",            &PlayerHenry::_health,                  int(100));
+    register_property("main/health",            &PlayerHenry::_health,                  double(100));
     register_property("main/gravity",           &PlayerHenry::_GRAVITY,                 double(2000));
     register_property("main/jump_force",        &PlayerHenry::_INIT_JUMP_FORCE,         double(800));
     register_property("main/max_speed",         &PlayerHenry::_INIT_MAX_SPEED,          double(400));

@@ -57,7 +57,7 @@ private:
     double _MAX_CLIMB_SPEED;
     double _JUMP_FORCE;  
 
-    int _health;
+    double _health;
     CanvasLayer* _gui;    
     Gun* _gun;
     PlayerCamera* _camera;
@@ -69,7 +69,7 @@ private:
     void _footstep(const double ratio);
     void _footstep_metal(const double ratio);
     
-    void _update_health(const int health);
+    void _update_health(const double health);
     void _area_entered(Variant area);
     void _area_exited(Variant area);
     void _fire(const double delta);

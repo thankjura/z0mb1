@@ -11,7 +11,7 @@ void ShotgunPellet::_ready() {
     Bullet::_ready();
 }
 
-void ShotgunPellet::damage(Variant d) {
+void ShotgunPellet::damage(double d) {
     Bullet::damage(d);
 }
 
@@ -30,8 +30,8 @@ void ShotgunPellet::_register_methods() {
     register_method("damage",                                   &ShotgunPellet::damage);
     register_method("_collision",                               &ShotgunPellet::_collision);
 
-    register_property<ShotgunPellet, int>   ("main/health",     &ShotgunPellet::_health,            int(80));
-    register_property<ShotgunPellet, int>   ("main/damage",     &ShotgunPellet::_DAMAGE,            int(100));
+    register_property<ShotgunPellet, double>("main/health",     &ShotgunPellet::_health,            double(80));
+    register_property<ShotgunPellet, double>("main/damage",     &ShotgunPellet::_DAMAGE,            double(100));
     register_property<ShotgunPellet, double>("main/lifetime",   &ShotgunPellet::_LIFE_TIME,         double(4));
     register_property<ShotgunPellet, double>("main/gravity",    &ShotgunPellet::_GRAVITY,           double(0));
 }

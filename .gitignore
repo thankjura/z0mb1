@@ -1,3 +1,4 @@
 *.import
 build
 tags.*
+*.anjuta*

@@ -1,4 +1,6 @@
 #include "bazooka_rocket.hpp"
+#include <SceneTree.hpp>
+#include <Object.hpp>
 
 BazookaRocket::BazookaRocket() {}
 BazookaRocket::~BazookaRocket() {}
@@ -12,6 +14,8 @@ void BazookaRocket::_ready() {
     _local_dump_timeout = _LOCAL_DAMP_TIME;
     _local_dump_vector = Vector2();
     _local_dump_length = 0;
+
+    _player = as<PlayerHenry>(get_tree()->get_current_scene()->get_node("player"));
 
     _boom = (AnimatedSprite*) get_node("boom");
     _boom->connect("animation_finished", this, "_animation_finish");
@@ -28,8 +32,8 @@ void BazookaRocket::_animation_finish() {
     _boom->set_visible(false);
 }
 
-void BazookaRocket::_collision(Variant body) {
-    _decal = ((Node*) get_wrapper<Object>(body.operator godot_object*()))->is_in_group("decals");
+void BazookaRocket::_collision(Node2D* body) {
+    _decal = body->is_in_group("decals");
     _deactivate();
 }
 
@@ -61,6 +65,7 @@ void BazookaRocket::_deactivate() {
     _active = false;
     _audio_fire->stop();
     _sprite->set_visible(false);
+    Godot::print("dd");
     ((Light2D*) get_node("decal"))->set_visible(true);
     set_applied_force(Vector2());
     set_mode(RigidBody2D::Mode::MODE_STATIC);
@@ -73,12 +78,11 @@ void BazookaRocket::_deactivate() {
     AudioStreamPlayer2D* audio_boom = (AudioStreamPlayer2D*) get_node("audio_boom");
     audio_boom->play();
     Array bodies = _dead_zone->get_overlapping_bodies();
-    while (!bodies.empty()) {
-        _damage(bodies.pop_front());
-    }
+    //while (!bodies.empty()) {
+    //    _damage(bodies.pop_front());
+    //}
     _rocket_timeout = 4;
-    Object* o = (Object*) get_node("/root/world/player");
-    o->call("shuffle_camera", Array::make(30, 1));
+    //_player->shuffle_camera(30, 1);
 }
 
 void BazookaRocket::local_dump(Vector2 v) {
@@ -101,19 +105,20 @@ void BazookaRocket::_integrate_forces(Physics2DDirectBodyState *state) {
 }
 
 void BazookaRocket::_register_methods() {
-    register_method ("_init", &BazookaRocket::_init);
-    register_method ("_ready", &BazookaRocket::_ready);
-    register_method ("_process", &BazookaRocket::_process);
-    register_method ("_animation_finish", &BazookaRocket::_animation_finish);
-    register_method ("damage", &BazookaRocket::damage);
-    register_method ("_collision", &BazookaRocket::_collision);
-    register_method ("_integrate_forces", &BazookaRocket::_integrate_forces);
-    register_method ("local_dump", &BazookaRocket::local_dump);
+    register_method ("_init",                                       &BazookaRocket::_init);
+    register_method ("_ready",                                      &BazookaRocket::_ready);
+    register_method ("_process",                                    &BazookaRocket::_process);
+    
+    register_method ("_animation_finish",                           &BazookaRocket::_animation_finish);
+    register_method ("damage",                                      &BazookaRocket::damage);
+    register_method ("_collision",                                  &BazookaRocket::_collision);
+    register_method ("_integrate_forces",                           &BazookaRocket::_integrate_forces);
+    register_method ("local_dump",                                  &BazookaRocket::local_dump);
 
-    register_property<BazookaRocket, double>   ("main/health", &BazookaRocket::_health, int(10));
-    register_property<BazookaRocket, double>   ("main/damage", &BazookaRocket::_DAMAGE, int(1000));
-    register_property<BazookaRocket, double> ("main/lifetime", &BazookaRocket::_LIFE_TIME, double(60));
-    register_property<BazookaRocket, double> ("main/gravity", &BazookaRocket::_GRAVITY, double(0));
-    register_property<BazookaRocket, double> ("main/dumptime", &BazookaRocket::_LOCAL_DAMP_TIME, double(0.8));
-    register_property<BazookaRocket, double>("main/shockwave", &BazookaRocket::_SHOCK_WAVE_FORCE, double(40000));
+    register_property<BazookaRocket, int>   ("main/health",         &BazookaRocket::_health,            int(10));
+    register_property<BazookaRocket, int>   ("main/damage",         &BazookaRocket::_DAMAGE,            int(1000));
+    register_property<BazookaRocket, double>("main/lifetime",       &BazookaRocket::_LIFE_TIME,         double(60));
+    register_property<BazookaRocket, double>("main/gravity",        &BazookaRocket::_GRAVITY,           double(0));
+    register_property<BazookaRocket, double>("main/dumptime",       &BazookaRocket::_LOCAL_DAMP_TIME,   double(0.8));
+    register_property<BazookaRocket, double>("main/shockwave",      &BazookaRocket::_SHOCK_WAVE_FORCE,  double(40000));
 }

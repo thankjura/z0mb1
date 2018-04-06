@@ -189,13 +189,13 @@ void PlayerAnim::_set_hand() {
 
 void PlayerAnim::set_gun(Gun* gun) {
     _gun = gun;
-    std::string name = _gun->get_anim_name();    
+    std::string name = _gun->get_anim_name();
     int x = _AIM[name];
     transition_node_set_current(_AIM_SWITCH_NODE, x);
 }
 
 void PlayerAnim::drop_gun() {
-    return;
+    _gun = NULL;
     _set_hand();
 
     // Reset animations
@@ -205,6 +205,7 @@ void PlayerAnim::drop_gun() {
 void PlayerAnim::gun_reload() {
     if (_gun) {
         const char* anim_name = _gun->get_anim_name();
+        Godot::print(anim_name);
         if (anim_name == _AIM_SHOTGUN_NAME) {
             _start_gun_reload();
         } else if (anim_name == _AIM_BAZOOKA_NAME) {
@@ -268,7 +269,7 @@ void PlayerAnim::_process(const double delta) {
 }
 
 void PlayerAnim::_register_methods() {
-    register_method ("_init",                   &PlayerAnim::_init);
-    register_method ("_ready",                  &PlayerAnim::_ready);
-    register_method ("_process",                &PlayerAnim::_process);
+    register_method("_init",                   &PlayerAnim::_init);
+    register_method("_ready",                  &PlayerAnim::_ready);
+    register_method("_process",                &PlayerAnim::_process);
 }

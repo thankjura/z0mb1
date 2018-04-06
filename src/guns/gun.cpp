@@ -11,6 +11,7 @@ void Gun::_init() {
 
 void Gun::_ready() {
     set_position(_OFFSET);
+   
     SceneTree* scene = get_tree();
     _world = scene->get_current_scene();
     Node* parent = get_parent();

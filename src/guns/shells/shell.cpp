@@ -1,6 +1,8 @@
 #include "shell.hpp"
 
-Shell::Shell() {}
+Shell::Shell() {
+    _TIMEOUT = 5;
+}
 
 Shell::~Shell() {}
 
@@ -20,8 +22,9 @@ void Shell::_process(const double delta) {
 }
 
 void Shell::_register_methods() {
-    register_method ("_init", &Shell::_init);
-    register_method ("_ready", &Shell::_ready);
-    register_method ("_process", &Shell::_process);
-    register_property<Shell, double> ("timeout", &Shell::_TIMEOUT, double(5.0));
+    register_method ("_init",       &Shell::_init);
+    register_method ("_ready",      &Shell::_ready);
+    register_method ("_process",    &Shell::_process);
+    
+    register_property("timeout",    &Shell::_TIMEOUT,  double(5.0));
 }

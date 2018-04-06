@@ -2,7 +2,7 @@
 #define SHOTGUN_H
 #include "gun.hpp"
 #include <AnimationPlayer.hpp>
-#include "../utils/utils.hpp"
+#include <AudioStreamPlayer2D.hpp>
 
 class Shotgun: public Gun {
     GODOT_CLASS (Shotgun, Node2D);
@@ -12,9 +12,6 @@ private:
     AnimationPlayer* _animation;
     AudioStreamPlayer2D* _audio_reload;
     AudioStreamPlayer2D* _audio_fire;
-    
-protected:
-    void _muzzle_flash();    
 
 public:
     Shotgun();

@@ -19,7 +19,7 @@ class PlayerHenry;
 #include "../player/player.hpp"
 
 class Gun: public Node2D {
-    //GODOT_CLASS (Gun, Node2D);
+    GODOT_CLASS (Gun, Node2D);
     enum OFFSET_TYPE {
         DEFAULT = 1,
         CLIMB
@@ -28,9 +28,9 @@ class Gun: public Node2D {
 protected:
     std::string _AIM_NAME;
 
-    Ref<PackedScene> _BULLET = NULL;
-    Ref<PackedScene> _ENTITY = NULL;
-    Ref<PackedScene> _SHELL = NULL;
+    Ref<PackedScene> _BULLET;
+    Ref<PackedScene> _ENTITY;
+    Ref<PackedScene> _SHELL;
 
     double _SPEED;
     double _VIEWPORT_SHUTTER;

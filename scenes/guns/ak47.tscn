@@ -10,7 +10,6 @@
 resource_name = "AK47Gun"
 class_name = "AK47Gun"
 library = ExtResource( 1 )
-_sections_unfolded = [ "Resource" ]
 
 [sub_resource type="CanvasItemMaterial" id=2]
 
@@ -199,23 +198,19 @@ tracks/2/keys = {
 
 [node name="ak47" type="Node2D" index="0"]
 
+position = Vector2( 0, -1 )
 script = SubResource( 1 )
-_sections_unfolded = [ "Transform", "Z Index", "main", "player", "position", "resources", "scenes" ]
-main/speed = 60000
+_sections_unfolded = [ "Transform", "Z Index", "dead_zone", "main", "player", "position", "resources", "scenes" ]
+main/speed = 60000.0
 main/timeout = 0.1
 main/spreading = 0.05
 main/recoil = Vector2( -150, 0 )
 main/drop_velocity = Vector2( 400, -400 )
-main/drop_angular = 10
+main/drop_angular = 10.0
 main/eject_shell_vector = Vector2( -100, -300 )
 main/overheat_time = 3.0
-player/anim_name = "aim_ak47"
-player/view_port_shutter = 0
+player/view_port_shutter = 0.0
 player/heavines = 0.3
-dead_zone/top = 0
-dead_zone/bottom = 10
-position/offset = Vector2( 87, -48 )
-position/climb_offset = Vector2( 10, -18 )
 
 [node name="shell_gate" type="Position2D" parent="." index="0"]
 

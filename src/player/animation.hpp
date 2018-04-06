@@ -35,7 +35,7 @@ class PlayerAnim: public AnimationTreePlayer {
     static constexpr const char* _CLIMB_TOP_BLEND = "climb_top_blend";
     static constexpr const char* _IDLE_CLIMB_BLEND = "blend_idle_floor_angle";
     
-    const std::string _AIM_SHOTGUN_NAME = "aim_shotgun5";
+    const std::string _AIM_SHOTGUN_NAME = "aim_shotgun";
     const std::string _AIM_BAZOOKA_NAME = "aim_bazooka";
     const std::string _AIM_MINIGUN_NAME = "aim_minigun";
     const std::string _AIM_PISTOL_NAME = "aim_pistol";

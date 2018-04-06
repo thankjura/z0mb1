@@ -11,6 +11,7 @@ const double PlayerHenry::_FLOOR_MAX_ANGLE = 0.8;
 const double PlayerHenry::_RECOIL_DEACCELERATION = 20;
 
 PlayerHenry::PlayerHenry() {
+    _health = 200;
     _MAX_JUMP_COUNT = 2;
     _CONTROL_MODE = 1;
     _MAX_FALL_SPEED = 800;    
@@ -24,7 +25,6 @@ PlayerHenry::PlayerHenry() {
     _DEAD_ZONE_X = 0.1;
     _DEAD_ZONE_Y = 0.1;
     
-    _health = 100;
     _velocity = Vector2();
     _recoil = Vector2();
     
@@ -64,7 +64,7 @@ void PlayerHenry::_ready() {
     _gui = (CanvasLayer*) viewport->get_node("world/gui");
     _update_health(_health);
     
-    _camera = (PlayerCamera*) get_node("camera");
+    _camera = as<PlayerCamera>(get_node("camera"));
     _anim = as<PlayerAnim>(get_node("animation_tree_player"));
     _mouth = (Node2D*) get_node("base/pelvis/body/head/mouth");
     _step = (AudioStreamPlayer2D*) get_node("audio_footstep");
@@ -102,7 +102,7 @@ bool PlayerHenry::set_gun(Variant gun_class) {
     
     Ref<PackedScene> gun = ResourceLoader::get_singleton()->load(gun_class);
     _gun = as<Gun>(gun->instance());
-    get_node("base/pelvis/body/sholder_r/forearm_r/gun_position")->add_child(_gun);
+    get_node("base/pelvis/body/sholder_r/forearm_r/gun_position")->add_child(_gun);    
     _recalc_mass();
     _anim->set_gun(_gun);
     return true;
@@ -111,11 +111,10 @@ bool PlayerHenry::set_gun(Variant gun_class) {
 void PlayerHenry::_drop_gun() {
     if (_gun) {
         _gun->drop();
+        _anim->drop_gun();
+        _recalc_mass();
         _gun = NULL;
     }
-    
-    _recalc_mass();
-    _anim->drop_gun();
 }
 
 void PlayerHenry::gun_reload() {
@@ -240,24 +239,24 @@ void PlayerHenry::_physics_process(const double delta) {
 }
 
 void PlayerHenry::_register_methods() {
-    register_method ("_init",                   &PlayerHenry::_init);
-    register_method ("_ready",                  &PlayerHenry::_ready);
-    register_method ("_input",                  &PlayerHenry::_input);
-    register_method ("_process",                &PlayerHenry::_process);
-    register_method ("_physics_process",        &PlayerHenry::_physics_process);
+    register_method("_init",                    &PlayerHenry::_init);
+    register_method("_ready",                   &PlayerHenry::_ready);
+    register_method("_input",                   &PlayerHenry::_input);
+    register_method("_process",                 &PlayerHenry::_process);
+    register_method("_physics_process",         &PlayerHenry::_physics_process);
     
-    register_method ("damage",                  &PlayerHenry::damage);
-    register_method ("hit",                     &PlayerHenry::hit);
-    register_method ("_area_entered",           &PlayerHenry::_area_entered);
-    register_method ("_area_exited",            &PlayerHenry::_area_exited);
-    register_method ("set_gun",                 &PlayerHenry::set_gun);
+    register_method("damage",                   &PlayerHenry::damage);
+    register_method("hit",                      &PlayerHenry::hit);
+    register_method("_area_entered",            &PlayerHenry::_area_entered);
+    register_method("_area_exited",             &PlayerHenry::_area_exited);
+    register_method("set_gun",                  &PlayerHenry::set_gun);
     
-    register_property<PlayerHenry, int>         ("main/health",         &PlayerHenry::_health,  100);
-    register_property<PlayerHenry, double>      ("main/gravity",        &PlayerHenry::_GRAVITY, 2000);
-    register_property<PlayerHenry, double>      ("main/jump_force",     &PlayerHenry::_INIT_JUMP_FORCE,  800);
-    register_property<PlayerHenry, double>      ("main/max_speed",      &PlayerHenry::_INIT_MAX_SPEED,  400);
-    register_property<PlayerHenry, double>      ("main/max_climb_speed",&PlayerHenry::_INIT_MAX_CLIMB_SPEED,  200);
-    register_property<PlayerHenry, double>      ("main/acceleration",   &PlayerHenry::_INIT_ACCELERATION,  10); 
+    register_property("main/health",            &PlayerHenry::_health,                  int(100));
+    register_property("main/gravity",           &PlayerHenry::_GRAVITY,                 double(2000));
+    register_property("main/jump_force",        &PlayerHenry::_INIT_JUMP_FORCE,         double(800));
+    register_property("main/max_speed",         &PlayerHenry::_INIT_MAX_SPEED,          double(400));
+    register_property("main/max_climb_speed",   &PlayerHenry::_INIT_MAX_CLIMB_SPEED,    double(200));
+    register_property("main/acceleration",      &PlayerHenry::_INIT_ACCELERATION,       double(10));
 }
 
 

@@ -4,14 +4,12 @@ sources = [
           'bazooka_rocket.cpp',
           'minigun_bullet.cpp',
           'pistol_bullet.cpp',
-          'shotgun_pellet.cpp',
-          'main.cpp'
+          'shotgun_pellet.cpp'
 ]
 
-bullet = shared_library(
+bullet = static_library(
                 'bullet',
                 sources,
-                install: true,
-                include_directories: inc,
-                install_dir: target_dir
+                install: false,
+                include_directories: inc
 )

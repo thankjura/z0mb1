@@ -6,12 +6,17 @@ class Bazooka: public Gun {
     GODOT_CLASS (Bazooka, Node2D);
 
 private:
+    double _ACCELERATION;
+    double _RELOAD_TIMEOUT;
+
     double _wait_for_reload;
     void _reload();
 
 public:
     Bazooka();
     ~Bazooka();
+
+    void fire(const double delta, const Vector2 velocity);
 
     void _init();
     void _ready();

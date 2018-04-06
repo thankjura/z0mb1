@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://gdnlib/bullet.gdnlib" type="GDNativeLibrary" id=1]
+[ext_resource path="res://gdnlib/gun.gdnlib" type="GDNativeLibrary" id=1]
 [ext_resource path="res://textures/guns/shotgun/pellet.png" type="Texture" id=2]
 [ext_resource path="res://textures/guns/shotgun/pellet_light.png" type="Texture" id=3]
 [ext_resource path="res://textures/guns/shotgun/decal.png" type="Texture" id=4]
@@ -16,7 +16,7 @@ library = ExtResource( 1 )
 custom_solver_bias = 0.0
 radius = 1.79191
 
-[node name="shotgun_pellet" type="RigidBody2D"]
+[node name="shotgun_pellet" type="RigidBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -37,6 +37,11 @@ linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
 script = SubResource( 1 )
+_sections_unfolded = [ "main" ]
+main/health = 80
+main/damage = 100
+main/lifetime = 4.0
+main/gravity = 0.0
 
 [node name="sprite" type="Sprite" parent="." index="0"]
 

@@ -8,16 +8,13 @@ void PlayerHenry::_input(const Ref<InputEvent> event) {
     if (event->is_action_released("ui_drop")) {
         _drop_gun();
     }
-    //Ref<InputEventMouseButton> mb = event;
-    //Godot::print(mb.is_valid());
-    //if (mb.is_valid()) {
-    //    const int64_t idx = mb->get_button_index();
-    //    printf("%" PRId64 "\n", idx);
-    //    
-    //    if (mb.is_valid() and idx == GlobalConstants::BUTTON_RIGHT and mb->is_pressed()) {
-    //        _jump();
-    //    }
-    //}
+    InputEventMouseButton* mb = Object::cast_to<InputEventMouseButton>(event.ptr());
+    if (mb) {
+        const double idx = mb->get_button_index();        
+        if (idx == GlobalConstants::BUTTON_RIGHT and mb->is_pressed()) {
+            _jump();
+        }
+    }
 }
 
 Vector2 PlayerHenry::_get_move_vector() {
@@ -53,7 +50,7 @@ Vector2 PlayerHenry::_get_direction() {
                 direction.x = 0;
             }
         } else {
-            if (dist < _gun->get_dead_zone_bottom()) {
+            if (dist < _gun->get_dead_zone_top()) {
                 direction.x = 0;
             }
         }

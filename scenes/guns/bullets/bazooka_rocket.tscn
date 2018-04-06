@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=2]
 
-[ext_resource path="res://gdnlib/bullet.gdnlib" type="GDNativeLibrary" id=1]
+[ext_resource path="res://gdnlib/gun.gdnlib" type="GDNativeLibrary" id=1]
 [ext_resource path="res://textures/guns/bazooka/smoke.png" type="Texture" id=2]
 [ext_resource path="res://textures/guns/bazooka/rocket.png" type="Texture" id=3]
 [ext_resource path="res://textures/guns/bazooka/fire/001.png" type="Texture" id=4]
@@ -102,7 +102,7 @@ animations = [ {
 custom_solver_bias = 0.0
 radius = 229.965
 
-[node name="bazooka_rocket" type="RigidBody2D"]
+[node name="bazooka_rocket" type="RigidBody2D" index="0"]
 
 z_index = -30
 input_pickable = false
@@ -124,12 +124,12 @@ linear_damp = 0.0
 angular_velocity = 0.0
 angular_damp = 0.0
 script = SubResource( 1 )
-_sections_unfolded = [ "Angular", "Applied Forces", "Linear", "Transform", "Z Index" ]
+_sections_unfolded = [ "Angular", "Applied Forces", "Linear", "Transform", "Z Index", "main" ]
 main/health = 10
 main/damage = 1000
 main/lifetime = 60.0
 main/gravity = 0.0
-main/dumptime = 0.0
+main/dumptime = 0.8
 main/shockwave = 40000.0
 
 [node name="particles" type="Particles2D" parent="." index="0"]
@@ -169,6 +169,7 @@ scale = Vector2( 3.33333, 3.33333 )
 z_index = -1
 frames = SubResource( 3 )
 animation = "default"
+frame = 2
 playing = true
 _sections_unfolded = [ "Transform", "Z Index" ]
 

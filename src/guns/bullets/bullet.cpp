@@ -25,8 +25,7 @@ void Bullet::_ready() {
     }
 }
 
-void Bullet::_collision(Variant v) {
-    Node* body = (Node*) get_wrapper<Object>(v.operator godot_object*());
+void Bullet::_collision(Node2D* body) {
     if (body->has_method("hit")) {
         body->call("hit", Array::make(this));
     } else {

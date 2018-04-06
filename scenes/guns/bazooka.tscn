@@ -9,23 +9,18 @@ resource_name = "Bazooka"
 class_name = "Bazooka"
 library = ExtResource( 1 )
 
-[node name="bazooka" type="Node2D"]
+[node name="bazooka" type="Node2D" index="0"]
 
 script = SubResource( 1 )
-_sections_unfolded = [ "Transform", "main", "player", "scenes" ]
-main/speed = 30000
+_sections_unfolded = [ "Transform", "dead_zone", "main", "player", "position", "scenes" ]
+main/speed = 30000.0
 main/timeout = 2.5
 main/spreading = 0.0
 main/recoil = Vector2( 0, 0 )
 main/drop_velocity = Vector2( 300, -300 )
-main/drop_angular = 1
-player/anim_name = "aim_bazooka"
-player/view_port_shutter = 0
+main/drop_angular = 1.0
+player/view_port_shutter = 0.0
 player/heavines = 0.4
-dead_zone/top = 0
-dead_zone/bottom = 36
-position/offset = Vector2( -24, -40 )
-position/climb_offset = Vector2( -24, -40 )
 
 [node name="base" type="Sprite" parent="." index="0"]
 

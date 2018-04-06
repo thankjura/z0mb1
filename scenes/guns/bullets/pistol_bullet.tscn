@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://gdnlib/bullet.gdnlib" type="GDNativeLibrary" id=1]
+[ext_resource path="res://gdnlib/gun.gdnlib" type="GDNativeLibrary" id=1]
 [ext_resource path="res://textures/guns/pistol/bullet.png" type="Texture" id=2]
 [ext_resource path="res://textures/guns/pistol/smoke.png" type="Texture" id=3]
 [ext_resource path="res://textures/guns/pistol/decal.png" type="Texture" id=4]
@@ -66,7 +66,7 @@ _sections_unfolded = [ "Angular Velocity", "Color", "Damping", "Emission Shape",
 custom_solver_bias = 0.0
 extents = Vector2( 2.34516, 1.11075 )
 
-[node name="bullet" type="RigidBody2D"]
+[node name="bullet" type="RigidBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 8
@@ -87,7 +87,11 @@ linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
 script = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "main" ]
+main/health = 100
+main/damage = 100
+main/lifetime = 4.0
+main/gravity = 0.0
 
 [node name="sprite" type="Sprite" parent="." index="0"]
 

@@ -1,6 +1,6 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://scripts/guns/pistol.gd" type="Script" id=1]
+[ext_resource path="res://gdnlib/gun.gdnlib" type="GDNativeLibrary" id=1]
 [ext_resource path="res://textures/guns/pistol/base.png" type="Texture" id=2]
 [ext_resource path="res://textures/guns/pistol/base_back.png" type="Texture" id=3]
 [ext_resource path="res://textures/guns/pistol/silencer.png" type="Texture" id=4]
@@ -9,7 +9,13 @@
 [ext_resource path="res://textures/guns/pistol/flash.png" type="Texture" id=7]
 [ext_resource path="res://sounds/guns/pistol.wav" type="AudioStream" id=8]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="NativeScript" id=1]
+
+resource_name = "Pistol"
+class_name = "Pistol"
+library = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
 
 length = 0.2
 loop = false
@@ -77,7 +83,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 
 length = 0.2
 loop = false
@@ -145,9 +151,19 @@ tracks/4/keys = {
 } ]
 }
 
-[node name="pistol" type="Node2D"]
+[node name="pistol" type="Node2D" index="0"]
 
-script = ExtResource( 1 )
+script = SubResource( 1 )
+_sections_unfolded = [ "main", "player" ]
+main/speed = 70000.0
+main/timeout = 0.4
+main/spreading = 0.01
+main/recoil = Vector2( 0, 0 )
+main/drop_velocity = Vector2( 300, -300 )
+main/drop_angular = 20.0
+main/eject_shell_vector = Vector2( 0, -200 )
+player/view_port_shutter = 0.0
+player/heavines = 0.05
 
 [node name="base" type="Sprite" parent="." index="0"]
 
@@ -253,6 +269,7 @@ shadow_item_cull_mask = 1
 
 stream = ExtResource( 8 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
@@ -266,8 +283,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/fire1 = SubResource( 1 )
-anims/fire2 = SubResource( 2 )
+anims/fire1 = SubResource( 2 )
+anims/fire2 = SubResource( 3 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options", "playback" ]
 

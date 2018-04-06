@@ -12,7 +12,7 @@ configure_file(
 )
 
 inc = include_directories(
-  '/home/GrandMaster/Development/games/godot_headers',
+  '/home/GrandMaster/Development/games/godot-engine/modules/gdnative/include',
   '/home/GrandMaster/Development/games/godot-cpp/include',
   '/home/GrandMaster/Development/games/godot-cpp/include/gen'
 )

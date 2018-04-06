@@ -6,7 +6,7 @@ class ShotgunPellet: public Bullet {
     GODOT_CLASS (ShotgunPellet, RigidBody2D);
 
 protected:
-    void _collision(Variant body);
+    void _collision(Node2D* body);
 
 public:
     ShotgunPellet();

@@ -19,6 +19,6 @@ gun = shared_library(
                 install: true,
                 include_directories: inc,
                 install_dir: target_dir,
-                link_whole: gun,
+                link_whole: [gun, bullet, bullet_shell],
                 link_with: [player]
 )

@@ -8,6 +8,9 @@
 #include <CollisionShape2D.hpp>
 #include <Physics2DDirectBodyState.hpp>
 
+class PlayerHenry;
+#include "../../player/player.hpp"
+
 class BazookaRocket: public Bullet {
     GODOT_CLASS (BazookaRocket, RigidBody2D);
 
@@ -25,9 +28,11 @@ private:
 
     void _animation_finish();
     void _damage(Variant d);
+    
+    PlayerHenry* _player;
 
 protected:
-    void _collision(Variant body);
+    void _collision(Node2D* body);
     void _deactivate();
 
 public:

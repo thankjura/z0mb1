@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://gdnlib/bullet.gdnlib" type="GDNativeLibrary" id=1]
+[ext_resource path="res://gdnlib/gun.gdnlib" type="GDNativeLibrary" id=1]
 [ext_resource path="res://textures/guns/minigun/minigun_bullet.png" type="Texture" id=2]
 [ext_resource path="res://textures/guns/ak47/decal.png" type="Texture" id=3]
 
@@ -15,7 +15,7 @@ library = ExtResource( 1 )
 custom_solver_bias = 0.0
 extents = Vector2( 9.58545, 2.34877 )
 
-[node name="ak47_bullet" type="RigidBody2D"]
+[node name="ak47_bullet" type="RigidBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -36,7 +36,7 @@ linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
 script = SubResource( 1 )
-_sections_unfolded = [ "Pause" ]
+_sections_unfolded = [ "Pause", "main" ]
 main/health = 80
 main/damage = 100
 main/lifetime = 4.0

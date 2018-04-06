@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://gdnlib/shell.gdnlib" type="GDNativeLibrary" id=1]
+[ext_resource path="res://gdnlib/gun.gdnlib" type="GDNativeLibrary" id=1]
 [ext_resource path="res://textures/guns/ak47/shell.png" type="Texture" id=2]
 
 [sub_resource type="NativeScript" id=1]
@@ -8,7 +8,6 @@
 resource_name = "Shell"
 class_name = "Shell"
 library = ExtResource( 1 )
-_sections_unfolded = [ "Resource" ]
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -16,7 +15,7 @@ custom_solver_bias = 0.0
 extents = Vector2( 1.875, 6.25 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="ak47_shell" type="RigidBody2D"]
+[node name="ak47_shell" type="RigidBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1024

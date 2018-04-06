@@ -1,12 +1,10 @@
 sources = [
-          'shell.cpp',
-          'main.cpp'
+          'shell.cpp'
 ]
 
-bullet = shared_library(
+bullet_shell = static_library(
                 'shell',
                 sources,
-                install: true,
-                include_directories: inc,
-                install_dir: target_dir
+                install: false,
+                include_directories: inc
 )

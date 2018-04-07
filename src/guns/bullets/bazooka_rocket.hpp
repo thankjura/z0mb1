@@ -12,7 +12,7 @@ class PlayerHenry;
 #include "../../player/player.hpp"
 
 class BazookaRocket: public Bullet {
-    GODOT_CLASS (BazookaRocket, RigidBody2D);
+    GODOT_CLASS (BazookaRocket, Bullet);
 
 private:
     double _SHOCK_WAVE_FORCE;

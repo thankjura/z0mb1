@@ -1,8 +1,10 @@
+subdir('lib')
+
 enemy_sources = [
           'enemy.cpp'
 ]
 
-enemy = static_library(
+enemy_base = static_library(
                 'enemy',
                 enemy_sources,
                 install: false,

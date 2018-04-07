@@ -121,13 +121,9 @@ void PlayerHenry::gun_reload() {
     _anim->gun_reload();
 }
 
-void PlayerHenry::hit(Variant d) {
-    _update_health(_health - int(d));
-}
-
-void PlayerHenry::damage(Variant d, Variant v) {
-    gun_recoil(Vector2(v)/10);
-    _update_health(_health - int(d));
+void PlayerHenry::damage(const double damage, const Vector2 vector) {
+    gun_recoil(vector/10);
+    _update_health(_health - damage);
 }
 
 void PlayerHenry::_update_health(double new_health) {
@@ -246,7 +242,6 @@ void PlayerHenry::_register_methods() {
     register_method("_physics_process",         &PlayerHenry::_physics_process);
     
     register_method("damage",                   &PlayerHenry::damage);
-    register_method("hit",                      &PlayerHenry::hit);
     register_method("_area_entered",            &PlayerHenry::_area_entered);
     register_method("_area_exited",             &PlayerHenry::_area_exited);
     register_method("set_gun",                  &PlayerHenry::set_gun);

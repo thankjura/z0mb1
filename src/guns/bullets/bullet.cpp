@@ -1,6 +1,10 @@
 #include "bullet.hpp"
 
-Bullet::Bullet() {}
+Bullet::Bullet() {
+    _DAMAGE = 11;
+    printf("ptr orig: %p", this);
+    Godot::print("\n");
+}
 Bullet::~Bullet() {}
 
 void Bullet::_init() {}
@@ -26,8 +30,8 @@ void Bullet::_ready() {
 }
 
 void Bullet::_collision(Node2D* body) {
-    if (body->has_method("hit")) {
-        body->call("hit", Array::make(this));
+    if (body->has_method("damage")) {
+        body->call("damage", Array::make(_DAMAGE, get_linear_velocity()));
     } else {
         _decal = body->is_in_group("decals");
         _deactivate();
@@ -56,11 +60,17 @@ void Bullet::_deactivate() {
     }
 }
 
-void Bullet::damage(double d) {
+void Bullet::damage(const double d, const Vector2 vector) {
     _health -= (double) d;
     if (_health <= 0) {
         _deactivate();
     }
+}
+
+const double Bullet::get_damage() {
+    printf("%f", _DAMAGE);
+    Godot::print("xxxx11");
+    return _DAMAGE;
 }
 
 void Bullet::_process(const double delta) {

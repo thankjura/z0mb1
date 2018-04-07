@@ -73,7 +73,6 @@ void EnemySolder::_body_hit(Object* obj) {
     if (obj->has_method("damage")) {
         obj->call("damage", Array::make(_BODY_STRENGTH));
     }
-    
     if (obj->has_method("get_damage")) {
         _health -= (double) obj->call("get_damage");
         if (_health > 0) {
@@ -89,9 +88,9 @@ void EnemySolder::_head_hit(Object* obj) {
     if (obj->has_method("damage")) {
         obj->call("damage", Array::make(_HEAD_STRENGTH));
     }
-    
+    Godot::print("head\n");
     if (obj->has_method("get_damage")) {
-        _health -= ((double) obj->call("get_damage")) * 2;        
+        _health -= ((double) obj->call("get_damage")) * 2;
         if (_health > 0) {
             RigidBody2D* r = Object::cast_to<RigidBody2D>(obj);
             if (r) {
@@ -271,7 +270,7 @@ void EnemySolder::_physics_process(const double delta) {
     }
 }
 
-void EnemySolder::_register_methods() {
+void EnemySolder::_register_methods() {    
     register_method("_init",                                        &EnemySolder::_init);
     register_method("_ready",                                       &EnemySolder::_ready);
     register_method("_process",                                     &EnemySolder::_process);

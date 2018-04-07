@@ -2,7 +2,7 @@
 #include <SceneTree.hpp>
 #include <Object.hpp>
 
-BazookaRocket::BazookaRocket() {}
+BazookaRocket::BazookaRocket():Bullet() {}
 BazookaRocket::~BazookaRocket() {}
 
 void BazookaRocket::_init() {
@@ -38,27 +38,20 @@ void BazookaRocket::_collision(Node2D* body) {
 }
 
 void BazookaRocket::_damage(Variant b) {
-    Node2D* body = (Node2D*) get_wrapper<Object>(b.operator godot_object*());
+    Node2D* body = (Node2D*) (godot_object*) b;
     Vector2 dv = _dead_zone->get_global_position();
     const Vector2 bv = body->get_global_position();
     double distance = dv.distance_squared_to(bv);
     Vector2 vector = (bv - dv).normalized();
-    float percent = 1 - distance/_SHOCK_WAVE_DISTANCE_SQUARED;
-
+    double percent = 1 - distance/_SHOCK_WAVE_DISTANCE_SQUARED;
     if (body->has_method("damage")) {
         body->call("damage", Array::make(_DAMAGE*percent, vector*_SHOCK_WAVE_FORCE*percent));
     } else {
         RigidBody2D* rb = (RigidBody2D*) (godot_object*) b;
         if (rb) {
-            Godot::print(vector*_SHOCK_WAVE_FORCE*percent);
             rb->apply_impulse(Vector2(20, 20), vector*_SHOCK_WAVE_FORCE*percent);
-            Godot::print("impulse1");
         }
     }
-}
-
-void BazookaRocket::damage(double d) {
-    Bullet::damage(d);
 }
 
 void BazookaRocket::_deactivate() {
@@ -109,7 +102,6 @@ void BazookaRocket::_register_methods() {
     register_method ("_process",                                    &BazookaRocket::_process);
     
     register_method ("_animation_finish",                           &BazookaRocket::_animation_finish);
-    register_method ("damage",                                      &BazookaRocket::damage);
     register_method ("_collision",                                  &BazookaRocket::_collision);
     register_method ("_integrate_forces",                           &BazookaRocket::_integrate_forces);
     register_method ("local_dump",                                  &BazookaRocket::local_dump);

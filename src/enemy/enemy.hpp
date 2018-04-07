@@ -31,7 +31,7 @@ public:
 
     bool is_back();
     virtual void die();
-    virtual void hit(const double d, const Vector2 v);
+    virtual void damage(const double d, const Vector2 v);
 
     void _init();
     void _ready();

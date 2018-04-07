@@ -10,7 +10,7 @@ enemy_solder = shared_library(
                 install: true,
                 include_directories: inc,
                 install_dir: target_dir,
-                link_whole: enemy,
+                link_whole: enemy_base,
                 link_with: [player],
                 install_rpath: lib_dir
 )

@@ -110,11 +110,10 @@ public:
     Vector2 get_velocity();
     void gun_reload();
     void gun_recoil(const Vector2 recoil_vector);
-    void hit(const Variant damage);
-    void damage(const Variant d, const Variant v);
     void set_mouth(String mouth_type = "");
     void shuffle_camera(const double force, const double fade_out_time = 0.1);
     bool is_back();
+    void damage(const double d, const Vector2 vector = Vector2());
     
     void _init();
     void _ready();

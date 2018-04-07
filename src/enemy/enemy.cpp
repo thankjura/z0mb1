@@ -30,7 +30,7 @@ void Enemy::die() {
     set_collision_mask(layers::GROUND_LAYER);
 }
 
-void Enemy::hit(const double d, const Vector2 v) {
+void Enemy::damage(const double d, const Vector2 v) {
     _recoil += Vector2().linear_interpolate(v.normalized(), std::min(d/_INIT_HEALTH, 1.5));
     if (not _dead) {
         _health -= d;

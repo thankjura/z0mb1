@@ -1,6 +1,6 @@
 #include "pistol_bullet.hpp"
 
-PistolBullet::PistolBullet() {}
+PistolBullet::PistolBullet():Bullet() {}
 PistolBullet::~PistolBullet() {}
 
 void PistolBullet::_init() {
@@ -9,10 +9,6 @@ void PistolBullet::_init() {
 
 void PistolBullet::_ready() {
     Bullet::_ready();
-}
-
-void PistolBullet::damage(double d) {
-    Bullet::damage(d);
 }
 
 void PistolBullet::_collision(Node2D* body) {
@@ -27,7 +23,6 @@ void PistolBullet::_register_methods() {
     register_method("_init",                                   &PistolBullet::_init);
     register_method("_ready",                                  &PistolBullet::_ready);
     register_method("_process",                                &PistolBullet::_process);
-    register_method("damage",                                  &PistolBullet::damage);
     register_method("_collision",                              &PistolBullet::_collision);
 
     register_property<PistolBullet, double>("main/health",     &PistolBullet::_health,             double(100));

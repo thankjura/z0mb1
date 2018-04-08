@@ -11,7 +11,7 @@ sources = [
           'main.cpp'
 ]
 
-gun = static_library(
+gun_static = static_library(
                 'gun',
                 sources,
                 install: false,

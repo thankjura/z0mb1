@@ -1,7 +1,8 @@
-utils = static_library(
+utils = shared_library(
                 'utils',
                 'utils.cpp',
-                install: false,
+                install: true,
                 include_directories: inc,
-                install_dir: target_dir
+                install_dir: target_dir,
+                dependencies: libgodot
 )

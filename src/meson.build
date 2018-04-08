@@ -8,9 +8,10 @@ player = shared_library(
                 install: true,
                 include_directories: inc,
                 install_dir: target_dir,
-                link_whole: player,
-                link_with: [utils, gun],
-                install_rpath: lib_dir
+                link_whole: player_static,
+                link_with: [utils, gun_static],
+                install_rpath: lib_dir,
+                dependencies: libgodot
 )
 
 gun = shared_library(
@@ -19,8 +20,10 @@ gun = shared_library(
                 install: true,
                 include_directories: inc,
                 install_dir: target_dir,
-                link_whole: [gun, bullet, bullet_shell],
-                link_with: [player]
+                link_whole: [gun_static, bullet, bullet_shell],
+                link_with: [player, utils],
+                install_rpath: lib_dir,
+                dependencies: libgodot
 )
 
 subdir('enemy')

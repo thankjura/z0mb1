@@ -127,16 +127,16 @@ _sections_unfolded = [ "Material", "Transform", "main", "player", "scenes" ]
 __meta__ = {
 "_edit_horizontal_guides_": [ -4.646, 33.2074 ]
 }
-main/speed = 60000.0
+main/speed = 80000.0
 main/timeout = 0.1
 main/spreading = 0.05
-main/recoil = Vector2( -200, 0 )
+main/recoil = Vector2( -10, 0 )
 main/drop_velocity = Vector2( 400, -400 )
 main/drop_angular = 1.0
 main/eject_shell_vector = Vector2( 0, 300 )
-main/overheat_time = 4.0
-player/view_port_shutter = 10.0
-player/heavines = 0.6
+main/overheat_time = 3.0
+player/view_port_shutter = null
+player/heavines = null
 
 [node name="shell_gate" type="Position2D" parent="." index="0"]
 

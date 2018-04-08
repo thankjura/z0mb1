@@ -12,5 +12,6 @@ enemy_solder = shared_library(
                 install_dir: target_dir,
                 link_whole: enemy_base,
                 link_with: [player],
-                install_rpath: lib_dir
+                install_rpath: lib_dir,
+                dependencies: libgodot
 )

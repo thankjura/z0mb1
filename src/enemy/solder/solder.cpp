@@ -74,6 +74,7 @@ void EnemySolder::_body_hit(Object* obj) {
         obj->call("damage", Array::make(_BODY_STRENGTH));
     }
     if (obj->has_method("get_damage")) {
+        Godot::print("yessss");
         _health -= (double) obj->call("get_damage");
         if (_health > 0) {
             RigidBody2D* r = Object::cast_to<RigidBody2D>(obj);

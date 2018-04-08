@@ -10,5 +10,7 @@ enemy = shared_library(
                 install: true,
                 include_directories: inc,
                 install_dir: target_dir,
-                install_rpath: lib_dir
+                install_rpath: lib_dir,
+                link_with: player,
+                dependencies: libgodot
 )

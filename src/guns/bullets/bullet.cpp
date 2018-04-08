@@ -79,3 +79,9 @@ void Bullet::_process(const double delta) {
         queue_free();
     }
 }
+
+//void Bullet::_register_methods() {
+//    Godot::print("dsa");
+//    register_method ("get_damage",                       &Bullet::get_damage);
+//    register_property<Bullet, double>("main/health",     &Bullet::_health,        double(52));
+//}

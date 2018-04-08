@@ -17,18 +17,22 @@ inc = include_directories(
   '/home/GrandMaster/Development/games/godot-cpp/include/gen'
 )
 
+cc = meson.get_compiler('cpp')
+
+libgodot = cc.find_library('godot-cpp', dirs:'/home/GrandMaster/Development/games/godot-cpp/bin/')
+
 add_project_arguments([
   '-I' + meson.build_root(),
   '-std=c++14',
   '-Wmissing-field-initializers',
-  '-O2',
+  '-O3',
   '-ggdb',
 ], language: 'cpp')
 
 add_project_link_arguments([
   '-std=c++14',
-  '-L/home/GrandMaster/Development/games/godot-cpp/bin/',
-  '-lgodot-cpp'
+  #'-L/home/GrandMaster/Development/games/godot-cpp/bin/',
+  #'-lgodot-cpp'
 ], language : 'cpp')
 
 lib_dir = 'lib64'

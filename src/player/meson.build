@@ -7,7 +7,7 @@ sources = [
           'player.cpp'
 ]
 
-player = static_library(
+player_static = static_library(
                 'player',
                 sources,
                 install: false,

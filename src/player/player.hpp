@@ -70,12 +70,12 @@ private:
     void _footstep_metal(const double ratio);
     
     void _update_health(const double health);
-    void _area_entered(Variant area);
-    void _area_exited(Variant area);
+    void _area_entered(const Area2D* area);
+    void _area_exited(const Area2D* area);
     void _fire(const double delta);
     void _footstep_sound();
     void _vibrate(const double time, const double weak=1, const double strong=1, const double duration=0.3);
-    void _set_ladder(Area2D* ladder);
+    void _set_ladder(const Area2D* ladder);
     void _recalc_mass();
     void _jump();
     void _drop_gun();    
@@ -86,7 +86,7 @@ private:
     // Movement
     bool _is_air_state;
     bool _is_climb_state;
-    Area2D* _climb_ladder;
+    const Area2D* _climb_ladder;
     int _climb_ladder_direction;
     int _jump_count;
     void _climb_state(const double delta, const Vector2 m = Vector2());

@@ -1,7 +1,7 @@
 #include "camera.hpp"
 
 PlayerCamera::PlayerCamera() {
-    _ZOOM_SPEED = 5;
+    _ZOOM_SPEED = 3;
     _SHUFFLE_FORCE = -0.8;
     _init_zoom = Vector2(1,1);
     _shuffle = 0;
@@ -18,8 +18,8 @@ void PlayerCamera::_ready() {
     _camera_offset = get_offset();
 }
 
-void PlayerCamera::area_zoom(Area2D* area) {
-    _new_zoom = Vector2(_init_zoom * ((int) area->get_meta("camera_zoom")));
+void PlayerCamera::area_zoom(const Area2D* area) {
+    _new_zoom = Vector2(_init_zoom * ((double) area->get_meta("camera_zoom")));
 }
 
 void PlayerCamera::reset_zoom() {
@@ -33,9 +33,10 @@ void PlayerCamera::shuffle_camera(const double force, const double fade_out_time
 }
 
 void PlayerCamera::_process(const double delta) {
-    Vector2 zoom = get_zoom();
-    if (_new_zoom != zoom) {
-        set_zoom(zoom.linear_interpolate(_new_zoom, _ZOOM_SPEED * delta));
+    Vector2 z = get_zoom();
+    
+    if (z != _new_zoom) {
+        set_zoom(z.linear_interpolate(_new_zoom, _ZOOM_SPEED * delta));
     }
     
     if (_shuffle_timeout > 0) {

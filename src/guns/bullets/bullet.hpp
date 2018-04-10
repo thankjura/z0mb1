@@ -12,7 +12,7 @@
 using namespace godot;
 
 class Bullet: public RigidBody2D {
-    //GODOT_SUBCLASS(Bullet, RigidBody2D);
+    GODOT_SUBCLASS(Bullet, RigidBody2D);
 
 protected:
     double _DAMAGE;

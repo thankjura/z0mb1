@@ -73,24 +73,22 @@ void PlayerHenry::_ready() {
     _step_metal->set_area_mask(layers::AUDIO_AREA_MASK);    
 }
 
-void PlayerHenry::_area_entered(Variant area) {
-    Area2D* a = (Area2D*) get_wrapper<Object>(area.operator godot_object*()); 
-    if (a->is_in_group("ladder")) {
-        _set_ladder(a);
+void PlayerHenry::_area_entered(const Area2D* area) {    
+    if (area->is_in_group("ladder")) {
+        _set_ladder(area);
     }
     
-    if (a->is_in_group("camera_zoom")) {
-        _camera->area_zoom(a);
+    if (area->is_in_group("camera_zoom")) {        
+        _camera->area_zoom(area);
     }
 }
 
-void PlayerHenry::_area_exited(Variant area) {
-    Area2D* a = (Area2D*) get_wrapper<Object>(area.operator godot_object*());
-    if (a->is_in_group("ladder")) {
+void PlayerHenry::_area_exited(const Area2D* area) {
+    if (area->is_in_group("ladder")) {
         _set_ladder(NULL);
     }
     
-    if (a->is_in_group("camera_zoom")) {
+    if (area->is_in_group("camera_zoom")) {
         _camera->reset_zoom();
     }
 }
@@ -162,11 +160,11 @@ void PlayerHenry::shuffle_camera(const double force, const double fade_out_time)
 
 void PlayerHenry::_process(const double delta) {
     if (is_back()) {
-        _camera->set_drag_margin(3, 0.1);
-        _camera->set_drag_margin(1, 0.3);
+        _camera->set_drag_margin(GlobalConstants::MARGIN_LEFT, 0.1);
+        _camera->set_drag_margin(GlobalConstants::MARGIN_RIGHT, 0.3);
     } else {
-        _camera->set_drag_margin(3, 0.3);
-        _camera->set_drag_margin(1, 0.1);
+        _camera->set_drag_margin(GlobalConstants::MARGIN_LEFT, 0.3);
+        _camera->set_drag_margin(GlobalConstants::MARGIN_RIGHT, 0.1);
     }
 }
 
@@ -245,6 +243,7 @@ void PlayerHenry::_register_methods() {
     register_method("_area_entered",            &PlayerHenry::_area_entered);
     register_method("_area_exited",             &PlayerHenry::_area_exited);
     register_method("set_gun",                  &PlayerHenry::set_gun);
+    register_method("_footstep_sound",          &PlayerHenry::_footstep_sound);
     
     register_property("main/health",            &PlayerHenry::_health,                  double(100));
     register_property("main/gravity",           &PlayerHenry::_GRAVITY,                 double(2000));

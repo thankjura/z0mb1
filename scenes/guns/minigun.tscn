@@ -135,8 +135,8 @@ main/drop_velocity = Vector2( 400, -400 )
 main/drop_angular = 1.0
 main/eject_shell_vector = Vector2( 0, 300 )
 main/overheat_time = 3.0
-player/view_port_shutter = null
-player/heavines = null
+player/view_port_shutter = 10.0
+player/heavines = 0.6
 
 [node name="shell_gate" type="Position2D" parent="." index="0"]
 

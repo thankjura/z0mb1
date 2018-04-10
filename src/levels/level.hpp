@@ -3,6 +3,7 @@
 #include <core/Godot.hpp>
 #include <Node.hpp>
 #include <Camera2D.hpp>
+#include <GlobalConstants.hpp>
 
 using namespace godot;
 

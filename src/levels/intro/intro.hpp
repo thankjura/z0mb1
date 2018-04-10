@@ -3,7 +3,8 @@
 #include "../level.hpp"
 
 class LevelIntro: public Level {
-
+    GODOT_CLASS(LevelIntro, Level);
+    
 public:    
     LevelIntro();
     ~LevelIntro();

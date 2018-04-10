@@ -8,7 +8,7 @@ bool PlayerHenry::is_back() {
     return ((Node2D*) get_node("base"))->get_scale().x != 1;
 }
 
-void PlayerHenry::_set_ladder(Area2D* ladder) {
+void PlayerHenry::_set_ladder(const Area2D* ladder) {
     if (ladder) {
         _is_climb_state = true;
         _climb_ladder_direction = (get_global_position().x < ladder->get_global_position().x) ? 1 : -1;

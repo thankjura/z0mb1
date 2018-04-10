@@ -3,7 +3,7 @@
 #include "bullet.hpp"
 
 class AK47Bullet: public Bullet {
-    GODOT_CLASS (AK47Bullet, RigidBody2D);
+    GODOT_CLASS (AK47Bullet, Bullet);
 
 protected:
     void _collision(Node2D* body);

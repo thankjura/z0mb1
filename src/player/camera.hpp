@@ -4,6 +4,7 @@
 #include <Camera2D.hpp>
 #include <Area2D.hpp>
 #include "../constants.hpp"
+#include "../utils/utils.hpp"
 
 using namespace godot;
 
@@ -22,7 +23,7 @@ private:
     Vector2 _camera_offset;
 
 public:    
-    void area_zoom(Area2D* area);
+    void area_zoom(const Area2D* area);
     void reset_zoom();
     void shuffle_camera(const double force, const double fade_out_time = 0.1);
     

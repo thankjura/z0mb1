@@ -37,8 +37,8 @@ angular_velocity = 0.0
 angular_damp = -1.0
 script = SubResource( 1 )
 _sections_unfolded = [ "Pause", "main" ]
-main/health = 80
-main/damage = 100
+main/health = 80.0
+main/damage = 10.0
 main/lifetime = 4.0
 main/gravity = 0.0
 

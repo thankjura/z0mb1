@@ -22,8 +22,7 @@ EnemySolder::EnemySolder():Enemy() {
     _switch_state_timeout = 0;
     _jump_vector = Vector2();
     _aim_timeout = 0;
-    _health = 100;
-    _dead = false;
+    _health = 100;    
 }
 
 EnemySolder::~EnemySolder() {}
@@ -74,7 +73,6 @@ void EnemySolder::_body_hit(Object* obj) {
         obj->call("damage", Array::make(_BODY_STRENGTH));
     }
     if (obj->has_method("get_damage")) {
-        Godot::print("yessss");
         _health -= (double) obj->call("get_damage");
         if (_health > 0) {
             RigidBody2D* r = Object::cast_to<RigidBody2D>(obj);
@@ -89,7 +87,6 @@ void EnemySolder::_head_hit(Object* obj) {
     if (obj->has_method("damage")) {
         obj->call("damage", Array::make(_HEAD_STRENGTH));
     }
-    Godot::print("head\n");
     if (obj->has_method("get_damage")) {
         _health -= ((double) obj->call("get_damage")) * 2;
         if (_health > 0) {
@@ -141,6 +138,7 @@ void EnemySolder::change_direction(const double t, const int direction) {
 }
 
 void EnemySolder::die() {
+    Godot::print("die2");
     Enemy::die();
     _body_area->disconnect("body_entered", this, "_body_hit");
     _head_area->disconnect("body_entered", this, "_head_hit");

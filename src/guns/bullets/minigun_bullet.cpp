@@ -27,8 +27,8 @@ void MinigunBullet::_register_methods() {
     register_method ("_process",                                &MinigunBullet::_process);
     register_method ("_collision",                              &MinigunBullet::_collision);
 
-    register_property<MinigunBullet, double>("main/health",     &MinigunBullet::_health,        double(50));
-    register_property<MinigunBullet, double>("main/damage",     &MinigunBullet::_DAMAGE,        double(50));
+    register_property<MinigunBullet, double>("main/health",     &MinigunBullet::_health,        double(80));
+    register_property<MinigunBullet, double>("main/damage",     &MinigunBullet::_DAMAGE,        double(30));
     register_property<MinigunBullet, double>("main/lifetime",   &MinigunBullet::_LIFE_TIME,     double(4));
     register_property<MinigunBullet, double>("main/gravity",    &MinigunBullet::_GRAVITY,       double(0));
 }

@@ -12,6 +12,8 @@ public:
     AK47Bullet();
     ~AK47Bullet();
 
+    const double get_damage();
+
     void _init();
     void _ready();
     void _process(const double delta);

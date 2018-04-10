@@ -119,7 +119,6 @@ void PlayerHenry::_look_default(const double delta) {
 }
 
 void PlayerHenry::_jump() {
-    Godot::print("jump");
     if (_is_climb_state) {
         _velocity.y -= _JUMP_FORCE * 0.7;
         _velocity.x += _JUMP_FORCE * 0.7 * -_climb_ladder_direction;

@@ -10,6 +10,7 @@ Enemy::Enemy() {
     _INIT_HEALTH = 100;
     _velocity = Vector2();
     _recoil = Vector2();
+    _dead = false;
 }
 Enemy::~Enemy() {}
 
@@ -26,6 +27,7 @@ bool Enemy::is_back() {
 }
 
 void Enemy::die() {
+    Godot::print("die1");
     _dead = true;
     set_collision_mask(layers::GROUND_LAYER);
 }

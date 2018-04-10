@@ -25,8 +25,8 @@ void ShotgunPellet::_register_methods() {
     register_method("_process",                                 &ShotgunPellet::_process);
     register_method("_collision",                               &ShotgunPellet::_collision);
 
-    register_property<ShotgunPellet, double>("main/health",     &ShotgunPellet::_health,            double(80));
-    register_property<ShotgunPellet, double>("main/damage",     &ShotgunPellet::_DAMAGE,            double(100));
+    register_property<ShotgunPellet, double>("main/health",     &ShotgunPellet::_health,            double(30));
+    register_property<ShotgunPellet, double>("main/damage",     &ShotgunPellet::_DAMAGE,            double(5));
     register_property<ShotgunPellet, double>("main/lifetime",   &ShotgunPellet::_LIFE_TIME,         double(4));
     register_property<ShotgunPellet, double>("main/gravity",    &ShotgunPellet::_GRAVITY,           double(0));
 }

@@ -2,8 +2,6 @@
 
 Bullet::Bullet() {
     _DAMAGE = 11;
-    printf("ptr orig: %p", this);
-    Godot::print("\n");
 }
 Bullet::~Bullet() {}
 
@@ -68,8 +66,6 @@ void Bullet::damage(const double d, const Vector2 vector) {
 }
 
 const double Bullet::get_damage() {
-    printf("%f", _DAMAGE);
-    Godot::print("xxxx11");
     return _DAMAGE;
 }
 

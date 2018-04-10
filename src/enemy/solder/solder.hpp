@@ -60,7 +60,6 @@ private:
     SolderState _current_state;    
     SolderState _next_state;
     
-    double _health;
     int _next_direction;
     int _direction;
     double _switch_state_timeout;

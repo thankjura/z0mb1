@@ -88,8 +88,8 @@ angular_velocity = 0.0
 angular_damp = -1.0
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform", "main" ]
-main/health = 100
-main/damage = 100
+main/health = 100.0
+main/damage = 20.0
 main/lifetime = 4.0
 main/gravity = 0.0
 

@@ -299,7 +299,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="player" parent="." index="3" instance=ExtResource( 9 )]
 
-position = Vector2( 5229.29, 846.002 )
+position = Vector2( 1561.29, 860.002 )
 scale = Vector2( 0.3, 0.3 )
 _sections_unfolded = [ "Collision", "Transform", "collision", "main" ]
 

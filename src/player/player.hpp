@@ -106,7 +106,7 @@ public:
     PlayerHenry();
     ~PlayerHenry();
 
-    bool set_gun(Variant gun_class);    
+    bool set_gun(String gun_class);    
     Vector2 get_velocity();
     void gun_reload();
     void gun_recoil(const Vector2 recoil_vector);

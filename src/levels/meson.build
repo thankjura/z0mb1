@@ -13,7 +13,8 @@ level_lib = shared_library(
                 include_directories: inc,
                 link_with:[
                   level_objects,
-                  level_intro
+                  level_intro,
+                  player
                 ],
                 install_dir: target_dir,
                 install_rpath: lib_dir,

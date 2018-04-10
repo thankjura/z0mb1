@@ -10,7 +10,7 @@ PlayerAnim::PlayerAnim() {
     _RUN_SPEED = 300;
     _GROUND_SCALE_RATE = 1.2;
     _CLIMB_SCALE_RATE = 2;
-    _AIM_SPEED = 5;
+    _AIM_SPEED = 20;
     _FLOOR_RATIO_TIME = 0.1;    
     
     _SHOTGUN_RELOAD_IN = 0.1;
@@ -96,7 +96,7 @@ void PlayerAnim::jump(const Vector2 velocity) {
 
 void PlayerAnim::aim(const double angle, const double delta) {
     _current_aim_angle = utils::lerp(_current_aim_angle, std::abs(angle), _AIM_SPEED*delta);
-    timeseek_node_seek(_AIM_SEEK_NODE, std::abs(angle));
+    timeseek_node_seek(_AIM_SEEK_NODE, std::abs(_current_aim_angle));
 }
 
 void PlayerAnim::climb(const Vector2 velocity, const double delta, const double max_climb_speed, double distance) {
@@ -139,20 +139,21 @@ void PlayerAnim::_set_hand_type(HandType hand_type) {
     if (_current_hand_type == hand_type) {
         return;
     }
-
+    Godot::print("set hand type ");
+    printf("%d\n", hand_type);
     _current_hand_type = hand_type;
 
     get_tree()->call_group("player_hand", "hide");
 
-    if (hand_type == HandType::HT_CLIMB) {
+    if (hand_type == HT_CLIMB) {
         get_tree()->call_group("player_hand_climb", "show");
-    } else if (hand_type == HandType::HT_PISTOL) {
+    } else if (hand_type == HT_PISTOL) {
         get_tree()->call_group("player_hand_pistol", "show");
-    } else if (hand_type == HandType::HT_MINIGUN) {
+    } else if (hand_type == HT_MINIGUN) {
         get_tree()->call_group("player_hand_minigun", "show");
-    } else if (hand_type == HandType::HT_SHOTGUN ||
-               hand_type == HandType::HT_AK47    ||
-               hand_type == HandType::HT_BAZOOKA) {
+    } else if (hand_type == HT_SHOTGUN ||
+               hand_type == HT_AK47    ||
+               hand_type == HT_BAZOOKA) {
         get_tree()->call_group("player_hand_shotgun", "show");
     } else {
         get_tree()->call_group("player_hand_default", "show");
@@ -161,7 +162,7 @@ void PlayerAnim::_set_hand_type(HandType hand_type) {
 
 void PlayerAnim::_set_gun_position() {
     if (_gun) {
-        if (_current_state == State::STATE_CLIMB) {
+        if (_current_state == STATE_CLIMB) {
             _gun->climb_offset();
         } else {
             _gun->default_offset();
@@ -171,27 +172,28 @@ void PlayerAnim::_set_gun_position() {
 
 void PlayerAnim::_set_hand() {
     _set_gun_position();
-    if (_current_state == State::STATE_CLIMB) {
-        _set_hand_type(HandType::HT_CLIMB);
+    if (_current_state == STATE_CLIMB) {
+        _set_hand_type(HT_CLIMB);
     } else if (_gun) {
         const char* anim_name = _gun->get_anim_name();
         if (anim_name == _AIM_PISTOL_NAME) {
-            _set_hand_type(HandType::HT_PISTOL);
+            _set_hand_type(HT_PISTOL);
         } else if (anim_name == _AIM_MINIGUN_NAME) {
-            _set_hand_type(HandType::HT_MINIGUN);
+            _set_hand_type(HT_MINIGUN);
         } else {
-            _set_hand_type(HandType::HT_SHOTGUN);
+            _set_hand_type(HT_SHOTGUN);
         }
     } else {
-        _set_hand_type(HandType::HT_DEFAULT);
+        _set_hand_type(HT_DEFAULT);
     }
 }
 
 void PlayerAnim::set_gun(Gun* gun) {
     _gun = gun;
-    std::string name = _gun->get_anim_name();
+    const char* name = _gun->get_anim_name();    
     int x = _AIM[name];
     transition_node_set_current(_AIM_SWITCH_NODE, x);
+    _set_hand();
 }
 
 void PlayerAnim::drop_gun() {
@@ -205,7 +207,6 @@ void PlayerAnim::drop_gun() {
 void PlayerAnim::gun_reload() {
     if (_gun) {
         const char* anim_name = _gun->get_anim_name();
-        Godot::print(anim_name);
         if (anim_name == _AIM_SHOTGUN_NAME) {
             _start_gun_reload();
         } else if (anim_name == _AIM_BAZOOKA_NAME) {

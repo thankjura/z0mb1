@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://gdnlib/entity.gdnlib" type="GDNativeLibrary" id=1]
+[ext_resource path="res://textures/guns/pistol/base.png" type="Texture" id=2]
+
+[sub_resource type="NativeScript" id=1]
+
+resource_name = "GunEntity"
+class_name = "GunEntity"
+library = ExtResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 23.0727, 16.5206 )
+
+[node name="pistol_entity" type="RigidBody2D" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 80.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 6.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = SubResource( 1 )
+_sections_unfolded = [ "Z Index", "main" ]
+main/timeout = 1.0
+main/gun_scene = "res://scenes/guns/pistol.tscn"
+
+[node name="area" type="Area2D" parent="." index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Transform", "Z Index" ]
+
+[node name="collision" type="CollisionShape2D" parent="area" index="0"]
+
+shape = SubResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="sprite" type="Sprite" parent="." index="1"]
+
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="collision" type="CollisionPolygon2D" parent="." index="2"]
+
+build_mode = 0
+polygon = PoolVector2Array( -21.7869, 12.4557, -10.411, 15.246, 17.9213, -3.42761, 21.7849, -8.14967, 21.7849, -11.5839, 18.3506, -13.9449, -7.83537, -15.2328, -18.1381, -13.7303, -21.3576, -4.50081 )
+_sections_unfolded = [ "Transform" ]
+
+

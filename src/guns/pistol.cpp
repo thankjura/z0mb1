@@ -20,9 +20,9 @@ void Pistol::_ready() {
     Gun::_ready();
     _animation = ((AnimationPlayer*) get_node("animation_player"));
     
-    _BULLET = ResourceLoader::get_singleton()->load("res://scenes/guns/bullets/pistol_bullet.tscn");
-    _ENTITY = ResourceLoader::get_singleton()->load("res://scenes/entities/pistol_entity.tscn");
+    _BULLET = ResourceLoader::get_singleton()->load("res://scenes/guns/bullets/pistol_bullet.tscn");    
     _SHELL = ResourceLoader::get_singleton()->load("res://scenes/guns/shells/pistol_shell.tscn");
+    _ENTITY = "res://scenes/guns/entities/pistol_entity.tscn";    
 }
 
 void Pistol::_muzzle_flash() {

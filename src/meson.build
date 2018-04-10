@@ -28,3 +28,4 @@ gun = shared_library(
 
 subdir('enemy')
 subdir('levels')
+subdir('entities')

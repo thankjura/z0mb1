@@ -123,8 +123,9 @@ void Gun::_play_sound() {
 }
 
 void Gun::drop() {
-    if (_ENTITY != NULL) {
-        RigidBody2D* entity = (RigidBody2D*) _ENTITY.ptr()->instance();
+    if (not _ENTITY.empty()) {
+        Ref<PackedScene> e = ResourceLoader::get_singleton()->load(_ENTITY.c_str());
+        RigidBody2D* entity =  (RigidBody2D*) e->instance();
         Vector2 gp = get_global_position();
         entity->set_global_position(gp);
         if (gp.x <= ((Node2D*) get_node("bullet_spawn"))->get_global_position().x) {

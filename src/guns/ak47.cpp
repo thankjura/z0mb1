@@ -18,9 +18,10 @@ void AK47Gun::_init() {
 
 void AK47Gun::_ready() {
     Gun::_ready();    
-    _BULLET = ResourceLoader::get_singleton()->load("res://scenes/guns/bullets/ak47_bullet.tscn");
-    _ENTITY = ResourceLoader::get_singleton()->load("res://scenes/entities/ak47_entity.tscn");
+    _BULLET = ResourceLoader::get_singleton()->load("res://scenes/guns/bullets/ak47_bullet.tscn");    
     _SHELL = ResourceLoader::get_singleton()->load("res://scenes/guns/shells/ak47_shell.tscn");
+    _ENTITY = "res://scenes/guns/entities/ak47_entity.tscn";    
+    
     _overheat = (TextureRect*) get_node("body/overheat");  
     _animation = (AnimationPlayer*) get_node("animation_player");
 }

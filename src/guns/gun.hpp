@@ -27,9 +27,9 @@ class Gun: public Node2D {
 
 protected:
     std::string _AIM_NAME;
-
-    Ref<PackedScene> _BULLET;
-    Ref<PackedScene> _ENTITY;
+    std::string _ENTITY;
+    
+    Ref<PackedScene> _BULLET;    
     Ref<PackedScene> _SHELL;
 
     double _SPEED;

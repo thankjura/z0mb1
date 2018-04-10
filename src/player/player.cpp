@@ -93,11 +93,10 @@ void PlayerHenry::_area_exited(const Area2D* area) {
     }
 }
 
-bool PlayerHenry::set_gun(Variant gun_class) {
+bool PlayerHenry::set_gun(String gun_class) {
     if (_gun) {
         return false;
     }
-    
     Ref<PackedScene> gun = ResourceLoader::get_singleton()->load(gun_class);
     _gun = as<Gun>(gun->instance());
     get_node("base/pelvis/body/sholder_r/forearm_r/gun_position")->add_child(_gun);    
@@ -146,6 +145,7 @@ void PlayerHenry::set_mouth(String m) {
     Array childs = _mouth->get_children();
     for (int i = 0; i < childs.size(); i++) {
         ((Node2D*) get_wrapper<Object>(childs[i].operator godot_object*()))->set_visible(false);
+        //((Node2D*) (godot_object*) childs[i])->set_visible(false);
     }
     if (m == MOUTH_AGGRESIVE) {
         ((Node2D*) _mouth->get_node("mouth_a"))->set_visible(true);

@@ -22,9 +22,9 @@ void Minigun::_ready() {
     _anim = (AnimationPlayer*) get_node("animation_player");
     _overheat = (TextureRect*) get_node("body/overheat");
     
-    _BULLET = ResourceLoader::get_singleton()->load("res://scenes/guns/bullets/minigun_bullet.tscn");
-    _ENTITY = ResourceLoader::get_singleton()->load("res://scenes/entities/minigun_entity.tscn");
+    _BULLET = ResourceLoader::get_singleton()->load("res://scenes/guns/bullets/minigun_bullet.tscn");    
     _SHELL = ResourceLoader::get_singleton()->load("res://scenes/guns/shells/minigun_shell.tscn");
+    _ENTITY = "res://scenes/guns/entities/minigun_entity.tscn";    
 }
 
 void Minigun::_reset_view() {

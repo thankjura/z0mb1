@@ -10,7 +10,7 @@ Bazooka::Bazooka():Gun() {
     _ANIM_DEAD_ZONE_BOTTOM = 36;
     
     _ACCELERATION = 10000;
-    _RELOAD_TIMEOUT = 0.3;
+    _RELOAD_TIMEOUT = 0.3;    
 }
 
 Bazooka::~Bazooka() {}
@@ -22,7 +22,7 @@ void Bazooka::_init() {
 void Bazooka::_ready() {
     Gun::_ready();
     _BULLET = ResourceLoader::get_singleton()->load("res://scenes/guns/bullets/bazooka_rocket.tscn");
-    _ENTITY = ResourceLoader::get_singleton()->load("res://scenes/entities/bazooka_entity.tscn");
+    _ENTITY = "res://scenes/guns/entities/bazooka_entity.tscn";    
 }
 
 void Bazooka::_reload() {

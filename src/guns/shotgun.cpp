@@ -24,9 +24,9 @@ void Shotgun::_ready() {
     _animation = ((AnimationPlayer*) get_node("anim"));
     _animation->connect("animation_finished", this, "_end_animation");
     
-    _BULLET = ResourceLoader::get_singleton()->load("res://scenes/guns/bullets/shotgun_pellet.tscn");
-    _ENTITY = ResourceLoader::get_singleton()->load("res://scenes/entities/shotgun_entity.tscn");
+    _BULLET = ResourceLoader::get_singleton()->load("res://scenes/guns/bullets/shotgun_pellet.tscn");    
     _SHELL = ResourceLoader::get_singleton()->load("res://scenes/guns/shells/shotgun_shell.tscn");
+    _ENTITY = "res://scenes/guns/entities/shotgun_entity.tscn";    
 }
 
 void Shotgun::_end_animation(Variant anim_name) {

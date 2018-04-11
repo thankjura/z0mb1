@@ -93,7 +93,7 @@ void PlayerHenry::_area_exited(const Area2D* area) {
     }
 }
 
-bool PlayerHenry::set_gun(String gun_class) {
+bool PlayerHenry::set_gun(const String &gun_class) {
     if (_gun) {
         return false;
     }

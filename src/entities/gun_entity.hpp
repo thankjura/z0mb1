@@ -6,6 +6,7 @@
 #include <PackedScene.hpp>
 #include <ResourceLoader.hpp>
 #include "../constants.hpp"
+#include "../player/player.hpp"
 
 using namespace godot;
 
@@ -16,11 +17,13 @@ private:
     double _TIMEOUT;
     double _wait_time;
     
+    bool _active;
+    
     Area2D* _area;
     
     String _GUN;
 
-    void _collision(Object* obj);
+    void _collision(Variant variant);
 
 public:    
     GunEntity();

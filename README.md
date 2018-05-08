@@ -3,8 +3,11 @@
 controls:
 
 left mouse: fire
+
 middle mouse: drop gun
+
 right mouse: jump
+
 
 
 for gamepad you can change in scripts/input.gd:

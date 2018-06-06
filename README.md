@@ -1,4 +1,4 @@
-migrate to https://bitbucket.org/thankjura/z0mb1e-game
+migrate to https://bitbucket.org/thankjura/z0mb1e
 
 # z0mb1 demo game on godot 3.1
 
